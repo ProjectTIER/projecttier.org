@@ -1,0 +1,7 @@
+six
+
+[tests]
+Werkzeug >= 0.9
+
+[upload_appveyor_builds]
+twine == 1.5.0

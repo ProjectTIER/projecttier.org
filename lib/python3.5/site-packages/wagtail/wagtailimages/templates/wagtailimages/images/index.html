@@ -1,0 +1,33 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailimages_tags %}
+{% load i18n %}
+
+{% block titletag %}{% trans "Images" %}{% endblock %}
+{% block extra_js %}
+    {{ block.super }}
+    <script>
+        window.headerSearch = {
+            url: "{% url 'wagtailimages:index' %}",
+            termInput: "#id_q",
+            targetOutput: "#image-results"
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% trans "Images" as im_str %}
+
+    {% if perms.wagtailimages.add_image %}
+        {% trans "Add an image" as add_img_str %}
+        {% include "wagtailadmin/shared/header.html" with title=im_str add_link="wagtailimages:add_multiple" icon="image" add_text=add_img_str search_url="wagtailimages:index" %}
+    {% else %}
+        {% include "wagtailadmin/shared/header.html" with title=im_str icon="image" search_url="wagtailimages:index" %}
+    {% endif %}
+
+    <div class="nice-padding">
+        <div id="image-results">
+            {% include "wagtailimages/images/results.html" %}
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,280 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# NeotheOne <neotheone@programmer.net>, 2015
+# serafeim <serafeim@torchbox.com>, 2014
+# serafeim <serafeim@torchbox.com>, 2014
+# dotoree <vdotoree@yahoo.gr>, 2015
+# Wasilis Mandratzis-Walz, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Wagtail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-26 14:28+0100\n"
+"PO-Revision-Date: 2015-08-13 07:05+0000\n"
+"Last-Translator: dotoree <vdotoree@yahoo.gr>\n"
+"Language-Team: Greek (http://www.transifex.com/torchbox/wagtail/language/"
+"el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Απαραίτητο. Λιγότερο από 30 χαρακτήρες. Επιτρέπονται μόνο γράμματα, αριθμοί "
+"και οι χαρακτήρες @/./+/-/_."
+
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+"Η τιμή επιτρέπεται να έχει μόνο γράμματα, αριθμούς και τους χαρακτήρες @/./"
+"+/-/_."
+
+msgid "Administrator"
+msgstr "Διαχειριστής"
+
+msgid "If ticked, this user has the ability to manage user accounts."
+msgstr ""
+"Αν επιλεγεί, ο συγκεκριμένος χρήστης έχει τη δυνατότητα διαχείρισης "
+"λογαριασμών χρηστών."
+
+msgid "Password"
+msgstr "Κωδικός"
+
+msgid "Leave blank if not changing."
+msgstr "Αφήστε κενό αν δεν το αλλάζετε."
+
+msgid "Password confirmation"
+msgstr "Επιβεβαίωση κωδικού."
+
+msgid "Enter the same password as above, for verification."
+msgstr "Εισάγετε τον ίδιο κωδικό για επιβεβαίωση"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "First Name"
+msgstr "Όνομα"
+
+msgid "Last Name"
+msgstr "Επίθετο"
+
+msgid "A user with that username already exists."
+msgstr "Υπάρχει ήδη χρήστης με το συγκεκριμένο όνομα χρήστη."
+
+msgid "The two password fields didn't match."
+msgstr "Τα δύο πεδία κωδικών δεν είναι ίδια."
+
+msgid "Administrators have the ability to manage user accounts."
+msgstr ""
+"Οι Διαχειριστές έχουν τη δυνατότητα να διαχειρίζονται λογαριασμούς χρηστών."
+
+msgid "A group with that name already exists."
+msgstr "Υπάρχει ήδη ομάδα με το συγκεκριμένο όνομα ομάδας."
+
+msgid "Submitted notifications"
+msgstr "Υποβλήθηκαν ειδοποιήσεις"
+
+msgid "Receive notification when a page is submitted for moderation"
+msgstr ""
+"Λήψη ειδοποίησης όταν υποβάλλεται μια σελίδα για επίδειξη μετριοπάθειας"
+
+msgid "Approved notifications"
+msgstr "Ειδοποιήσεις που εγκρίθηκαν "
+
+msgid "Receive notification when your page edit is approved"
+msgstr "Λήψη ειδοποίησης όταν σελίδα επεξεργασίας σας έχει εγκριθεί"
+
+msgid "Rejected notifications"
+msgstr "Απορριφθείσες ειδοποιήσεις"
+
+msgid "Receive notification when your page edit is rejected"
+msgstr "Λήψη ειδοποίησης όταν σελίδα επεξεργασίας σας απορρίπτεται"
+
+msgid "User Profile"
+msgstr "Προφίλ Χρήστη"
+
+msgid "Delete group"
+msgstr "Διαγραφή ομάδας"
+
+#, python-format
+msgid ""
+"The group '%(group_name)s' has <strong>%(group_user_count)s</strong> users "
+"assigned."
+msgstr ""
+"Στην ομάδα '%(group_name)s' εχουν <strong>%(group_user_count)s</strong> "
+"έχουν ανατεθεί χρήστες. "
+
+msgid ""
+"Deleting this group will revoke this group's permissions from all member "
+"users."
+msgstr ""
+"Η διαγραφή αυτής της ομάδας θα καταργήσει τα δικαιώματα αυτής της ομάδας από "
+"όλους τους χρήστες "
+
+msgid "Are you sure you want to delete this group?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την ομάδα;"
+
+msgid "Yes, delete"
+msgstr "Ναι, να διαγραφεί"
+
+msgid "Add group"
+msgstr "Προσθήκη ομαδας"
+
+msgid "Editing"
+msgstr "Διόρθωση"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Object permissions"
+msgstr " Δικαιώματα αντικειμένου"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Add"
+msgstr "Προσθήκη"
+
+msgid "Change"
+msgstr "Αλλαγή"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Other permissions"
+msgstr "Άλλα δικαιώματα"
+
+msgid "Page permissions"
+msgstr "Δικαιώματα στην σελίδα "
+
+msgid "Page"
+msgstr "Σελίδα"
+
+msgid "Permission type"
+msgstr "Αδεια τύπου"
+
+msgid "Add a page permission"
+msgstr "Προσθήκη άδειας σελίδας"
+
+msgid "groups"
+msgstr "ομάδες"
+
+msgid "Add a group"
+msgstr "Προσθήκη ομαδας"
+
+#, python-format
+msgid ""
+"There are no groups configured. Why not <a href="
+"\"%(wagtailusers_create_group_url)s\">add some</a>?"
+msgstr ""
+"There are no groups configured. Why not <a href="
+"\"%(wagtailusers_create_group_url)s\">add some</a>?"
+
+msgid "Add user"
+msgstr "Προσθήκη χρήστη"
+
+msgid "Account"
+msgstr "Λογαριασμός"
+
+msgid "Roles"
+msgstr "Ρόλοι"
+
+msgid "Users"
+msgstr "Χρήστες"
+
+msgid "Add a user"
+msgstr "Προσθήκη χρήστη"
+
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+msgid "Level"
+msgstr "Επίπεδο"
+
+msgid "Status"
+msgstr "Κατάσταση"
+
+msgid "Admin"
+msgstr "Διαχειριστής"
+
+msgid "Active"
+msgstr "Ενεργός"
+
+msgid "Inactive"
+msgstr "Μη ενεργός"
+
+#, python-format
+msgid ""
+"\n"
+"            There is one match\n"
+"        "
+msgid_plural ""
+"\n"
+"            There are %(counter)s matches\n"
+"        "
+msgstr[0] ""
+"\n"
+"Βρέθηκε ένα αποτέλεσμα"
+msgstr[1] ""
+"\n"
+"Βρέθηκαν %(counter)s αποτελέσματα"
+
+#, python-format
+msgid "Sorry, no users match \"<em>%(query_string)s</em>\""
+msgstr "Λυπούμαστε, δε ταιριάζουν χρήστες με το \"<em>%(query_string)s</em>\""
+
+#, python-format
+msgid ""
+"There are no users configured. Why not <a href=\"%(wagtailusers_create_url)s"
+"\">add some</a>?"
+msgstr ""
+"Δεν έχουν [προστεθεί χρήστες. Θέλετε να <a href=\"%(wagtailusers_create_url)s"
+"\">προσθέσετε μερικούς</a>?"
+
+msgid "Search groups"
+msgstr "Αναζήτηση ομαδων"
+
+#, python-brace-format
+msgid "Group '{0}' created."
+msgstr "Η ομαδα '{0}' δημιουργήθηκε."
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "The group could not be created due to errors."
+msgstr "Δεν ήταν δυνατή η αποθήκευση της ομαδας."
+
+#, python-brace-format
+msgid "Group '{0}' updated."
+msgstr "Η ομαδα '{0}' ενημερώθηκε."
+
+msgid "The group could not be saved due to errors."
+msgstr "Δεν ήταν δυνατή η ενημέρωση των στοιχείων της ομαδας"
+
+#, python-brace-format
+msgid "Group '{0}' deleted."
+msgstr "Η ομαδα '{0}' διαγράφηκε."
+
+msgid "Search users"
+msgstr "Αναζήτηση χρηστών"
+
+#, python-brace-format
+msgid "User '{0}' created."
+msgstr "Ο χρήστης '{0}' δημιουργήθηκε."
+
+msgid "The user could not be created due to errors."
+msgstr "Δεν ήταν δυνατή η δημιουργία του χρήστη."
+
+#, python-brace-format
+msgid "User '{0}' updated."
+msgstr "Τα στοιχεία του χρήστη '{0}' ενημερώθηκαν."
+
+msgid "The user could not be saved due to errors."
+msgstr "Δεν ήταν δυνατή η ενημέρωση των στοιχείων του χρήστη."
+
+msgid "Groups"
+msgstr "Ομάδες"

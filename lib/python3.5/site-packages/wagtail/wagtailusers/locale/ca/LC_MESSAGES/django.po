@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# David Llop <d.lloople@gmail.com>, 2014
+# David Llop <d.lloople@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Wagtail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-26 14:28+0100\n"
+"PO-Revision-Date: 2015-04-21 08:40+0000\n"
+"Last-Translator: Karl Hobley <karl@torchbox.com>\n"
+"Language-Team: Catalan (http://www.transifex.com/torchbox/wagtail/language/"
+"ca/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Requerit. 30 caràcters o menys. Lletres, números i només @/./+/-/_."
+
+msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
+msgstr ""
+"Aquest valor només ha de contenir lletres, números i caràcters com @/./+/-/_."
+
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "If ticked, this user has the ability to manage user accounts."
+msgstr "Si és marcat, aquest usuari podrà administrar comptes d'usuari"
+
+msgid "Password"
+msgstr "Contrasenya"
+
+msgid "Leave blank if not changing."
+msgstr "Deixa-ho en blanc si no ha canviat."
+
+msgid "Password confirmation"
+msgstr "Confirmació de contrasenya"
+
+msgid "Enter the same password as above, for verification."
+msgstr "Introdueix la mateixa contrasenya, per verificació."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "First Name"
+msgstr "Nom"
+
+msgid "Last Name"
+msgstr "Cognoms"
+
+msgid "A user with that username already exists."
+msgstr "Ja existeix un usuari amb aquest nom"
+
+msgid "The two password fields didn't match."
+msgstr "Les contrasenyes no coincideixen"
+
+msgid "Administrators have the ability to manage user accounts."
+msgstr "Els administrador poden manegar comptes d'usuari."
+
+msgid "Editing"
+msgstr "Editant"
+
+msgid "Save"
+msgstr "Desa"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Add user"
+msgstr "fegir usuari"
+
+msgid "Account"
+msgstr "Compte"
+
+msgid "Roles"
+msgstr "Perfils"
+
+msgid "Users"
+msgstr "Usuaris"
+
+msgid "Add a user"
+msgstr "Afegeix un usuari"
+
+msgid "Username"
+msgstr "Nom d'usuari"
+
+msgid "Level"
+msgstr "Nivell"
+
+msgid "Status"
+msgstr "Estat"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Active"
+msgstr "Actiu"
+
+msgid "Inactive"
+msgstr "Inactiu"
+
+#, python-format
+msgid ""
+"\n"
+"            There is one match\n"
+"        "
+msgid_plural ""
+"\n"
+"            There are %(counter)s matches\n"
+"        "
+msgstr[0] ""
+"\n"
+"Hi ha una coincidència"
+msgstr[1] ""
+"\n"
+"Hi han %(counter)s coincidències"
+
+#, python-format
+msgid "Sorry, no users match \"<em>%(query_string)s</em>\""
+msgstr "Ho sentim, cap usuari coincideix amb \"<em>%(query_string)s</em>\""
+
+#, python-format
+msgid ""
+"There are no users configured. Why not <a href=\"%(wagtailusers_create_url)s"
+"\">add some</a>?"
+msgstr ""
+"No hi han usuaris configurats. Per què no <a href="
+"\"%(wagtailusers_create_url)s\">afegeixes un</a>?"
+
+msgid "Search users"
+msgstr "Cercar usuaris"
+
+#, python-brace-format
+msgid "User '{0}' created."
+msgstr "Usuari '{0}' creat."
+
+msgid "The user could not be created due to errors."
+msgstr "No s'ha pogut crear l'usuari degut a errors."
+
+#, python-brace-format
+msgid "User '{0}' updated."
+msgstr "Usuari '{0}' actualitzat."
+
+msgid "The user could not be saved due to errors."
+msgstr "No s'ha pogut desar l'usuari degut a errors."

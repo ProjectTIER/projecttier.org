@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Dan Braghis, 2014-2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Wagtail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-26 14:28+0100\n"
+"PO-Revision-Date: 2015-08-26 13:37+0000\n"
+"Last-Translator: Karl Hobley <karl@torchbox.com>\n"
+"Language-Team: Romanian (http://www.transifex.com/torchbox/wagtail/language/"
+"ro/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+
+msgid "Choose a root page"
+msgstr "Alege o pagină de bază"
+
+msgid "Choose a different root page"
+msgstr "Alege o altă pagină de bază"
+
+msgid "Site"
+msgstr "Sit"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Root page"
+msgstr "Pagină de bază"
+
+msgid "Default?"
+msgstr "Implicit?"
+
+msgid "Default"
+msgstr "Implicit"
+
+msgid "Sites"
+msgstr "Site-uri"

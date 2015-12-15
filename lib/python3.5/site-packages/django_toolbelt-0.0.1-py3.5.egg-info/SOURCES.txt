@@ -1,0 +1,9 @@
+README.rst
+setup.cfg
+setup.py
+django_toolbelt.egg-info/PKG-INFO
+django_toolbelt.egg-info/SOURCES.txt
+django_toolbelt.egg-info/dependency_links.txt
+django_toolbelt.egg-info/not-zip-safe
+django_toolbelt.egg-info/requires.txt
+django_toolbelt.egg-info/top_level.txt
