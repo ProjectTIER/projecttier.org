@@ -1,1 +1,1 @@
-web: uwsgi --http :$PORT --module project-tier.wsgi --master --offload-threads 1
+web: gunicorn project-tier.heroku_wsgi
