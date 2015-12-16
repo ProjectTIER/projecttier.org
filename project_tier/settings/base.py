@@ -145,16 +145,16 @@ COMPRESS_PRECOMPILERS = (
 
 # Use Redis as the cache backend for extra performance
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'KEY_PREFIX': 'project_tier',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': '127.0.0.1:6379',
+#         'KEY_PREFIX': 'project_tier',
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 
 # Use Elasticsearch as the search backend for extra performance and better search results
