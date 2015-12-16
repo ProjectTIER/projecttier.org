@@ -8,7 +8,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "project-tier/static/bower_components/",
+    "project_tier/static/bower_components/",
     "test",
     "tests"
   ],
