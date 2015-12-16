@@ -1,0 +1,18 @@
+{
+  "name": "project-tier",
+  "homepage": "https://github.com/promptworks/project-tier",
+  "description": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "project-tier/static/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.0.6"
+  }
+}
