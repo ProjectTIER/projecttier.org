@@ -119,6 +119,7 @@ if REDIS_LOCATION is not None:
             'KEY_PREFIX': APP_NAME,
             'OPTIONS': {
                 'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+                'PASSWORD': env['REDIS_PASSWORD'],
             }
         }
     }
