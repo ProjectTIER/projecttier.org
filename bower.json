@@ -14,5 +14,8 @@
   ],
   "dependencies": {
     "foundation-sites": "~6.0.6"
+  },
+  "devDependencies": {
+    "bourbon": "~4.2.6"
   }
 }
