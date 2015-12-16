@@ -1,0 +1,31 @@
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+   .button {
+      background: $medium-teal;
+      @include linear-gradient($teal, $medium-teal, $medium-teal);
+      font-size: rem( $rem-base );
+      border: none;
+      border-radius: rem(3);
+      text-shadow: -1px -1px 0px rgba(0,0,0,0.2);
+      background-size: 200%;
+
+      @include transition(
+         box-shadow 0.1s ease 0,
+         background-position 0.1s ease 0
+      );
+
+      &:hover {
+         background: $medium-teal;
+      @include linear-gradient($teal, $medium-teal, $medium-teal);
+         background-size: 200%;
+         font-size: rem( $rem-base );
+         background-position: 100%;
+      }
+      &:active {
+         box-shadow: inset 0 em(4) em(8) 0 rgba(0,0,0,0.2);
+         @include transition(none);
+      }
+
+   }
