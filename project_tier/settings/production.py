@@ -34,7 +34,7 @@ for key, value in os.environ.items():
 
 # Basic configuration
 
-APP_NAME = env.get('APP_NAME', 'project-tier')
+APP_NAME = env.get('APP_NAME', 'project_tier')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -43,6 +43,8 @@ if 'SECRET_KEY' in env:
 
 if 'ALLOWED_HOSTS' in env:
     ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
+else:
+    ALLOWED_HOSTS = ['*']
 
 if 'PRIMARY_HOST' in env:
     BASE_URL = 'http://%s/' % env['PRIMARY_HOST']

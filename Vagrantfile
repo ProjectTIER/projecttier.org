@@ -69,7 +69,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
-  config.vm.provision :shell, :path => "vagrant/provision.sh", :args => "project-tier"
+  config.vm.provision :shell, :path => "vagrant/provision.sh", :args => "project_tier"
 
   # Enable agent forwarding over SSH connections.
   config.ssh.forward_agent = true

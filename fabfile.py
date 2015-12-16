@@ -76,9 +76,9 @@ def pull_production_data():
 
     _pull_data(
         env_name='production',
-        remote_db_name='project-tier',
-        local_db_name='project-tier',
-        remote_dump_path='/usr/local/django/project-tier/tmp/',
+        remote_db_name='project_tier',
+        local_db_name='project_tier',
+        remote_dump_path='/usr/local/django/project_tier/tmp/',
         local_dump_path='/tmp/',
     )
 
@@ -90,8 +90,8 @@ def pull_staging_data():
 
     _pull_data(
         env_name='staging',
-        remote_db_name='project-tier',
-        local_db_name='project-tier',
-        remote_dump_path='/usr/local/django/project-tier/tmp/',
+        remote_db_name='project_tier',
+        local_db_name='project_tier',
+        remote_dump_path='/usr/local/django/project_tier/tmp/',
         local_dump_path='/tmp/',
     )

@@ -1,1 +1,1 @@
-web: gunicorn project-tier.heroku_wsgi
+web: gunicorn project_tier.wsgi --log-file -

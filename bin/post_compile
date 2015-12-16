@@ -1,1 +1,1 @@
-python manage.py compress --settings project-tier.settings.production
+python manage.py compress --settings project_tier.settings.production
