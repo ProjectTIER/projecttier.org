@@ -10,7 +10,7 @@ from .base import *
 DEBUG = False
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # Compress static files offline and minify CSS
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
 COMPRESS_OFFLINE = True

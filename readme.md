@@ -13,7 +13,7 @@ createdb project_tier
 ### Setup the project
 ```
 git clone git@github.com:promptworks/project_tier.git
-cd project_tier
+cd project-tier
 pyvenv venv
 source venv/bin/activate
 pip install -r requirements.txt
