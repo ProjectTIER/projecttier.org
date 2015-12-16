@@ -1,6 +1,7 @@
 *.pyc
 .DS_Store
 *.swp
+/lib/
 /venv/
 /static/
 /media/

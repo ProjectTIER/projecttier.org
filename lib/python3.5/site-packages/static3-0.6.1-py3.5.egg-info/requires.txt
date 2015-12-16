@@ -1,6 +1,0 @@
-
-[GenshiMagic]
-Genshi
-
-[KidMagic]
-kid

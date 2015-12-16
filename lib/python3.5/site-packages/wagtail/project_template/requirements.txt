@@ -1,2 +1,0 @@
-Django>=1.8,<1.9
-wagtail==1.2
