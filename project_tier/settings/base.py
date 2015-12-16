@@ -159,12 +159,12 @@ COMPRESS_PRECOMPILERS = (
 
 # Use Elasticsearch as the search backend for extra performance and better search results
 
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-        'INDEX': 'project_tier',
-    },
-}
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+#         'INDEX': 'project_tier',
+#     },
+# }
 
 
 # Celery settings
