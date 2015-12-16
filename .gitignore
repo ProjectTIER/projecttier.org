@@ -1,7 +1,7 @@
 *.pyc
+.Python
 .DS_Store
 *.swp
-/lib/
 /venv/
 /static/
 /media/
@@ -9,3 +9,5 @@
 /.vagrant/
 /Vagrantfile.local
 /docs/_build/
+pyvenv.cfg
+pip-selfcheck.json
