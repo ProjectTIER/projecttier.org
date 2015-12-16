@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'project-tier.home',
     'project-tier.search',
 
+    'wagtail.contrib.settings',
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -169,7 +170,7 @@ WAGTAILSEARCH_BACKENDS = {
 # Celery settings
 # When you have multiple sites using the same Redis server,
 # specify a different Redis DB. e.g. redis://localhost/5
- 
+
 BROKER_URL = 'redis://'
 
 CELERY_SEND_TASK_ERROR_EMAILS = True
