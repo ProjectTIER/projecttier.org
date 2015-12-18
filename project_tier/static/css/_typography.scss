@@ -1,3 +1,86 @@
 /* ==========================================================================
-   TYPOGRAPHY
+   PARAGRAPHS
    ========================================================================== */
+   
+   p {
+      line-height: 1.8rem;
+      margin-bottom: 1.8rem;
+
+      &.secondary {
+         color: $off-black;
+         font-size: rem(13);
+      }
+   }
+
+
+
+/* ==========================================================================
+   HEADING STYLES
+   ========================================================================== */
+
+   %large-heading, .large-heading {
+      font-size: rem(33);
+      color: $off-black;
+   }
+   %medium-heading, .medium-heading {
+      font-size: rem(21);
+      color: $off-black;
+   }
+   %small-heading, .small-heading {
+      font-size: rem(18);
+      color: $off-black;
+   }
+
+
+
+/* ==========================================================================
+   CODE / MONOSPACE TEXT
+   ========================================================================== */
+   
+   code, %monospace-text {
+      color: inherit;
+      border: none;
+      font-family: $font-family-monospace;
+      font-weight: 700;
+      background: $pale-grey;
+
+      strong {
+         color: $red;
+      }
+      .sidebar & {
+         background: rgba(255,255,255,0.5);
+      }
+
+      .sidebar .callout & {
+         color: foreground($callout-bg-highlight);
+         background: foreground($callout-bg-highlight,rgba(255,255,255,0.5),rgba(0,0,0,0.25));
+         strong {
+            color: foreground($callout-bg-highlight, $red, $teal);
+         }
+      }
+
+      .sidebar .special.callout & {
+         color: foreground($special-callout-bg-highlight);
+         background: foreground($special-callout-bg-highlight,rgba(255,255,255,0.5),rgba(0,0,0,0.25));
+         strong {
+            color: foreground($special-callout-bg-highlight, $red, $teal);
+         }
+      }
+   }
+
+
+   
+/* ==========================================================================
+   EMBOSSED TEXT STYLE
+   ========================================================================== */
+
+   @mixin embossed-text( $background-color ) {
+      color: foreground( $background-color, $black, $white );
+      font-weight: foreground( $background-color, 400, 700 );
+      text-shadow: 
+         1px 1px 0px foreground( $background-color, $white, transparent ),
+         -1px -1px 0px foreground( $background-color, transparent,rgba(0,0,0,0.2) )
+      ;
+   }
+   
+
