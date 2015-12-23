@@ -13,9 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "foundation-sites": "~6.0.6"
-  },
-  "devDependencies": {
-    "bourbon": "~4.2.6"
+    "foundation-sites": "~6.0.6",
+    "components-font-awesome": "~4.5.0"
   }
 }
