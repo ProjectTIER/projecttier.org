@@ -1,0 +1,19 @@
+{% extends "standard_layout.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block main_content %}
+  <div class="row">
+    <div class="small-12 columns">
+      {% include "includes/intro.html" with intro=self.intro only %}
+
+      {% if self.body %}
+          <div class="body-content">
+              {{ self.body|richtext }}
+          </div>
+      {% endif %}
+
+      {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+    </div>
+  </div>
+{% endblock %}
