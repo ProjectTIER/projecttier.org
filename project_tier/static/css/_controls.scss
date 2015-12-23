@@ -5,54 +5,56 @@
    /* Default Buttons
       ========================================================================== */
    .button {
-      background: $button-highlight;
-      @include linear-gradient($button-highlight, $button-shadow, $button-shadow);
-      font-size: rem( $rem-base );
+      background-color: $button-highlight;
+      background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
+      font-size: rem-calc( $rem-base );
       border: none;
-      border-radius: rem(3);
+      border-radius: rem-calc(3);
+      box-shadow: none;
       @include embossed-text($button-highlight);
       background-size: 200%;
       background-position: 0% 0%;
 
-      @include transition(
+      transition:
          box-shadow 0.1s ease 0,
          background-position 0.1s ease 0,
          border-color 0.1s ease 0
-      );
+      ;
 
       &:hover, &:focus {
-         background: $button-shadow;
-         @include linear-gradient($button-highlight, $button-shadow, $button-shadow);
+         background-color: $button-shadow;
+         background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
+         box-shadow: none;
          @include embossed-text($button-highlight);
          background-size: 200%;
          background-position: 0% 100%;
 
       }
       &:active {
-         box-shadow: inset 0 em(4) em(8) 0 rgba(0,0,0,0.2);
-         @include transition(none);
+         box-shadow: inset 0 rem-calc(4) rem-calc(8) 0 rgba(0,0,0,0.2);
+         transition: none;
       }
 
 
       /* Small Buttons
          ========================================================================== */
       &.small {
-         font-size: rem(13);
-         padding: rem(7.5) 0.75rem;
+         font-size: rem-calc(13);
+         padding: rem-calc(7.5) 0.75rem;
       }
 
       
       /* Special Buttons
          ========================================================================== */
       &.special {
-         background: $special-button-highlight;
+         background-color: $special-button-highlight;
+         background-image: linear-gradient($special-button-highlight, $special-button-shadow, $special-button-shadow);
          background-size: 200%;
          @include embossed-text($special-button-highlight);
-         @include linear-gradient($special-button-highlight, $special-button-shadow, $special-button-shadow);
 
          &:hover {
-            background: $special-button-shadow;
-            @include linear-gradient($special-button-highlight, $special-button-shadow, $special-button-shadow);
+            background-color: $special-button-shadow;
+            background-image: linear-gradient($special-button-highlight, $special-button-shadow, $special-button-shadow);
             background-size: 200%;
             background-position: 0% 100%;
          }
@@ -64,8 +66,8 @@
       .sidebar & {
          
          @extend .small;
-         background: $white;
-         @include linear-gradient($white, $button-highlight, $button-highlight);
+         background-color: $white;
+         background-image: linear-gradient($white, $button-highlight, $button-highlight);
          border: 1px solid $button-shadow;
          background-size: 200%;
             background-position: 0% 0%;
@@ -73,7 +75,8 @@
 
          
          &:hover, &:focus {
-            @include linear-gradient($white, $button-highlight, $button-highlight);
+            background-color: $button-highlight;
+            background-image: linear-gradient($white, $button-highlight, $button-highlight);
             background-size: 200%;
             background-position: 0% 100%;
 
@@ -86,7 +89,8 @@
          border: 1px solid $special-button-shadow;
       }
       .sidebar .special.callout & {
-         @include linear-gradient($special-callout-bg-highlight, $special-callout-bg-shadow, $special-callout-bg-shadow);
+         background-color: $special-callout-bg-highlight;
+         background-image: linear-gradient($special-callout-bg-highlight, $special-callout-bg-shadow, $special-callout-bg-shadow);
          border: 1px solid $special-callout-bg-shadow;
       }
 
@@ -102,10 +106,10 @@
       > .button {
          border-radius: 0;
          &:first-child {
-            border-radius: rem(3) 0 0 rem(3);
+            border-radius: rem-calc(3) 0 0 rem-calc(3);
          }
          &:last-child {
-            border-radius: 0 rem(3) rem(3) 0;
+            border-radius: 0 rem-calc(3) rem-calc(3) 0;
          }
          &:not(:last-child) {
             border-right: 1px solid $button-shadow;
@@ -118,3 +122,48 @@
          }
       }
    }
+
+
+
+
+/* ==========================================================================
+   FORMS
+   ========================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+   background: $pale-grey;
+   border: none;
+   line-height: rem-calc(40);
+   padding: 0 0.75em;
+   border-radius: rem-calc(3);
+   box-shadow: inset 0 3px 3px 0 rgba(0,0,0,0.1);
+   border: 1px solid transparent;
+   width: 100%;
+   max-width: 40em;
+   transition:
+      color 0.2s,
+      box-shadow 0.2s,
+      border 0.2s
+   ;
+
+   &:focus {
+      outline: none;
+      color: $dark-teal;
+      border: 1px solid $medium-teal;
+      box-shadow: 
+         inset 0 3px 3px 0 rgba(0,0,0,0.1),
+         (rem-calc(-8)) 0 0 0 $medium-teal
+      ;
+   }
+}
+
+label {
+   font-size: 1rem;
+   font-weight: 900;
+   color: $black;
+}

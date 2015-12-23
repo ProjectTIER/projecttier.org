@@ -1,4 +1,25 @@
 /* ==========================================================================
+   LINKS
+   ========================================================================== */
+
+   a {
+      color: $dark-teal;
+      border-radius: rem-calc(2);
+      box-shadow: 0 (rem-calc(6)) 0 0 $medium-teal;
+      transition:
+         color 0.2s,
+         box-shadow 0.2s
+      ;
+
+      &:hover {
+         color: $red;
+         box-shadow: 0 (rem-calc(6)) 0 0 $red;
+      }
+   }
+
+
+
+/* ==========================================================================
    PARAGRAPHS
    ========================================================================== */
    
@@ -8,7 +29,7 @@
 
       &.secondary {
          color: $off-black;
-         font-size: rem(13);
+         font-size: rem-calc(13);
       }
    }
 
@@ -19,15 +40,15 @@
    ========================================================================== */
 
    %large-heading, .large-heading {
-      font-size: rem(33);
+      font-size: rem-calc(33);
       color: $off-black;
    }
    %medium-heading, .medium-heading {
-      font-size: rem(21);
+      font-size: rem-calc(21);
       color: $off-black;
    }
    %small-heading, .small-heading {
-      font-size: rem(18);
+      font-size: rem-calc(18);
       color: $off-black;
    }
 

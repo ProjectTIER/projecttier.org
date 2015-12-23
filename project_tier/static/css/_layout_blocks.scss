@@ -31,12 +31,14 @@
       border: none;
       padding: $grid-column-gutter;
       color: foreground( $callout-bg-highlight, $black, $white );
-      @include linear-gradient( 90deg, $callout-bg-highlight, $callout-bg-shadow );
+      background-color: $callout-bg-highlight;
+      background-image: linear-gradient( 90deg, $callout-bg-highlight, $callout-bg-shadow );
 
       &.special {
          color: foreground( $special-callout-bg-highlight, $black, $white );
          font-weight: foreground( $special-callout-bg-highlight, 400, 700 );
-         @include linear-gradient( 90deg, $special-callout-bg-highlight, $special-callout-bg-shadow );
+         background-color: $special-callout-bg-highlight;
+         background-image: linear-gradient( 90deg, $special-callout-bg-highlight, $special-callout-bg-shadow );
       }
    }
 
@@ -47,11 +49,12 @@
    ========================================================================== */
 
    .sidebar {
-      @include linear-gradient( 90deg, $pale-grey, $light-grey );
+      background-color: $pale-grey;
+      background-image: linear-gradient( 90deg, $pale-grey, $light-grey );
       position: relative;
       z-index: 1;
       padding: $grid-column-gutter;
-      font-size: rem(14);
+      font-size: rem-calc(14);
       
       .callout {
          margin: 0 (-$grid-column-gutter);
