@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="small-12 columns">
+      <h1>{{self.title}}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      {% block main_content %} {% endblock %}
+    </div>
+  </div>
+{% endblock %}
