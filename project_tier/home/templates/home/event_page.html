@@ -1,24 +1,18 @@
-{% extends "base.html" %}
+{% extends "standard_layout.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block content %}
-    <div class="well">
-        <p><strong>
-            {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}
-            {% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
-        </strong></p>
-        {% if self.location %}<p>Location: {{ self.location }}</p>{% endif %}
+{% block main_content %}
+  <p><strong>
+    {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}
+    {% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
+  </strong></p>
+  {% if self.location %}<p>Location: {{ self.location }}</p>{% endif %}
 
-        <p>
-            <a class='calendar' href= "{{ self.url }}?format=ical">
-                Add to calendar
-            </a>
-        </p>
-    </div>
+  <p>
+    <a class='calendar' href= "{{ self.url }}?format=ical">Add to calendar</a>
+  </p>
 
-    {% if self.description %}
-        <div class="body-content">
-            {{ self.description|richtext }}
-        </div>
-    {% endif %}
+  {% if self.description %}
+    {{ self.description|richtext }}
+  {% endif %}
 {% endblock %}
