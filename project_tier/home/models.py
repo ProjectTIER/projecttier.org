@@ -25,6 +25,56 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+# Abstract Classes
+# --------------------------------------------------
+# A couple of abstract classes that contain commonly used fields
+
+class LinkFields(models.Model):
+    link_external = models.URLField("External link", blank=True)
+    link_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+    link_document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+
+    @property
+    def link(self):
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_document:
+            return self.link_document.url
+        else:
+            return self.link_external
+
+    panels = [
+        FieldPanel('link_external'),
+        PageChooserPanel('link_page'),
+        DocumentChooserPanel('link_document'),
+    ]
+
+    class Meta:
+        abstract = True
+
+# Common Page Components
+# --------------------------------------------------
+
+class RelatedLink(LinkFields):
+    title = models.CharField(max_length=255, help_text="Link title")
+
+    panels = [
+        FieldPanel('title'),
+        MultiFieldPanel(LinkFields.panels, "Link"),
+    ]
+
+    class Meta:
+        abstract = True
 
 # Home Page
 # --------------------------------------------------
@@ -88,8 +138,33 @@ class HomePage(Page):
     class Meta:
         verbose_name = "Homepage"
 
+
+# Standard Page
+# --------------------------------------------------
+
+class StandardPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('StandardPage', related_name='related_links')
+
+class StandardPage(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        InlinePanel('related_links', label="Related links"),
+    ]
+
+
 # Events
 # --------------------------------------------------
+
 class EventIndexPage(Page):
     intro = RichTextField(blank=True)
 
