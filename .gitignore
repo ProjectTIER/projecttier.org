@@ -11,4 +11,3 @@
 /docs/_build/
 pyvenv.cfg
 pip-selfcheck.json
-bower_components/
