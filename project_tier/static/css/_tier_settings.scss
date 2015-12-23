@@ -1,29 +1,10 @@
-/*
- *
- * ==========================================================================
+/* ==========================================================================
    PROJECT TIER SETTINGS / VARIABLES
    Custom settings and Foundation overrides
-   ========================================================================== 
- *
- *
- */
-
-
-
-/* ==========================================================================
-   TYPOGRAPHY
    ========================================================================== */
 
-   $body-font-family: "Lato", Arial, sans-serif;
-   $header-font-family: $body-font-family;
-   $header-font-weight: 900;
 
-   $font-family-monospace: 'Roboto Mono', Consolas, monospace;
-
-
-
-/* ==========================================================================
-   COLORS
+/* COLORS
    ========================================================================== */
 
    $black:        #272727;
@@ -35,25 +16,10 @@
    $pale-grey:    #F9F1F1;
 
    $red:          #A32428;
-   $dark-red:     #83121B;
+   $dark-red:     #930015;
 
    $teal:         #00D0D1;
    $light-teal:   #8DF4F4;
    $medium-teal:  #00B0B3;
    $dark-teal:    #007072;
-
-   /* Button Colors
-      ========================================================================== */
-      $button-highlight:   $pale-grey;
-      $button-shadow:      $light-grey;
-
-      $special-button-highlight: $teal;
-      $special-button-shadow:    $medium-teal;
-
-   /* Callout Colors
-      ========================================================================== */
-      $callout-bg-highlight:  $light-teal;
-      $callout-bg-shadow:     $teal;
-
-      $special-callout-bg-highlight:   $red;
-      $special-callout-bg-shadow:      $dark-red;
+   
