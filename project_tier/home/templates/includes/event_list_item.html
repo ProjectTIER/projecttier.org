@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{# Individual event item in a list - used on event index and home page #}
+<a class="list-group-item" href="{% pageurl event %}">
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">{{ event.title }}</h4>
+      <p><strong>{{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}</strong></p>
+      {% if self.description %}
+          <div class="body-content">
+              {{ self.description|richtext }}
+          </div>
+      {% endif %}
+    </div>
+  </div>
+</a>
