@@ -1,6 +1,8 @@
 from django import template
 from django.conf import settings
 
+from project_tier.home.models import Page
+
 register = template.Library()
 
 @register.assignment_tag(takes_context=True)
@@ -43,5 +45,20 @@ def top_menu_children(context, parent):
         'parent': parent,
         'menuitems_children': menuitems_children,
         # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
+def breadcrumbs(context):
+    self = context.get('self')
+    if self is None or self.depth <= 2:
+        # When on the home page, displaying breadcrumbs is irrelevant.
+        ancestors = ()
+    else:
+        ancestors = Page.objects.ancestor_of(
+            self, inclusive=True).filter(depth__gt=2)
+    return {
+        'ancestors': ancestors,
         'request': context['request'],
     }
