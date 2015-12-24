@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar %}
+{% load navigation_tags compress static wagtailuserbar %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -24,10 +24,23 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        {% get_site_root as site_root %}
+        {% top_menu parent=site_root calling_page=self %}
+
+        <div class="row">
+          <div class="small-12 columns">
+            {% breadcrumbs %}
+          </div>
+        </div>
+
+        {% block page_title %}{% endblock %}
+
         {% block content %}{% endblock %}
 
         {% compress js %}
-            <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+          <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
+          <script src="{% static 'bower_components/foundation-sites/dist/foundation.js' %}" type="text/javascript" charset="utf-8"></script>
+          <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
         {% endcompress %}
 
         {% block extra_js %}
@@ -35,4 +48,3 @@
         {% endblock %}
     </body>
 </html>
-

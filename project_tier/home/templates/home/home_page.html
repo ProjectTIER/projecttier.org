@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "standard_layout.html" %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
-{% block content %}
+{% block main_content %}
   <div class="body-content">
       {% include "includes/streamfield.html" with content=self.body %}
   </div>
