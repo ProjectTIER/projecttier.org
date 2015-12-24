@@ -1,14 +1,23 @@
 {% load navigation_tags wagtailcore_tags %}
 {% get_site_root as site_root %}
 
-<div class="top-bar">
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
+  <a href="#" data-toggle>
+    <i class="menu-icon"></i>
+    <div class="title-bar-title">Menu</div>
+  </a>
+</div>
+
+
+<div class="top-bar" id="main-menu">
   <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
+
+    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+      <li class="menu-text">Project TIER</li>
       {% for menuitem in menuitems %}
           <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
               {% if menuitem.show_dropdown %}
-                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }}</a>
                   {% top_menu_children parent=menuitem %}
 
               {% else %}

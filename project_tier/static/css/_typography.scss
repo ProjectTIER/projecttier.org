@@ -10,8 +10,13 @@
          color 0.2s,
          box-shadow 0.2s
       ;
+      
+      &:visited {
+         color: $dark-grey;
+         box-shadow: 0 (rem-calc(6)) 0 0 $dark-grey;
+      }
 
-      &:hover {
+      &:hover, &:active {
          color: $red;
          box-shadow: 0 (rem-calc(6)) 0 0 $red;
       }

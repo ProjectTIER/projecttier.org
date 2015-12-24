@@ -4,7 +4,7 @@
 
    /* Default Buttons
       ========================================================================== */
-   .button {
+   .button, button {
       background-color: $button-highlight;
       background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
       font-size: rem-calc( $rem-base );
@@ -70,7 +70,7 @@
          background-image: linear-gradient($white, $button-highlight, $button-highlight);
          border: 1px solid $button-shadow;
          background-size: 200%;
-            background-position: 0% 0%;
+         background-position: 0% 0%;
 
 
          
@@ -103,7 +103,7 @@
    ========================================================================== */
 
    .button-group {
-      > .button {
+      .button {
          border-radius: 0;
          &:first-child {
             border-radius: rem-calc(3) 0 0 rem-calc(3);
