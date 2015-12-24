@@ -13,7 +13,9 @@
   <div class="top-bar-left">
 
     <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-      <li class="menu-text">Project TIER</li>
+      <li class="menu-text">
+        <a href="/"><img src="/static/img/tier_logo_small.png" alt="Project TIER Logo"></a>
+      </li>
       {% for menuitem in menuitems %}
           <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
               {% if menuitem.show_dropdown %}
@@ -27,4 +29,23 @@
       {% endfor %}
     </ul>
   </div>
+
+  <div class="top-bar-right">
+    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+      <li>
+        <a class="dropdown-toggle special button" data-toggle="dropdown" >Button</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li>
+            <div class="dropdown-pane-contents">
+              Some stuff
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>
+
+
+
+
