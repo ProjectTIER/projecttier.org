@@ -15,4 +15,6 @@
             </div>
         {% endif %}
     {% endwith %}
+
+    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

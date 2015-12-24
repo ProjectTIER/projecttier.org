@@ -15,4 +15,6 @@
   {% if self.description %}
     {{ self.description|richtext }}
   {% endif %}
+  
+  {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}
