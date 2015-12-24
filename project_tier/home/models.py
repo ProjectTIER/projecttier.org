@@ -164,33 +164,51 @@ class StandardPage(Page):
 
 # Events
 # --------------------------------------------------
+class EventIndexPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('EventIndexPage', related_name='related_links')
 
 class EventIndexPage(Page):
+    UPCOMING = 'gte'
+    PAST = 'lt'
+    EVENT_LIST_CHOICES = (
+        (UPCOMING, 'Upcoming Events'),
+        (PAST, 'Past Events'),
+    )
+    show_events = models.CharField(max_length=3,
+                                  choices=EVENT_LIST_CHOICES,
+                                  default=UPCOMING)
+
     intro = RichTextField(blank=True)
+
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
     )
 
     content_panels = [
-        FieldPanel('title', classname="full title"),
+        FieldPanel('title', classname="title"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('show_events', classname=""),
+        InlinePanel('related_links', label="Related links"),
     ]
 
     @property
     def events(self):
-        # Get list of live event pages that are descendants of this page
-        events = EventPage.objects.live().descendant_of(self)
+        events = EventPage.objects.live()
 
-        # Filter events list to get ones that are either
-        # running now or start in the future
-        events = events.filter(date_from__gte=date.today())
+        kwargs = {
+            '{0}__{1}'.format('date_from', self.show_events): date.today(),
+        }
 
-        # Order by date
+        events = events.filter(**kwargs)
+
         events = events.order_by('date_from')
 
         return events
 
+
+class EventPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('EventPage', related_name='related_links')
 
 class EventPage(Page):
     date_from = models.DateField("Start date")
@@ -219,6 +237,7 @@ class EventPage(Page):
         FieldPanel('time_to'),
         FieldPanel('location'),
         FieldPanel('description', classname="full"),
+        InlinePanel('related_links', label="Related links"),
     ]
 
     @property
