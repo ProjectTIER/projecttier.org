@@ -1,107 +1,90 @@
 /* ==========================================================================
    LINKS
    ========================================================================== */
+a {
+  color: $dark-teal;
+  border-radius: rem-calc(2);
+  box-shadow: 0 (rem-calc(6)) 0 0 $medium-teal;
+  transition: color 0.2s, box-shadow 0.2s;
 
-   a {
-      color: $dark-teal;
-      border-radius: rem-calc(2);
-      box-shadow: 0 (rem-calc(6)) 0 0 $medium-teal;
-      transition:
-         color 0.2s,
-         box-shadow 0.2s
-      ;
-
-      &:hover {
-         color: $red;
-         box-shadow: 0 (rem-calc(6)) 0 0 $red;
-      }
-   }
-
-
+  &:visited {
+    color: $dark-grey;
+    box-shadow: 0 (rem-calc(6)) 0 0 $dark-grey;
+  }
+  &:hover, &:active {
+    color: $red;
+    box-shadow: 0 (rem-calc(6)) 0 0 $red;
+  }
+}
 
 /* ==========================================================================
    PARAGRAPHS
    ========================================================================== */
-   
-   p {
-      line-height: 1.8rem;
-      margin-bottom: 1.8rem;
+p {
+  line-height: 1.8rem;
+  margin-bottom: 1.8rem;
 
-      &.secondary {
-         color: $off-black;
-         font-size: rem-calc(13);
-      }
-   }
-
-
+  &.secondary {
+    color: $off-black;
+    font-size: rem-calc(13);
+  }
+}
 
 /* ==========================================================================
    HEADING STYLES
    ========================================================================== */
-
-   %large-heading, .large-heading {
-      font-size: rem-calc(33);
-      color: $off-black;
-   }
-   %medium-heading, .medium-heading {
-      font-size: rem-calc(21);
-      color: $off-black;
-   }
-   %small-heading, .small-heading {
-      font-size: rem-calc(18);
-      color: $off-black;
-   }
-
-
+%large-heading, .large-heading {
+  font-size: rem-calc(33);
+  color: $off-black;
+}
+%medium-heading, .medium-heading {
+  font-size: rem-calc(21);
+  color: $off-black;
+}
+%small-heading, .small-heading {
+  font-size: rem-calc(18);
+  color: $off-black;
+}
 
 /* ==========================================================================
    CODE / MONOSPACE TEXT
    ========================================================================== */
-   
-   code, %monospace-text {
-      color: inherit;
-      border: none;
-      font-family: $font-family-monospace;
-      font-weight: 700;
-      background: $pale-grey;
+code, %monospace-text {
+  color: inherit;
+  border: none;
+  font-family: $font-family-monospace;
+  font-weight: 700;
+  background: $pale-grey;
 
-      strong {
-         color: $red;
-      }
-      .sidebar & {
-         background: rgba(255,255,255,0.5);
-      }
+  strong {
+    color: $red;
+  }
+  .sidebar & {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .sidebar .callout & {
+    color: foreground($callout-bg-highlight);
+    background: foreground($callout-bg-highlight, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.25));
 
-      .sidebar .callout & {
-         color: foreground($callout-bg-highlight);
-         background: foreground($callout-bg-highlight,rgba(255,255,255,0.5),rgba(0,0,0,0.25));
-         strong {
-            color: foreground($callout-bg-highlight, $red, $teal);
-         }
-      }
+    strong {
+      color: foreground($callout-bg-highlight, $red, $teal);
+    }
+  }
+  .sidebar .special.callout & {
+    color: foreground($special-callout-bg-highlight);
+    background: foreground($special-callout-bg-highlight, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.25));
 
-      .sidebar .special.callout & {
-         color: foreground($special-callout-bg-highlight);
-         background: foreground($special-callout-bg-highlight,rgba(255,255,255,0.5),rgba(0,0,0,0.25));
-         strong {
-            color: foreground($special-callout-bg-highlight, $red, $teal);
-         }
-      }
-   }
+    strong {
+      color: foreground($special-callout-bg-highlight, $red, $teal);
+    }
+  }
+}
 
-
-   
 /* ==========================================================================
    EMBOSSED TEXT STYLE
    ========================================================================== */
-
-   @mixin embossed-text( $background-color ) {
-      color: foreground( $background-color, $black, $white );
-      font-weight: foreground( $background-color, 400, 700 );
-      text-shadow: 
-         1px 1px 0px foreground( $background-color, $white, transparent ),
-         -1px -1px 0px foreground( $background-color, transparent,rgba(0,0,0,0.2) )
-      ;
-   }
-   
-
+@mixin embossed-text($background-color) {
+  color: foreground($background-color, $black, $white);
+  font-weight: foreground($background-color, 400, 700);
+  text-shadow: 1px 1px 0px foreground($background-color, $white, transparent), -1px -1px 0px foreground($background-color, transparent, rgba(0, 0, 0, 0.2));
+}

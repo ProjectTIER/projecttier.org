@@ -1,62 +1,59 @@
 /* ==========================================================================
+   MAIN CONTAINER
+   ========================================================================== */
+#main-container {
+  margin-top: $topbar-height;
+}
+
+/* ==========================================================================
    ROW OVERRIDES
    ========================================================================== */
-   
-   .row {
-      &.full-width {
-         max-width: none;
-      }
-   }
-
-
+.row {
+  &.full-width {
+    max-width: none;
+  }
+}
 
 /* ==========================================================================
    MAIN PANEL
    ========================================================================== */
-   
-   .main-panel {
-      padding: $grid-column-gutter;
-      position: relative;
-      z-index: 2;
-      box-shadow: 8px 0px 4px -4px rgba(0,0,0,0.2);
-   }
-
-
+.main-panel {
+  padding: $grid-column-gutter;
+  position: relative;
+  z-index: 2;
+  box-shadow: 8px 0px 4px -4px rgba(0, 0, 0, 0.2);
+}
 
 /* ==========================================================================
    CALLOUT PANELS
    ========================================================================== */
+.callout {
+  border: none;
+  padding: $grid-column-gutter;
+  color: foreground($callout-bg-highlight, $black, $white);
+  background-color: $callout-bg-highlight;
+  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
 
-   .callout {
-      border: none;
-      padding: $grid-column-gutter;
-      color: foreground( $callout-bg-highlight, $black, $white );
-      background-color: $callout-bg-highlight;
-      background-image: linear-gradient( 90deg, $callout-bg-highlight, $callout-bg-shadow );
-
-      &.special {
-         color: foreground( $special-callout-bg-highlight, $black, $white );
-         font-weight: foreground( $special-callout-bg-highlight, 400, 700 );
-         background-color: $special-callout-bg-highlight;
-         background-image: linear-gradient( 90deg, $special-callout-bg-highlight, $special-callout-bg-shadow );
-      }
-   }
-
-
+  &.special {
+    color: foreground($special-callout-bg-highlight, $black, $white);
+    font-weight: foreground($special-callout-bg-highlight, 400, 700);
+    background-color: $special-callout-bg-highlight;
+    background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
+  }
+}
 
 /* ==========================================================================
    SIDEBAR
    ========================================================================== */
+.sidebar {
+  background-color: $pale-grey;
+  background-image: linear-gradient(90deg, $pale-grey, $light-grey);
+  position: relative;
+  z-index: 1;
+  padding: $grid-column-gutter;
+  font-size: rem-calc(14);
 
-   .sidebar {
-      background-color: $pale-grey;
-      background-image: linear-gradient( 90deg, $pale-grey, $light-grey );
-      position: relative;
-      z-index: 1;
-      padding: $grid-column-gutter;
-      font-size: rem-calc(14);
-      
-      .callout {
-         margin: 0 (-$grid-column-gutter);
-      }
-   }
+  .callout {
+    margin: 0 (-$grid-column-gutter);
+  }
+}

@@ -28,16 +28,20 @@
 
         {% get_site_root as site_root %}
         {% top_menu parent=site_root calling_page=self %}
+        
+        <div id="main-container">
+            
+            <div class="row">
+              <div class="small-12 columns">
+                {% breadcrumbs %}
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="small-12 columns">
-            {% breadcrumbs %}
-          </div>
+            {% block page_title %}{% endblock %}
+
+            {% block content %}{% endblock %}
+
         </div>
-
-        {% block page_title %}{% endblock %}
-
-        {% block content %}{% endblock %}
 
         {% compress js %}
           <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
