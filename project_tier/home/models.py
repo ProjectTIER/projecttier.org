@@ -161,6 +161,9 @@ class StandardPage(Page):
         InlinePanel('related_links', label="Related links"),
     ]
 
+    class Meta:
+        verbose_name = "Page"
+
 
 # Events
 # --------------------------------------------------
@@ -205,6 +208,9 @@ class EventIndexPage(Page):
         events = events.order_by('date_from')
 
         return events
+
+    class Meta:
+        verbose_name = "Event List"
 
 
 class EventPageRelatedLink(Orderable, RelatedLink):
@@ -262,3 +268,67 @@ class EventPage(Page):
         else:
             # Display event page as usual
             return super(EventPage, self).serve(request)
+
+    class Meta:
+        verbose_name = "Event"
+
+
+# People
+# --------------------------------------------------
+
+# class PersonPageRelatedLink(Orderable, RelatedLink):
+#     page = ParentalKey('PersonPage', related_name='related_links')
+#
+class PersonPage(Page):
+    location = models.CharField(max_length=255, blank=True)
+    phone = models.CharField(max_length=255, blank=True)
+    email = models.EmailField(max_length=255, blank=True)
+    job_titles = RichTextField(blank=True)
+    intro = RichTextField(blank=True)
+    biography = RichTextField(blank=True)
+    website = models.URLField(max_length=255, blank=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('biography'),
+        index.SearchField('location'),
+        index.SearchField('phone'),
+        index.SearchField('email'),
+        index.SearchField('job_titles'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        MultiFieldPanel(
+            [
+                FieldPanel('location'),
+                FieldPanel('phone'),
+                FieldPanel('email'),
+                FieldPanel('website'),
+            ],
+            heading="Contact Information",
+            classname="collapsible collapsed"
+         ),
+        FieldPanel('job_titles', classname="full"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('biography', classname="full"),
+        ImageChooserPanel('image'),
+        # InlinePanel('related_links', label="Related links"),
+    ]
+
+    class Meta:
+        verbose_name = "Person"
+
+class PersonIndexPage(Page):
+    @property
+    def people(self):
+        people = PersonPage.objects.live()
+
+        return people

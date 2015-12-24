@@ -1,0 +1,31 @@
+{% extends "standard_layout.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block main_content %}
+    {% if self.job_titles %}
+        {{ self.job_titles|richtext }}
+    {% endif %}
+
+    {% include "includes/intro.html" with intro=self.intro only %}
+
+    {% if self.image %}
+        {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+        {% image self.image width-300 as photo %}
+        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+    {% endif %}
+
+    <ul>
+      {% if self.email %}<li>{{ self.email}}</li>{% endif %}
+      {% if self.phone %}<li>{{ self.phone}}</li>{% endif %}
+      {% if self.location %}<li>{{ self.location}}</li>{% endif %}
+    </ul>
+
+    {% if self.biography %}
+        <div class="page-header"><h3>Biography</h3></div>
+        {{ self.biography|richtext }}
+    {% endif %}
+
+
+
+    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+{% endblock %}
