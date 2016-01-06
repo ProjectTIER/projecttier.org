@@ -1,0 +1,99 @@
+/* ==========================================================================
+   INTRO
+   ========================================================================== */
+&#intro-section {
+  background-image: url('../img/student-dark.jpg');
+  background-size: cover;
+  padding: $large-gutter 0;
+  color: $white;
+  @include breakpoint(medium up){
+    padding: $large-gutter*2 0;
+  }
+  
+  .row {
+    @include breakpoint(medium up){
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  #logo {
+    display: block;
+    width: 75%;
+    max-width: rem-calc(500);
+    @include breakpoint(medium up){
+      width: 100%;
+    }
+  }
+
+  h1 {
+    @extend %display-heading;
+    color: $white;
+  }
+  #intro-text {
+    p {
+      font-size: rem-calc(16);
+      max-width: 25em;
+      @include breakpoint(medium up){
+        font-size: rem-calc(18);
+      }
+      @include breakpoint(large up){
+        font-size: rem-calc(20);
+      }
+    }
+
+    #intro-button {
+      width: 100%;
+      @include breakpoint(medium up){
+        width: auto;
+      }
+    }
+  }
+}
+
+
+/* ==========================================================================
+   HOME SECTIONS
+   ========================================================================== */
+
+.home-section {
+  padding: $medium-gutter 0;
+  @include breakpoint(medium up){
+    padding: $large-gutter 0;
+  }
+  @include breakpoint(large up){
+    padding: $medium-gutter*2 0;
+  }
+
+  .row {
+    @include breakpoint(medium up){
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  /* Section Title
+     ========================================================================== */
+  .section-title {
+    @extend %small-heading;
+    text-transform: uppercase;
+  }
+
+  .section-description {
+    @extend %secondary-text;
+  }
+
+  &:nth-child(odd){
+    background: $pale-grey;
+    .section-button {
+      @extend .monochrome;
+    }
+  }
+
+
+  &#news-section {
+    background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
+    box-shadow: inset 0px -10px 22px -13px rgba(0,0,0,0.5);
+  }
+
+}

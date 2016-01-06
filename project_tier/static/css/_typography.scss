@@ -25,9 +25,12 @@ p {
   margin-bottom: 1.8rem;
 
   &.secondary {
-    color: $off-black;
-    font-size: rem-calc(13);
+    @extend %secondary-text;
   }
+}
+.secondary-text, %secondary-text {
+  color: $off-black;
+  font-size: rem-calc(13);
 }
 
 /* ==========================================================================
@@ -44,6 +47,13 @@ p {
 %small-heading, .small-heading {
   font-size: rem-calc(18);
   color: $off-black;
+}
+%display-heading {
+  font-size: rem-calc(24);
+  color: $off-black;
+  font-weight: 100;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 /* ==========================================================================

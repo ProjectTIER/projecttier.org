@@ -18,7 +18,7 @@
    MAIN PANEL
    ========================================================================== */
 .main-panel {
-  padding: $grid-column-gutter;
+  padding: $small-gutter;
   position: relative;
   z-index: 2;
   box-shadow: 8px 0px 4px -4px rgba(0, 0, 0, 0.2);
@@ -29,7 +29,7 @@
    ========================================================================== */
 .callout {
   border: none;
-  padding: $grid-column-gutter;
+  padding: $small-gutter;
   color: foreground($callout-bg-highlight, $black, $white);
   background-color: $callout-bg-highlight;
   background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
@@ -50,10 +50,10 @@
   background-image: linear-gradient(90deg, $pale-grey, $light-grey);
   position: relative;
   z-index: 1;
-  padding: $grid-column-gutter;
+  padding: $small-gutter;
   font-size: rem-calc(14);
 
   .callout {
-    margin: 0 (-$grid-column-gutter);
+    margin: 0 (-$small-gutter);
   }
 }

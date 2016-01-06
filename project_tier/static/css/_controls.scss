@@ -7,7 +7,8 @@
 .button, button {
   background-color: $button-highlight;
   background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
-  font-size: rem-calc($rem-base);
+  font-size: rem-calc(16);
+  margin: 0;
   border: none;
   border-radius: rem-calc(3);
   box-shadow: none;
@@ -54,7 +55,7 @@
 
   /* Sidebar Buttons
      ========================================================================== */
-  .sidebar & {
+  .sidebar &, &.monochrome {
     @extend .small;
     background-color: $white;
     background-image: linear-gradient($white, $button-highlight, $button-highlight);

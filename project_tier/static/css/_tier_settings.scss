@@ -9,6 +9,17 @@
    ========================================================================== */
    
    $topbar-height: rem-calc(42);
+   
+   $small-gutter: rem-calc(20);
+   $medium-gutter: rem-calc(30);
+   $large-gutter: rem-calc(40);
+
+   $grid-column-gutter: null;
+   $grid-column-responsive-gutter: (
+     small: $small-gutter,
+     medium: $medium-gutter,
+     large: $large-gutter
+   );
 
 
 /* ==========================================================================
