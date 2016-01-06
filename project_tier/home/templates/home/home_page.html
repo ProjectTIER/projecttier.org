@@ -1,11 +1,245 @@
-{% extends "standard_layout.html" %}
+{% extends "base.html" %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
-
-{% block main_content %}
+{% block content %}
   <div class="body-content">
-      {% include "includes/streamfield.html" with content=self.body %}
+    
 
-      {% include "partials/styleguide.html" %}
+
+    <section id="intro-section">
+      <div class="row">
+        <div class="small-12 medium-6 large-7 columns">
+          <h1>
+            <img src="/static/img/logo.svg" alt="Project TIER Logo" id="logo"/>
+            <span class="show-for-sr">Project TIER</span>
+            <span id="intro-subtitle">Teaching Integrity in Empirical Research</span>
+          </h1>
+        </div>
+
+        <div class="small-12 medium-6 large-5 columns">
+          <div id="intro-text">
+            <p>Project TIER’s mission is to promote a systemic change in the professional norms related to the transparency and reproducibility of empirical research in the social sciences...</p>
+            <a href="/about" id="intro-button" class="button">
+              <span id="intro-button-text">More About the Project</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+    <section class="home-section" id="news-section">
+      <div class="row">
+        <div class="small-12 small-text-center medium-6 medium-text-right large-5 columns">
+          <h2 class="section-title" id="news-section-title">Latest News</h2>
+        </div>
+
+        <div class="small-12 medium-6 large-7 columns">
+          <ol class="news-list">
+            <li>
+              <article class="news-list-item">
+                <h1>TIER Protocol 3.0 Beta Released</h1>
+                <div class="article-meta">
+                  <span class="article-meta-item">
+                    <time class="article-publish-date">January 6, 2016</time>
+                  </span>
+                  <span class="article-meta-item">
+                    <a href="#" class="read-more">Read More</a>
+                  </span>
+                </div>
+              </article>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="home-section" id="protocols-section">
+      <div class="row">
+        <div class="small-12 small-text-center medium-6 medium-text-right large-5 columns">
+          <h2 class="section-title">
+            Protocols &amp; Resources
+          </h2>
+
+          <div class="section-description">
+            <p>Project TIER has developed several tools to support our mission. These these protocols and resources provide instructions for assembling a set of electronic files that document all the steps of data processing and analysis you conduct for an empirical research paper.</p>
+          </div>
+
+          <a href="#" class="section-button small button">More About the Protocols</a>
+        </div>
+
+        <div class="small-12 medium-6 columns">
+          <div class="protocol-item">
+            <h3>TIER Protocol</h3>
+            <span class="protocol-item-description">For undergraduate research</span>
+            <a href="#" class="small special button">Learn About TIER</a>
+          </div>
+          <div class="protocol-item">
+            <h3>Dress Protocol</h3>
+            <span class="protocol-item-description">For graduate research</span>
+            <a href="#" class="small special button">Learn About DRESS</a>
+          </div>
+          <div class="protocol-item">
+            <h3>Markdown</h3>
+            <span class="protocol-item-description">Documentation tool</span>
+            <a href="#" class="small special button">Learn About Markdown</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="home-section" id="programs-section">
+      <div class="row">
+        <div class="small-12 small-text-center medium-4 medium-text-right large-5 columns">
+          <h2 class="section-title">
+            Programs &amp; Workshops
+          </h2>
+          <div class="section-description">
+            <p>Are available to help you support Project TIER's mission</p>
+          </div>
+          <a href="#" class="section-button small button">More About Our Programs</a>
+        </div>
+
+        <div class="small-12 medium-8 large-7 columns">
+          <ul class="section-link-list">
+            <li><a href="#" class="section-link">Fellowships</a></li>
+            <li><a href="#" class="section-link">Faculty Development Workshops</a></li>
+            <li><a href="#" class="section-link">Graduate Program Workshops</a></li>
+            <li><a href="#" class="section-link">Other Programs</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="home-section" id="events-section">
+      <div class="row">
+        <div class="small-12 small-text-center medium-4 medium-text-right large-5 columns">
+          <h2 class="section-title">
+            Upcoming Events
+          </h2>
+          <div class="section-description">
+            <p>Get involved and take part in supporting Project TIER.</p>
+          </div>
+          <a href="#" class="section-button small button">More Events</a>
+        </div>
+        <div class="small-12 medium-8 large-7 columns">
+          <ol class="events-list">
+            <li>
+              <article class="event-list-item">
+                <h1>
+                  American Economic Association
+                  <span class="subtitle">Annual Meeting</span>
+                </h1>
+                <div class="article-meta">
+                  <div class="article-meta-item">San Francisco, CA</div>
+                  <div class="article-meta-item">
+                    <time class="event-time">January 3-5, 2016</time>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="event-list-item">
+                <h1>
+                  Institute for New Economic Thinking/Young Scholars Initiative
+                  <span class="subtitle">Workshop on Replication and Transparency in Economic Research</span>
+                </h1>
+                <div class="article-meta">
+                  <div class="article-meta-item">San Francisco, CA</div>
+                  <div class="article-meta-item">
+                    <time class="event-time">January 6-7, 2016</time>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="event-list-item">
+                <h1>
+                  TIER Faculty Development Workshop
+                </h1>
+                <div class="article-meta">
+                  <div class="article-meta-item">Haverford College</div>
+                  <div class="article-meta-item">
+                    <time class="event-time">March 2016</time>
+                  </div>
+                </div>
+              </article>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="home-section" id="classroom-section">
+      <div class="row">
+        <div class="small-12 small-text-center medium-4 medium-text-right large-5 columns">
+          <h2 class="section-title">
+            TIER in the Classroom
+          </h2>
+          <div class="section-description">
+            <p>How is Project TIER influencing real students and teachers?</p>
+          </div>
+          <a href="#" class="section-button small button">Learn More</a>
+        </div>
+
+        <div class="small-12 medium-8 large-7 columns">
+          <ul class="section-link-list">
+            <li><a href="#" class="section-link">Syllabi from TIER Courses</a></li>
+            <li><a href="#" class="section-link">Student Work &amp; Testimonials</a></li>
+            <li><a href="#" class="section-link">Instructor Resources</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <div id="twitter-newsletter">
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <section id="twitter-section">
+            <h2 class="section-title">
+              Project TIER on Twitter
+            </h2>
+            <a class="twitter-timeline"
+              data-widget-id="{widget_id}"
+              href="https://twitter.com/Project_TIER"
+              data-screen-name="Project_TIER">
+            Tweets by @Project_TIER
+            </a>
+          </section>
+        </div>
+        
+        <div class="small-12 medium-6 columns">
+          <section id="newsletter-section">
+            <h2 class="section-title">
+              Signup for our Newsletter
+            </h2>
+            <div class="section-description">
+              <p>Get monthly updates on changes to the Protocols, upcoming events, and new programs.</p>
+            </div>
+            <form action="">
+              <div class="input-group">
+                <input class="input-group-field" placeholder="Enter your email address" type="email">
+                <div class="input-group-button">
+                  <input type="submit" class="special button" value="Signup">
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    {% include 'includes/styleguide.html' %}
+
   </div>
 {% endblock %}
