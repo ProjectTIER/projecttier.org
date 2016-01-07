@@ -1,3 +1,19 @@
-python manage.py compress --settings project_tier.settings.production
+#!/usr/bin/env bash
+set -eo pipefail
 
-python manage.py migrate
+mkdir -p media/original_images
+cp project_tier/fixtures/images/* media/original_images/
+
+indent() {
+    RE="s/^/       /"
+    [ $(uname) == "Darwin" ] && sed -l "$RE" || sed -u "$RE"
+}
+
+MANAGE_FILE=$(find . -maxdepth 3 -type f -name 'manage.py' | head -1)
+MANAGE_FILE=${MANAGE_FILE:2}
+
+echo "-----> Compressing static files"
+python $MANAGE_FILE compress --settings project_tier.settings.production 2>&1 | indent
+
+echo "-----> Migrating"
+python $MANAGE_FILE migrate
