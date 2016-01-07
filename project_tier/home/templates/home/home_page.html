@@ -8,16 +8,16 @@
 
     <section id="intro-section">
       <div class="row">
-        <div class="small-12 medium-6 large-7 columns">
+        <div class="small-12 text-center medium-6 medium-text-left large-7 columns">
           <h1>
-            <img src="/static/img/logo.svg" alt="Project TIER Logo" id="logo"/>
+            <div id="logo">{% include "includes/svg_logo.html" %}</div>
             <span class="show-for-sr">Project TIER</span>
             <span id="intro-subtitle">Teaching Integrity in Empirical Research</span>
           </h1>
         </div>
 
         <div class="small-12 medium-6 large-5 columns">
-          <div id="intro-text">
+          <div id="intro-text" class="text-center medium-text-left">
             <p>Project TIER’s mission is to promote a systemic change in the professional norms related to the transparency and reproducibility of empirical research in the social sciences...</p>
             <a href="/about" id="intro-button" class="button">
               <span id="intro-button-text">More About the Project</span>
@@ -31,14 +31,17 @@
     
     <section class="home-section" id="news-section">
       <div class="row">
-        <div class="small-12 small-text-center medium-6 medium-text-right large-5 columns">
-          <h2 class="section-title" id="news-section-title">Latest News</h2>
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
+          <h2 class="section-title" id="news-section-title">
+            <i class="fa fa-newspaper-o fa-fw"></i>
+            Latest News
+          </h2>
         </div>
 
-        <div class="small-12 medium-6 large-7 columns">
-          <ol class="news-list">
+        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
+          <ol class="news-list item-list">
             <li>
-              <article class="news-list-item">
+              <article class="news-list-item list-item">
                 <h1>TIER Protocol 3.0 Beta Released</h1>
                 <div class="article-meta">
                   <span class="article-meta-item">
@@ -59,8 +62,9 @@
 
     <section class="home-section" id="protocols-section">
       <div class="row">
-        <div class="small-12 small-text-center medium-6 medium-text-right large-5 columns">
+        <div class="section-intro small-12 text-center medium-6 medium-text-right large-5 columns">
           <h2 class="section-title">
+            <i class="fa fa-clipboard fa-fw"></i>
             Protocols &amp; Resources
           </h2>
 
@@ -71,22 +75,36 @@
           <a href="#" class="section-button small button">More About the Protocols</a>
         </div>
 
-        <div class="small-12 medium-6 columns">
-          <div class="protocol-item">
-            <h3>TIER Protocol</h3>
-            <span class="protocol-item-description">For undergraduate research</span>
-            <a href="#" class="small special button">Learn About TIER</a>
-          </div>
-          <div class="protocol-item">
-            <h3>Dress Protocol</h3>
-            <span class="protocol-item-description">For graduate research</span>
-            <a href="#" class="small special button">Learn About DRESS</a>
-          </div>
-          <div class="protocol-item">
-            <h3>Markdown</h3>
-            <span class="protocol-item-description">Documentation tool</span>
-            <a href="#" class="small special button">Learn About Markdown</a>
-          </div>
+        <div class="text-center small-12 medium-6 medium-text-left columns">
+          <ul class="protocols-list item-list">
+            <li>
+              <article class="protocol-item list-item">
+                <h1>
+                  TIER Protocol
+                  <span class="subtitle">For undergraduate research</span>
+                </h1>
+                <a href="#" class="small special button">Learn About TIER</a>
+              </article>
+            </li>
+            <li>
+              <article class="protocol-item list-item">
+                <h1>
+                  Dress Protocol
+                  <span class="subtitle">For graduate research</span>
+                </h1>
+                <a href="#" class="small special button">Learn About DRESS</a>
+              </article>
+            </li>
+            <li>
+              <article class="protocol-item list-item">
+                <h1>
+                  Markdown
+                  <span class="subtitle">Documentation tool</span>
+                </h1>
+                <a href="#" class="small special button">Learn About Markdown</a>
+              </article>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -95,8 +113,9 @@
 
     <section class="home-section" id="programs-section">
       <div class="row">
-        <div class="small-12 small-text-center medium-4 medium-text-right large-5 columns">
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
           <h2 class="section-title">
+            <i class="fa fa-group fa-fw"></i>
             Programs &amp; Workshops
           </h2>
           <div class="section-description">
@@ -105,7 +124,7 @@
           <a href="#" class="section-button small button">More About Our Programs</a>
         </div>
 
-        <div class="small-12 medium-8 large-7 columns">
+        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
           <ul class="section-link-list">
             <li><a href="#" class="section-link">Fellowships</a></li>
             <li><a href="#" class="section-link">Faculty Development Workshops</a></li>
@@ -120,8 +139,9 @@
 
     <section class="home-section" id="events-section">
       <div class="row">
-        <div class="small-12 small-text-center medium-4 medium-text-right large-5 columns">
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
           <h2 class="section-title">
+            <i class="fa fa-calendar fa-fw"></i>
             Upcoming Events
           </h2>
           <div class="section-description">
@@ -129,46 +149,55 @@
           </div>
           <a href="#" class="section-button small button">More Events</a>
         </div>
-        <div class="small-12 medium-8 large-7 columns">
-          <ol class="events-list">
+        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
+          <ol class="events-list item-list">
             <li>
-              <article class="event-list-item">
+              <article class="event-list-item list-item">
                 <h1>
                   American Economic Association
                   <span class="subtitle">Annual Meeting</span>
                 </h1>
                 <div class="article-meta">
-                  <div class="article-meta-item">San Francisco, CA</div>
-                  <div class="article-meta-item">
+                  <span class="article-meta-item">San Francisco, CA</span>
+                  <span class="article-meta-item">
                     <time class="event-time">January 3-5, 2016</time>
-                  </div>
+                  </span>
+                  <span class="article-meta-item">
+                    <a href="#" class="read-more">Read More</a>
+                  </span>
                 </div>
               </article>
             </li>
             <li>
-              <article class="event-list-item">
+              <article class="event-list-item list-item">
                 <h1>
                   Institute for New Economic Thinking/Young Scholars Initiative
                   <span class="subtitle">Workshop on Replication and Transparency in Economic Research</span>
                 </h1>
                 <div class="article-meta">
-                  <div class="article-meta-item">San Francisco, CA</div>
-                  <div class="article-meta-item">
+                  <span class="article-meta-item">San Francisco, CA</span>
+                  <span class="article-meta-item">
                     <time class="event-time">January 6-7, 2016</time>
-                  </div>
+                  </span>
+                  <span class="article-meta-item">
+                    <a href="#" class="read-more">Read More</a>
+                  </span>
                 </div>
               </article>
             </li>
             <li>
-              <article class="event-list-item">
+              <article class="event-list-item list-item">
                 <h1>
                   TIER Faculty Development Workshop
                 </h1>
                 <div class="article-meta">
-                  <div class="article-meta-item">Haverford College</div>
-                  <div class="article-meta-item">
+                  <span class="article-meta-item">Haverford College</span>
+                  <span class="article-meta-item">
                     <time class="event-time">March 2016</time>
-                  </div>
+                  </span>
+                  <span class="article-meta-item">
+                    <a href="#" class="read-more">Read More</a>
+                  </span>
                 </div>
               </article>
             </li>
@@ -181,8 +210,9 @@
 
     <section class="home-section" id="classroom-section">
       <div class="row">
-        <div class="small-12 small-text-center medium-4 medium-text-right large-5 columns">
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
           <h2 class="section-title">
+            <i class="fa fa-graduation-cap fa-fw"></i>
             TIER in the Classroom
           </h2>
           <div class="section-description">
@@ -191,7 +221,7 @@
           <a href="#" class="section-button small button">Learn More</a>
         </div>
 
-        <div class="small-12 medium-8 large-7 columns">
+        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
           <ul class="section-link-list">
             <li><a href="#" class="section-link">Syllabi from TIER Courses</a></li>
             <li><a href="#" class="section-link">Student Work &amp; Testimonials</a></li>
@@ -202,11 +232,12 @@
     </section>
 
 
-    <div id="twitter-newsletter">
+    <div id="twitter-newsletter" class="home-section">
       <div class="row">
-        <div class="small-12 medium-6 columns">
+        <div class="small-12 text-center medium-6 medium-text-right columns">
           <section id="twitter-section">
             <h2 class="section-title">
+              <i class="fa fa-twitter fa-fw"></i>
               Project TIER on Twitter
             </h2>
             <a class="twitter-timeline"
@@ -218,9 +249,10 @@
           </section>
         </div>
         
-        <div class="small-12 medium-6 columns">
+        <div class="small-12 text-center medium-6 medium-text-left columns">
           <section id="newsletter-section">
             <h2 class="section-title">
+              <i class="fa fa-envelope fa-fw"></i>
               Signup for our Newsletter
             </h2>
             <div class="section-description">
@@ -239,7 +271,6 @@
       </div>
     </div>
 
-    {% include 'includes/styleguide.html' %}
 
   </div>
 {% endblock %}
