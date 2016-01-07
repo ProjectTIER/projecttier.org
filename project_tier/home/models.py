@@ -339,6 +339,18 @@ class PersonPage(Page):
 class PersonIndexPage(Page):
     @property
     def people(self):
-        people = PersonPage.objects.live()
+        people = PersonPage.objects.live().descendant_of(self)
 
         return people
+
+    def get_context(self, request):
+        people = self.people
+
+        tag = request.GET.get('tag')
+        if tag:
+            people = people.filter(tags__name=tag)
+
+        context = super(PersonIndexPage, self).get_context(request)
+        context['people'] = people
+
+        return context
