@@ -3,17 +3,13 @@
    ========================================================================== */
 a {
   color: $dark-teal;
-  border-radius: rem-calc(2);
-  box-shadow: 0 (rem-calc(6)) 0 0 $medium-teal;
+
+  box-shadow: 0 (rem-calc(4)) 0 0 transparentize($dark-teal, 0.7);
   transition: color 0.2s, box-shadow 0.2s;
 
-  &:visited {
-    color: $dark-grey;
-    box-shadow: 0 (rem-calc(6)) 0 0 $dark-grey;
-  }
   &:hover, &:active {
     color: $red;
-    box-shadow: 0 (rem-calc(6)) 0 0 $red;
+    box-shadow: 0 (rem-calc(4)) 0 0 $red;
   }
 }
 
@@ -21,8 +17,13 @@ a {
    PARAGRAPHS
    ========================================================================== */
 p {
-  line-height: 1.8rem;
-  margin-bottom: 1.8rem;
+  line-height: 1.4rem;
+  margin-bottom: 1.4rem;
+
+  @include breakpoint(medium up){
+    line-height: 1.8rem;
+    margin-bottom: 1.8rem;
+  }
 
   &.secondary {
     @extend %secondary-text;
@@ -30,7 +31,10 @@ p {
 }
 .secondary-text, %secondary-text {
   color: $off-black;
-  font-size: rem-calc(13);
+  font-size: rem-calc(12);
+  @include breakpoint(medium up){
+    font-size: rem-calc(13);
+  }
 }
 
 /* ==========================================================================
@@ -49,11 +53,17 @@ p {
   color: $off-black;
 }
 %display-heading {
-  font-size: rem-calc(24);
+  font-size: rem-calc(16);
   color: $off-black;
   font-weight: 100;
   text-transform: uppercase;
   line-height: 1.2;
+  @include breakpoint(medium up){
+    font-size: rem-calc(20);
+  }
+  @include breakpoint(large up){
+    font-size: rem-calc(24);
+  }
 }
 
 /* ==========================================================================
@@ -97,4 +107,52 @@ code, %monospace-text {
   color: foreground($background-color, $black, $white);
   font-weight: foreground($background-color, 400, 700);
   text-shadow: 1px 1px 0px foreground($background-color, $white, transparent), -1px -1px 0px foreground($background-color, transparent, rgba(0, 0, 0, 0.2));
+}
+
+
+
+/* ==========================================================================
+   LISTS
+   ========================================================================== */
+
+/* News & Events Lists
+   ========================================================================== */
+.item-list {
+  list-style: none;
+  margin: 0;
+  
+  li {
+    .list-item {
+      margin-bottom: $medium-gutter;
+
+      h1 {
+        @extend %small-heading;
+        margin-bottom:0.25em;
+        .subtitle {
+          font-weight: 400;
+        }
+      }
+      .article-meta {
+        @extend %secondary-text;
+
+        .article-meta-item {
+          &::after {
+            content: ' |';
+            padding: 0 1em;
+          }
+          &:last-child {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      .list-item {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

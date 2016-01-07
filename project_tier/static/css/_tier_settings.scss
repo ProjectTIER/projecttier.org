@@ -39,8 +39,9 @@
    COLORS
    ========================================================================== */
 
-   $black:        #272727;
-   $off-black:    #4A4A4A;
+   $black:              #272727;
+   $off-black:          #4A4A4A;
+   $transparent-black:  transparentize( $black, 0.7 );
    
    $grey:         #978C8C;
    $dark-grey:    #716767;

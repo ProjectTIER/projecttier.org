@@ -1,0 +1,90 @@
+#main-footer {
+  background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
+  color: $white;
+  padding: $small-gutter 0 0;
+
+  #footer-logo {
+    box-shadow: none;
+    display: block;
+    margin: 0 auto $small-gutter;
+    @include breakpoint(medium up) {
+      float: right;
+    }
+    svg {
+      display: block;
+      width: rem-calc(90);
+      margin: 0 auto;
+      @include breakpoint(medium up) {
+        width: rem-calc(150);
+      }
+      * {
+        fill: $white;
+        transition: fill 0.2s;
+      }
+    }
+
+    &:hover {
+      svg {
+        #tier {
+          fill: $light_teal;
+        }
+      }
+    }
+  }
+
+  #footer-nav {
+    ul {
+      list-style: none;
+      margin: 0 0 $small-gutter 0;
+      text-align: center;
+      @include breakpoint(medium up) {
+        text-align: left;
+      }
+      li {
+        display: inline-block;
+        margin: 0 $small-gutter/2 $small-gutter/2;
+        @include breakpoint(medium up) {
+          margin: 0 $small-gutter 0 0;
+        }
+        a {
+          color: $white;
+          box-shadow: 0 (rem-calc(4)) 0 0 transparentize($white, 0.7);
+          &:hover {
+            box-shadow: 0 (rem-calc(4)) 0 0 $white;
+          }
+        }
+      }
+    }
+  }
+
+  #subfooter {
+    background: $transparent-black;
+    padding: $small-gutter/2 0;
+    #legal-nav {
+      text-align: center;
+      @include breakpoint(medium up) {
+        text-align: left;
+      }
+      
+      @extend .secondary-text;
+      ul {
+        list-style: none;
+        margin: 0;
+        li {
+          display: inline-block;
+          margin: 0 $small-gutter/2;
+          @include breakpoint(medium up) {
+            margin: 0 $small-gutter 0 0;
+          }
+          a {
+            color: $white;
+            box-shadow: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

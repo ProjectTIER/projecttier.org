@@ -152,9 +152,23 @@
           margin-top: -$medium-gutter/8;
           box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
           border-radius: 0 0 rem-calc(3) rem-calc(3);
-
-          .dropdown-pane-contents {
-            padding: $medium-gutter/2;
+          
+          .dropdown-panel {
+            width: rem-calc(300);
+            .dropdown-pane-contents {
+              padding: $medium-gutter/2;
+              p {
+                @extend %secondary-text;
+                margin-bottom: $small-gutter/2;
+              }
+              .button-group {
+                display: flex;
+                margin: 0;
+                .button {
+                  flex-grow: 2;
+                }
+              }
+            }
           }
         }
       }
@@ -174,9 +188,22 @@
             background-color: none;
             box-shadow: none;
           }
-          img {
-            height: rem-calc(36);
-            width: auto;
+          // LOGO
+          &#topbar-logo {
+            
+            svg {
+              height: rem-calc(27);
+              width: auto;
+              * {
+                filter: drop-shadow( 1px 1px 0px #FFF );
+              }
+              #project {
+                fill: $black;
+              }
+              #tier {
+                fill: $red;
+              }
+            }
           }
         }
       }

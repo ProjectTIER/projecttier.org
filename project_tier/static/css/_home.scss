@@ -4,6 +4,7 @@
 &#intro-section {
   background-image: url('../img/student-dark.jpg');
   background-size: cover;
+  background-attachment: fixed;
   padding: $large-gutter 0;
   color: $white;
   @include breakpoint(medium up){
@@ -21,19 +22,33 @@
     display: block;
     width: 75%;
     max-width: rem-calc(500);
+    margin: 0 auto;
     @include breakpoint(medium up){
       width: 100%;
+      margin: 0 0 0 auto;
+    }
+    svg {
+      #project {
+        fill: $white;
+      }
+      #tier {
+        fill: $red;
+      }
     }
   }
 
   h1 {
     @extend %display-heading;
     color: $white;
+    @include breakpoint(medium up){
+      text-align: right;
+    }
   }
   #intro-text {
     p {
       font-size: rem-calc(16);
       max-width: 25em;
+      margin: 0 auto $small-gutter;
       @include breakpoint(medium up){
         font-size: rem-calc(18);
       }
@@ -57,7 +72,7 @@
    ========================================================================== */
 
 .home-section {
-  padding: $medium-gutter 0;
+  padding: $small-gutter 0 $medium-gutter;
   @include breakpoint(medium up){
     padding: $large-gutter 0;
   }
@@ -71,29 +86,149 @@
       align-items: center;
     }
   }
+  
+  /* Section Intro
+     ========================================================================== */
+  .section-intro {
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 50%;
+      margin: 0 auto $small-gutter;
+      background: $transparent-black;
+    }
+    @include breakpoint(medium up){
+      &::after {
+        display: none;
+      }
+    }
+  }
 
   /* Section Title
      ========================================================================== */
   .section-title {
-    @extend %small-heading;
+    @extend %display-heading;
     text-transform: uppercase;
+    margin: 0 0 $small-gutter;
   }
-
+  
+  /* Section Desctiption
+     ========================================================================== */
   .section-description {
     @extend %secondary-text;
+    p {
+      margin-bottom: $small-gutter;
+    }
   }
+  
+  /* Section Button
+     ========================================================================== */
+  .section-button {
+    @extend .monochrome;
+    margin-bottom: $small-gutter;
+    @include breakpoint(medium up){
+      margin-bottom: 0;
+    }
+  }
+  
 
+
+  /* ODD SECTIONS
+     ========================================================================== */
   &:nth-child(odd){
     background: $pale-grey;
-    .section-button {
-      @extend .monochrome;
+  }
+
+  /* Link List
+     ========================================================================== */
+  .section-link-list {
+    list-style: none;
+    margin: 0;
+    li {
+      margin-bottom: $small-gutter;
+      a {
+        @extend %medium-heading;
+        color: $dark-teal;
+        &:hover {
+          color: $red;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
-
+  
+  /* News Section
+     ========================================================================== */
   &#news-section {
     background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
-    box-shadow: inset 0px -10px 22px -13px rgba(0,0,0,0.5);
+    box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   }
 
+
+  /* Programs Section
+     ========================================================================== */
+  &#programs-section {
+    background-image: url('../img/workshop-light.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    box-shadow: 
+      inset 0px 10px 22px -13px rgba(0,0,0,0.5),
+      inset 0px -6px 22px -13px rgba(0,0,0,0.5);
+  }
+
+  /* Classroom Section
+     ========================================================================== */
+  &#classroom-section {
+    background-image: url('../img/lecture-light.jpg');
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+    box-shadow: 
+      inset 0px 10px 22px -13px rgba(0,0,0,0.5);
+  }
+}
+
+
+/* ==========================================================================
+   TWITTER / NEWSLETTER
+   ========================================================================== */
+
+#twitter-newsletter {
+  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
+
+  .row {
+    display: block;
+  }
+
+  #twitter-section {
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 50%;
+      margin: $small-gutter auto;
+      background: $transparent-black;
+    }
+    @include breakpoint(medium up){
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  #newsletter-section {
+    input[type='email'] {
+      border: 1px solid $special-button-shadow;
+      background-clip: padding-box;
+      border-right: none;
+    }
+    input[type='submit'] {
+      border: 1px solid $special-button-shadow;
+      border-left: none;
+    }
+  }
 }
