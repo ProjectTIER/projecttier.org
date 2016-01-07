@@ -349,7 +349,8 @@ class PersonPage(Page):
         return self.get_ancestors().type(PersonIndexPage).last()
 
     class Meta:
-        verbose_name = "Person"
+        verbose_name = 'Person'
+        verbose_name_plural = 'People'
 
 class PersonIndexPage(Page):
     @property
