@@ -4,20 +4,23 @@
 {% block main_content %}
     {# Uses method defined in models.py to retrieve all upcoming events #}
     {# See also standard index for creating a listing with a tag #}
-    {% with self.people.all as people %}
-        {% if people %}
-            <div>
-                {% for person in people %}
-                  <h2>{{person.title}}</h2>
+      {% if people %}
+          <div>
+            {% regroup people by tags.first as people_by_tag %}
+
+              {% for tag in people_by_tag %}
+                <h2>{{tag.grouper}}</h2>
+                {% for person in tag.list %}
+                  <h4>{{person.title}} <small><a href="{% pageurl person %}">More info</a></small></h2>
                   {% if person.image %}
                       {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
                       {% image person.image width-100 as photo %}
                       <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
                   {% endif %}
                 {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+              {% endfor %}
+          </div>
+      {% endif %}
 
     {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

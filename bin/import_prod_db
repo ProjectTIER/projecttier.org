@@ -1,6 +1,8 @@
+set -x
+
 dropdb project_tier
 createdb project_tier
 
-pg_restore --verbose --clean --no-acl --no-owner -h localhost -d project_tier latest.dump
+pg_restore --no-acl --no-owner -h localhost -d project_tier latest.dump
 
 ./manage.py migrate
