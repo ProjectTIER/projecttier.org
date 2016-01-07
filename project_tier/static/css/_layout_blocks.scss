@@ -5,6 +5,36 @@
   margin-top: $topbar-height;
 }
 
+
+
+/* ==========================================================================
+   PAGE LAYOUT
+   ========================================================================== */
+body {
+  background: $dark-red;
+}
+.page-header {
+  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
+  padding: $small-gutter/2 0 0;
+  box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
+  @include breakpoint(medium up){
+    padding: $small-gutter 0 $small-gutter/2;
+  }
+  h1 {
+    @extend %large-heading;
+  }
+}
+
+.page-content {
+  background: $white;
+  padding: $small-gutter 0;
+  @include breakpoint(medium up){
+    padding: $medium-gutter 0;
+  }
+}
+
+
+
 /* ==========================================================================
    ROW OVERRIDES
    ========================================================================== */
@@ -13,6 +43,8 @@
     max-width: none;
   }
 }
+
+
 
 /* ==========================================================================
    MAIN PANEL
@@ -23,6 +55,8 @@
   z-index: 2;
   box-shadow: 8px 0px 4px -4px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* ==========================================================================
    CALLOUT PANELS
@@ -41,6 +75,8 @@
     background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
   }
 }
+
+
 
 /* ==========================================================================
    SIDEBAR
