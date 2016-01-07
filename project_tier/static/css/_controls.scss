@@ -5,9 +5,11 @@
 /* Default Buttons
    ========================================================================== */
 .button, button {
+  color: $black;
   background-color: $button-highlight;
   background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
-  font-size: rem-calc($rem-base);
+  font-size: rem-calc(16);
+  margin: 0;
   border: none;
   border-radius: rem-calc(3);
   box-shadow: none;
@@ -54,7 +56,7 @@
 
   /* Sidebar Buttons
      ========================================================================== */
-  .sidebar & {
+  .sidebar &, &.monochrome {
     @extend .small;
     background-color: $white;
     background-image: linear-gradient($white, $button-highlight, $button-highlight);
@@ -86,6 +88,7 @@ BUTTON GROUPS
 .button-group {
   .button {
     border-radius: 0;
+    color: $black;
 
     &:first-child {
       border-radius: rem-calc(3) 0 0 rem-calc(3);
@@ -111,7 +114,8 @@ FORMS
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea, select {
   background: $pale-grey;
   border: none;
-  line-height: rem-calc(40);
+  height: rem-calc(35);
+  line-height: rem-calc(35);
   padding: 0 0.75em;
   border-radius: rem-calc(3);
   box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.1);
@@ -131,4 +135,20 @@ label {
   font-size: 1rem;
   font-weight: 900;
   color: $black;
+}
+
+/* Input Groups
+   ========================================================================== */
+.input-group {
+  .input-group-field {
+    height: rem-calc(35);
+    line-height: rem-calc(35);
+  }
+  .input-group-button input {
+    height: rem-calc(35);
+    line-height: rem-calc(35);
+    padding: 0 0.75em;
+    border-radius: 0 rem-calc(3) rem-calc(3) 0;
+    font-size: rem-calc(14);
+  }
 }

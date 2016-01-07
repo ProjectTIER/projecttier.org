@@ -30,18 +30,12 @@
         {% top_menu parent=site_root calling_page=self %}
         
         <div id="main-container">
-            
-            <div class="row">
-              <div class="small-12 columns">
-                {% breadcrumbs %}
-              </div>
-            </div>
-
-            {% block page_title %}{% endblock %}
 
             {% block content %}{% endblock %}
 
         </div>
+
+        {% include 'includes/main_footer.html' %}
 
         {% compress js %}
           <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>

@@ -14,7 +14,7 @@
 
     <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
       <li class="menu-text">
-        <a href="/"><img src="/static/img/tier_logo_small.png" alt="Project TIER Logo"></a>
+        <a href="/" id="topbar-logo">{% include "includes/svg_logo.html" %}</a>
       </li>
       {% for menuitem in menuitems %}
           <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
@@ -33,11 +33,16 @@
   <div class="top-bar-right">
     <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
       <li>
-        <a class="dropdown-toggle special button" data-toggle="dropdown" >Button</a>
+        <a class="dropdown-toggle special button" data-toggle="dropdown" >Use the Protocols</a>
         <ul class="submenu menu vertical" data-submenu>
-          <li>
+          <li class="dropdown-panel">
             <div class="dropdown-pane-contents">
-              Some stuff
+              <p>Select the protocol you need to use.</p>
+              <div class="button-group">
+                <a href="#" class="small button">TIER</a>
+                <a href="#" class="small button">DRESS</a>
+                <a href="#" class="small button">Markdown</a>
+              </div>
             </div>
           </li>
         </ul>

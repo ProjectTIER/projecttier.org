@@ -9,6 +9,17 @@
    ========================================================================== */
    
    $topbar-height: rem-calc(42);
+   
+   $small-gutter: rem-calc(20);
+   $medium-gutter: rem-calc(30);
+   $large-gutter: rem-calc(40);
+
+   $grid-column-gutter: null;
+   $grid-column-responsive-gutter: (
+     small: $small-gutter,
+     medium: $medium-gutter,
+     large: $large-gutter
+   );
 
 
 /* ==========================================================================
@@ -28,8 +39,9 @@
    COLORS
    ========================================================================== */
 
-   $black:        #272727;
-   $off-black:    #4A4A4A;
+   $black:              #272727;
+   $off-black:          #4A4A4A;
+   $transparent-black:  transparentize( $black, 0.7 );
    
    $grey:         #978C8C;
    $dark-grey:    #716767;
