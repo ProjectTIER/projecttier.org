@@ -2,19 +2,29 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main_content %}
-    {% include "includes/intro.html" with intro=self.intro only %}
+  {% include "includes/intro.html" with intro=self.intro only %}
 
-    {# Uses method defined in models.py to retrieve all upcoming events #}
-    {# See also standard index for creating a listing with a tag #}
-    {% with self.events.all as events %}
-        {% if events %}
-            <div>
-                {% for event in events %}
-                    {% include "includes/event_list_item.html" %}
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+  {# Uses method defined in models.py to retrieve all upcoming events #}
+  {# See also standard index for creating a listing with a tag #}
+  {% with self.events.all as events %}
+    {% if events %}
+    <div>
+      {% for event in events %}
+        {% include "includes/event_list_item.html" %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
 
-    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+  {% if self.related_links.all %}
+  <hr/>
+  <section class="related-links-list">
+    <ul>
+      {% for related_link in self.related_links.all %}
+        <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
 {% endblock %}
