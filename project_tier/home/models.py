@@ -346,6 +346,8 @@ class PersonIndexPage(Page):
     def get_context(self, request):
         people = self.people
 
+        # people = people.order_by('tags', 'title')
+
         tag = request.GET.get('tag')
         if tag:
             people = people.filter(tags__name=tag)
