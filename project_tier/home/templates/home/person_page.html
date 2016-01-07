@@ -6,6 +6,10 @@
         {{ self.job_titles|richtext }}
     {% endif %}
 
+    {% for tag in page.tags.all %}
+        <a href="{% pageurl page.person_index %}?tag={{ tag }}">{{ tag }}</a>
+    {% endfor %}
+
     {% include "includes/intro.html" with intro=self.intro only %}
 
     {% if self.image %}
