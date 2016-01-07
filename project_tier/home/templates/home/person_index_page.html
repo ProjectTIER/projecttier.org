@@ -14,6 +14,8 @@
                       {% image person.image width-100 as photo %}
                       <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
                   {% endif %}
+                  
+                  <a href="{% pageurl person %}">More info</a>
                 {% endfor %}
             </div>
         {% endif %}

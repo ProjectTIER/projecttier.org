@@ -279,7 +279,11 @@ class EventPage(Page):
 # class PersonPageRelatedLink(Orderable, RelatedLink):
 #     page = ParentalKey('PersonPage', related_name='related_links')
 #
+class PersonPageTag(TaggedItemBase):
+    content_object = ParentalKey('PersonPage', related_name='tagged_items')
+
 class PersonPage(Page):
+    tags = ClusterTaggableManager(through=PersonPageTag, blank=True)
     location = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
@@ -306,6 +310,7 @@ class PersonPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('tags'),
         MultiFieldPanel(
             [
                 FieldPanel('location'),
@@ -322,6 +327,11 @@ class PersonPage(Page):
         ImageChooserPanel('image'),
         # InlinePanel('related_links', label="Related links"),
     ]
+
+    @property
+    def person_index(self):
+        # Find closest ancestor which is a blog index
+        return self.get_ancestors().type(PersonIndexPage).last()
 
     class Meta:
         verbose_name = "Person"
