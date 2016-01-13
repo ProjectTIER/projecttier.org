@@ -8,11 +8,11 @@
   {# See also standard index for creating a listing with a tag #}
   {% with self.events.all as events %}
     {% if events %}
-    <div>
+    <ol class="events-index item-list">
       {% for event in events %}
         {% include "includes/event_list_item.html" %}
       {% endfor %}
-    </div>
+    </ol>
     {% endif %}
   {% endwith %}
 

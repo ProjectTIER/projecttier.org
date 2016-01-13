@@ -1,0 +1,6 @@
+.event-meta {
+  margin-bottom: $medium-gutter;
+  .event-meta-item {
+    @extend %small-heading;
+  }
+}
