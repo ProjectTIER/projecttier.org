@@ -30,12 +30,11 @@ class TestPersonPageCreation(TestCase):
 
 class TestPageTests(WagtailPageTests):
     def test_assert_allowed_parent_page_types(self):
-        self.assertAllowedParentPageTypes(StandardPage, {HomePage, StandardPage})
         self.assertAllowedParentPageTypes(EventIndexPage, {HomePage, StandardPage})
         self.assertAllowedParentPageTypes(PersonIndexPage, {HomePage, StandardPage})
 
         self.assertAllowedParentPageTypes(EventPage, {EventIndexPage})
         self.assertAllowedParentPageTypes(PersonPage, {PersonIndexPage})
 
-    def test_assert_allowed_sub_page_types(self):
-        self.assertAllowedSubpageTypes(ContentPage, {ContentPage})
+    # def test_assert_allowed_sub_page_types(self):
+    #     self.assertAllowedSubpageTypes(ContentPage, {ContentPage})

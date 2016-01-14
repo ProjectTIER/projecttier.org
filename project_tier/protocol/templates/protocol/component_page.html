@@ -1,0 +1,39 @@
+{% extends "protocol_content_layout.html" %}
+
+{% load wagtailcore_tags protocol_tags %}
+
+{% block page_title %}
+  <article class="standard-layout">
+
+    <header class="page-header">
+      <div class="row">
+        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+          <h1>{{self.component_index.title}}</h1>
+
+          {% include "includes/intro.html" with intro=self.component_index.intro only %}
+        </div>
+      </div>
+    </header>
+{% endblock %}
+
+{% block main_content %}
+  <div class="row">
+    <div class="small-5 columns">
+      {% component_menu self.component_index calling_page=self%}
+    </div>
+    <div class="small-7 columns">
+      <h2>{{self.title}}</h2>
+
+      {% include "includes/intro.html" with intro=self.intro only %}
+
+      {% if self.description %}
+          <div class="body-content">
+              {{ self.description|richtext }}
+          </div>
+      {% endif %}
+
+      {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+    </div>
+  </div>
+{% endblock %}
