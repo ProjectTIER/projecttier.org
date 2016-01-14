@@ -20,7 +20,8 @@
      medium: $medium-gutter,
      large: $large-gutter
    );
-
+   
+   $offcanvas-size: rem-calc(200);
 
 /* ==========================================================================
    TYPOGRAPHY
@@ -42,6 +43,7 @@
    $black:              #272727;
    $off-black:          #4A4A4A;
    $transparent-black:  transparentize( $black, 0.7 );
+   $dark-transparent-black:  transparentize( $black, 0.3 );
    
    $grey:         #978C8C;
    $dark-grey:    #716767;

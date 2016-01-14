@@ -224,6 +224,7 @@ body {
   position: relative;
   z-index: 2;
   box-shadow: 8px 0px 4px -4px rgba(0, 0, 0, 0.2);
+  background: $white;
 }
 
 
@@ -252,12 +253,11 @@ body {
    SIDEBAR
    ========================================================================== */
 .sidebar {
-  background-color: $pale-grey;
-  background-image: linear-gradient(90deg, $pale-grey, $light-grey);
-  position: relative;
-  z-index: 1;
+  background-color: $dark-transparent-black;
   padding: $small-gutter;
   font-size: rem-calc(14);
+  margin-top: $small-gutter/3;
+  color: $white;
 
   .callout {
     margin: 0 (-$small-gutter);
