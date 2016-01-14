@@ -26,6 +26,8 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+from project_tier.home.models import StandardPage
+
 # Protocol Home Page
 # --------------------------------------------------
 class ProtocolHomePage(Page):
@@ -47,10 +49,25 @@ class ProtocolHomePage(Page):
         verbose_name = "Protocol Langing Page"
 
 
-# Events
+# Components
 # --------------------------------------------------
-@register_snippet
-class Component(models.Model):
+class ComponentIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    parent_page_types = ['ProtocolHomePage']
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+    ]
+
+    @property
+    def components(self):
+        components = ComponentPage.objects.live().descendant_of(self)
+
+        return components
+
+class ComponentPage(Page):
     FOLDER = 'folder'
     FILE = 'file'
     COMPONENT_TYPE_CHOICES = (
@@ -58,47 +75,31 @@ class Component(models.Model):
         (FILE, "File")
     )
 
-    name = models.CharField(max_length=255)
+    intro = RichTextField(blank=True)
     description = RichTextField(blank=True)
     type = models.CharField(max_length=255,
                             choices=COMPONENT_TYPE_CHOICES,
                             default=FOLDER)
 
-    panels = [
-        FieldPanel('name'),
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
         FieldPanel('description', classname="full"),
-        FieldPanel('type', classname="full", widget=forms.RadioSelect),
+        FieldPanel('type', widget=forms.RadioSelect),
     ]
 
     search_fields = [
-        index.SearchField('name', partial_match=True),
+        index.SearchField('title', partial_match=True),
+        index.SearchField('intro', partial_match=True),
         index.SearchField('description', partial_match=True),
     ]
 
-    def __unicode__(self):
-        return self.name
+    parent_page_types = ['ComponentIndexPage', 'ComponentPage']
 
-
-class ComponentPage(Page):
-    component = models.ForeignKey(
-        'Component',
-        null=True,
-        # blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    search_fields = Page.search_fields + (
-        index.SearchField('component'),
-    )
-
-    content_panels = Page.content_panels + [
-        SnippetChooserPanel('component'),
-    ]
-
-class ComponentIndexPage(Page):
     @property
-    def components(self):
-        components = ComponentPage.objects.live().descendant_of(self)
+    def component_index(self):
+        return self.get_ancestors().type(ComponentIndexPage).last()
 
-        return components
+
+    class Meta:
+        verbose_name = "Protocol Component"

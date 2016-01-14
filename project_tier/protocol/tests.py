@@ -2,24 +2,15 @@
 import nose.tools as nt
 import factory
 from django.test import TestCase
-from project_tier.home.models import PersonPage
+from wagtail.tests.utils import WagtailPageTests
 
-class PersonPageFactory(factory.DjangoModelFactory):
-    class Meta:
-        model = PersonPage
+from project_tier.protocol.models import (ComponentIndexPage, ComponentPage,
+    ProtocolHomePage)
 
-    location = "Office"
-    phone = "2158675309"
-
-class TestPersonPageCreation(TestCase):
-  def setUp(self):
-    PersonPage.get_tree().all().delete()
-    self.root = PersonPage.add_root( instance=PersonPageFactory.build( title="Bob Barker") )
-
-  def tearDown(self):
-    self.root.delete()
-
-  def test_person_page_created(self):
-    nt.eq_(self.root.title, "Bob Barker")
-    nt.eq_(self.root.location, "Office")
-    nt.eq_(self.root.phone, "2158675309")
+class TestProtocolPageTests(WagtailPageTests):
+    def test_assert_allowed_parent_page_types(self):
+        self.assertAllowedParentPageTypes(ComponentPage, {ComponentIndexPage})
+        self.assertAllowedParentPageTypes(ComponentIndexPage, {ProtocolHomePage})
+    #
+    # def test_assert_allowed_subpage_types(self):
+    #     self.assertAllowedSubpageTypes(ProtocolHomePage, {ComponentIndexPage, StandardPage})

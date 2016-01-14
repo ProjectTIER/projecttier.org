@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load protocol_tags %}
+{% load wagtailcore_tags %}
+
+{% block page_title %}
+  <article class="standard-layout">
+
+    <header class="page-header">
+      <div class="row">
+        <div class="small-12 medium-10 medium-centered columns">
+
+          <h1>{{self.title}}</h1>
+
+          {# {% include "includes/intro.html" with intro=self.intro only %}#}
+        </div>
+      </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="page-content">
+      <div class="row">
+        <div class="small-12 medium-2 columns">
+          {% protocol_menu calling_page=self %}
+        </div>
+        <div class="small-12 medium-10 columns">
+          {% block main_content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+
+  </article>
+{% endblock content %}

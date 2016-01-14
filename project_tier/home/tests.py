@@ -37,5 +37,5 @@ class TestPageTests(WagtailPageTests):
         self.assertAllowedParentPageTypes(EventPage, {EventIndexPage})
         self.assertAllowedParentPageTypes(PersonPage, {PersonIndexPage})
 
-    def test_assert_allowed_sub_page_types(self):
-        self.assertAllowedSubpageTypes(ContentPage, {ContentPage})
+    # def test_assert_allowed_sub_page_types(self):
+    #     self.assertAllowedSubpageTypes(ContentPage, {ContentPage})
