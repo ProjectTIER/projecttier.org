@@ -1,5 +1,5 @@
 set -ex
 
-heroku pg:backups capture
+heroku pg:backups capture --app project-tier-production
 
-curl -o latest.dump `heroku pg:backups public-url`
+curl -o latest.dump `heroku pg:backups public-url --app project-tier-production`
