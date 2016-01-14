@@ -3,13 +3,47 @@
 {% load wagtailcore_tags %}
 
 {% block main_content %}
-  <div class="row">
-    <div class="small-12 columns">
-      {% include "includes/intro.html" with intro=self.intro only %}
+  
+  <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
 
-      <h1>TIER TIER TIER</h1>
+  <section class="block-section" id="tier-protocol-section">
+    <div class="row">
+      <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
+        <h2 class="section-title">
+          <strong>TIER</strong> Protocol
+          <span class="subtitle">For Undergraduate Research</span>
+        </h2>
+      </div>
 
-      {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+      <div class="text-center small-12 medium-8 medium-text-left columns">
+        <p>The TIER Documentation Protocol provides instructions for assembling a set of electronic files that document all the steps of data processing and analysis conducted for an empirical research paper.</p>
+        <div class="button-group">
+          <a href="#" class="special button">Learn About TIER</a>
+          <a href="#" class="special button">The Components</a>
+          <a href="#" class="special button">Start the Process</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="block-section" id="dress-protocol-section">
+    <div class="row">
+      <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
+        <h2 class="section-title">
+          <strong>Dress</strong> Protocol
+          <span class="subtitle">For Graduate Research</span>
+        </h2>
+      </div>
+
+      <div class="text-center small-12 medium-8 medium-text-left columns">
+        <p>The DRESS Documentation Protocol provides instructions for assembling a set of electronic files that document all the steps of data processing and analysis conducted for an empirical research paper.</p>
+        <div class="button-group">
+          <a href="#" class="special button">Learn About DRESS</a>
+          <a href="#" class="special button">The Components</a>
+          <a href="#" class="special button">Start the Process</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}

@@ -55,6 +55,168 @@ body {
 
 
 /* ==========================================================================
+   BLOCK SECTIONS
+   ========================================================================== */
+
+.block-section {
+  padding: $small-gutter 0 $medium-gutter;
+  @include breakpoint(medium up){
+    padding: $large-gutter 0;
+  }
+  @include breakpoint(large up){
+    padding: $medium-gutter*2 0;
+  }
+
+  .row {
+    @include breakpoint(medium up){
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* Section Intro
+     ========================================================================== */
+  .section-intro {
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 50%;
+      margin: 0 auto $small-gutter;
+      background: $transparent-black;
+    }
+    @include breakpoint(medium up){
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  /* Section Title
+     ========================================================================== */
+  .section-title {
+    @extend %display-heading;
+    text-transform: uppercase;
+    margin: 0 0 $small-gutter;
+    .subtitle {
+      display: block;
+      text-transform: none;
+      color: $grey;
+      font-size: 0.8em;
+    }
+  }
+  
+  /* Section Desctiption
+     ========================================================================== */
+  .section-description {
+    @extend %secondary-text;
+    p {
+      margin-bottom: $small-gutter;
+    }
+  }
+  
+  /* Section Button
+     ========================================================================== */
+  .section-button {
+    @extend .monochrome;
+    margin-bottom: $small-gutter;
+    @include breakpoint(medium up){
+      margin-bottom: 0;
+    }
+  }
+  
+
+
+  /* EVEN SECTIONS / ALT SECTIONS
+     ========================================================================== */
+  &:nth-child(even) {
+    background: $pale-grey;
+  }
+
+  &.alternate {
+    background: $pale-grey;
+    &:nth-child(2n){
+      background: $white;
+    }
+  }
+
+
+  /* Minimized, narrower, less padding
+     ========================================================================== */
+  &.minimized {
+    padding: $small-gutter 0 0;
+  }
+
+
+  /* Link List
+     ========================================================================== */
+  .section-link-list {
+    list-style: none;
+    margin: 0;
+    li {
+      margin-bottom: $small-gutter;
+      a {
+        @extend %medium-heading;
+        color: $dark-teal;
+        &:hover {
+          color: $red;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+/* ==========================================================================
+   GRID BLOCK SECTIONS
+   ========================================================================== */
+  &.grid {
+
+    .row {
+      align-items: stretch;
+    }
+
+    .section-grid-item {
+      position: relative;
+      &::after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: $transparent-black;
+        margin: $small-gutter auto;
+      }
+      @include breakpoint(medium up){
+        &::after {
+          display: none;
+        }
+      }
+
+      .section-title {
+        @extend %medium-heading;
+        margin-bottom: $small-gutter/2;
+      }
+      
+      p {
+        margin: 0;
+        padding-bottom: $small-gutter;
+      }
+      .button {
+        @include breakpoint(small only){
+          width: 100%;
+          font-size: rem-calc(13);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+/* ==========================================================================
    MAIN PANEL
    ========================================================================== */
 .main-panel {
