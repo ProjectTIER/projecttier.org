@@ -164,7 +164,22 @@ class StandardPage(Page):
     class Meta:
         verbose_name = "Page"
 
+class TestPage(Page):
+    template_path = models.CharField(max_length=255, blank=True, help_text='Use any filename in home/template/home/')
 
+    def get_template(self, request):
+        if self.template_path:
+            return "home/%s" % (self.template_path)
+
+        return 'home/standard_page.html'
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('template_path', classname="full"),
+    ]
+
+    class Meta:
+        verbose_name = "Test Page"
 # Events
 # --------------------------------------------------
 class EventIndexPageRelatedLink(Orderable, RelatedLink):
