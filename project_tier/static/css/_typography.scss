@@ -1,7 +1,7 @@
 /* ==========================================================================
    LINKS
    ========================================================================== */
-a {
+a, %hyperlink {
   color: $dark-teal;
 
   box-shadow: 0 (rem-calc(4)) 0 0 transparentize($dark-teal, 0.7);
@@ -41,8 +41,14 @@ p {
    HEADING STYLES
    ========================================================================== */
 %large-heading, .large-heading {
-  font-size: rem-calc(33);
+  font-size: rem-calc(25);
   color: $off-black;
+  @include breakpoint(medium up){
+    font-size: rem-calc(29);
+  }
+  @include breakpoint(large up){
+    font-size: rem-calc(33);
+  }
 }
 %medium-heading, .medium-heading {
   font-size: rem-calc(21);
@@ -152,6 +158,34 @@ code, %monospace-text {
     &:last-child {
       .list-item {
         margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+/* ==========================================================================
+   BREADCRUMBS
+   ========================================================================== */
+.breadcrumbs {
+  ul {
+    list-style: none;
+    margin: 0;
+    li {
+      color: $off-black;
+      @extend .secondary-text;
+      text-transform: none;
+      a {
+        color: $dark-teal;
+        &:hover {
+          color: $red;
+          text-decoration: none;
+        }
+      }
+      &:not(:last-child) {
+        &::after {
+        color: $off-black;
+      }
       }
     }
   }

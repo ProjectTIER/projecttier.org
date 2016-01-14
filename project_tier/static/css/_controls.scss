@@ -152,3 +152,25 @@ label {
     font-size: rem-calc(14);
   }
 }
+
+
+/* ==========================================================================
+   BLOCK LINKS
+   ========================================================================== */
+
+.block-link-parent {
+  position: relative;
+
+  .block-link {
+    @extend %hyperlink;
+    
+    .block-link-target {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-shadow: none;
+    }
+  }
+}

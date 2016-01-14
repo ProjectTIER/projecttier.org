@@ -2,19 +2,26 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main_content %}
-  <p><strong>
-    {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}
-    {% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
-  </strong></p>
-  {% if self.location %}<p>Location: {{ self.location }}</p>{% endif %}
-
-  <p>
-    <a class='calendar' href= "{{ self.url }}?format=ical">Add to calendar</a>
-  </p>
-
-  {% if self.description %}
-    {{ self.description|richtext }}
-  {% endif %}
+  <div class="row">
+    <div class="small-12 medium-4 medium-push-8 large-3 large-push-9 columns">
+      <div class="event-meta">
+        <time class="event-meta-item">
+          {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}{% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
+        </time>
+        <div class="event-meta-item">
+          {% if self.location %}{{ self.location }}{% endif %}
+        </div>
+        <div class="event-meta-item">
+          <a class='calendar' href= "{{ self.url }}?format=ical">Add to calendar</a>
+        </div>
+      </div>
+    </div>
+    <div class="small-12 medium-8 medium-pull-4 large-9 large-pull-3 columns">
+      {% if self.description %}
+        {{ self.description|richtext }}
+      {% endif %}
+    </div>
+  </div>
   
   {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

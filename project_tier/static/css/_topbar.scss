@@ -148,8 +148,8 @@
         &.is-dropdown-submenu {
           border: none;
           left: $medium-gutter/8;
-          top: $topbar-height;
-          margin-top: -$medium-gutter/8;
+          top: 100%;
+          border-top: rem-calc(5) solid transparent;
           box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
           border-radius: 0 0 rem-calc(3) rem-calc(3);
           
