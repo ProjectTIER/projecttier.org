@@ -127,11 +127,26 @@ body {
   
 
 
-  /* EVEN SECTIONS
+  /* EVEN SECTIONS / ALT SECTIONS
      ========================================================================== */
-  &:nth-child(even){
+  &:nth-child(even) {
     background: $pale-grey;
   }
+
+  &.alternate {
+    background: $pale-grey;
+    &:nth-child(2n){
+      background: $white;
+    }
+  }
+
+
+  /* Minimized, narrower, less padding
+     ========================================================================== */
+  &.minimized {
+    padding: $small-gutter 0 0;
+  }
+
 
   /* Link List
      ========================================================================== */
@@ -153,6 +168,49 @@ body {
     }
   }
 
+
+/* ==========================================================================
+   GRID BLOCK SECTIONS
+   ========================================================================== */
+  &.grid {
+
+    .row {
+      align-items: stretch;
+    }
+
+    .section-grid-item {
+      position: relative;
+      &::after {
+        display: block;
+        content: '';
+        width: 50%;
+        height: 1px;
+        background: $transparent-black;
+        margin: $small-gutter auto;
+      }
+      @include breakpoint(medium up){
+        &::after {
+          display: none;
+        }
+      }
+
+      .section-title {
+        @extend %medium-heading;
+        margin-bottom: $small-gutter/2;
+      }
+      
+      p {
+        margin: 0;
+        padding-bottom: $small-gutter;
+      }
+      .button {
+        @include breakpoint(small only){
+          width: 100%;
+          font-size: rem-calc(13);
+        }
+      }
+    }
+  }
 }
 
 

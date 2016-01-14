@@ -1,0 +1,9 @@
+#protocol-intro-sections {
+  background-image: url('../img/workshop-light.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: $white;
+  margin-bottom: -($large-gutter);
+  box-shadow: 
+      inset 0px 10px 22px -13px rgba(0,0,0,0.5);
+}

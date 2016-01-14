@@ -52,7 +52,9 @@ p {
 }
 %medium-heading, .medium-heading {
   font-size: rem-calc(21);
+  font-weight: 900;
   color: $off-black;
+  text-transform: none;
 }
 %small-heading, .small-heading {
   font-size: rem-calc(18);
