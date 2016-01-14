@@ -7,3 +7,124 @@
   box-shadow: 
       inset 0px 10px 22px -13px rgba(0,0,0,0.5);
 }
+
+
+/* ==========================================================================
+   PROTOCOL LAYOUT PAGES
+   ========================================================================== */
+.protocol-layout {
+  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
+  box-shadow: inset 10px 0px 8px -8px rgba(0,0,0,0.2);
+
+  .page-header {
+    background: none;
+    box-shadow: none;
+  }
+
+  .main-panel {
+    background: $white;
+    box-shadow:
+      0px 5px 12px 5px rgba(0,0,0,0.2),
+      inset 10px 0px 8px -8px rgba(0,0,0,0.2);
+  }
+}
+
+
+/* ==========================================================================
+   OFF CANVAS MENU / PROTOCOL NAV
+   ========================================================================== */
+.off-canvas-wrapper {
+  background-color: $pale-grey;
+  background-image: linear-gradient(90deg, $light-grey, $pale-grey $offcanvas-size, $pale-grey);
+}
+.off-canvas-content {
+  box-shadow: none;
+  overflow: hidden;
+}
+.off-canvas {
+  background: none;
+}
+
+/* PROTOCOL NAV
+   ========================================================================== */
+.protocol-nav {
+  padding-top: $medium-gutter;
+
+  // All links in the menu
+  li {
+    a {
+      box-shadow: none;
+      position: relative;
+      color: $dark-teal;
+      transition: 
+        background 0.2s,
+        color 0.2s
+      ;
+      &:hover {
+        background: transparentize($white, 0.5);
+        color: $red;
+      }
+      
+      // caret icon
+      i {
+        position: absolute;
+        right: rem-calc(5);
+        top: rem-calc(11);
+        transition: transform 0.5s;
+      }
+    }
+    &[aria-expanded='true']{
+      > a {
+        background: transparentize($white, 0.5);
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  > .menu {
+
+    // Top level items
+    > li {
+      border-bottom: 1px solid $button-shadow;
+      border-top: 1px solid $button-highlight;
+      &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      // Just top level links
+      > a {
+        
+      }
+
+      // Submenu level one
+      > ul {
+        margin: 0;
+        background: transparentize($white, 0.5);
+        > li {
+          > a {
+            padding-left: $medium-gutter;
+            font-size: rem-calc(14);
+            font-weight: 900;
+          }
+
+          // Submenu level two
+          > ul {
+            margin: 0;
+            background: transparentize($white, 0.5);
+            > li {
+              > a {
+                padding-left: $medium-gutter + rem-calc(5);
+                font-size: rem-calc(12);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
