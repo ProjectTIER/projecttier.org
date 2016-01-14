@@ -2,7 +2,11 @@
 import nose.tools as nt
 import factory
 from django.test import TestCase
-from project_tier.home.models import PersonPage
+from project_tier.home.models import (
+    PersonPage, PersonIndexPage, StandardPage, HomePage,
+    EventPage, EventIndexPage)
+
+from wagtail.tests.utils import WagtailPageTests
 
 class PersonPageFactory(factory.DjangoModelFactory):
     class Meta:
@@ -23,3 +27,15 @@ class TestPersonPageCreation(TestCase):
     nt.eq_(self.root.title, "Bob Barker")
     nt.eq_(self.root.location, "Office")
     nt.eq_(self.root.phone, "2158675309")
+
+class TestPageTests(WagtailPageTests):
+    def test_assert_allowed_parent_page_types(self):
+        self.assertAllowedParentPageTypes(StandardPage, {HomePage, StandardPage})
+        self.assertAllowedParentPageTypes(EventIndexPage, {HomePage, StandardPage})
+        self.assertAllowedParentPageTypes(PersonIndexPage, {HomePage, StandardPage})
+
+        self.assertAllowedParentPageTypes(EventPage, {EventIndexPage})
+        self.assertAllowedParentPageTypes(PersonPage, {PersonIndexPage})
+
+    def test_assert_allowed_sub_page_types(self):
+        self.assertAllowedSubpageTypes(ContentPage, {ContentPage})
