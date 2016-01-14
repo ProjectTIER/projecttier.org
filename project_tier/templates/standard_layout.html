@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load navigation_tags %}
+{% load wagtailcore_tags %}
   
 {% block page_title %}
   <article class="standard-layout">
@@ -8,8 +9,12 @@
     <header class="page-header">
       <div class="row">
         <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-          <h1>{{self.title}}</h1>
+          
           {% breadcrumbs %}
+          
+          <h1>{{self.title}}</h1>
+
+          {% include "includes/intro.html" with intro=self.intro only %}
         </div>
       </div>
     </header>

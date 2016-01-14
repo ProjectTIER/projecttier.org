@@ -23,6 +23,14 @@ body {
   h1 {
     @extend %large-heading;
   }
+
+  .page-intro {
+    @extend %display-heading;
+    text-transform: none;
+    p {
+      line-height: 1.5;
+    }
+  }
 }
 
 .page-content {
