@@ -20,15 +20,24 @@
 
   <div class="row panel-layout expanded">
 
-    <div class="small-12 medium-7 columns main-panel">
-      {% component_menu self.component_index calling_page=self%}
+    <div class="small-12 medium-6 medium-push-6 columns sidebar">
+      <h2>
+        <i class="fa fa-fw {% component_icon self.type %}"></i>
+        {{self.title}}
+      </h2>
+      
+      <div class="intro">
+        {% include "includes/intro.html" with intro=self.intro only %}
+      </div>
+
+      <div class="description">
+        {{ self.description|richtext }}
+      </div>
     </div>
 
-   <div class="small-12 medium-5 columns sidebar">
-      <h2>{{self.title}}</h2>
-      {% include "includes/intro.html" with intro=self.intro only %}
-      {{ self.description|richtext }}
-   </div>
+    <div class="small-12 medium-6 medium-pull-6 columns main-panel">
+      {% component_menu self.component_index calling_page=self%}
+    </div>
 
  </div>
 
