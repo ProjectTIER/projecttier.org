@@ -2,27 +2,34 @@
 
 {% load wagtailcore_tags protocol_tags %}
 
-{% block page_title %}
-  {% include "includes/page_title.html" with page=self.component_index only %}
+
+{% block protocol_page_header %}
+  <h1>{{self.component_index.title}}</h1>
+  {% include "includes/intro.html" with intro=self.component_index.intro only %}
 {% endblock %}
 
-{% block main_content %}
-  <div class="row">
-    <div class="small-5 columns">
-      {% component_menu calling_page=self %}
+
+{% block header_right %}
+  <a href="#" class="button float-right">Download a Sample Project</a>
+{% endblock %}
+
+
+{% block main_panel %}
+
+  <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
+
+  <div class="row panel-layout expanded">
+
+    <div class="small-12 medium-7 columns main-panel">
+      {% component_menu self.component_index calling_page=self%}
     </div>
-    <div class="small-7 columns">
+
+   <div class="small-12 medium-5 columns sidebar">
       <h2>{{self.title}}</h2>
-
       {% include "includes/intro.html" with intro=self.intro only %}
+      {{ self.description|richtext }}
+   </div>
 
-      {% if self.description %}
-          <div class="body-content">
-              {{ self.description|richtext }}
-          </div>
-      {% endif %}
+ </div>
 
-      {% include "includes/related_links.html" with related_links=self.related_links.all only %}
-    </div>
-  </div>
 {% endblock %}
