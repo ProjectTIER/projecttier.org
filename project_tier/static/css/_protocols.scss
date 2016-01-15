@@ -73,7 +73,7 @@
         transition: transform 0.5s;
       }
     }
-    &[aria-expanded='true']{
+    &.is-active {
       > a {
         background: transparentize($white, 0.5);
         i {
