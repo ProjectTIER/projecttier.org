@@ -31,7 +31,7 @@
 
 
 /* ==========================================================================
-   OFF CANVAS MENU
+   OFF CANVAS MENU / PROTOCOL NAV
    ========================================================================== */
 .off-canvas-wrapper {
   background-color: $pale-grey;
@@ -42,25 +42,87 @@
   overflow: hidden;
 }
 .off-canvas {
-  padding-top: rem-calc(100);
   background: none;
+}
 
-  .menu {
-    li {
-      a {
-        box-shadow: none;
-        border-bottom: 1px solid $button-shadow;
-        border-top: 1px solid $button-highlight;
+/* PROTOCOL NAV
+   ========================================================================== */
+.protocol-nav {
+  padding-top: $medium-gutter;
+
+  // All links in the menu
+  li {
+    a {
+      box-shadow: none;
+      position: relative;
+      color: $dark-teal;
+      transition: 
+        background 0.2s,
+        color 0.2s
+      ;
+      &:hover {
+        background: transparentize($white, 0.5);
+        color: $red;
       }
-
-      &:first-child {
-        a {
-          border-top: none;
+      
+      // caret icon
+      i {
+        position: absolute;
+        right: rem-calc(5);
+        top: rem-calc(11);
+        transition: transform 0.5s;
+      }
+    }
+    &[aria-expanded='true']{
+      > a {
+        background: transparentize($white, 0.5);
+        i {
+          transform: rotate(180deg);
         }
       }
+    }
+  }
+
+  > .menu {
+
+    // Top level items
+    > li {
+      border-bottom: 1px solid $button-shadow;
+      border-top: 1px solid $button-highlight;
+      &:first-child {
+        border-top: none;
+      }
       &:last-child {
-        a {
-          border-bottom: none;
+        border-bottom: none;
+      }
+      
+      // Just top level links
+      > a {
+        
+      }
+
+      // Submenu level one
+      > ul {
+        margin: 0;
+        background: transparentize($white, 0.5);
+        > li {
+          > a {
+            padding-left: $medium-gutter;
+            font-size: rem-calc(14);
+            font-weight: 900;
+          }
+
+          // Submenu level two
+          > ul {
+            margin: 0;
+            background: transparentize($white, 0.5);
+            > li {
+              > a {
+                padding-left: $medium-gutter + rem-calc(5);
+                font-size: rem-calc(12);
+              }
+            }
+          }
         }
       }
     }
