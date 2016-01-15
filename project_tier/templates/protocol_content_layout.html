@@ -3,32 +3,45 @@
 {% load protocol_tags %}
 {% load wagtailcore_tags %}
 
-{% block page_title %}
-  <article class="standard-layout">
-
-    <header class="page-header">
-      <div class="row">
-        <div class="small-12 medium-10 medium-centered columns">
-
-          <h1>{{self.title}}</h1>
-
-          {# {% include "includes/intro.html" with intro=self.intro only %}#}
-        </div>
-      </div>
-    </header>
-{% endblock %}
-
 {% block content %}
-    <div class="page-content">
-      <div class="row">
-        <div class="small-12 medium-2 columns">
-          {% protocol_menu calling_page=self %}
-        </div>
-        <div class="small-12 medium-10 columns">
-          {% block main_content %} {% endblock %}
-        </div>
-      </div>
+
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+  
+    <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
+      {% protocol_menu calling_page=self %}
+    </div>
+    
+    <div class="off-canvas-content" data-off-canvas-content>
+      <article class="protocol-layout">
+
+        <header class="page-header">
+          <div class="row expanded">
+            <div class="small-12 columns">
+
+              <div class="row">
+                
+                <div class="small-12 medium-8 large-9 columns">
+                  {% block protocol_page_header %}
+                    <h1>{{self.title}}</h1>
+                    {% include "includes/intro.html" with intro=self.intro only %}
+                  {% endblock %}
+                </div>
+
+                <div class="small-12 medium-4 large-3 columns">
+                  {% block header_right %} {% endblock %}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </header>
+
+        {% block main_panel %} {% endblock %}
+
+      </article>
     </div>
 
-  </article>
+  </div>
+</div>
 {% endblock content %}

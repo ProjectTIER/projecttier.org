@@ -216,6 +216,15 @@ body {
 
 
 
+/* ==========================================================================
+   PANEL LAYOUT
+   ========================================================================== */
+.row.panel-layout {
+  display: flex;
+  align-items: stretch;
+}
+
+
 
 /* ==========================================================================
    MAIN PANEL
@@ -224,7 +233,8 @@ body {
   padding: $small-gutter;
   position: relative;
   z-index: 2;
-  box-shadow: 8px 0px 4px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    8px 0px 4px -4px rgba(0, 0, 0, 0.2);
   background: $white;
 }
 
@@ -264,3 +274,4 @@ body {
     margin: 0 (-$small-gutter);
   }
 }
+
