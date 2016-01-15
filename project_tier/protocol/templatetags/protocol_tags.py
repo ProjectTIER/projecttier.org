@@ -47,8 +47,7 @@ def component_menu_item(context, item, calling_page=None):
     # Not sure item is just a Page instead of a ComponentPage. I need it's type
     item = ComponentPage.objects.get(pk=item.id)
     item.has_children = has_children(item)
-    item.is_active = (calling_page.url.startswith(item.url)
-                           if calling_page else False)
+    item.is_active = (calling_page.url == item.url)
 
     menuitems_children = item.get_children().live().order_by('title')
 
