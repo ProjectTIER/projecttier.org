@@ -1,6 +1,6 @@
 {% load protocol_tags wagtailcore_tags %}
 
-<nav class="component-nav">
+<nav id="component-menu" class="component-nav">
   <ol>
     {% for menuitem in menuitems %}
       {% component_menu_item menuitem calling_page=calling_page %}

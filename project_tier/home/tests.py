@@ -30,7 +30,6 @@ class TestPersonPageCreation(TestCase):
 
 class TestPageTests(WagtailPageTests):
     def test_assert_allowed_parent_page_types(self):
-        self.assertAllowedParentPageTypes(StandardPage, {HomePage, StandardPage})
         self.assertAllowedParentPageTypes(EventIndexPage, {HomePage, StandardPage})
         self.assertAllowedParentPageTypes(PersonIndexPage, {HomePage, StandardPage})
 
