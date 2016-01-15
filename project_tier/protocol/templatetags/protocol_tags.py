@@ -59,3 +59,16 @@ def component_menu_item(context, item, calling_page=None):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+@register.simple_tag()
+def component_icon(type):
+    if type == 'folder':
+        icon = 'fa-folder-open-o'
+    else:
+        icon = 'fa-file-text-o'
+    return icon
+
+
+@register.simple_tag()
+def dump(var):
+    return vars(var)
