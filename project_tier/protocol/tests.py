@@ -20,6 +20,7 @@ class ComponentIndexPageFactory(factory.DjangoModelFactory):
     class Meta:
         model = ComponentIndexPage
     title = 'Components'
+    intro = '<p>Its a pizza party!</p>'
     slug = 'components'
     show_in_menus = True
 
@@ -59,3 +60,4 @@ class TestComponentPage(TestCase):
         self.assertContains(response, '<h2>ReadMe</h2>')
         self.assertContains(response, '<nav id="protocol-menu">')
         self.assertContains(response, '<nav id="component-menu">')
+        self.assertContains(response, '<div class="page-intro">')
