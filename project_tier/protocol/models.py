@@ -98,7 +98,8 @@ class ComponentPage(Page):
 
     @property
     def component_index(self):
-        return self.get_ancestors().type(ComponentIndexPage).last()
+        component_index = self.get_ancestors().type(ComponentIndexPage).last()
+        return ComponentIndexPage.objects.get(pk=component_index.id)
 
 
     class Meta:
