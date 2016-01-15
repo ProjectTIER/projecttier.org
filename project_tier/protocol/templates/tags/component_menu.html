@@ -1,7 +1,9 @@
 {% load protocol_tags wagtailcore_tags %}
 
-<ul class="vertical menu">
-  {% for menuitem in menuitems %}
-    {% component_menu_item menuitem calling_page=calling_page %}
-  {% endfor %}
-</ul>
+<nav class="component-nav">
+  <ol>
+    {% for menuitem in menuitems %}
+      {% component_menu_item menuitem calling_page=calling_page %}
+    {% endfor %}
+  </ol>
+</nav>
