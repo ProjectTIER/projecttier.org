@@ -116,7 +116,6 @@
          ========================================================================== */
       &.is-dropdown-submenu-parent.is-down-arrow, &.is-dropdown-submenu-parent.is-right-arrow {
         > a {
-          padding-right: 1rem;
 
           &::after {
             @include embossed-text($button-highlight);

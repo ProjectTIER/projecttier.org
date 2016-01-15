@@ -2,6 +2,9 @@
   background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
   color: $white;
   padding: $small-gutter 0 0;
+  box-shadow: 0 0px 10px rgba(0,0,0, 0.5);
+  position: relative;
+  z-index: 3;
 
   #footer-logo {
     box-shadow: none;
