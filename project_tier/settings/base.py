@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = (
     'project_tier.home',
+    'project_tier.protocol',
     'project_tier.search',
 
     'wagtail.contrib.settings',
@@ -44,6 +45,7 @@ INSTALLED_APPS = (
     'modelcluster',
     'compressor',
     'taggit',
+    'django_nose',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -114,6 +116,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--cover-package=project_tier',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
