@@ -2,7 +2,8 @@
    MAIN CONTAINER
    ========================================================================== */
 #main-container {
-  margin-top: $topbar-height;
+  padding-top: $topbar-height;
+  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
 }
 
 
@@ -15,10 +16,10 @@ body {
 }
 .page-header {
   background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
-  padding: $small-gutter/2 0 0;
+  padding: ($topbar-height + $small-gutter/2) 0 0;
   box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   @include breakpoint(medium up){
-    padding: $small-gutter 0 $small-gutter/2;
+    padding: ($topbar-height + $small-gutter) 0 $small-gutter/2;
   }
   h1 {
     @extend %large-heading;
