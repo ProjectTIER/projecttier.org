@@ -4,7 +4,7 @@
 {% load protocol_tags %}
 
 {% block header_right %}
-  <a href="#" class="button float-right">Download a Sample Project</a>
+  <a href="#" class="special button float-right">Download a Sample Project</a>
 {% endblock %}
 
 
@@ -14,16 +14,16 @@
 
   <div class="row panel-layout expanded">
 
-    <div class="small-12 medium-7 columns main-panel">
+    <div class="small-12 medium-6 medium-push-6 columns sidebar">
+      <p><i class="fa fa-arrow-left"></i> Click on each component to learn more about its purpose.</p>
+    </div>
+
+    <div class="small-12 medium-6 medium-pull-6 columns main-panel">
       <ol class="item-list">
         {% component_menu self calling_page=self%}
       </ol>
 
     </div>
-
-   <div class="small-12 medium-5 columns sidebar">
-     <p><i class="fa fa-arrow-left"></i> Click on each component to learn more about its purpose.</p>
-   </div>
 
  </div>
 
