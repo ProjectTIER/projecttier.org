@@ -4,13 +4,14 @@
 
 
 {% block protocol_page_header %}
+  {% include "includes/protocol_menu_toggle.html" %}
   <h1>{{self.component_index.title}}</h1>
   {% include "includes/intro.html" with intro=self.component_index.intro only %}
 {% endblock %}
 
 
 {% block header_right %}
-  <a href="#" class="button float-right">Download a Sample Project</a>
+  <a href="#" class="special button float-right">Download a Sample Project</a>
 {% endblock %}
 
 
