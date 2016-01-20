@@ -104,7 +104,6 @@ class ComponentPage(Page):
         component_index = self.get_ancestors().type(ComponentIndexPage).last()
         return ComponentIndexPage.objects.get(pk=component_index.id)
 
-
     class Meta:
         verbose_name = "Protocol Component"
 
@@ -164,6 +163,10 @@ class ProtocolProcessPage(Page):
         FieldPanel('intro', classname='full'),
         StreamFieldPanel('body'),
     ]
+
+    @property
+    def next_page(self):
+        return self.get_next_sibling()
 
     class Meta:
         verbose_name = "Protocol Process Page"
