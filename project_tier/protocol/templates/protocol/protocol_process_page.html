@@ -1,0 +1,21 @@
+{% extends "protocol_content_layout.html" %}
+
+{% load wagtailcore_tags protocol_tags %}
+
+{% block main_content %}
+  <div class="row">
+    <div class="small-8 columns">
+      {% include "includes/intro.html" with intro=self.intro only %}
+
+      {% if self.body %}
+          <div class="body-content">
+              {% include "includes/streamfield.html" with content=self.body %}
+          </div>
+      {% endif %}
+
+    </div>
+    <div class="small-4 columns">
+      {% component_menu calling_page=self%}
+    </div>
+  </div>
+{% endblock %}

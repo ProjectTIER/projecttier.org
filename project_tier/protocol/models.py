@@ -18,9 +18,12 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailsearch import index
 
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock
+from wagtail.wagtailcore.blocks import (TextBlock, PageChooserBlock, StructBlock,
+    StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock)
+from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -104,3 +107,63 @@ class ComponentPage(Page):
 
     class Meta:
         verbose_name = "Protocol Component"
+
+
+# Process Pages
+# --------------------------------------------------
+
+class ImageFormatChoiceBlock(FieldBlock):
+    field = forms.ChoiceField(choices=(
+        ('left', 'Wrap left'), ('right', 'Wrap right'), ('mid', 'Mid width'), ('full', 'Full width'),
+    ))
+
+class ImageBlock(StructBlock):
+    image = ImageChooserBlock()
+    caption = RichTextBlock()
+    alignment = ImageFormatChoiceBlock()
+
+class ProtocolProcessStreamBlock(StreamBlock):
+    h2 = CharBlock(icon="title", classname="title", label='Section Title')
+    h3 = CharBlock(icon="title", classname="title")
+
+    paragraph = RichTextBlock(icon="pilcrow")
+    reference_page = PageChooserBlock(icon="doc-full")
+    # snippet = SnippetChooserBlock()
+    embed = EmbedBlock(icon="media")
+    aligned_image = ImageBlock(label="Aligned image", icon="image")
+    document = DocumentChooserBlock(icon="doc-full-inverse")
+#
+# class Section(models.Model):
+#     title = models.CharField(max_length=255)
+#     body = StreamField(ProtocolProcessStreamBlock())
+#     panels = [
+#         FieldPanel('title'),
+#         StreamFieldPanel('body'),
+#     ]
+#
+#     class Meta:
+#         abstract = True
+#
+#
+# class ProtocolProcessSection(Orderable, Section):
+#     page = ParentalKey('ProtocolProcessPage', related_name='section')
+
+
+class ProtocolProcessPage(Page):
+    intro = RichTextField(blank=True)
+    body = StreamField(ProtocolProcessStreamBlock())
+
+    parent_page_types = ['ProtocolHomePage', 'ProtocolProcessPage']
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+        StreamFieldPanel('body'),
+    ]
+
+    class Meta:
+        verbose_name = "Protocol Process Page"

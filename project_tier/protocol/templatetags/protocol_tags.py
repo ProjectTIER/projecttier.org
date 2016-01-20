@@ -1,7 +1,7 @@
 from django import template
 from django.conf import settings
 
-from project_tier.protocol.models import (ProtocolHomePage, ComponentPage)
+from project_tier.protocol.models import (ProtocolHomePage, ComponentIndexPage, ComponentPage)
 
 register = template.Library()
 
@@ -23,6 +23,11 @@ def protocol_menu(context, calling_page=None):
     for menuitem in menuitems:
         menuitem.active = (calling_page.url.startswith(menuitem.url)
                            if calling_page else False)
+        menuitem.has_children = has_children(menuitem)
+
+        if menuitem.has_children:
+            menuitem.children = menuitem.get_children().live().order_by('title')
+
 
     return {
         'calling_page': calling_page,
@@ -31,8 +36,9 @@ def protocol_menu(context, calling_page=None):
     }
 
 @register.inclusion_tag('tags/component_menu.html', takes_context=True)
-def component_menu(context, component_index, calling_page):
-    menuitems = component_index.get_children().live().order_by('title')
+def component_menu(context, calling_page):
+    menuitems = calling_page.get_ancestors().type(ProtocolHomePage).last().get_children() \
+                            .type(ComponentIndexPage).last().get_children()
 
     return {
         'calling_page': calling_page,
