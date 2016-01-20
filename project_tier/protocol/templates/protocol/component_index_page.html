@@ -1,19 +1,11 @@
-{% extends "standard_layout.html" %}
+{% extends "protocol_content_layout.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags protocol_tags %}
 
 {% block main_content %}
-  <div class="row">
-    <div class="small-12 columns">
-      {% include "includes/intro.html" with intro=self.intro only %}
-
-      <ol class="item-list">
-      {% for component in self.components.all %}
-          <li>{{component.component.type}} - {{component.title}}</li>
-      {% endfor %}
-      </ol>
-
-      {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+    <div class="row">
+      <div class="small-5 columns">
+        {% component_menu calling_page=self %}
+      </div>
     </div>
-  </div>
-{% endblock %}
+{% endblock main_content %}

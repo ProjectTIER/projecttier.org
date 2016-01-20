@@ -1,21 +1,9 @@
 {% extends "base.html" %}
 
-{% load protocol_tags %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags protocol_tags %}
 
 {% block page_title %}
-  <article class="standard-layout">
-
-    <header class="page-header">
-      <div class="row">
-        <div class="small-12 medium-10 medium-centered columns">
-
-          <h1>{{self.title}}</h1>
-
-          {# {% include "includes/intro.html" with intro=self.intro only %}#}
-        </div>
-      </div>
-    </header>
+  {% include "includes/page_title.html" with page=self only %}
 {% endblock %}
 
 {% block content %}
@@ -29,6 +17,4 @@
         </div>
       </div>
     </div>
-
-  </article>
 {% endblock content %}
