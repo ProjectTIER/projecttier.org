@@ -1,0 +1,11 @@
+{% extends "protocol_content_layout.html" %}
+
+{% load wagtailcore_tags protocol_tags %}
+
+{% block main_content %}
+    <div class="row">
+      <div class="small-5 columns">
+        {% component_menu calling_page=self %}
+      </div>
+    </div>
+{% endblock main_content %}

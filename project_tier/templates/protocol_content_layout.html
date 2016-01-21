@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags protocol_tags %}
+
+{% block page_title %}
+  {% include "includes/page_title.html" with page=self only %}
+{% endblock %}
+
+{% block content %}
+    <div class="page-content">
+      <div class="row">
+        <div class="small-12 medium-2 columns">
+          {% protocol_menu calling_page=self %}
+        </div>
+        <div class="small-12 medium-10 columns">
+          {% block main_content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+{% endblock content %}

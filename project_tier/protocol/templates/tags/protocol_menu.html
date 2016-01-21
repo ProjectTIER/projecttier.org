@@ -1,0 +1,23 @@
+{% load navigation_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+<nav id="protocol-menu">
+  <ul class="vertical menu">
+    {% for menuitem in menuitems %}
+      <li class="{% if menuitem.is_active %}current{% endif %}">
+        <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+
+        {% if menuitem.is_active and menuitem.has_children %}
+          <ul class="nested vertical menu">
+            {% for child in menuitem.children %}
+              <li>
+                <a href="{% pageurl child %}">{{ child.title }}</a>
+              </li>
+
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

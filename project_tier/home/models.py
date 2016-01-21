@@ -127,6 +127,9 @@ class StandardStreamBlock(StreamBlock):
 
 class HomePage(Page):
     body = StreamField(StandardStreamBlock())
+
+    parent_page_types = []
+
     search_fields = Page.search_fields + (
         index.SearchField('body'),
     )
@@ -134,6 +137,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
     ]
+
 
     class Meta:
         verbose_name = "Homepage"
@@ -198,6 +202,7 @@ class EventIndexPage(Page):
 
     intro = RichTextField(blank=True)
 
+    parent_page_types = ['Homepage', 'StandardPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -244,6 +249,8 @@ class EventPage(Page):
 
     location = models.CharField(max_length=255)
     description = RichTextField(blank=True)
+
+    parent_page_types = ['EventIndexPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('location'),
@@ -314,6 +321,8 @@ class PersonPage(Page):
         related_name='+'
     )
 
+    parent_page_types = ['PersonIndexPage']
+
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
         index.SearchField('biography'),
@@ -349,9 +358,12 @@ class PersonPage(Page):
         return self.get_ancestors().type(PersonIndexPage).last()
 
     class Meta:
-        verbose_name = "Person"
+        verbose_name = 'Person'
+        verbose_name_plural = 'People'
 
 class PersonIndexPage(Page):
+    parent_page_types = ['Homepage', 'StandardPage']
+
     @property
     def people(self):
         people = PersonPage.objects.live().descendant_of(self)
