@@ -43,12 +43,12 @@ class TestComponentPage(TestCase):
 
     def test_protocol_menu(self):
         response = self.client.get('/tier/components/readme/')
-        self.assertContains(response, '<nav id="protocol-menu">')
+        self.assertContains(response, 'data-test-id="protocol-nav"')
         self.assertContains(response, '<a href="/tier/components/">Components</a>')
 
     def test_component_menu(self):
         response = self.client.get('/tier/components/readme/')
-        self.assertContains(response, '<nav id="component-menu">')
+        self.assertContains(response, 'data-test-id="component-nav"')
         self.assertContains(response, '<a class="component-menu-item" href="/tier/components/readme/">')
         self.assertContains(response, '<li class="component-file active">')
 
@@ -61,5 +61,5 @@ class TestComponentPage(TestCase):
         readme_page = ComponentPage.objects.get(url_path='/home/tier/components/readme/')
         self.assertEqual(response.context['self'], readme_page)
 
-        self.assertContains(response, '<h2>ReadMe</h2>')
+        self.assertContains(response, '<h2 data-test-id="component-title-ReadMe">')
         self.assertContains(response, '<div class="page-intro">')

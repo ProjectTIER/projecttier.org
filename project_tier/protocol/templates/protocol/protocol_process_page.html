@@ -2,9 +2,9 @@
 
 {% load wagtailcore_tags protocol_tags %}
 
-{% block main_content %}
-  <div class="row">
-    <div class="small-8 columns">
+{% block main_panel %}
+  <div class="row panel-layout expanded">
+    <div class="small-8 columns main-panel">
       {% include "includes/intro.html" with intro=self.intro only %}
 
       {% if self.body %}
@@ -18,7 +18,7 @@
       {% endif %}
 
     </div>
-    <div class="small-4 columns">
+    <div class="small-4 columns sidebar">
       {% component_menu calling_page=self%}
     </div>
   </div>
