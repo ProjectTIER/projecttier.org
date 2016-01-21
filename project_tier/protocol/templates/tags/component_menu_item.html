@@ -1,7 +1,7 @@
 {% load protocol_tags wagtailcore_tags %}
 
-<li class="{% if item.is_active %}active{% endif %}">
-  <a href="{% pageurl item %}">{{item.type}} - {{ item.title }}</a>
+<li class="component-{{item.type}} {% if item.is_active %}active{% endif %}">
+  <a class="component-menu-item" href="{% pageurl item %}">{{item.type}} - {{ item.title }}</a>
   {% if item.has_children %}
     <ul class="nested verticle menu">
       {% for child in children %}

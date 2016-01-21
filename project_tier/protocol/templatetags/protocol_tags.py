@@ -20,6 +20,7 @@ def has_children_in_menu(page):
 
 def is_active(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
+    
 
 @register.inclusion_tag('tags/protocol_menu.html', takes_context=True)
 def protocol_menu(context, calling_page=None):
