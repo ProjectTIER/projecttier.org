@@ -16,7 +16,7 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
+ADMINS = [('Matt', 'matt@promptworks.com')]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = (
     'project_tier.home',
+    'project_tier.protocol',
     'project_tier.search',
 
     'wagtail.contrib.settings',
@@ -44,10 +45,13 @@ INSTALLED_APPS = (
     'modelcluster',
     'compressor',
     'taggit',
+    'django_nose',
+    'storages',
 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'wagtail.contrib.wagtailstyleguide',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -114,6 +118,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--cover-package=project_tier',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

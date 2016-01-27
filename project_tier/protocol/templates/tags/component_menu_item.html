@@ -1,0 +1,15 @@
+{% load protocol_tags wagtailcore_tags %}
+
+<li class="component-{{item.type}} {% if item.is_active %}active{% endif %}">
+  <a class="component-menu-item" href="{% pageurl item %}">
+    <i class="fa fa-fw {% component_icon item.type %}"></i>
+    {{ item.title }}
+  </a>
+  {% if item.has_children %}
+    <ol>
+      {% for child in children %}
+        {% component_menu_item child calling_page=calling_page %}
+      {% endfor %}
+    </ol>
+  {% endif %}
+</li>

@@ -86,9 +86,15 @@
 BUTTON GROUPS
 ========================================================================== */
 .button-group {
+  display: flex;
   .button {
     border-radius: 0;
     color: $black;
+
+    @include breakpoint(small only){
+      flex-grow: 2;
+      font-size: rem-calc(12);
+    }
 
     &:first-child {
       border-radius: rem-calc(3) 0 0 rem-calc(3);
@@ -104,6 +110,17 @@ BUTTON GROUPS
     }
     &:hover {
       border-color: transparent;
+    }
+
+
+    &.special {
+      color: $white;
+      &:not(:last-child) {
+        border-right: 1px solid $special-button-shadow;
+      }
+      &:not(:first-child) {
+        border-left: 1px solid $special-button-highlight;
+      }
     }
   }
 }
@@ -174,3 +191,20 @@ label {
     }
   }
 }
+
+
+/* ==========================================================================
+   BUTTON ROW  i.e. Bottom of process page
+   ========================================================================== */
+
+.button-row {
+  text-align: right;
+
+  .button-label {
+    @extend %small-heading;
+    vertical-align: middle;
+    padding-right: $small-gutter;
+  }
+}
+
+

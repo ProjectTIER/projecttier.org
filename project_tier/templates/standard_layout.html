@@ -1,28 +1,25 @@
 {% extends "base.html" %}
 
 {% load navigation_tags %}
-  
-{% block page_title %}
-  <article class="standard-layout">
+{% load wagtailcore_tags %}
 
-    <header class="page-header">
-      <div class="row">
-        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-          <h1>{{self.title}}</h1>
-          {% breadcrumbs %}
-        </div>
+{% block page_title %}
+  <header class="page-header">
+    <div class="row">
+      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+        {% breadcrumbs %}
+
+        <h1>{{self.title}}</h1>
+
+        {% include "includes/intro.html" with intro=self.intro only %}
       </div>
-    </header>
+    </div>
+  </header>
 {% endblock %}
 
 {% block content %}
-    <div class="page-content">
-      <div class="row">
-        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-          {% block main_content %} {% endblock %}
-        </div>
-      </div>
-    </div>
-
-  </article>
+  <div class="page-content">
+    {% block main_content %} {% endblock %}
+  </div>
 {% endblock %}

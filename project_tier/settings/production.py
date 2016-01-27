@@ -10,17 +10,6 @@ from .base import *
 DEBUG = False
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# Compress static files offline and minify CSS
-# http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
-]
-COMPRESS_CSS_HASHING_METHOD = 'content'
-
-
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
 
@@ -61,6 +50,16 @@ if 'CACHE_PURGE_URL' in env:
         },
     }
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# Compress static files offline and minify CSS
+# http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
+COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+COMPRESS_CSS_HASHING_METHOD = 'content'
+
 if 'STATIC_URL' in env:
     STATIC_URL = env['STATIC_URL']
 
@@ -72,6 +71,11 @@ if 'MEDIA_URL' in env:
 
 if 'MEDIA_DIR' in env:
     MEDIA_ROOT = env['MEDIA_DIR']
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = env['BUCKETEER_AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = env['BUCKETEER_AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = env['BUCKETEER_BUCKET_NAME']
 
 
 # Database

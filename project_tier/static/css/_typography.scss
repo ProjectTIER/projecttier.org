@@ -52,10 +52,13 @@ p {
 }
 %medium-heading, .medium-heading {
   font-size: rem-calc(21);
+  font-weight: 900;
   color: $off-black;
+  text-transform: none;
 }
 %small-heading, .small-heading {
   font-size: rem-calc(18);
+  font-weight: 900;
   color: $off-black;
 }
 %display-heading {
@@ -160,6 +163,16 @@ code, %monospace-text {
         margin-bottom: 0;
       }
     }
+  }
+}
+
+
+/* Related Links
+   ========================================================================== */
+.related-links-list {
+  ul {
+    list-style: none;
+    margin-left: 0;
   }
 }
 

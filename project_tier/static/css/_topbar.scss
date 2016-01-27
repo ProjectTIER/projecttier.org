@@ -68,26 +68,30 @@
     > li {
       padding: $small-gutter/2 0 0;
       transition: padding 0.2s;
-      @include breakpoint(705){
+      @include breakpoint(735){
         padding: $small-gutter/2 $medium-gutter/8 0;
       }
 
       body.scrolled & {
         padding: 0;
-        @include breakpoint(705){
+
+        @include breakpoint(735){
           padding: 0 $medium-gutter/8;
         }
       }
 
       > a {
-        font-size: rem-calc(12);
+        font-size: rem-calc(11);
+        @include breakpoint(700){
+          font-size: rem-calc(12);
+        }
         @include breakpoint(760){
           font-size: rem-calc(13);
         }
-        @include breakpoint(800){
+        @include breakpoint(820){
           font-size: rem-calc(14);
         }
-        @include breakpoint(860){
+        @include breakpoint(880){
           font-size: rem-calc(15);
         }
         @include embossed-text($button-highlight);
@@ -116,7 +120,6 @@
          ========================================================================== */
       &.is-dropdown-submenu-parent.is-down-arrow, &.is-dropdown-submenu-parent.is-right-arrow {
         > a {
-          padding-right: 1rem;
 
           &::after {
             @include embossed-text($button-highlight);

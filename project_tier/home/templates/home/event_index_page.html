@@ -2,28 +2,49 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main_content %}
-  {% include "includes/intro.html" with intro=self.intro only %}
+
+  {% if self.body %}
+  <div class="row">
+    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+      <div class="body-content">
+        {{ self.body|richtext }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
 
   {# Uses method defined in models.py to retrieve all upcoming events #}
   {# See also standard index for creating a listing with a tag #}
   {% with self.events.all as events %}
-    {% if events %}
-    <ol class="events-index item-list">
-      {% for event in events %}
-        {% include "includes/event_list_item.html" %}
-      {% endfor %}
-    </ol>
-    {% endif %}
+    <div class="row">
+      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+        {% if events %}
+          <ol class="events-index item-list">
+            {% for event in events %}
+              {% include "includes/event_list_item.html" %}
+            {% endfor %}
+          </ol>
+        {% else %}
+          <p>There are currently no upcoming events.</p>
+        {% endif %}
+
+      </div>
+    </div>
   {% endwith %}
 
   {% if self.related_links.all %}
-  <hr/>
   <section class="related-links-list">
-    <ul>
-      {% for related_link in self.related_links.all %}
-        <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>
-      {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+        <hr/>
+        <ul>
+          {% for related_link in self.related_links.all %}
+            <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </section>
   {% endif %}
 
