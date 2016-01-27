@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'compressor',
     'taggit',
     'django_nose',
+    'storages',
 
     'django.contrib.admin',
     'django.contrib.auth',
