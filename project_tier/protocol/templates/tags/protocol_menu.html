@@ -11,10 +11,9 @@
         {% if menuitem.is_active and menuitem.has_children %}
           <ul class="nested vertical menu is-active">
             {% for child in menuitem.children %}
-              <li>
+              <li class="{% if child.is_active %}is-active{% endif %}">
                 <a href="{% pageurl child %}">{{ child.title }}</a>
               </li>
-
             {% endfor %}
           </ul>
         {% endif %}
