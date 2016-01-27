@@ -14,11 +14,6 @@
         {{ self.body|richtext }}
       </div>
     {% endif %}
-    
-    <!-- Delete this, it's temporarily representing self.body block above -->
-    <div class="body-content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit lectus at enim vulputate, at viverra dui commodo. Pellentesque ornare arcu a diam consectetur ornare. Fusce pellentesque dictum porta. Proin eget eros in massa mattis faucibus. In semper nisl non orci tempor, ut hendrerit dui accumsan.</p>
-    </div>
 
   </div>
 </div>
@@ -29,7 +24,7 @@
     <div class="row">
       <div class="section-intro text-center small-12 medium-5 medium-push-1 medium-text-right large-4 large-push-2 columns">
         <h2 class="section-title">
-          Understanding the TIER Protocol
+          Understanding {{self.title}}
         </h2>
       </div>
 
@@ -50,7 +45,7 @@
                 <h3 class="section-title">The Components</h3>
                 <p class="secondary-text">Learn by getting a high level picture of the TIER Protocol's files and folders, and their role in documenting your research.</p>
               </header>
-              <a href="#" class="special button">View the Components</a>
+              <a href="/protocols/tier/components" class="special button">View the Components</a>
             </section>
           </div>
 
@@ -60,7 +55,7 @@
                 <h3 class="section-title">The Process</h3>
                 <p class="secondary-text">Follow a guided process step by step through the documentation of your research project.</p>
               </header>
-              <a href="#" class="special button">Start the Process</a>
+              <a href="/protocols/tier/process" class="special button">Start the Process</a>
             </section>
           </div>
 
@@ -70,10 +65,9 @@
                 <h3 class="section-title">A Sample Project</h3>
                 <p class="secondary-text">Take a look and browser through a completed sample research project using the TIER Protocol.</p>
               </header>
-              <a href="#" class="special button">Download a Sample</a>
+              <a href="/protocols/tier/sample" class="special button">Download a Sample</a>
             </section>
           </div>
-
         </div>
       </div>
     </div>
@@ -81,7 +75,5 @@
 
 
 </section>
-
-
 
 {% endblock %}

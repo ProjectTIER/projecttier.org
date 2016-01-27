@@ -131,22 +131,7 @@ class ProtocolProcessStreamBlock(StreamBlock):
     embed = EmbedBlock(icon="media")
     aligned_image = ImageBlock(label="Aligned image", icon="image")
     document = DocumentChooserBlock(icon="doc-full-inverse")
-#
-# class Section(models.Model):
-#     title = models.CharField(max_length=255)
-#     body = StreamField(ProtocolProcessStreamBlock())
-#     panels = [
-#         FieldPanel('title'),
-#         StreamFieldPanel('body'),
-#     ]
-#
-#     class Meta:
-#         abstract = True
-#
-#
-# class ProtocolProcessSection(Orderable, Section):
-#     page = ParentalKey('ProtocolProcessPage', related_name='section')
-
+    
 
 class ProtocolProcessPage(Page):
     intro = RichTextField(blank=True)

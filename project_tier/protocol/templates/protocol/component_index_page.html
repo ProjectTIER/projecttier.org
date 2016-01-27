@@ -1,11 +1,30 @@
 {% extends "protocol_content_layout.html" %}
 
-{% load wagtailcore_tags protocol_tags %}
+{% load wagtailcore_tags %}
+{% load protocol_tags %}
 
-{% block main_content %}
-    <div class="row">
-      <div class="small-5 columns">
-        {% component_menu calling_page=self %}
-      </div>
+{% block header_right %}
+  <a href="#" class="special button float-right">Download a Sample Project</a>
+{% endblock %}
+
+
+{% block main_panel %}
+
+  <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
+
+  <div class="row panel-layout expanded">
+
+    <div class="small-12 medium-6 medium-push-6 columns sidebar">
+      <p><i class="fa fa-arrow-left"></i> Click on each component to learn more about its purpose.</p>
     </div>
-{% endblock main_content %}
+
+    <div class="small-12 medium-6 medium-pull-6 columns main-panel">
+      <ol class="item-list">
+        {% component_menu calling_page=self%}
+      </ol>
+
+    </div>
+
+ </div>
+
+{% endblock %}
