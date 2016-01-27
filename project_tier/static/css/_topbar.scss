@@ -48,31 +48,66 @@
   background-image: linear-gradient($button-highlight, $button-shadow);
   box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: $medium-gutter/8;
+  transition: height 0.2s;
 
   @include breakpoint(medium up) {
     top: 0;
-    height: $topbar-height;
+    height: $topbar-height*1.6;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    body.scrolled & {
+      height: $topbar-height;
+    }
   }
 
-  /* Left Menu
+  /*  Menu
      ========================================================================== */
   .menu {
     background: none;
 
     > li {
-      padding: 0 $medium-gutter/8;
+      padding: $small-gutter/2 0 0;
+      transition: padding 0.2s;
+      @include breakpoint(735){
+        padding: $small-gutter/2 $medium-gutter/8 0;
+      }
+
+      body.scrolled & {
+        padding: 0;
+        @include breakpoint(735){
+          padding: 0 $medium-gutter/8;
+        }
+      }
 
       > a {
-        font-size: rem-calc(14);
+        font-size: rem-calc(11);
+        @include breakpoint(700){
+          font-size: rem-calc(12);
+        }
+        @include breakpoint(760){
+          font-size: rem-calc(13);
+        }
+        @include breakpoint(820){
+          font-size: rem-calc(14);
+        }
+        @include breakpoint(880){
+          font-size: rem-calc(15);
+        }
         @include embossed-text($button-highlight);
         border-radius: rem-calc(3);
         box-shadow: none;
+        font-weight: 900;
         padding: $medium-gutter/3 $medium-gutter/4;
-        transition: background 0.2s, box-shadow 0.2s;
+        transition: 
+          background 0.2s,
+          box-shadow 0.2s,
+          color 0.2s;
+        color: $dark-teal;
+        //text-transform: uppercase;
 
         &:hover {
           background-color: $button-shadow;
+          color: $red;
           box-shadow: inset 0 rem-calc(2) rem-calc(4) 0 rgba(0, 0, 0, 0.05);
         }
         &:active {
@@ -84,7 +119,6 @@
          ========================================================================== */
       &.is-dropdown-submenu-parent.is-down-arrow, &.is-dropdown-submenu-parent.is-right-arrow {
         > a {
-          padding-right: 1rem;
 
           &::after {
             @include embossed-text($button-highlight);
@@ -149,9 +183,17 @@
           border: none;
           left: $medium-gutter/8;
           top: 100%;
-          border-top: rem-calc(5) solid transparent;
-          box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+          //padding: $medium-gutter/8 0;
+          
+          //box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
           border-radius: 0 0 rem-calc(3) rem-calc(3);
+          
+          > li {
+            padding-top: $medium-gutter/8;
+            a {
+              text-transform: none;
+            }
+          }
           
           .dropdown-panel {
             width: rem-calc(300);
@@ -216,6 +258,14 @@
     > li {
       > a {
         font-size: rem-calc(14);
+        font-size: rem-calc(12);
+        @include breakpoint(760){
+          font-size: rem-calc(13);
+        }
+        @include breakpoint(800){
+          font-size: rem-calc(14);
+        }
+
         padding-left: $medium-gutter/2;
         margin: 0;
         @include embossed-text($special-button-highlight);

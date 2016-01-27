@@ -2,7 +2,8 @@
    MAIN CONTAINER
    ========================================================================== */
 #main-container {
-  margin-top: $topbar-height;
+  padding-top: $topbar-height;
+  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
 }
 
 
@@ -15,10 +16,10 @@ body {
 }
 .page-header {
   background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
-  padding: $small-gutter/2 0 0;
+  padding: $small-gutter/2 0;
   box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   @include breakpoint(medium up){
-    padding: $small-gutter 0 $small-gutter/2;
+    padding: ($topbar-height) 0 $small-gutter;
   }
   h1 {
     @extend %large-heading;
@@ -29,6 +30,20 @@ body {
     text-transform: none;
     p {
       line-height: 1.5;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .special.button {
+    width: 100%;
+    font-size: rem-calc(14);
+    margin-top: $small-gutter;
+    border: 1px solid $medium-teal;
+    @include breakpoint(medium up){
+      margin-top: 0;
     }
   }
 }
@@ -56,6 +71,110 @@ body {
 
 /* ==========================================================================
    BLOCK SECTIONS
+   ========================================================================== */
+
+.block-section {
+  padding: $small-gutter 0 $medium-gutter;
+  @include breakpoint(medium up){
+    padding: $large-gutter 0;
+  }
+  @include breakpoint(large up){
+    padding: $medium-gutter*2 0;
+  }
+
+  .row {
+    @include breakpoint(medium up){
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* Section Intro
+     ========================================================================== */
+  .section-intro {
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 50%;
+      margin: 0 auto $small-gutter;
+      background: $transparent-black;
+    }
+    @include breakpoint(medium up){
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  /* Section Title
+     ========================================================================== */
+  .section-title {
+    @extend %display-heading;
+    text-transform: uppercase;
+    margin: 0 0 $small-gutter;
+    .subtitle {
+      display: block;
+      text-transform: none;
+      color: $grey;
+      font-size: 0.8em;
+    }
+  }
+  
+  /* Section Desctiption
+     ========================================================================== */
+  .section-description {
+    @extend %secondary-text;
+    p {
+      margin-bottom: $small-gutter;
+    }
+  }
+  
+  /* Section Button
+     ========================================================================== */
+  .section-button {
+    @extend .monochrome;
+    margin-bottom: $small-gutter;
+    @include breakpoint(medium up){
+      margin-bottom: 0;
+    }
+  }
+  
+
+
+  /* EVEN SECTIONS
+     ========================================================================== */
+  &:nth-child(even){
+    background: $pale-grey;
+  }
+
+  /* Link List
+     ========================================================================== */
+  .section-link-list {
+    list-style: none;
+    margin: 0;
+    li {
+      margin-bottom: $small-gutter;
+      a {
+        @extend %medium-heading;
+        color: $dark-teal;
+        &:hover {
+          color: $red;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
+
+
+
+
+/* ==========================================================================
+   MAIN PANEL
    ========================================================================== */
 
 .block-section {
@@ -217,14 +336,76 @@ body {
 
 
 /* ==========================================================================
-   MAIN PANEL
+   PANEL LAYOUT (i.e Protocol Pages)
    ========================================================================== */
-.main-panel {
-  padding: $small-gutter;
-  position: relative;
-  z-index: 2;
-  box-shadow: 8px 0px 4px -4px rgba(0, 0, 0, 0.2);
+.row.panel-layout {
+  @include breakpoint(medium up){
+    display: flex;
+    align-items: stretch;
+  }
+  
+
+  /* Main Panel
+     ========================================================================== */
+  .main-panel {
+    background: $white;
+    padding: $small-gutter;
+    position: relative;
+    z-index: 2;
+    box-shadow:
+      0px 5px 12px 5px rgba(0,0,0,0.2),
+      inset 10px 0px 8px -8px rgba(0,0,0,0.2),
+      inset 0px -23px 12px -20px rgba(0,0,0,0.31);
+  }
+  
+
+  /* Sidebar Panel
+     ========================================================================== */
+
+  .sidebar {
+    background-color: $off-black;
+    padding: $small-gutter;
+    font-size: rem-calc(14);
+    color: $white;
+    box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
+    @include breakpoint(medium up){
+      margin-top: rem-calc(3);
+    }
+
+    .fa-arrow-left {
+      padding-right: rem-calc(5);
+      transform: rotate(-90deg);
+      @include breakpoint(medium up){
+        transform: none;
+      }
+    }
+
+    .callout {
+      margin: 0 (-$small-gutter);
+    }
+
+
+    h2 {
+      @extend %medium-heading;
+      color: $white;
+    }
+
+    .intro {
+      @extend %display-heading;
+      color: $white;
+
+      text-transform: none;
+    }
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
+
+
 
 
 
@@ -243,23 +424,5 @@ body {
     font-weight: foreground($special-callout-bg-highlight, 400, 700);
     background-color: $special-callout-bg-highlight;
     background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
-  }
-}
-
-
-
-/* ==========================================================================
-   SIDEBAR
-   ========================================================================== */
-.sidebar {
-  background-color: $pale-grey;
-  background-image: linear-gradient(90deg, $pale-grey, $light-grey);
-  position: relative;
-  z-index: 1;
-  padding: $small-gutter;
-  font-size: rem-calc(14);
-
-  .callout {
-    margin: 0 (-$small-gutter);
   }
 }

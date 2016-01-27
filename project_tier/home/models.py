@@ -165,6 +165,8 @@ class StandardPage(Page):
         InlinePanel('related_links', label="Related links"),
     ]
 
+    # parent_page_types = [HomePage, 'StandardPage']
+
     class Meta:
         verbose_name = "Page"
 

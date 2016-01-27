@@ -1,9 +1,9 @@
 {% load protocol_tags wagtailcore_tags %}
 
-<nav id="component-menu">
-  <ul class="vertical menu">
+<nav class="component-nav" data-test-id="component-nav">
+  <ol>
     {% for menuitem in menuitems %}
       {% component_menu_item menuitem calling_page=calling_page %}
     {% endfor %}
-  </ul>
+  </ol>
 </nav>
