@@ -4,16 +4,17 @@
 
 {% block main_content %}
 
+  <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
+  
 <div class="row">
   <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-
+    
     {% if self.body %}
-        <div class="body-content">
-            {{ self.body|richtext }}
-        </div>
+      <div class="body-content">
+        {{ self.body|richtext }}
+      </div>
     {% endif %}
 
-    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
   </div>
 </div>
 
@@ -54,7 +55,7 @@
                 <h3 class="section-title">The Process</h3>
                 <p class="secondary-text">Follow a guided process step by step through the documentation of your research project.</p>
               </header>
-              <a href="#" class="special button">Start the Process</a>
+              <a href="/protocols/tier/process" class="special button">Start the Process</a>
             </section>
           </div>
 
@@ -64,10 +65,9 @@
                 <h3 class="section-title">A Sample Project</h3>
                 <p class="secondary-text">Take a look and browser through a completed sample research project using the TIER Protocol.</p>
               </header>
-              <a href="#" class="special button">Download a Sample</a>
+              <a href="/protocols/tier/sample" class="special button">Download a Sample</a>
             </section>
           </div>
-
         </div>
       </div>
     </div>
@@ -75,4 +75,5 @@
 
 
 </section>
+
 {% endblock %}
