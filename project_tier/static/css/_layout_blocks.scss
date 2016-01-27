@@ -372,6 +372,13 @@ body {
       margin-top: rem-calc(3);
     }
 
+    a {
+      color: $white;
+      &:hover {
+        color: $teal;
+      }
+    }
+
     .fa-arrow-left {
       padding-right: rem-calc(5);
       transform: rotate(-90deg);
@@ -402,6 +409,16 @@ body {
         margin-bottom: 0;
       }
     }
+
+    .component-nav {
+      li {
+        a {
+          &:hover {
+            background-color: $black;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -424,5 +441,15 @@ body {
     font-weight: foreground($special-callout-bg-highlight, 400, 700);
     background-color: $special-callout-bg-highlight;
     background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
+  }
+}
+
+
+/* ==========================================================================
+   STREAMFIELD SECTIONS
+   ========================================================================== */
+.stream-field {
+  h2 {
+    @extend %medium-heading;
   }
 }
