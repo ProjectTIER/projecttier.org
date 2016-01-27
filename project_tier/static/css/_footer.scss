@@ -5,32 +5,63 @@
   box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.34);
   position: relative;
   z-index: 3;
-
-  #footer-logo {
-    box-shadow: none;
-    display: block;
-    margin: 0 auto $small-gutter;
+  
+  #sponsor-logo {
+    text-align: center;
     @include breakpoint(medium up) {
+      text-align: right;
       float: right;
     }
-    svg {
+
+    a {
+      vertical-align: middle;
+      box-shadow: none;
+    }
+
+    .joining-text {
+      @extend %secondary-text;
+      display: inline-block;
+      color: $white;
+      max-width: 6em;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .tier-logo, .aps-logo {
+      vertical-align: middle;
+      box-shadow: none;
       display: block;
-      width: rem-calc(90);
-      margin: 0 auto;
-      @include breakpoint(medium up) {
-        width: rem-calc(150);
+      margin: 0 auto $small-gutter;
+      display: inline-block;
+      svg {
+        display: block;
+        margin: 0 auto;
+        * {
+          fill: $white;
+          transition: fill 0.2s;
+        }
       }
-      * {
-        fill: $white;
-        transition: fill 0.2s;
+
+      &:hover {
+        svg {
+          #tier {
+            fill: $light_teal;
+          }
+        }
       }
     }
 
-    &:hover {
-      svg {
-        #tier {
-          fill: $light_teal;
-        }
+    .tier-logo {
+      width: rem-calc(70);
+      @include breakpoint(medium up) {
+        width: rem-calc(100);
+      }
+    }
+
+    .aps-logo {
+      width: rem-calc(110);
+      @include breakpoint(medium up) {
+        width: rem-calc(150);
       }
     }
   }
