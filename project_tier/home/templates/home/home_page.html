@@ -1,24 +1,24 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 {% block content %}
   <div id="home-page" class="body-content">
-    
-
 
     <section id="intro-section">
       <div class="row">
         <div class="small-12 text-center medium-6 medium-text-left large-7 columns">
           <h1>
             <div id="logo">{% include "includes/svg_logo.html" %}</div>
-            <span class="show-for-sr">Project TIER</span>
-            <span id="intro-subtitle">Teaching Integrity in Empirical Research</span>
+            <span class="show-for-sr">{{self.title}}</span>
+            <span id="intro-subtitle">{{self.tagline}}</span>
           </h1>
         </div>
 
         <div class="small-12 medium-6 large-5 columns">
           <div id="intro-text" class="text-center medium-text-left">
-            <p>Project TIER’s mission is to promote a systemic change in the professional norms related to the transparency and reproducibility of empirical research in the social sciences...</p>
+            {{self.intro|richtext}}
+
             <a href="/about" id="intro-button" class="button">
               <span id="intro-button-text">More About the Project</span>
             </a>
@@ -28,7 +28,7 @@
     </section>
 
 
-    
+
     <section class="block-section" id="news-section">
       <div class="row">
         <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
@@ -248,7 +248,7 @@
             </a>
           </section>
         </div>
-        
+
         <div class="small-12 text-center medium-6 medium-text-left columns">
           <section id="newsletter-section">
             <h2 class="section-title">

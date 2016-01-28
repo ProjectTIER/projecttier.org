@@ -126,18 +126,21 @@ class StandardStreamBlock(StreamBlock):
 
 
 class HomePage(Page):
-    body = StreamField(StandardStreamBlock())
+    tagline = models.CharField(max_length=255)
+    intro = RichTextField(blank=True)
 
     parent_page_types = []
 
-    search_fields = Page.search_fields + (
-        index.SearchField('body'),
-    )
-
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
+        FieldPanel('tagline', classname="full"),
+        FieldPanel('intro', classname="full"),
     ]
 
+    @property
+    def children(self):
+        children = self.get_children().live().in_menu().specific()
+
+        return children
 
     class Meta:
         verbose_name = "Homepage"
