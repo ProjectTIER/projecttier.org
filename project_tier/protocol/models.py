@@ -34,16 +34,19 @@ from project_tier.home.models import StandardPage
 # Protocol Home Page
 # --------------------------------------------------
 class ProtocolHomePage(Page):
+    subtitle = models.CharField(max_length=255, blank=True)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
+        index.SearchField('subtitle'),
         index.SearchField('body'),
     )
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('subtitle', classname="full"),
         FieldPanel('intro', classname="full"),
         FieldPanel('body', classname="full"),
     ]
@@ -131,7 +134,7 @@ class ProtocolProcessStreamBlock(StreamBlock):
     embed = EmbedBlock(icon="media")
     aligned_image = ImageBlock(label="Aligned image", icon="image")
     document = DocumentChooserBlock(icon="doc-full-inverse")
-    
+
 
 class ProtocolProcessPage(Page):
     intro = RichTextField(blank=True)
