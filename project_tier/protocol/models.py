@@ -51,6 +51,12 @@ class ProtocolHomePage(Page):
         FieldPanel('body', classname="full"),
     ]
 
+    @property
+    def children(self):
+        children = self.get_children().live().in_menu().specific()
+
+        return children
+
     class Meta:
         verbose_name = "Protocol Langing Page"
 
