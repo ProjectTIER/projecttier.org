@@ -1,13 +1,23 @@
 <footer id="main-footer">
   <div class="row">
     <div class="small-12 columns">
-      <a id="footer-logo" href="/">{% include "includes/svg_logo.html" %}</a>
+        <p id="sponsor-logo">
+          <a href="/">
+            <span class="show-for-sr">Project TIER</span>
+            <span class="tier-logo" title="Project TIER">{% include "includes/svg_logo.html" %}</span>
+          </a>
+          <span class="joining-text">is sponsored by the</span>
+          <a href="http://www.sloan.org/" target="_blank">
+            <span class="show-for-sr">Alfred P. Sloan Foundation</span>
+            <span class="aps-logo" title="Alfred P. Sloan Foundation">{% include "includes/svg_aps_logo.html" %}</span>
+          </a>
+        </p>
       <nav id="footer-nav">
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Email TIER@haverford.edu</a></li>
-          <li><a href="#">Haverford College</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/contact">Contact Us</a></li>
+          <li><a href="mailto:info@projecttier.org" target="_blank">Email info@projecttier.org</a></li>
+          <li><a href="https://www.haverford.edu/" target="_blank">Haverford College</a></li>
         </ul>
       </nav>
     </div>
