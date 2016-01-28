@@ -43,7 +43,7 @@ def protocol_menu(context, calling_page=None):
 @register.inclusion_tag('tags/component_menu.html', takes_context=True)
 def component_menu(context, calling_page):
     menuitems = calling_page.get_ancestors().type(ProtocolHomePage).last().get_children() \
-                            .type(ComponentIndexPage).last().get_children()
+                            .type(ComponentIndexPage).last().get_children().specific()
 
     return {
         'calling_page': calling_page,
@@ -56,7 +56,6 @@ def component_menu(context, calling_page):
 @register.inclusion_tag('tags/component_menu_item.html', takes_context=True)
 def component_menu_item(context, item, calling_page=None):
     # Not sure item is just a Page instead of a ComponentPage. I need it's type
-    item = ComponentPage.objects.get(pk=item.id)
     item.has_children = has_children(item)
     item.is_active = is_active(item, calling_page)
 

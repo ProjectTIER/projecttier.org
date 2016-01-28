@@ -1,0 +1,29 @@
+{% load wagtailcore_tags %}
+{% if pages %}
+  {% for page in pages %}
+    <section class="block-section">
+      <div class="row">
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
+          <h2 class="section-title">
+            {{ page.title }}
+            {% if page.subtitle %}
+            <span class="subtitle">{{ page.subtitle}}</span>
+            {% endif %}
+          </h2>
+        </div>
+
+        <div class="text-center small-12 medium-8 medium-text-left columns">
+          {% if page.intro %}
+          {{ page.intro|richtext }}
+          {% endif %}
+          <div class="button-group">
+            <a class="button special " href="{% pageurl page %}">{{ page.title }}</a>
+            {% for child in page.child_pages %}
+              <a class="button special " href="{% pageurl child %}">{{ child.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+{% endif %}

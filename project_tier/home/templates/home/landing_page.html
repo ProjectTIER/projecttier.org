@@ -1,0 +1,6 @@
+{% extends "standard_layout.html" %}
+{% load wagtailcore_tags wagtailimages_tags navigation_tags %}
+
+{% block main_content %}
+  {% standard_index_listing calling_page=self %}
+{% endblock main_content %}
