@@ -1,6 +1,19 @@
 #home-page {
 
   .block-section {
+    h2 {
+      display: inline-block;
+
+      &:before {
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        left: -.25em
+      }
+    }
+
     &:nth-child(even){
       background: $white;
     }
@@ -82,10 +95,19 @@
 
 
 
+  #events-section {
+    .section-title:before { content: "\f073"; }
+  }
+
+  #protocols-resources-section {
+    .section-title:before { content: "\f0ea"; }
+  }
 
   /* News Section
      ========================================================================== */
   #news-section {
+    .section-title:before { content: "\f1ea"; }
+
     background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
     box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   }
@@ -94,6 +116,8 @@
   /* Programs Section
      ========================================================================== */
   #programs-section {
+    .section-title:before { content: "\f0c0"; }
+
     background-image: url('../img/workshop-light.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -104,7 +128,9 @@
 
   /* Classroom Section
      ========================================================================== */
-  #classroom-section {
+  #tier-classroom-section {
+    .section-title:before { content: "\f19d"; }
+
     background-image: url('../img/lecture-light.jpg');
     background-size: cover;
     background-position: bottom;
