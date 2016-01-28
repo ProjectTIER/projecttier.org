@@ -16,9 +16,11 @@ a, %hyperlink {
 /* ==========================================================================
    PARAGRAPHS
    ========================================================================== */
-p {
+p, %paragraph {
+  font-size: 1rem;
   line-height: 1.4rem;
   margin-bottom: 1.4rem;
+  color: $black;
 
   @include breakpoint(medium up){
     line-height: 1.8rem;
@@ -51,13 +53,13 @@ p {
   }
 }
 %medium-heading, .medium-heading {
-  font-size: rem-calc(21);
+  font-size: rem-calc(22);
   font-weight: 900;
   color: $off-black;
   text-transform: none;
 }
 %small-heading, .small-heading {
-  font-size: rem-calc(18);
+  font-size: rem-calc(19);
   font-weight: 900;
   color: $off-black;
 }
@@ -74,6 +76,35 @@ p {
     font-size: rem-calc(24);
   }
 }
+
+
+/* ==========================================================================
+   RICH TEXT EDITOR CONTEN
+   ========================================================================== */
+
+.rich-text {
+
+  h2 {
+    @extend %large-heading;
+  }
+  h3 {
+    @extend %medium-heading;
+  }
+  h4 {
+    @extend %small-heading;
+  }
+  h5 {
+    @extend %paragraph;
+    font-weight: 900;
+    margin-bottom: 0.5em;
+    color: $off-black;
+  }
+
+  ul, ol {
+    @extend %paragraph;
+  }
+}
+
 
 /* ==========================================================================
    CODE / MONOSPACE TEXT
