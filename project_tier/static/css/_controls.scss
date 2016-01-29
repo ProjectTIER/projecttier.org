@@ -177,6 +177,7 @@ label {
 
 .block-link-parent {
   position: relative;
+  overflow: hidden;
 
   .block-link {
     @extend %hyperlink;

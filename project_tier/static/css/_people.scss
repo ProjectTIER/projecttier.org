@@ -1,0 +1,41 @@
+/* ==========================================================================
+   PEOPLE LISTS
+   ========================================================================== */
+
+.item-list.person-list {
+  display: block !important;
+}
+
+
+/* ==========================================================================
+   PERSON PAGE
+   ========================================================================== */
+
+.job-titles {
+  p {
+    font-weight: 900;
+    color: $off-black;
+  }
+}
+
+dl.contact-info {
+  dt {
+    float: left;
+    clear: left;
+    margin: 0;
+    padding-right: $small-gutter/2;
+    font-weight: 900;
+    color: $off-black;
+  }
+  dd {
+    color: $black;
+  }
+}
+
+.person-img {
+  display: block;
+  margin: 0 auto;
+  @include breakpoint(medium up){
+    float: right;
+  }
+}
