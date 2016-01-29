@@ -100,7 +100,8 @@ BUTTON GROUPS
       border-radius: rem-calc(3) 0 0 rem-calc(3);
     }
     &:last-child {
-      border-radius: 0 rem-calc(3) rem-calc(3) 0;
+      border-top-right-radius: rem-calc(3);
+      border-bottom-right-radius: rem-calc(3);
     }
     &:not(:last-child) {
       border-right: 1px solid $button-shadow;
