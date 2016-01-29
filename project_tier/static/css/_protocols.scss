@@ -158,6 +158,7 @@
     li {
       a {
         display: block;
+        position: relative;
         box-shadow: none;
         line-height: 2;
         font-weight: 900;
@@ -194,6 +195,34 @@
             > li {
               > a {
                 padding-left: $small-gutter + ( $medium-gutter * 2 );
+              }
+              > ol {
+                > li {
+                  > a {
+                    padding-left: $small-gutter + ( $medium-gutter * 3 );
+                  }
+                  > ol {
+                    > li {
+                      > a {
+                        padding-left: $small-gutter + ( $medium-gutter * 4 );
+                      }
+                      > ol {
+                        > li {
+                          > a {
+                            padding-left: $small-gutter + ( $medium-gutter * 5 );
+                          }
+                          > ol {
+                            > li {
+                              > a {
+                                padding-left: $small-gutter + ( $medium-gutter * 6 );
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
