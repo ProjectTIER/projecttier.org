@@ -19,7 +19,7 @@ def has_children_in_menu(page):
     return page.get_children().live().in_menu().exists()
 
 def is_active(page, current_page):
-    return (current_page.url.startswith(page.url) if current_page else False)
+    return (current_page.url == page.url if current_page else False)
 
 
 @register.inclusion_tag('tags/protocol_menu.html', takes_context=True)
@@ -59,7 +59,7 @@ def component_menu_item(context, item, calling_page=None):
     item.has_children = has_children(item)
     item.is_active = is_active(item, calling_page)
 
-    menuitems_children = item.get_children().live().order_by('title')
+    menuitems_children = item.get_children().specific().live().order_by('title')
 
     return {
         'calling_page': calling_page,
