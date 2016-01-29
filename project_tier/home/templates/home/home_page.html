@@ -59,6 +59,9 @@
     </section>-->
 
     {% for page in self.children %}
+
+      {% if page.slug != 'about' %}
+      
       <section class="block-section" id="{{page.slug}}-section">
         <div class="row">
           <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
@@ -68,15 +71,23 @@
           </div>
 
           <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
-            {% if page.slug == 'events' %}
+           {% if page.slug == 'events' %}
               <ol class="events-list item-list">
                 {% for event in page.events %}
                   {% include "includes/event_list_item.html" %}
                 {% endfor %}
+              </ol>
             {% else %}
               <ul class="section-link-list">
                 {% for child in page.get_children.live.in_menu.specific %}
-                  <li><a href={% pageurl child %} class="section-link">{{ child.title}}</a></li>
+                  <li>
+                    <a href={% pageurl child %} class="section-link">
+                      {{child.title}}
+                      {% if child.subtitle %}
+                        <span class="subtitle">{{child.subtitle}}</span>
+                      {% endif %}
+                    </a>
+                  </li>
                 {% endfor %}
               </ul>
             {% endif %}
@@ -84,6 +95,9 @@
 
         </div>
       </section>
+
+      {% endif %}
+
     {% endfor %}
 
     <div id="twitter-newsletter" class="block-section">
