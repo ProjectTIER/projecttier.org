@@ -93,13 +93,15 @@
   }
 
 
-
-
+  /* Events Section
+     ========================================================================== */
   #events-section {
     .section-title:before { content: "\f073"; }
   }
 
-  #protocols-resources-section {
+  /* Protocols Section
+     ========================================================================== */
+  #protocols-section {
     .section-title:before { content: "\f0ea"; }
   }
 
@@ -111,7 +113,6 @@
     background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
     box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   }
-
 
   /* Programs Section
      ========================================================================== */
