@@ -1,0 +1,27 @@
+{% extends "protocol_content_layout.html" %}
+
+{% load wagtailcore_tags protocol_tags %}
+
+{% block main_panel %}
+  <div class="row panel-layout expanded">
+    <div class="small-8 columns main-panel">
+
+      {% if self.body %}
+        <div class="body-content">
+          {% include "includes/streamfield.html" with content=self.body %}
+        </div>
+      {% endif %}
+
+      {% if self.next_page %}
+        <div class="button-row text-right">
+          <span class="button-label">Continue</span>
+          <a class="special button" href="{% pageurl self.next_page %}">{{ self.next_page.title }}</a>
+        </div>
+      {% endif %}
+
+    </div>
+    <div class="small-4 columns sidebar">
+      {% component_menu calling_page=self%}
+    </div>
+  </div>
+{% endblock %}
