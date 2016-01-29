@@ -383,7 +383,20 @@ class PersonPage(Page):
         verbose_name_plural = 'People'
 
 class PersonIndexPage(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
     parent_page_types = ['Homepage', 'StandardPage']
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+    ]
 
     @property
     def people(self):
