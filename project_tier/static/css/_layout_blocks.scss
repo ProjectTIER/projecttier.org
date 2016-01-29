@@ -161,6 +161,10 @@ body {
         &:hover {
           color: $red;
         }
+
+        .subtitle {
+          font-weight: 300;
+        }
       }
       &:last-child {
         margin-bottom: 0;

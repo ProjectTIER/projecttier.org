@@ -22,7 +22,7 @@
         {% if events %}
           <ol class="events-index item-list">
             {% for event in events %}
-              {% include "includes/event_list_item.html" %}
+              {% include "includes/event_list_item.html" with event=event %}
             {% endfor %}
           </ol>
         {% else %}
