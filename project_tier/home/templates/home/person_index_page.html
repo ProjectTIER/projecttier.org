@@ -2,25 +2,67 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main_content %}
-    {# Uses method defined in models.py to retrieve all upcoming events #}
-    {# See also standard index for creating a listing with a tag #}
-      {% if people %}
-          <div>
-            {% regroup people by tags.first as people_by_tag %}
+  
+  <div class="row">
+    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
 
-              {% for tag in people_by_tag %}
-                <h2>{{tag.grouper}}</h2>
-                {% for person in tag.list %}
-                  <h4>{{person.title}} <small><a href="{% pageurl person %}">More info</a></small></h2>
-                  {% if person.image %}
-                      {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-                      {% image person.image width-100 as photo %}
-                      <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
-                  {% endif %}
-                {% endfor %}
-              {% endfor %}
+      {% if self.body %}
+          <div class="body-content">
+              {{ self.body|richtext }}
           </div>
       {% endif %}
 
-    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+    </div>
+  </div>
+
+  {% if people %}
+    {% regroup people by tags.first as people_by_tag %}
+  
+      {% for tag in people_by_tag %}
+
+        <section class="block-section alternate">
+
+          <div class="row">
+            <div class="section-intro small-12 text-center medium-4 medium-text-right large-4 columns">
+              <h2 class="section-title" id="news-section-title">{{tag.grouper}}</h2>
+            </div>
+            <div class="small-12 medium-8 large-8 columns">
+              <ul class="item-list person-list row small-up-1 large-up-2">
+              {% for person in tag.list %}
+
+                <li class="column">
+                  <article class="list-item block-link-parent">
+                    {% if person.image %}
+                    {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+                      {% image person.image width-100 as photo %}
+                      <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+                    {% else %}
+                      <div class="placeholder img-thumbnail">
+                        <span class="fa-stack fa-2x">
+                          <i class="fa fa-user fa-stack-2x"></i>
+                          <i class="fa fa-question fa-stack-1x"></i>
+                        </span>
+                      </div>
+                    {% endif %}
+                    <h1>{{person.title}}</h1>
+                    <div class="article-meta">
+                      <span class="article-meta-item">
+                        <span class="block-link">
+                          More info
+                          <a href="{% pageurl person %}" class="block-link-target" title="More about {{person.title}}"></a>
+                        </span>
+                      </span>
+                    </div>
+                  </article>
+                </li>
+                
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      {% endfor %}
+  {% endif %}
+
 {% endblock %}

@@ -1,0 +1,52 @@
+.img {
+  box-shadow: 0 2px 3px rgba(0,0,0,0.6);
+  margin-bottom: $small-gutter;
+  width: 100%;
+  height: auto;
+
+  &.placeholder {
+    background: $grey;
+    max-width: rem-calc(400);
+    min-height: rem-calc(250);
+    padding-bottom: 60%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .fa-stack {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -(rem-calc(64));
+      margin-left: -(rem-calc(64));
+    }
+    .fa-user {
+      color: $dark-grey;
+      //top: 50%;
+    }
+    .fa-question {
+      color: $off-black;
+    }
+  }
+}
+
+.img-thumbnail {
+  box-shadow: 0 2px 3px rgba(0,0,0,0.6);
+
+  &.placeholder {
+    background: $grey;
+    width: rem-calc(100);
+    height: rem-calc(80);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .fa-user {
+      color: $dark-grey;
+    }
+    .fa-question {
+      color: $off-black;
+    }
+  }
+}

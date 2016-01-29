@@ -155,7 +155,7 @@ code, %monospace-text {
    LISTS
    ========================================================================== */
 
-/* News & Events Lists
+/* Item Lists
    ========================================================================== */
 .item-list {
   list-style: none;
@@ -164,6 +164,12 @@ code, %monospace-text {
   li {
     .list-item {
       margin-bottom: $medium-gutter;
+      clear: both;
+
+      .img-thumbnail {
+        float: left;
+        margin: 0 $small-gutter 5px 2px;
+      }
 
       h1 {
         @extend %small-heading;
@@ -184,6 +190,17 @@ code, %monospace-text {
             &::after {
               display: none;
             }
+          }
+        }
+      }
+      &.block-link-parent {
+        .img-thumbnail {
+          transition: opacity 0.2s;
+          opacity: 0.85;
+        }
+        &:hover {
+          .img-thumbnail {
+            opacity: 1;
           }
         }
       }
