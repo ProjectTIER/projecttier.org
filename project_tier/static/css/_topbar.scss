@@ -74,6 +74,7 @@
 
       body.scrolled & {
         padding: 0;
+
         @include breakpoint(735){
           padding: 0 $medium-gutter/8;
         }

@@ -4,75 +4,44 @@
 
 {% block main_content %}
 
+  <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
+
 <div class="row">
   <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
 
     {% if self.body %}
-        <div class="body-content">
-            {{ self.body|richtext }}
-        </div>
+      <div class="body-content">
+        {{ self.body|richtext }}
+      </div>
     {% endif %}
 
-    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
   </div>
 </div>
 
 <section class="protocol-sections">
-  
-  <header class="block-section alternate minimized">
-    <div class="row">
-      <div class="section-intro text-center small-12 medium-5 medium-push-1 medium-text-right large-4 large-push-2 columns">
-        <h2 class="section-title">
-          Understanding {{self.title}}
-        </h2>
-      </div>
-
-      <div class="text-center small-12 medium-4 medium-push-1 medium-text-left large-3 large-push-2 columns">
-        <p class="secondary-text">The protocol is presented here in a few different ways</p>
-      </div>
-    </div>
-  </header>
-  
   <div class="grid block-section" id="protocol-intro-sections">
     <div class="row">
       <div class="small-12 medium-centered large-9 columns">
         <div class="row" data-equalizer data-equalize-on="medium">
 
-          <div class="text-center small-12 medium-4 columns">
-            <section class="section-grid-item">
-              <header data-equalizer-watch>
-                <h3 class="section-title">The Components</h3>
-                <p class="secondary-text">Learn by getting a high level picture of the TIER Protocol's files and folders, and their role in documenting your research.</p>
-              </header>
-              <a href="/protocols/tier/components" class="special button">View the Components</a>
-            </section>
-          </div>
-
-          <div class="text-center small-12 medium-4 columns">
-            <section class="section-grid-item">
-              <header data-equalizer-watch>
-                <h3 class="section-title">The Process</h3>
-                <p class="secondary-text">Follow a guided process step by step through the documentation of your research project.</p>
-              </header>
-              <a href="#" class="special button">Start the Process</a>
-            </section>
-          </div>
-
-          <div class="text-center small-12 medium-4 columns">
-            <section class="section-grid-item">
-              <header data-equalizer-watch>
-                <h3 class="section-title">A Sample Project</h3>
-                <p class="secondary-text">Take a look and browser through a completed sample research project using the TIER Protocol.</p>
-              </header>
-              <a href="#" class="special button">Download a Sample</a>
-            </section>
-          </div>
+          {% for child in self.children %}
+            <div class="text-center small-12 medium-4 columns">
+              <section class="section-grid-item">
+                <header data-equalizer-watch>
+                  <h3 class="section-title">{{ child.title }}</h3>
+                  <div class="secondary-text">
+                    {{child.intro|richtext}}
+                  </div>
+                </header>
+                <a href="{% pageurl child %}" class="special button">View the {{ child.title }}</a>
+              </section>
+            </div>
+          {% endfor %}
 
         </div>
       </div>
     </div>
   </div>
-
-
 </section>
+
 {% endblock %}

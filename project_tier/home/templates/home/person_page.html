@@ -2,32 +2,76 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main_content %}
-    {% if self.job_titles %}
-        {{ self.job_titles|richtext }}
-    {% endif %}
 
-    {% for tag in page.tags.all %}
-        <a href="{% pageurl page.person_index %}?tag={{ tag }}">{{ tag }}</a>
-    {% endfor %}
+  <div class="row">
+    <div class="small-12 medium-11 medium-centered large-10 columns">
+      <div class="row">
 
-    {% include "includes/intro.html" with intro=self.intro only %}
+        <div class="small-12 medium-4 large-5 columns">
+          {% if self.image %}
+          {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image self.image width-400 as photo %}
+            <img class="img person-img" src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+          {% else %}
+            <div class="placeholder img person-img">
+              <span class="fa-stack fa-4x">
+                <i class="fa fa-user fa-stack-2x"></i>
+                <i class="fa fa-question fa-stack-1x"></i>
+              </span>
+            </div>
+          {% endif %}
+        </div>
 
-    {% if self.image %}
-        {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-        {% image self.image width-300 as photo %}
-        <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
-    {% endif %}
+        <div class="small-12 medium-8 large-7 columns">
+          {% if self.job_titles %}
+            <div class="job-titles">{{ self.job_titles|richtext }}</div>
+          {% endif %}
+          
+          {% if self.intro %}
+            {% include "includes/intro.html" with intro=self.intro only %}
+          {% endif %}
 
-    <ul>
-      {% if self.email %}<li>{{ self.email}}</li>{% endif %}
-      {% if self.phone %}<li>{{ self.phone}}</li>{% endif %}
-      {% if self.location %}<li>{{ self.location}}</li>{% endif %}
-    </ul>
+          <dl class="contact-info">
+            {% if self.email %}
+              <dt>Email</dt>
+              <dd><a href="mailto:{{self.email}}">{{self.email}}</a></dd>
+            {% endif %}
 
-    {% if self.biography %}
-        <div class="page-header"><h3>Biography</h3></div>
-        {{ self.biography|richtext }}
-    {% endif %}
+            {% if self.website %}
+              <dt>Web</dt>
+              <dd><a target="_blank" href="{{ self.website }}">{{self.website}}</a></dd>
+            {% endif %}
+            
+            {% if self.phone %}
+              <dt>Call</dt>
+              <dd>{{ self.phone}}</dd>
+            {% endif %}
+            
+            {% if self.location %}
+              <dt>Find</dt>
+              <dd>{{ self.location}}</dd>
+            {% endif %}
+
+          </dl>
+
+          {% if self.biography %}
+            <hr>
+            <h3 class="small-heading">About {{self.title}}</h3>
+            {{ self.biography|richtext }}
+          {% endif %}
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    
+
+    
+
+    
+
+    
 
 
 

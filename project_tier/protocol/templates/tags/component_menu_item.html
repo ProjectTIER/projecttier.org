@@ -1,7 +1,7 @@
 {% load protocol_tags wagtailcore_tags %}
 
-<li class="{% if item.is_active %}active{% endif %}">
-  <a href="{% pageurl item %}">
+<li class="component-{{item.type}} {% if item.is_active %}active{% endif %}">
+  <a class="component-menu-item" href="{% pageurl item %}">
     <i class="fa fa-fw {% component_icon item.type %}"></i>
     {{ item.title }}
   </a>

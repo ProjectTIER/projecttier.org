@@ -18,9 +18,12 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailsearch import index
 
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock
+from wagtail.wagtailcore.blocks import (TextBlock, PageChooserBlock, StructBlock,
+    StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock)
+from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from wagtail.wagtailsnippets.blocks import SnippetChooserBlock
 
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
@@ -31,19 +34,28 @@ from project_tier.home.models import StandardPage
 # Protocol Home Page
 # --------------------------------------------------
 class ProtocolHomePage(Page):
+    subtitle = models.CharField(max_length=255, blank=True)
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
+        index.SearchField('subtitle'),
         index.SearchField('body'),
     )
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        FieldPanel('subtitle', classname="full"),
         FieldPanel('intro', classname="full"),
         FieldPanel('body', classname="full"),
     ]
+
+    @property
+    def children(self):
+        children = self.get_children().live().in_menu().specific()
+
+        return children
 
     class Meta:
         verbose_name = "Protocol Langing Page"
@@ -101,6 +113,54 @@ class ComponentPage(Page):
         component_index = self.get_ancestors().type(ComponentIndexPage).last()
         return ComponentIndexPage.objects.get(pk=component_index.id)
 
-
     class Meta:
         verbose_name = "Protocol Component"
+
+
+# Process Pages
+# --------------------------------------------------
+
+class ImageFormatChoiceBlock(FieldBlock):
+    field = forms.ChoiceField(choices=(
+        ('left', 'Wrap left'), ('right', 'Wrap right'), ('mid', 'Mid width'), ('full', 'Full width'),
+    ))
+
+class ImageBlock(StructBlock):
+    image = ImageChooserBlock()
+    caption = RichTextBlock()
+    alignment = ImageFormatChoiceBlock()
+
+class ProtocolProcessStreamBlock(StreamBlock):
+    h2 = CharBlock(icon="title", classname="title", label='Section Title')
+    h3 = CharBlock(icon="title", classname="title")
+
+    paragraph = RichTextBlock(icon="pilcrow")
+    reference_page = PageChooserBlock(icon="doc-full")
+    # snippet = SnippetChooserBlock()
+    embed = EmbedBlock(icon="media")
+    aligned_image = ImageBlock(label="Aligned image", icon="image")
+    document = DocumentChooserBlock(icon="doc-full-inverse")
+
+
+class ProtocolProcessPage(Page):
+    intro = RichTextField(blank=True)
+    body = StreamField(ProtocolProcessStreamBlock())
+
+    parent_page_types = ['ProtocolHomePage', 'ProtocolProcessPage']
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+        StreamFieldPanel('body'),
+    ]
+
+    @property
+    def next_page(self):
+        return self.get_next_sibling()
+
+    class Meta:
+        verbose_name = "Protocol Process Page"

@@ -126,18 +126,21 @@ class StandardStreamBlock(StreamBlock):
 
 
 class HomePage(Page):
-    body = StreamField(StandardStreamBlock())
+    tagline = models.CharField(max_length=255)
+    intro = RichTextField(blank=True)
 
     parent_page_types = []
 
-    search_fields = Page.search_fields + (
-        index.SearchField('body'),
-    )
-
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
+        FieldPanel('tagline', classname="full"),
+        FieldPanel('intro', classname="full"),
     ]
 
+    @property
+    def children(self):
+        children = self.get_children().live().in_menu().specific()
+
+        return children
 
     class Meta:
         verbose_name = "Homepage"
@@ -165,6 +168,8 @@ class StandardPage(Page):
         InlinePanel('related_links', label="Related links"),
     ]
 
+    # parent_page_types = [HomePage, 'StandardPage']
+
     class Meta:
         verbose_name = "Page"
 
@@ -184,6 +189,25 @@ class TestPage(Page):
 
     class Meta:
         verbose_name = "Test Page"
+
+
+# Landing Page
+# --------------------------------------------------
+class LandingPage(Page):
+    parent_page_types = ['Homepage', 'StandardPage']
+    intro = RichTextField(blank=True)
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+    ]
+
+    @property
+    def children(self):
+        children = Page.objects.live().descendant_of(self)
+
+        return children
+
 # Events
 # --------------------------------------------------
 class EventIndexPageRelatedLink(Orderable, RelatedLink):
@@ -362,7 +386,20 @@ class PersonPage(Page):
         verbose_name_plural = 'People'
 
 class PersonIndexPage(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
     parent_page_types = ['Homepage', 'StandardPage']
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+    ]
 
     @property
     def people(self):

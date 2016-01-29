@@ -16,17 +16,17 @@
 
 
 {% block main_panel %}
-  
+
   <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
 
   <div class="row panel-layout expanded">
 
     <div class="small-12 medium-6 medium-push-6 columns sidebar">
-      <h2>
+      <h2 data-test-id="component-title-{{self.title}}">
         <i class="fa fa-fw {% component_icon self.type %}"></i>
         {{self.title}}
       </h2>
-      
+
       <div class="intro">
         {% include "includes/intro.html" with intro=self.intro only %}
       </div>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="small-12 medium-6 medium-pull-6 columns main-panel">
-      {% component_menu self.component_index calling_page=self%}
+      {% component_menu calling_page=self%}
     </div>
 
  </div>

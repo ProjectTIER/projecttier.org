@@ -9,7 +9,7 @@
 
 
 {% block main_panel %}
-  
+
   <!-- Note: page intro will appear in the header section, in parent template standard_layout.html -->
 
   <div class="row panel-layout expanded">
@@ -20,7 +20,7 @@
 
     <div class="small-12 medium-6 medium-pull-6 columns main-panel">
       <ol class="item-list">
-        {% component_menu self calling_page=self%}
+        {% component_menu calling_page=self%}
       </ol>
 
     </div>

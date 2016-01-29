@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
-{% load protocol_tags %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags protocol_tags %}
 
 {% block content %}
 
 <div class="off-canvas-wrapper">
   <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-  
+
     <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
       {% protocol_menu calling_page=self %}
     </div>
-    
+
     <div class="off-canvas-content" data-off-canvas-content>
       <article class="protocol-layout">
 
@@ -20,7 +19,7 @@
             <div class="small-12 columns">
 
               <div class="row">
-                
+
                 <div class="small-12 medium-8 large-9 columns">
                   {% block protocol_page_header %}
                     {% include "includes/protocol_menu_toggle.html" %}

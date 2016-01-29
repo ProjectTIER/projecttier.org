@@ -16,7 +16,7 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
+ADMINS = [('Matt', 'matt@promptworks.com')]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -46,10 +46,12 @@ INSTALLED_APPS = (
     'compressor',
     'taggit',
     'django_nose',
+    'storages',
 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'wagtail.contrib.wagtailstyleguide',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',

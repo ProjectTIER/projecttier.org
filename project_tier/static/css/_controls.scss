@@ -177,6 +177,7 @@ label {
 
 .block-link-parent {
   position: relative;
+  overflow: hidden;
 
   .block-link {
     @extend %hyperlink;
@@ -191,3 +192,20 @@ label {
     }
   }
 }
+
+
+/* ==========================================================================
+   BUTTON ROW  i.e. Bottom of process page
+   ========================================================================== */
+
+.button-row {
+  text-align: right;
+
+  .button-label {
+    @extend %small-heading;
+    vertical-align: middle;
+    padding-right: $small-gutter;
+  }
+}
+
+
