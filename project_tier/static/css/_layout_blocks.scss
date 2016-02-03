@@ -375,6 +375,9 @@ body {
     @include breakpoint(medium up){
       margin-top: rem-calc(3);
     }
+    * {
+      color: $white;
+    }
 
     a {
       color: $white;
@@ -404,8 +407,11 @@ body {
     .intro {
       @extend %display-heading;
       color: $white;
-
       text-transform: none;
+      margin-bottom: $small-gutter;
+      * {
+        font-size: inherit;
+      }
     }
 
     p {
