@@ -1,11 +1,32 @@
 {% extends "base.html" %}
 
+{% load navigation_tags %}
+{% load wagtailcore_tags %}
+
 {% block title %}404 - Page not found{% endblock %}
 
-{% block body_class %}template-404{% endblock %}
+{% block page_title %}
+  <header class="page-header">
+    <div class="row">
+      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+        <h1><i class="fa fa-fw fa-exclamation-triangle"></i> 404 Error</h1>
+      </div>
+    </div>
+  </header>
+{% endblock %}
 
 {% block content %}
-    <h1>Page not found</h1>
-
-    <h2>Sorry, this page could not be found.</h2>
+  <div class="page-content">
+    <div class="row">
+      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+        <div class="body-content">
+          <div class="rich-text">
+            <h3>Page Not Found</h3>
+            <p>The page you are trying to access cannot be found. That means the URL you have entered is incorrect, and this page doesn't exist. Please try browsing the site's navigation to find the content you are looking for. </p>
+            <p>If you followed this link from another website or location, please email us at <a href="mailto:info@projecttier.org">info@projecttier.org</a> so we can fix the problem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
