@@ -23,16 +23,13 @@
       display: inline-block;
       color: $white;
       max-width: 6em;
-      text-align: center;
+      text-align: left;
       line-height: 1;
     }
 
     .tier-logo, .aps-logo {
       vertical-align: middle;
       box-shadow: none;
-      display: block;
-      margin: 0 auto $small-gutter;
-      display: inline-block;
       svg {
         display: block;
         margin: 0 auto;
@@ -52,6 +49,8 @@
     }
 
     .tier-logo {
+      display: inline-block;
+      margin: 0 auto $small-gutter;
       width: rem-calc(70);
       @include breakpoint(medium up) {
         width: rem-calc(100);
@@ -59,9 +58,13 @@
     }
 
     .aps-logo {
-      width: rem-calc(110);
+      width: rem-calc(200);
+      display: inline-block;
+      margin: rem-calc(-10) auto 0;
       @include breakpoint(medium up) {
-        width: rem-calc(150);
+        width: rem-calc(300);
+        margin: rem-calc(-20) auto 0;
+        display: block;
       }
     }
   }
