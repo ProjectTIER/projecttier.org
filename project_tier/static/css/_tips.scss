@@ -33,9 +33,10 @@
         padding-right: 0.5em;
       }
       &::before {
-        content: "\f059";
+        content: "\f0eb";
         font-family: 'FontAwesome';
         float: right;
+        font-weight: 100;
       }
     }
   }
