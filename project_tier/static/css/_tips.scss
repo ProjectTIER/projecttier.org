@@ -2,14 +2,42 @@
   background-color: lighten($light-teal, 15%);
   background-image: none;
   padding: .5em .75em;
+  border-radius: rem-calc(3);
+  transition: background-color 0.2s;
 
-  .tip-content { display: none; }
+  .tip-content { 
+    //display: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-height: 0;
+    transition: 
+      max-height 0.5s,
+      margin 0.5s;
+    .rich-text {
+      padding-top: 0.5em;
+    }
+  }
 
   h6 {
     margin: 0;
     a {
       display: block;
+      padding: .5em .75em;
       box-shadow: none;
+      margin: -.5em -.75em;
+      &::after {
+        content: 'TIP';
+        font-size: rem-calc(12);
+        float: right;
+        line-height: 2;
+        padding-right: 0.5em;
+      }
+      &::before {
+        content: "\f0eb";
+        font-family: 'FontAwesome';
+        float: right;
+        font-weight: 100;
+      }
     }
   }
 
@@ -21,8 +49,9 @@
 
   &.expanded {
     .tip-content {
-      display: block;
-      margin-top: .25em;
+      //display: block;
+      
+      max-height: 100vh;
     }
   }
 
