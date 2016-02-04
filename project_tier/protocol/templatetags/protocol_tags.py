@@ -1,5 +1,6 @@
 from django import template
 from django.conf import settings
+import re
 
 from project_tier.protocol.models import (ProtocolProcessPage, ProtocolHomePage,
                                          ComponentIndexPage, ComponentPage)
@@ -81,3 +82,8 @@ def component_icon(type):
 @register.simple_tag()
 def dump(var):
     return vars(var)
+
+@register.simple_tag()
+def dasherize(str):
+    str = re.sub('[^A-Za-z0-9\s]+', '', str)
+    return str.lower().replace(' ', '-')

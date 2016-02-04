@@ -130,15 +130,22 @@ class ImageBlock(StructBlock):
     caption = RichTextBlock()
     alignment = ImageFormatChoiceBlock()
 
+class TipBlock(StructBlock):
+    title = CharBlock()
+    details = RichTextBlock()
+
+    class Meta:
+        icon = 'help'
+
 class ProtocolProcessStreamBlock(StreamBlock):
     h2 = CharBlock(icon="title", classname="title", label='Section Title')
     h3 = CharBlock(icon="title", classname="title")
 
     paragraph = RichTextBlock(icon="pilcrow")
     reference_page = PageChooserBlock(icon="doc-full")
-    # snippet = SnippetChooserBlock()
     embed = EmbedBlock(icon="media")
     aligned_image = ImageBlock(label="Aligned image", icon="image")
+    tip = TipBlock(label="Tip", icon="help")
     document = DocumentChooserBlock(icon="doc-full-inverse")
 
 
