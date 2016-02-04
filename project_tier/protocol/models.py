@@ -82,9 +82,13 @@ class ComponentIndexPage(Page):
 class ComponentPage(Page):
     FOLDER = 'folder'
     FILE = 'file'
+    DATA = 'data'
+    MULTIPLE_FILES = 'multiple'
     COMPONENT_TYPE_CHOICES = (
         (FOLDER, "Folder"),
-        (FILE, "File")
+        (FILE, "Text"),
+        (DATA, "Data"),
+        (MULTIPLE_FILES, "Multiple")
     )
 
     intro = RichTextField(blank=True)
@@ -167,7 +171,10 @@ class ProtocolProcessPage(Page):
 
     @property
     def next_page(self):
-        return self.get_next_sibling()
+        next = self.get_next_sibling()
+        if next.content_type is not 'ProtocolProcessPage':
+            next = self.get_children().first()
+        return next
 
     class Meta:
         verbose_name = "Protocol Process Page"

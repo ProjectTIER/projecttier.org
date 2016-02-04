@@ -20,7 +20,7 @@ def has_children_in_menu(page):
     return page.get_children().live().in_menu().exists()
 
 def is_active(page, current_page):
-    return (current_page.url.startswith(page.url) if current_page else False)
+    return (current_page.url == page.url if current_page else False)
 
 
 @register.inclusion_tag('tags/protocol_menu.html', takes_context=True)
@@ -74,6 +74,10 @@ def component_menu_item(context, item, calling_page=None):
 def component_icon(type):
     if type == 'folder':
         icon = 'fa-folder-open-o'
+    elif type == 'data':
+        icon = 'fa-table'
+    elif type == 'multiple':
+        icon = 'fa-files-o'
     else:
         icon = 'fa-file-text-o'
     return icon
