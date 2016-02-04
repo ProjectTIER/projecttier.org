@@ -420,3 +420,28 @@ class PersonIndexPage(Page):
         context['people'] = people
 
         return context
+
+class NewsArticle(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
+    source = models.CharField('Source Name', max_length=255, blank=True)
+    source_url = models.URLField('Source URL', max_length=255, blank=True)
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        MultiFieldPanel(
+            [
+                FieldPanel('source'),
+                FieldPanel('source_url'),
+            ],
+            heading="External Source",
+            classname="collapsible collapsed"
+         ),
+    ]
