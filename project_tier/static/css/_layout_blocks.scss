@@ -421,16 +421,6 @@ body {
         margin-bottom: 0;
       }
     }
-
-    .component-nav {
-      li {
-        a {
-          &:hover {
-            background-color: $light-grey;
-          }
-        }
-      }
-    }
   }
 }
 

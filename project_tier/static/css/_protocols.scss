@@ -175,14 +175,26 @@
           box-shadow:
             inset 10px 0px 8px -8px rgba(0,0,0,0.2);
         }
+        .sidebar & {
+          &:hover, &.highlight {
+            background-color: $light-grey;
+            &.active {
+              color: $red;
+            }
+          }
+        }
       }
 
       &.active {
         > a {
-          background: $light-teal;
+          background: lighten($light-teal, 15%);
           color: $black;
           box-shadow:
             inset 10px 0px 8px -8px rgba(0,0,0,0.2);
+          &:hover {
+            background-color: $pale-grey;
+            color: $red;
+          }
         }
       }
 
