@@ -142,6 +142,13 @@ class HomePage(Page):
 
         return children
 
+    @property
+    def news(self):
+        news = NewsArticle.objects.live()
+
+        news = news.order_by('go_live_at')
+        return news
+
     class Meta:
         verbose_name = "Homepage"
 
