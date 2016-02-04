@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags homepage_tags %}
+{% load wagtailcore_tags homepage_tags protocol_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 {% block content %}
@@ -26,8 +26,38 @@
         </div>
       </div>
     </section>
+    
+    {% if self.news %}
+    <section class="block-section" id="news-section">
+        
+      <div class="row">
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
+          <h2 class="section-title" id="news-section-title">Latest News</h2>
+        </div>
 
+        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
+          <ol class="news-list item-list">
+          {% for article in self.news %}
+            <li>
+              <article class="news-list-item list-item">
+                <h1>{{ article.title }}</h1>
+                <div class="article-meta">
+                  <span class="article-meta-item">
+                    <time class="article-publish-date">{{ article.go_live_at|date:"F j, Y" }}</time>
+                  </span>
+                  <span class="article-meta-item">
+                    <a href="{% pageurl article %}" class="read-more">Read More</a>
+                  </span>
+                </div>
+              </article>
+            </li>
+          {% endfor %}
+          </ol>
+        </div>
+      </div>
 
+    </section>
+    {% endif %}
 
     <!--<section class="block-section" id="news-section">
       <div class="row">
