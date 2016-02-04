@@ -74,6 +74,10 @@ def component_menu_item(context, item, calling_page=None):
 def component_icon(type):
     if type == 'folder':
         icon = 'fa-folder-open-o'
+    elif type == 'data':
+        icon = 'fa-table'
+    elif type == 'multiple':
+        icon = 'fa-files-o'
     else:
         icon = 'fa-file-text-o'
     return icon

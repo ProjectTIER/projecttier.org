@@ -82,9 +82,13 @@ class ComponentIndexPage(Page):
 class ComponentPage(Page):
     FOLDER = 'folder'
     FILE = 'file'
+    DATA = 'data'
+    MULTIPLE_FILES = 'multiple'
     COMPONENT_TYPE_CHOICES = (
         (FOLDER, "Folder"),
-        (FILE, "File")
+        (FILE, "Text"),
+        (DATA, "Data"),
+        (MULTIPLE_FILES, "Multiple")
     )
 
     intro = RichTextField(blank=True)
