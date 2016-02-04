@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from datetime import date
+from datetime import date, datetime
 
 from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -145,7 +145,7 @@ class HomePage(Page):
     @property
     def news(self):
         news = NewsArticle.objects.live()
-
+        news = news.filter(expire_at__gte=datetime.now())
         news = news.order_by('go_live_at')
         return news
 
