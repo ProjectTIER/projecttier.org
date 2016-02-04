@@ -367,22 +367,22 @@ body {
      ========================================================================== */
 
   .sidebar {
-    background-color: $off-black;
+    background-color: $pale-grey;
     padding: $small-gutter;
     font-size: rem-calc(14);
-    color: $white;
+    //color: $white;
     box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
     @include breakpoint(medium up){
       margin-top: rem-calc(3);
     }
     * {
-      color: $white;
+      //color: $white;
     }
 
     a {
-      color: $white;
+      //color: $white;
       &:hover {
-        color: $teal;
+        //color: $teal;
       }
     }
 
@@ -401,20 +401,22 @@ body {
 
     h2 {
       @extend %medium-heading;
-      color: $white;
+      color: $off-black;
     }
 
     .intro {
-      @extend %display-heading;
-      color: $white;
+      @extend %small-heading;
+      color: $off-black;
       text-transform: none;
-      margin-bottom: $small-gutter;
+      margin-bottom: 1rem;
       * {
         font-size: inherit;
+        color: $off-black;
       }
     }
 
     p {
+      margin-bottom: 1rem;
       &:last-child {
         margin-bottom: 0;
       }

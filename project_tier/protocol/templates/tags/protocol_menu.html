@@ -9,7 +9,7 @@
         <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
 
         {% if menuitem.is_active and menuitem.has_children %}
-          <ul class="nested vertical menu">
+          <ul class="nested vertical menu is-active">
             {% for child in menuitem.children %}
               <li>
                 <a href="{% pageurl child %}">{{ child.title }}</a>
