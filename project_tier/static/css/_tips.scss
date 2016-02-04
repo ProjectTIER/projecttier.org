@@ -1,0 +1,29 @@
+.tip.callout {
+  background-color: lighten($light-teal, 15%);
+  background-image: none;
+  padding: .5em .75em;
+
+  .tip-content { display: none; }
+
+  h6 {
+    margin: 0;
+    a {
+      display: block;
+      box-shadow: none;
+    }
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  &:hover {
+    background-color: lighten($light-teal, 10%);
+  }
+
+  &.expanded {
+    .tip-content {
+      display: block;
+      margin-top: .25em;
+    }
+  }
+
+}

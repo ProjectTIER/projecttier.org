@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags protocol_tags wagtailimages_tags %}
 
 <div class="stream-field">
     {% for child in content %}
@@ -6,6 +6,15 @@
           <h2>{{ child }}</h2>
         {% elif child.block_type == 'h3' %}
           <h3>{{ child }}</h3>
+        {% elif child.block_type == 'tip' %}
+          <div class="tip callout" data-toggler=".expanded" id="tip-{% dasherize child.value.title %}" >
+            <h6>
+              <a data-toggle="tip-{% dasherize child.value.title %}">{{child.value.title}}</a>
+            </h6>
+            <div class="tip-content" >
+                {{ child.value.details|richtext }}
+            </div>
+          </div>
         {% elif child.block_type == 'paragraph' %}
             {{ child.value|richtext }}
         {% elif child.block_type == 'aligned_image' %}
