@@ -251,3 +251,23 @@ code, %monospace-text {
     }
   }
 }
+
+/* ==========================================================================
+   ARTICLES
+   ========================================================================== */
+
+.article-meta {
+  @extend %secondary-text;
+  margin-bottom: $small-gutter;
+  .article-meta-item {
+    &::after {
+      content: ' |';
+      padding: 0 1em;
+    }
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

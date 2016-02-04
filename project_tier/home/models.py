@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from datetime import date
+from datetime import date, datetime
 
 from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -141,6 +141,13 @@ class HomePage(Page):
         children = self.get_children().live().in_menu().specific()
 
         return children
+
+    @property
+    def news(self):
+        news = NewsArticle.objects.live()
+        news = news.filter(expire_at__gte=datetime.now())
+        news = news.order_by('go_live_at')
+        return news
 
     class Meta:
         verbose_name = "Homepage"
@@ -420,3 +427,28 @@ class PersonIndexPage(Page):
         context['people'] = people
 
         return context
+
+class NewsArticle(Page):
+    intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
+    source = models.CharField('Source Name', max_length=255, blank=True)
+    source_url = models.URLField('Source URL', max_length=255, blank=True)
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
+        MultiFieldPanel(
+            [
+                FieldPanel('source'),
+                FieldPanel('source_url'),
+            ],
+            heading="External Source",
+            classname="collapsible collapsed"
+         ),
+    ]
