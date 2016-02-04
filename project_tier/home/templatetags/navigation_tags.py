@@ -48,6 +48,18 @@ def top_menu_children(context, parent):
         'request': context['request'],
     }
 
+@register.inclusion_tag('tags/protocol_menu_panel.html', takes_context=True)
+def protocol_menu_panel(context, parent):
+    menuitems_children = parent.get_children()
+    menuitems_children = menuitems_children.live().in_menu()
+    for child in menuitems_children:
+        child.children = child.get_children().live().in_menu()
+    return {
+        'parent': parent,
+        'menuitems_children': menuitems_children,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
 
 @register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
