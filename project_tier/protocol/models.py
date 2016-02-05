@@ -31,6 +31,20 @@ from taggit.models import TaggedItemBase
 
 from project_tier.home.models import StandardPage
 
+
+# Recursively search for a protocol page's root protocol
+def getProtocolParent(page):
+    parent = page.get_ancestors().last()
+    
+    if not parent:
+        return False
+    
+    if parent.content_type.model != 'protocolhomepage':
+        return getProtocolParent(parent)
+    
+    return parent
+
+
 # Protocol Home Page
 # --------------------------------------------------
 class ProtocolHomePage(Page):
@@ -79,6 +93,11 @@ class ComponentIndexPage(Page):
 
         return components
 
+    @property
+    def protocol_parent(self):
+        return getProtocolParent(self)
+
+
 class ComponentPage(Page):
     FOLDER = 'folder'
     FILE = 'file'
@@ -116,6 +135,10 @@ class ComponentPage(Page):
     def component_index(self):
         component_index = self.get_ancestors().type(ComponentIndexPage).last()
         return ComponentIndexPage.objects.get(pk=component_index.id)
+
+    @property
+    def protocol_parent(self):
+        return getProtocolParent(self)
 
     class Meta:
         verbose_name = "Protocol Component"
@@ -175,6 +198,10 @@ class ProtocolProcessPage(Page):
         if next.content_type is not 'ProtocolProcessPage':
             next = self.get_children().first()
         return next
+
+    @property
+    def protocol_parent(self):
+        return getProtocolParent(self)
 
     class Meta:
         verbose_name = "Protocol Process Page"

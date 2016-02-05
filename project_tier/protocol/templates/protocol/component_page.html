@@ -2,6 +2,10 @@
 
 {% load wagtailcore_tags protocol_tags %}
 
+{% block title_suffix %}
+  | {{ self.protocol_parent }}
+{% endblock %}
+
 
 {% block protocol_page_header %}
   {% include "includes/protocol_menu_toggle.html" %}
