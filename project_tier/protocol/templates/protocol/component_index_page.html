@@ -3,6 +3,10 @@
 {% load wagtailcore_tags %}
 {% load protocol_tags %}
 
+{% block title_suffix %}
+  | {{ self.protocol_parent }}
+{% endblock %}
+
 {% block header_right %}
   <a href="#" class="special button float-right">Download a Sample Project</a>
 {% endblock %}

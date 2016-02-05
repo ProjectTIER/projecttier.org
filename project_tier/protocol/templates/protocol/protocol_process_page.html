@@ -2,6 +2,10 @@
 
 {% load wagtailcore_tags protocol_tags %}
 
+{% block title_suffix %}
+  | {{ self.protocol_parent }}
+{% endblock %}
+
 {% block main_panel %}
   <div class="row panel-layout expanded">
     <div class="small-8 columns main-panel">
