@@ -53,6 +53,7 @@ body {
   padding: $small-gutter 0;
   @include breakpoint(medium up){
     padding: $medium-gutter 0;
+    box-shadow: inset 7px 0px 7px -5px rgba(0,0,0,0.2);
   }
 }
 
@@ -368,12 +369,12 @@ body {
 
     &.top {
       box-shadow:
-        0px px 5px 0px rgba(0,0,0,0.2);
+        0px 4px 5px 0px rgba(0,0,0,0.2);
       @include breakpoint(medium up){
         box-shadow:
-        0px 5px 12px 5px rgba(0,0,0,0.2),
-        inset 10px 0px 8px -8px rgba(0,0,0,0.2),
-        inset 0px -23px 12px -20px rgba(0,0,0,0.31);
+          0px 5px 12px 5px rgba(0,0,0,0.2),
+          inset 10px 0px 8px -8px rgba(0,0,0,0.2),
+          inset 0px -23px 12px -20px rgba(0,0,0,0.31);
       }
     }
   }
