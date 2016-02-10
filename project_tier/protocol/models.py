@@ -131,11 +131,20 @@ class ImageBlock(StructBlock):
     alignment = ImageFormatChoiceBlock()
 
 class TipBlock(StructBlock):
-    title = CharBlock()
+    title = CharBlock(label='Tip Heading')
     details = RichTextBlock()
 
     class Meta:
+        template = 'blocks/tip.html'
         icon = 'help'
+
+class ExtendedInfoBlock(StructBlock):
+    heading = CharBlock(label='Heading', help_text='The heading of an extended info setting')
+    details = RichTextBlock()
+
+    class Meta:
+        template = 'blocks/extended_info.html'
+        icon = 'plus-inverse'
 
 class ProtocolProcessStreamBlock(StreamBlock):
     h2 = CharBlock(icon="title", classname="title", label='Section Title')
@@ -146,6 +155,7 @@ class ProtocolProcessStreamBlock(StreamBlock):
     embed = EmbedBlock(icon="media")
     aligned_image = ImageBlock(label="Aligned image", icon="image")
     tip = TipBlock(label="Tip", icon="help")
+    extended_info = ExtendedInfoBlock(label="Extended Info", icon="plus-inverse")
     document = DocumentChooserBlock(icon="doc-full-inverse")
 
 

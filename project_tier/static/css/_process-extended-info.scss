@@ -1,0 +1,36 @@
+.extended-info {
+  .extended-info-content { }
+  .expand {
+    display: none;
+    transition: all 300ms;
+  }
+
+  &.collapsed {
+    .extended-info-content {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+    }
+
+    .expand {
+      display: block;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      padding-top: 3.5em;
+      background-image: linear-gradient(180deg, rgba(255,255,255,0), #fefefe 50%, #fefefe);
+      background-repeat: no-repeat;
+      color: rgba($dark-teal, .3)
+    }
+
+    &:hover {
+      // .extended-info-content { height: 200px; }
+      .expand {
+        background-position: 0 30px;
+        color: rgba($dark-teal, 1)
+      }
+    }
+  }
+}
