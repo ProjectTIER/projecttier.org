@@ -1,5 +1,6 @@
 from django import template
 from django.conf import settings
+import re
 
 from project_tier.protocol.models import (ProtocolProcessPage, ProtocolHomePage,
                                          ComponentIndexPage, ComponentPage)
