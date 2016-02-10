@@ -1,7 +1,14 @@
 {% load navigation_tags wagtailcore_tags protocol_tags %}
 {% get_site_root as site_root %}
 
-{% if ancestor.has_children and ancestor.slug != 'protocols' %}
+{% if ancestor.slug == 'protocols' and calling_page.content_type == 'Page' %}
+
+    <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
+      {% protocol_menu calling_page=self %}
+    </div>
+
+{% elif ancestor.has_children and ancestor.slug != 'protocols' %}
+
   <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
     <nav class="sidebar-nav">
       <ul class="vertical menu">
@@ -29,4 +36,5 @@
       </ul>
     </nav>
   </div>
+  
 {% endif %}
