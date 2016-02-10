@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 
-{% load navigation_tags %}
-{% load wagtailcore_tags %}
+{% load navigation_tags wagtailcore_tags %}
 
 {% block page_title %}
+
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    {% sidebar_menu calling_page=self %}
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <article class="protocol-layout">
+
+
   <header class="page-header">
     <div class="row">
       <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
@@ -22,4 +31,10 @@
   <div class="page-content">
     {% block main_content %} {% endblock %}
   </div>
+
+  </article>
+    </div>
+
+  </div>
+</div>
 {% endblock %}
