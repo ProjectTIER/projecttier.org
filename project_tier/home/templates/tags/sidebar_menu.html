@@ -1,0 +1,32 @@
+{% load navigation_tags wagtailcore_tags protocol_tags %}
+{% get_site_root as site_root %}
+
+{% if ancestor.has_children and ancestor.slug != 'protocols' %}
+  <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
+    <nav class="sidebar-nav">
+      <ul class="vertical menu">
+        <li>
+          <a href="{% pageurl ancestor %}">{{ ancestor.title }}</a>
+          <ul class="nested vertical menu is-active">
+          {% for menuitem in ancestor.children %}
+            <li class="{% if menuitem.is_active %}is-active{% endif %}">
+              <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+
+              {% if menuitem.is_active and menuitem.has_children %}
+                <ul class="nested vertical menu is-active">
+                  {% for child in menuitem.children %}
+                    <li>
+                      <a href="{% pageurl child %}">{{ child.title }}</a>
+                    </li>
+
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+{% endif %}
