@@ -22,11 +22,6 @@ p, %paragraph {
   margin-bottom: 1.4rem;
   color: $black;
 
-  @include breakpoint(medium up){
-    line-height: 1.8rem;
-    margin-bottom: 1.8rem;
-  }
-
   &.secondary {
     @extend %secondary-text;
   }
@@ -160,7 +155,7 @@ code, %monospace-text {
 .item-list {
   list-style: none;
   margin: 0;
-  
+
   li {
     .list-item {
       margin-bottom: $medium-gutter;

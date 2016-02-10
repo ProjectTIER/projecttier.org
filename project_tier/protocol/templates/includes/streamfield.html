@@ -4,19 +4,13 @@
     {% for child in content %}
         {% if child.block_type == 'h2' %}
           <h2>{{ child }}</h2>
+
         {% elif child.block_type == 'h3' %}
           <h3>{{ child }}</h3>
-        {% elif child.block_type == 'tip' %}
-          <div class="tip callout" data-toggler=".expanded" id="tip-{% dasherize child.value.title %}" >
-            <h6>
-              <a data-toggle="tip-{% dasherize child.value.title %}">{{child.value.title}}</a>
-            </h6>
-            <div class="tip-content" >
-                {{ child.value.details|richtext }}
-            </div>
-          </div>
+
         {% elif child.block_type == 'paragraph' %}
             {{ child.value|richtext }}
+
         {% elif child.block_type == 'aligned_image' %}
             <div class="img-wrapper {{ child.value.alignment }}">
                 {% if child.value.alignment == "left" or child.value.alignment == "right" %}

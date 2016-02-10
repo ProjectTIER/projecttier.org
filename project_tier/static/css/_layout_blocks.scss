@@ -30,7 +30,7 @@ body {
       @extend %display-heading;
       text-transform: none;
       line-height: 1.5;
-      
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -88,7 +88,7 @@ body {
       align-items: center;
     }
   }
-  
+
   /* Section Intro
      ========================================================================== */
   .section-intro {
@@ -120,7 +120,7 @@ body {
       font-size: 0.8em;
     }
   }
-  
+
   /* Section Desctiption
      ========================================================================== */
   .section-description {
@@ -129,7 +129,7 @@ body {
       margin-bottom: $small-gutter;
     }
   }
-  
+
   /* Section Button
      ========================================================================== */
   .section-button {
@@ -139,7 +139,7 @@ body {
       margin-bottom: 0;
     }
   }
-  
+
 
 
   /* EVEN SECTIONS
@@ -196,7 +196,7 @@ body {
       align-items: center;
     }
   }
-  
+
   /* Section Intro
      ========================================================================== */
   .section-intro {
@@ -228,7 +228,7 @@ body {
       font-size: 0.8em;
     }
   }
-  
+
   /* Section Desctiption
      ========================================================================== */
   .section-description {
@@ -237,7 +237,7 @@ body {
       margin-bottom: $small-gutter;
     }
   }
-  
+
   /* Section Button
      ========================================================================== */
   .section-button {
@@ -247,7 +247,7 @@ body {
       margin-bottom: 0;
     }
   }
-  
+
 
 
   /* EVEN SECTIONS / ALT SECTIONS
@@ -321,7 +321,7 @@ body {
         @extend %medium-heading;
         margin-bottom: $small-gutter/2;
       }
-      
+
       p {
         margin: 0;
         padding-bottom: $small-gutter;
@@ -347,7 +347,7 @@ body {
     display: flex;
     align-items: stretch;
   }
-  
+
 
   /* Main Panel
      ========================================================================== */
@@ -361,7 +361,7 @@ body {
       inset 10px 0px 8px -8px rgba(0,0,0,0.2),
       inset 0px -23px 12px -20px rgba(0,0,0,0.31);
   }
-  
+
 
   /* Sidebar Panel
      ========================================================================== */
@@ -451,7 +451,6 @@ body {
    STREAMFIELD SECTIONS
    ========================================================================== */
 .stream-field {
-  h2 {
-    @extend %medium-heading;
-  }
+  h2 { @extend %medium-heading; }
+  h3 { @extend %small-heading; }
 }

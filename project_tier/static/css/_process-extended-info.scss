@@ -1,0 +1,51 @@
+.extended-info {
+  padding-bottom: $medium-gutter;
+
+  h3 {
+    .heading {
+      padding-right: $small-gutter/2;
+    }
+  }
+
+  .extended-info-content {
+    position: relative;
+    max-height: 75vh;
+    opacity: 1;
+    transition: 
+      max-height 0.6s ease 0s,
+      opacity 0.3s ease 0.3s
+    ;
+
+    .rich-text {
+      :last-child {
+        margin-bottom: $small-gutter/2;
+      }
+    }
+  }
+  
+  .expand {
+    display: none;
+    font-weight: 400;
+  }
+
+  .collapse {
+    display: inline-block;
+  }
+
+  &.collapsed {
+
+    .extended-info-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: 
+        max-height 0.3s ease 0.3s,
+        opacity 0.3s ease 0s
+      ;
+    }
+
+    .expand {
+      display: inline-block;
+    }  
+  }
+}
