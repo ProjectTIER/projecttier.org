@@ -3,6 +3,8 @@ from django.conf import settings
 
 from project_tier.home.models import Page
 
+from project_tier.protocol.models import ProtocolHomePage
+
 register = template.Library()
 
 @register.assignment_tag(takes_context=True)
@@ -15,6 +17,12 @@ def get_site_root(context):
 
 def has_menu_children(page):
     return page.get_children().live().in_menu().exists()
+    
+def has_children(page):
+    return page.get_children().live().exists()
+
+def is_active(page, current_page):
+    return (current_page.url.startswith(page.url) if current_page else False)
 
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
@@ -85,5 +93,27 @@ def standard_index_listing(context, calling_page):
     return {
         'pages': pages,
         # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+@register.inclusion_tag('tags/sidebar_menu.html', takes_context=True)
+def sidebar_menu(context, calling_page=None):
+    ancestor = calling_page.get_ancestors(True)[2]
+    ancestor.is_active = is_active(ancestor, calling_page)
+    ancestor.has_children = has_menu_children(ancestor)
+
+    if ancestor.has_children:
+        ancestor.children = ancestor.get_children().live()
+
+        for descendant in ancestor.children:
+            descendant.is_active = is_active(descendant, calling_page)
+            descendant.has_children = has_menu_children(descendant)
+
+            if descendant.has_children:
+                descendant.children = descendant.get_children().live()
+
+    return {
+        'calling_page': calling_page,
+        'ancestor': ancestor,
         'request': context['request'],
     }
