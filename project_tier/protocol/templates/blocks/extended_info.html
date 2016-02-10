@@ -1,11 +1,16 @@
 {% load wagtailcore_tags protocol_tags wagtailimages_tags %}
 
 <div class="extended-info collapsed" data-toggler=".collapsed" id="info-{% dasherize value.heading %}" >
-  <h3>{{value.heading}}</h3>
+  <h3>
+    <span class="heading">{{value.heading}}</span>
+    <a class="expand" data-toggle="info-{% dasherize value.heading %}">
+      <i class="fa fa-plus-square-o"></i> Show More Information
+    </a>
+  </h3>
   <div class="extended-info-content" >
     {{ value.details|richtext }}
-    <a class="expand" data-toggle="info-{% dasherize value.heading %}">
-      <i class="fa fa-plus-square-o"></i> Show More
+    <a class="collapse" data-toggle="info-{% dasherize value.heading %}">
+      <i class="fa fa-minus-square-o"></i> Hide
     </a>
   </div>
 </div>
