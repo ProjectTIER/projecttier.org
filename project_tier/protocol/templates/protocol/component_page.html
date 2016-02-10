@@ -25,7 +25,7 @@
 
   <div class="row panel-layout expanded">
 
-    <div class="small-12 medium-7 medium-push-5 columns sidebar">
+    <div class="small-12 medium-7 medium-push-5 columns sidebar top">
       <h2 data-test-id="component-title-{{self.title}}">
         <i class="fa fa-fw {% component_icon self.type %}"></i>
         {{self.title}}
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="small-12 medium-5 medium-pull-7 columns main-panel">
+    <div class="small-12 medium-5 medium-pull-7 columns main-panel bottom">
       {% component_menu calling_page=self%}
     </div>
 

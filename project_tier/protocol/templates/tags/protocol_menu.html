@@ -2,7 +2,7 @@
 {% get_site_root as site_root %}
 
 <nav class="protocol-nav" data-test-id="protocol-nav">
-  <ul class="vertical menu" data-accordion-menu>
+  <ul class="vertical menu">
 
     {% for menuitem in menuitems %}
       <li class="{% if menuitem.is_active %}is-active{% endif %}">

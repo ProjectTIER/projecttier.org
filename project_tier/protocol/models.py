@@ -205,9 +205,11 @@ class ProtocolProcessPage(Page):
     @property
     def next_page(self):
         next = self.get_next_sibling()
-        if next.content_type is not 'ProtocolProcessPage':
-            next = self.get_children().first()
-        return next
+        if next:
+            if next.content_type.model != 'protocolprocesspage':
+                next = self.get_children().first()
+            return next
+        return False
 
     @property
     def protocol_parent(self):

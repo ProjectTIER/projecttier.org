@@ -356,10 +356,26 @@ body {
     padding: $small-gutter;
     position: relative;
     z-index: 2;
-    box-shadow:
-      0px 5px 12px 5px rgba(0,0,0,0.2),
-      inset 10px 0px 8px -8px rgba(0,0,0,0.2),
-      inset 0px -23px 12px -20px rgba(0,0,0,0.31);
+    
+      
+    // Top aligned on small screen
+    &.bottom {
+      box-shadow:
+        0px 5px 12px 5px rgba(0,0,0,0.2),
+        inset 10px 0px 8px -8px rgba(0,0,0,0.2),
+        inset 0px -23px 12px -20px rgba(0,0,0,0.31);
+    }
+
+    &.top {
+      box-shadow:
+        0px px 5px 0px rgba(0,0,0,0.2);
+      @include breakpoint(medium up){
+        box-shadow:
+        0px 5px 12px 5px rgba(0,0,0,0.2),
+        inset 10px 0px 8px -8px rgba(0,0,0,0.2),
+        inset 0px -23px 12px -20px rgba(0,0,0,0.31);
+      }
+    }
   }
 
 
@@ -371,9 +387,9 @@ body {
     padding: $small-gutter;
     font-size: rem-calc(14);
     //color: $white;
-    box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
     @include breakpoint(medium up){
       margin-top: rem-calc(3);
+      box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
     }
     * {
       //color: $white;
@@ -419,6 +435,14 @@ body {
       margin-bottom: 1rem;
       &:last-child {
         margin-bottom: 0;
+      }
+    }
+
+
+    // Top aligned on small screen
+    &.top {
+      @include breakpoint(medium up) {
+        box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
       }
     }
   }
