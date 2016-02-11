@@ -63,7 +63,7 @@ def component_menu_item(context, item, calling_page=None):
     item.has_children = has_children(item)
     item.is_active = is_active(item, calling_page)
 
-    menuitems_children = item.get_children().specific().live().order_by('title')
+    menuitems_children = item.get_children().specific().live()
 
     return {
         'calling_page': calling_page,
