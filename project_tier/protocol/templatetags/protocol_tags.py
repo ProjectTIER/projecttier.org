@@ -20,6 +20,9 @@ def has_children_in_menu(page):
     return page.get_children().live().in_menu().exists()
 
 def is_active(page, current_page):
+    return (current_page.url == page.url if current_page else False)
+
+def is_active_tree(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
 
 
@@ -28,11 +31,11 @@ def protocol_menu(context, calling_page=None):
     menuitems = calling_page.get_ancestors().type(ProtocolHomePage).last().get_children().in_menu()
 
     for menuitem in menuitems:
-        menuitem.is_active = is_active(menuitem, calling_page)
+        menuitem.is_active = is_active_tree(menuitem, calling_page)
         menuitem.has_children = has_children_in_menu(menuitem)
 
         if menuitem.has_children:
-            menuitem.children = menuitem.get_children().live().order_by('title')
+            menuitem.children = menuitem.get_children().live()
 
 
     return {
@@ -60,7 +63,7 @@ def component_menu_item(context, item, calling_page=None):
     item.has_children = has_children(item)
     item.is_active = is_active(item, calling_page)
 
-    menuitems_children = item.get_children().specific().live().order_by('title')
+    menuitems_children = item.get_children().specific().live()
 
     return {
         'calling_page': calling_page,

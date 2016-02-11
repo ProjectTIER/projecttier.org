@@ -97,6 +97,12 @@ p, %paragraph {
 
   ul, ol {
     @extend %paragraph;
+    li {
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
