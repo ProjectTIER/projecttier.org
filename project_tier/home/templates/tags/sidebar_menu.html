@@ -1,13 +1,17 @@
 {% load navigation_tags wagtailcore_tags protocol_tags %}
 {% get_site_root as site_root %}
 
-{% if ancestor.slug == 'protocols' and calling_page.content_type == 'Page' %}
+{% if ancestor.slug == 'protocols' %}
 
+  {% if calling_page.content_type.model == 'standardpage' %}
+    
     <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
-      {% protocol_menu calling_page=self %}
+      {% protocol_menu calling_page=calling_page %}
     </div>
+    
+  {% endif %}
 
-{% elif ancestor.has_children and ancestor.slug != 'protocols' %}
+{% elif ancestor.has_children %}
 
   <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
     <nav class="sidebar-nav">
