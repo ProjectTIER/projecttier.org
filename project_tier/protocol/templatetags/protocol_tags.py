@@ -35,7 +35,7 @@ def protocol_menu(context, calling_page=None):
         menuitem.has_children = has_children_in_menu(menuitem)
 
         if menuitem.has_children:
-            menuitem.children = menuitem.get_children().live().order_by('title')
+            menuitem.children = menuitem.get_children().live()
 
 
     return {
