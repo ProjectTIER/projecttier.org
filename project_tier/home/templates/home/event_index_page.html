@@ -33,11 +33,28 @@
     </div>
   {% endwith %}
 
+  {% if self.show_events == 'gte' %}
+    {% with self.past_events as events %}
+      <div class="row">
+        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+          <hr/>
+          <h3>Previous Events</h3>
+
+          <ol class="events-index item-list">
+          {% for event in events %}
+            {% include "includes/event_list_item.html" with event=event %}
+          {% endfor %}
+          </ol>
+        </div>
+      </div>
+    {% endwith %}
+  {% endif %}
+
   {% if self.related_links.all %}
   <section class="related-links-list">
     <div class="row">
       <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-        <hr/>
         <ul>
           {% for related_link in self.related_links.all %}
             <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>

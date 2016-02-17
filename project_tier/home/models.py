@@ -262,6 +262,15 @@ class EventIndexPage(Page):
 
         return events
 
+    @property
+    def past_events(self):
+        events = EventPage.objects.live().filter(date_from__lt=date.today())
+        events = events.order_by('-date_from')
+        events = events.all()[:10]
+
+        return events
+
+
     class Meta:
         verbose_name = "Event List"
 
