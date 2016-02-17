@@ -1,11 +1,11 @@
 {% load navigation_tags wagtailcore_tags protocol_tags %}
 {% get_site_root as site_root %}
 
-{% if ancestor.slug == 'protocols' %}
+{% if calling_page|has_protocol_parent %}
 
   {% if calling_page.content_type.model == 'standardpage' %}
     
-    <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
+    <div class="off-canvas position-left reveal-for-large bla" id="offCanvasLeft" data-off-canvas>
       {% protocol_menu calling_page=calling_page %}
     </div>
     

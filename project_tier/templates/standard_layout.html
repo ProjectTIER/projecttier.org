@@ -3,28 +3,35 @@
 {% load navigation_tags wagtailcore_tags %}
 
 {% block page_title %}
+  {% with self|in_tree as in_tree %}
 
-<div class="off-canvas-wrapper">
-  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
-    {% sidebar_menu calling_page=self %}
+      {% sidebar_menu calling_page=self %}
 
-    <div class="off-canvas-content" data-off-canvas-content>
-      <article class="protocol-layout">
+      <div class="off-canvas-content" data-off-canvas-content>
+        <article class="protocol-layout">
 
 
-  <header class="page-header">
-    <div class="row">
-      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+    <header class="page-header">
+      <div class="row">
+        {% if in_tree %}
+          <div class="small-12 medium-10 large-8 columns">
+        {% else %}
+          <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+        {% endif %}
 
-        {% breadcrumbs %}
+          {% breadcrumbs %}
 
-        <h1>{{self.title}}</h1>
+          <h1>{{self.title}}</h1>
 
-        {% include "includes/intro.html" with intro=self.intro only %}
+          {% include "includes/intro.html" with intro=self.intro only %}
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+
+  {% endwith %}
 {% endblock %}
 
 {% block content %}
@@ -37,4 +44,5 @@
 
   </div>
 </div>
+
 {% endblock %}

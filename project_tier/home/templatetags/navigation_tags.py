@@ -24,6 +24,9 @@ def has_children(page):
 def is_active(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
 
+def get_ancestor(page):
+    return page.get_ancestors(True)[2];
+
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
 # a dropdown class to be applied to a parent
@@ -98,7 +101,7 @@ def standard_index_listing(context, calling_page):
 
 @register.inclusion_tag('tags/sidebar_menu.html', takes_context=True)
 def sidebar_menu(context, calling_page=None):
-    ancestor = calling_page.get_ancestors(True)[2]
+    ancestor = get_ancestor(calling_page)
     ancestor.is_active = is_active(ancestor, calling_page)
     ancestor.has_children = has_menu_children(ancestor)
 
@@ -117,3 +120,8 @@ def sidebar_menu(context, calling_page=None):
         'ancestor': ancestor,
         'request': context['request'],
     }
+
+@register.filter()
+def in_tree(page):
+    ancestor = get_ancestor(page)
+    return has_menu_children(ancestor)

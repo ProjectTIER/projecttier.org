@@ -25,6 +25,15 @@ def is_active(page, current_page):
 def is_active_tree(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
 
+def in_protocol_tree(page):
+    if page.content_type.model == 'protocolhomepage':
+        return True
+    else:
+        protocol_parent = page.get_ancestors().type(ProtocolHomePage)
+        if protocol_parent:
+            return True
+        return False
+
 
 @register.inclusion_tag('tags/protocol_menu.html', takes_context=True)
 def protocol_menu(context, calling_page=None):
@@ -94,3 +103,7 @@ def dump(var):
 def dasherize(str):
     str = re.sub('[^A-Za-z0-9\s]+', '', str)
     return str.lower().replace(' ', '-')
+
+@register.filter()
+def has_protocol_parent(page):
+    return in_protocol_tree(page)

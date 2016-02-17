@@ -1,10 +1,15 @@
 {% extends "standard_layout.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags navigation_tags %}
 
 {% block main_content %}
+  {% with self|in_tree as in_tree %}
   <div class="row">
-    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+    {% if in_tree %}
+      <div class="small-12 medium-11 large-9 columns">
+    {% else %}
+      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+    {% endif %}
 
       {% if self.body %}
           <div class="body-content">
@@ -15,4 +20,5 @@
       {% include "includes/related_links.html" with related_links=self.related_links.all only %}
     </div>
   </div>
+  {% endwith %}
 {% endblock %}

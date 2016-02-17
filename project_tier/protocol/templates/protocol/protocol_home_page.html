@@ -22,30 +22,34 @@
   </div>
 </div>
 
-<section class="protocol-sections">
-  <div class="grid block-section" id="protocol-intro-sections">
-    <div class="row">
-      <div class="small-12 medium-centered large-9 columns">
-        <div class="row" data-equalizer data-equalize-on="medium">
+  {% if self.children %}
 
-          {% for child in self.children %}
-            <div class="text-center small-12 medium-4 columns">
-              <section class="section-grid-item">
-                <header data-equalizer-watch>
-                  <h3 class="section-title">{{ child.title }}</h3>
-                  <div class="secondary-text">
-                    {{child.intro|richtext}}
-                  </div>
-                </header>
-                <a href="{% pageurl child %}" class="special button">View the {{ child.title }}</a>
-              </section>
+    <section class="protocol-sections">
+      <div class="grid block-section" id="protocol-intro-sections">
+        <div class="row">
+          <div class="small-12 medium-centered large-9 columns">
+            <div class="row" data-equalizer data-equalize-on="medium">
+
+              {% for child in self.children %}
+                <div class="text-center small-12 medium-4 columns">
+                  <section class="section-grid-item">
+                    <header data-equalizer-watch>
+                      <h3 class="section-title">{{ child.title }}</h3>
+                      <div class="secondary-text">
+                        {{child.intro|richtext}}
+                      </div>
+                    </header>
+                    <a href="{% pageurl child %}" class="special button">View the {{ child.title }}</a>
+                  </section>
+                </div>
+              {% endfor %}
+
             </div>
-          {% endfor %}
-
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+  {% endif %}
 
 {% endblock %}
