@@ -77,6 +77,8 @@ body {
 
 .block-section {
   padding: $small-gutter 0 $medium-gutter;
+  background: $white;
+  @extend %inner-panel-shadow-left;
   @include breakpoint(medium up){
     padding: $large-gutter 0;
   }
