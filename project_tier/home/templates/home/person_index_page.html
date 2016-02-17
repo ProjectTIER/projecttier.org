@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main_content %}
-  
+
   <div class="row">
     <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
 
@@ -15,54 +15,35 @@
     </div>
   </div>
 
-  {% if people %}
-    {% regroup people by tags.first as people_by_tag %}
-  
-      {% for tag in people_by_tag %}
+  {% if self.people %}
+    {% include "includes/person_list.html" with group=self.title list=self.people %}
+  {% endif %}
 
-        <section class="block-section alternate">
+  {% if self.main_groups %}
+    {% for main_group in self.main_groups %}
+      {% with main_group.get_children.live as people %}
+        {% include "includes/person_list.html" with group=main_group.title list=people %}
+      {% endwith %}
+    {% endfor %}
+  {% endif %}
 
-          <div class="row">
-            <div class="section-intro small-12 text-center medium-4 medium-text-right large-4 columns">
-              <h2 class="section-title" id="news-section-title">{{tag.grouper}}</h2>
-            </div>
-            <div class="small-12 medium-8 large-8 columns">
-              <ul class="item-list person-list row small-up-1 large-up-2">
-              {% for person in tag.list %}
-
-                <li class="column">
-                  <article class="list-item block-link-parent">
-                    {% if person.image %}
-                    {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-                      {% image person.image width-100 as photo %}
-                      <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
-                    {% else %}
-                      <div class="placeholder img-thumbnail">
-                        <span class="fa-stack fa-2x">
-                          <i class="fa fa-user fa-stack-2x"></i>
-                          <i class="fa fa-question fa-stack-1x"></i>
-                        </span>
-                      </div>
-                    {% endif %}
-                    <h1>{{person.title}}</h1>
-                    <div class="article-meta">
-                      <span class="article-meta-item">
-                        <span class="block-link">
-                          More info
-                          <a href="{% pageurl person %}" class="block-link-target" title="More about {{person.title}}"></a>
-                        </span>
-                      </span>
-                    </div>
-                  </article>
-                </li>
-                
-              {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-      {% endfor %}
+  {% if self.secondary_groups %}
+    <section class="block-section alternate">
+      <div class="row">
+        <div class="section-intro small-12 text-center medium-4 medium-text-right large-4 columns">
+          <h2 class="section-title" id="news-section-title">More People</h2>
+        </div>
+        <div class="small-12 medium-8 large-8 columns">
+          <ul class="section-link-list">
+          {% for group in self.secondary_groups %}
+            <li>
+              <a href="{% pageurl group %}" class="section-link" title="More about {{group}}">{{group}}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
   {% endif %}
 
 {% endblock %}

@@ -397,7 +397,7 @@ class PersonPage(Page):
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
-    parent_page_types = ['Homepage', 'StandardPage']
+    parent_page_types = ['Homepage', 'StandardPage', 'PersonIndexPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -411,24 +411,18 @@ class PersonIndexPage(Page):
     ]
 
     @property
+    def main_groups(self):
+        return self.get_children().live().in_menu()
+
+    @property
+    def secondary_groups(self):
+        return self.get_children().live().not_in_menu().not_type(PersonPage)
+
+    @property
     def people(self):
-        people = PersonPage.objects.live().descendant_of(self)
+        people = PersonPage.objects.live().child_of(self).order_by('title')
 
         return people
-
-    def get_context(self, request):
-        people = self.people
-
-        # people = people.order_by('tags', 'title')
-
-        tag = request.GET.get('tag')
-        if tag:
-            people = people.filter(tags__name=tag)
-
-        context = super(PersonIndexPage, self).get_context(request)
-        context['people'] = people
-
-        return context
 
 class NewsArticle(Page):
     intro = RichTextField(blank=True)
