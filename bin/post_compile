@@ -19,4 +19,4 @@ echo "-----> Compressing static files"
 python $MANAGE_FILE compress --settings project_tier.settings.production 2>&1 | indent
 
 echo "-----> Migrating"
-python $MANAGE_FILE migrate
+python $MANAGE_FILE migrate --noinput

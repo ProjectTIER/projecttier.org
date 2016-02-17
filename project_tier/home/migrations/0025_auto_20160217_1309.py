@@ -25,7 +25,7 @@ def convert_to_richtext(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0023_remove_newsarticle_date'),
+        ('home', '0025_auto_20160217_1121'),
     ]
 
     operations = [
