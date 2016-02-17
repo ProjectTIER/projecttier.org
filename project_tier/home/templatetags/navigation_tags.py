@@ -101,7 +101,7 @@ def standard_index_listing(context, calling_page):
 
 @register.inclusion_tag('tags/sidebar_menu.html', takes_context=True)
 def sidebar_menu(context, calling_page=None):
-    ancestor = calling_page.get_ancestors(True)[2]
+    ancestor = get_ancestor(calling_page)
     ancestor.is_active = is_active(ancestor, calling_page)
     ancestor.has_children = has_menu_children(ancestor)
 
