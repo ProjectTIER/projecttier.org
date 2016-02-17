@@ -21,7 +21,7 @@
 
   {% if self.main_groups %}
     {% for main_group in self.main_groups %}
-      {% with main_group.get_children.live as people %}
+      {% with main_group.get_children.live.specific as people %}
         {% include "includes/person_list.html" with group=main_group.title list=people %}
       {% endwith %}
     {% endfor %}
