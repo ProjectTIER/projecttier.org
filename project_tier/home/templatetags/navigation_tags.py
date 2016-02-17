@@ -24,6 +24,7 @@ def has_children(page):
 def is_active(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
 
+def get_ancestor(page):
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
 # a dropdown class to be applied to a parent
