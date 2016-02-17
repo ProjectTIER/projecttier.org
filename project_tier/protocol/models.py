@@ -29,19 +29,17 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
-from project_tier.home.models import StandardPage
-
 
 # Recursively search for a protocol page's root protocol
 def getProtocolParent(page):
     parent = page.get_ancestors().last()
-    
+
     if not parent:
         return False
-    
+
     if parent.content_type.model != 'protocolhomepage':
         return getProtocolParent(parent)
-    
+
     return parent
 
 
@@ -175,10 +173,9 @@ class ExtendedInfoBlock(StructBlock):
 
 class ProtocolProcessStreamBlock(StreamBlock):
     h2 = CharBlock(icon="title", classname="title", label='Section Title')
-    h3 = CharBlock(icon="title", classname="title")
 
     paragraph = RichTextBlock(icon="pilcrow")
-    reference_page = PageChooserBlock(icon="doc-full")
+    rich_text = RichTextBlock(icon="pilcrow")
     embed = EmbedBlock(icon="media")
     aligned_image = ImageBlock(label="Aligned image", icon="image")
     tip = TipBlock(label="Tip", icon="help")
