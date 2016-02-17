@@ -338,7 +338,6 @@ class PersonPageTag(TaggedItemBase):
     content_object = ParentalKey('PersonPage', related_name='tagged_items')
 
 class PersonPage(Page):
-    tags = ClusterTaggableManager(through=PersonPageTag, blank=True)
     location = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
@@ -367,7 +366,6 @@ class PersonPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('tags'),
         MultiFieldPanel(
             [
                 FieldPanel('location'),
