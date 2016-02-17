@@ -1,0 +1,41 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="block-section alternate">
+
+  <div class="row">
+    <div class="section-intro small-12 text-center medium-4 medium-text-right large-4 columns">
+      <h2 class="section-title" id="news-section-title">{{group}}</h2>
+    </div>
+    <div class="small-12 medium-8 large-8 columns">
+      <ul class="item-list person-list row small-up-1 large-up-2">
+      {% for person in list %}
+
+        <li class="column">
+          <article class="list-item block-link-parent">
+            {% if person.image %}
+              {% image person.image width-100 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+            {% else %}
+              <div class="placeholder img-thumbnail">
+                <span class="fa-stack fa-2x">
+                  <i class="fa fa-user fa-stack-2x"></i>
+                  <i class="fa fa-question fa-stack-1x"></i>
+                </span>
+              </div>
+            {% endif %}
+            <h1>{{person.title}}</h1>
+            <div class="article-meta">
+              <span class="article-meta-item">
+                <span class="block-link">
+                  More info
+                  <a href="{% pageurl person %}" class="block-link-target" title="More about {{person.title}}"></a>
+                </span>
+              </span>
+            </div>
+          </article>
+        </li>
+
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
