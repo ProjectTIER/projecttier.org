@@ -180,6 +180,9 @@ body {
         &:hover {
           color: $red;
         }
+        .subtitle {
+          font-weight: 100;
+        }
       }
       &:last-child {
         margin-bottom: 0;
