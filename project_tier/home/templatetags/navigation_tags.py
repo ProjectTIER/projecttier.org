@@ -120,3 +120,8 @@ def sidebar_menu(context, calling_page=None):
         'ancestor': ancestor,
         'request': context['request'],
     }
+
+@register.filter()
+def in_tree(page):
+    ancestor = get_ancestor(page)
+    return has_menu_children(ancestor)
