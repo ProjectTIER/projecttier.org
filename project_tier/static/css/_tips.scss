@@ -22,20 +22,24 @@
     margin: 0;
     a {
       display: block;
-      padding: .5em .75em;
+      padding: .5em 3.5em .5em .75em;
       box-shadow: none;
       margin: -.5em -.75em;
+      position: relative;
       &::after {
         content: 'TIP';
         font-size: rem-calc(12);
-        float: right;
+        position: absolute;
+        right: 1.75em;
+        top: 0.7em;
         line-height: 2;
-        padding-right: 0.5em;
       }
       &::before {
         content: "\f0eb";
         font-family: 'FontAwesome';
-        float: right;
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
         font-weight: 100;
       }
     }
