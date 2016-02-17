@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -ex
 
 heroku pg:backups capture --app project-tier-production

@@ -25,6 +25,8 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
+from project_tier.protocol.models import ProtocolProcessStreamBlock
+
 # Abstract Classes
 # --------------------------------------------------
 # A couple of abstract classes that contain commonly used fields
@@ -156,12 +158,12 @@ class HomePage(Page):
 # Standard Page
 # --------------------------------------------------
 
-class StandardPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('StandardPage', related_name='related_links')
-
+# class StandardPageRelatedLink(Orderable, RelatedLink):
+#     page = ParentalKey('StandardPage', related_name='related_links')
+#
 class StandardPage(Page):
     intro = RichTextField(blank=True)
-    body = RichTextField(blank=True)
+    body = StreamField(ProtocolProcessStreamBlock())
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -171,8 +173,8 @@ class StandardPage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
-        FieldPanel('body', classname="full"),
-        InlinePanel('related_links', label="Related links"),
+        StreamFieldPanel('body'),
+        # InlinePanel('related_links', label="Related links"),
     ]
 
     # parent_page_types = [HomePage, 'StandardPage']

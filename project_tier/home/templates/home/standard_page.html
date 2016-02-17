@@ -8,7 +8,7 @@
 
       {% if self.body %}
           <div class="body-content">
-              {{ self.body|richtext }}
+          {% include "includes/streamfield.html" with content=self.body %}
           </div>
       {% endif %}
 

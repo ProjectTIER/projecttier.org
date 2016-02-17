@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -x
 
 dropdb project_tier
