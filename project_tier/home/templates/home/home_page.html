@@ -108,6 +108,8 @@
                     {% include "includes/event_list_item.html" %}
                   {% endif %}
                 {% endfor %}
+
+                <a href={% pageurl page %} class="">See all <strong>{{ page.events|length}}</strong> upcoming events</a>
               </ol>
             {% else %}
               <ul class="section-link-list">
