@@ -258,7 +258,7 @@ class EventIndexPage(Page):
 
         events = events.filter(**kwargs)
 
-        events = events.order_by('date_from')
+        events = events.order_by('date_from' if self.show_events == 'gte' else '-date_from')
 
         return events
 
