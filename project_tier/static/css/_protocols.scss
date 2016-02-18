@@ -51,13 +51,97 @@
 /* ==========================================================================
    COMPONENT NAV
    ========================================================================== */
+
+@mixin heirarchy-list(
+  $depth: 0, 
+  $indent: $medium-gutter,
+  $line-color: transparentize( $dark-teal, 0.6)
+  ){
+
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+
+  > li {
+    > a {
+      position: relative;
+      z-index: 1;
+      padding-left: $indent * 1.75 + ( $indent * $depth );
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        left: $indent + ( $indent * $depth );
+        height: 100%;
+        width: 1px;
+        background: $line-color;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        height: 1px;
+        width: $indent/2;
+        left: $indent + ( $indent * $depth );
+        top: 50%;
+        background: $line-color;
+      }
+    }
+    > ol {
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 3;
+        left: ( $indent * $depth ) + $indent/3;
+        height: 100%;
+            width: 1px;
+            background: $line-color;
+      }
+    }
+    &:last-child {
+      > a {
+        &::before {
+          height: 50%;
+        }
+      }
+      > ol {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+
 .component-nav {
+
+  > ol > li > ol {
+    @include heirarchy-list(0);
+    > li > ol {
+      @include heirarchy-list(1);
+      > li > ol {
+        @include heirarchy-list(2);
+        > li > ol {
+          @include heirarchy-list(3);
+          > li > ol {
+            @include heirarchy-list(4);
+            > li > ol {
+              @include heirarchy-list(5);
+            }
+          }
+        }
+      }
+    }
+  }
   ol {
     list-style: none;
     margin: 0;
-
     li {
       a {
+        font-size: rem-calc(17);
         display: block;
         position: relative;
         box-shadow: none;
@@ -70,7 +154,11 @@
           color 0.2s,
           background 0.2s,
           box-shadow 0.2s;
-
+        
+        i {
+          position: relative;
+          z-index: 2;
+        }
         &:hover {
           background: $pale-grey;
           box-shadow:
@@ -95,49 +183,6 @@
           &:hover {
             background-color: $pale-grey;
             color: $red;
-          }
-        }
-      }
-
-      > ol {
-        > li {
-          > a {
-            padding-left: $small-gutter + $medium-gutter;
-          }
-          > ol {
-            > li {
-              > a {
-                padding-left: $small-gutter + ( $medium-gutter * 2 );
-              }
-              > ol {
-                > li {
-                  > a {
-                    padding-left: $small-gutter + ( $medium-gutter * 3 );
-                  }
-                  > ol {
-                    > li {
-                      > a {
-                        padding-left: $small-gutter + ( $medium-gutter * 4 );
-                      }
-                      > ol {
-                        > li {
-                          > a {
-                            padding-left: $small-gutter + ( $medium-gutter * 5 );
-                          }
-                          > ol {
-                            > li {
-                              > a {
-                                padding-left: $small-gutter + ( $medium-gutter * 6 );
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
