@@ -26,10 +26,10 @@
         </div>
       </div>
     </section>
-    
+
     {% if self.news %}
     <section class="block-section" id="news-section">
-        
+
       <div class="row">
         <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
           <h2 class="section-title" id="news-section-title">Latest News</h2>
@@ -91,7 +91,7 @@
     {% for page in self.children %}
 
       {% if page.slug != 'about' %}
-      
+
       <section class="block-section" id="{{page.slug}}-section">
         <div class="row">
           <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
@@ -104,8 +104,12 @@
            {% if page.slug == 'events' %}
               <ol class="events-list item-list">
                 {% for event in page.events %}
-                  {% include "includes/event_list_item.html" %}
+                  {% if forloop.counter < 4 %}
+                    {% include "includes/event_list_item.html" %}
+                  {% endif %}
                 {% endfor %}
+
+                <a href={% pageurl page %} class="">See all <strong>{{ page.events|length}}</strong> upcoming events</a>
               </ol>
             {% else %}
               <ul class="section-link-list">

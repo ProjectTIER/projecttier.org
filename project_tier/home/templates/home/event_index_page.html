@@ -15,29 +15,63 @@
 
   {# Uses method defined in models.py to retrieve all upcoming events #}
   {# See also standard index for creating a listing with a tag #}
-  {% with self.events.all as events %}
+
+  {% if self.show_events == 'gte' %}
+    {% with self.events.all as events %}
+      <div class="row">
+        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+          {% if events %}
+            <ol class="events-index item-list">
+              {% for event in events %}
+                {% include "includes/event_list_item.html" with event=event %}
+              {% endfor %}
+            </ol>
+          {% else %}
+            <p>There are currently no upcoming events.</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endwith %}
+
+    {% with self.past_events as events %}
+      <div class="row">
+        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+          <hr/>
+          <h4>The last {{events|length}} previous events</h4>
+
+          <ol class="events-index item-list">
+          {% for event in events %}
+            {% include "includes/event_list_item.html" with event=event %}
+          {% endfor %}
+          </ol>
+        </div>
+      </div>
+    {% endwith %}
+  {% else %}
+
+    {% regroup self.events.all by date_from|date:"Y" as events_by_year %}
+
     <div class="row">
       <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+        <ol class="events-index item-list">
+          {% for group in events_by_year %}
+            <h4>{{group.grouper}}</h4>
 
-        {% if events %}
-          <ol class="events-index item-list">
-            {% for event in events %}
+            {% for event in group.list %}
               {% include "includes/event_list_item.html" with event=event %}
             {% endfor %}
-          </ol>
-        {% else %}
-          <p>There are currently no upcoming events.</p>
-        {% endif %}
-
+          {% endfor %}
+        </ol>
       </div>
     </div>
-  {% endwith %}
+
+  {% endif %}
 
   {% if self.related_links.all %}
   <section class="related-links-list">
     <div class="row">
       <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-        <hr/>
         <ul>
           {% for related_link in self.related_links.all %}
             <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>
