@@ -7,10 +7,6 @@
   | {{ self.protocol_parent }}
 {% endblock %}
 
-{% block header_right %}
-  <a href="#" class="special button float-right">Download a Sample Project</a>
-{% endblock %}
-
 
 {% block main_panel %}
 
@@ -18,14 +14,17 @@
 
   <div class="row panel-layout expanded">
 
-    <div class="small-12 medium-7 medium-push-5 columns sidebar top">
-      <p><i class="fa fa-arrow-left"></i> Click on each component to learn more about its purpose.</p>
-    </div>
+    <div class="small-12 columns main-panel bottom">
 
-    <div class="small-12 medium-5 medium-pull-7 columns main-panel bottom">
-      <ol class="item-list">
+      <div class="component-index">
+      
+        <p><i class="fa fa-arrow-down"></i> Click on each component to learn more about its purpose.</p>
+        
+        <hr>
+        
         {% component_menu calling_page=self%}
-      </ol>
+
+      </div>
 
     </div>
 
