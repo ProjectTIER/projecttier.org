@@ -54,7 +54,7 @@
 
 @mixin heirarchy-list(
   $depth: 0, 
-  $indent: $medium-gutter*2,
+  $indent: $medium-gutter,
   $font-size: 1rem,
   $line-color: transparentize( $dark-teal, 0.6)
   ){
@@ -68,7 +68,7 @@
     > a {
       position: relative;
       z-index: 1;
-      padding-left: $indent/2 + ( $indent * $depth );
+      padding-left: $indent*0.75 + ( $indent * $depth );
       font-size: $font-size;
       display: block;
       position: relative;
@@ -89,7 +89,7 @@
           position: absolute;
           z-index: 2;
           height: 1px;
-          width: $indent/3;
+          width: $indent/2;
           left: ( $indent * $depth );
           top: 50%;
           background: $line-color;
