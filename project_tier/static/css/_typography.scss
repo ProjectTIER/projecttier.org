@@ -17,10 +17,11 @@ a, %hyperlink {
    PARAGRAPHS
    ========================================================================== */
 p, %paragraph {
-  font-size: 1rem;
-  line-height: 1.4rem;
+  font-size: rem-calc(17);
+  line-height: rem-calc(28);
   margin-bottom: 1.4rem;
   color: $black;
+  max-width: 45em;
 
   &.secondary {
     @extend %secondary-text;
