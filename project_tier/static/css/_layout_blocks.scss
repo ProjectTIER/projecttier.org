@@ -447,7 +447,37 @@ body {
    STREAMFIELD SECTIONS
    ========================================================================== */
 .stream-field {
-  h2 {
-    @extend %medium-heading;
+  h2 { @extend %medium-heading; }
+  h3 { @extend %small-heading; }
+}
+
+
+
+
+/* ==========================================================================
+   SLIDE PANEL TOGGLER
+   ========================================================================== */
+
+.slide-panel {
+  transition: width 0.3s;
+  &.closed {
+    width: 100% !important;
+    transition: width 0.3s ease 0.3s;
+  }
+}
+.slide-drawer {
+  transition: width 0.3s, padding 0.3s;
+  > * {
+    transition: opacity 0.3s ease 0.3s;
+  }
+  &.closed {
+    width: 0% !important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    transition: width 0.3s ease 0.3s, padding 0.3s ease 0.3s;
+    > * {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
   }
 }

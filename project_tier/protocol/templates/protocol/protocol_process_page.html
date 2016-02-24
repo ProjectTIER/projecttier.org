@@ -8,24 +8,26 @@
 
 {% block main_panel %}
   <div class="row panel-layout protocol-process-page expanded">
-    <div class="small-12 medium-8 columns main-panel top">
-
+    <div class="small-12 medium-8 columns main-panel slide-panel closed top" data-slide-panel="component-nav-toggler">
+      
       {% if self.body %}
         <div class="body-content">
+        <!-- <div class="body-content slide-toggle" data-slide-id="component-nav-toggler"> -->
           {% include "includes/streamfield.html" with content=self.body %}
-        </div>
-      {% endif %}
 
-      {% if self.next_page %}
-        <div class="button-row text-right">
-          <span class="button-label">Continue</span>
-          <a class="special button" href="{% pageurl self.next_page %}">{{ self.next_page.title }}</a>
+          {% if self.next_page %}
+            <div class="button-row text-right">
+              <span class="button-label">Continue</span>
+              <a class="special button" href="{% pageurl self.next_page %}">{{ self.next_page.title }}</a>
+            </div>
+          {% endif %}
+      
         </div>
       {% endif %}
 
     </div>
-    <div class="small-12 medium-4 columns sidebar bottom">
+    <!-- <div class="small-12 medium-4 columns sidebar slide-drawer closed bottom" data-slide-drawer="component-nav-toggler">
       {% component_menu calling_page=self%}
-    </div>
+    </div> -->
   </div>
 {% endblock %}

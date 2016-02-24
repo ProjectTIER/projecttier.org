@@ -28,6 +28,19 @@ $(window).on('scroll', Foundation.util.throttle(function(e){
           components.removeClass('active');
         });
     });
+
+
+    $('.slide-toggle').each(function(){
+      var id = $(this).data('slide-id');
+      var panel = $('[data-slide-panel="'+id+'"]');
+      var drawer = $('[data-slide-drawer="'+id+'"]');
+
+      $(this).on('click', function(e){
+        e.preventDefault();
+        panel.toggleClass('closed');
+        drawer.toggleClass('closed');
+      });
+    });
   });
 
 })(jQuery);

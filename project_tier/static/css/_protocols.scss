@@ -190,3 +190,72 @@
     }
   }
 }
+
+
+/* ==========================================================================
+<<<<<<< HEAD
+   COMPONENTS INDEX PAGE
+   ========================================================================== */
+
+.component-index {
+  padding-bottom: $large-gutter;
+
+  .component-nav {
+
+    > ol {
+      @include heirarchy-list(0, $large-gutter, rem-calc(18));
+      > li > ol {
+        @include heirarchy-list(1, $large-gutter, rem-calc(18));
+        > li > ol {
+          @include heirarchy-list(2, $large-gutter, rem-calc(18));
+          > li > ol {
+            @include heirarchy-list(3, $large-gutter, rem-calc(18));
+            > li > ol {
+              @include heirarchy-list(4, $large-gutter, rem-calc(18));
+              > li > ol {
+                @include heirarchy-list(5, $large-gutter, rem-calc(18));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* ==========================================================================
+   COMPONENT PAGE
+   ========================================================================== */
+.sidebar {
+
+  .component-nav {
+
+    ol {
+      li {
+        a {
+          font-weight: 400;
+        }
+      }
+    }
+
+    > ol {
+      @include heirarchy-list(0, $small-gutter, rem-calc(15));
+      > li > ol {
+        @include heirarchy-list(1, $small-gutter, rem-calc(15));
+        > li > ol {
+          @include heirarchy-list(2, $small-gutter, rem-calc(15));
+          > li > ol {
+            @include heirarchy-list(3, $small-gutter, rem-calc(15));
+            > li > ol {
+              @include heirarchy-list(4, $small-gutter, rem-calc(15));
+              > li > ol {
+                @include heirarchy-list(5, $small-gutter, rem-calc(15));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
