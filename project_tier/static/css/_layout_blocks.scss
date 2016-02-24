@@ -30,7 +30,7 @@ body {
       @extend %display-heading;
       text-transform: none;
       line-height: 1.5;
-
+      
       &:last-child {
         margin-bottom: 0;
       }
@@ -53,7 +53,6 @@ body {
   padding: $small-gutter 0;
   @include breakpoint(medium up){
     padding: $medium-gutter 0;
-    box-shadow: inset 7px 0px 7px -5px rgba(0,0,0,0.2);
   }
 }
 
@@ -70,15 +69,12 @@ body {
 
 
 
-
 /* ==========================================================================
-   MAIN PANEL
+   BLOCK SECTIONS
    ========================================================================== */
 
 .block-section {
   padding: $small-gutter 0 $medium-gutter;
-  background: $white;
-  @extend %inner-panel-shadow-left;
   @include breakpoint(medium up){
     padding: $large-gutter 0;
   }
@@ -92,7 +88,7 @@ body {
       align-items: center;
     }
   }
-
+  
   /* Section Intro
      ========================================================================== */
   .section-intro {
@@ -124,7 +120,7 @@ body {
       font-size: 0.8em;
     }
   }
-
+  
   /* Section Desctiption
      ========================================================================== */
   .section-description {
@@ -133,7 +129,7 @@ body {
       margin-bottom: $small-gutter;
     }
   }
-
+  
   /* Section Button
      ========================================================================== */
   .section-button {
@@ -143,7 +139,111 @@ body {
       margin-bottom: 0;
     }
   }
+  
 
+
+  /* EVEN SECTIONS
+     ========================================================================== */
+  &:nth-child(even){
+    background: $pale-grey;
+  }
+
+  /* Link List
+     ========================================================================== */
+  .section-link-list {
+    list-style: none;
+    margin: 0;
+    li {
+      margin-bottom: $small-gutter;
+      a {
+        @extend %medium-heading;
+        color: $dark-teal;
+        &:hover {
+          color: $red;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
+
+
+
+
+/* ==========================================================================
+   MAIN PANEL
+   ========================================================================== */
+
+.block-section {
+  padding: $small-gutter 0 $medium-gutter;
+  @include breakpoint(medium up){
+    padding: $large-gutter 0;
+  }
+  @include breakpoint(large up){
+    padding: $medium-gutter*2 0;
+  }
+
+  .row {
+    @include breakpoint(medium up){
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* Section Intro
+     ========================================================================== */
+  .section-intro {
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 50%;
+      margin: 0 auto $small-gutter;
+      background: $transparent-black;
+    }
+    @include breakpoint(medium up){
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  /* Section Title
+     ========================================================================== */
+  .section-title {
+    @extend %display-heading;
+    text-transform: uppercase;
+    margin: 0 0 $small-gutter;
+    .subtitle {
+      display: block;
+      text-transform: none;
+      color: $grey;
+      font-size: 0.8em;
+    }
+  }
+  
+  /* Section Desctiption
+     ========================================================================== */
+  .section-description {
+    @extend %secondary-text;
+    p {
+      margin-bottom: $small-gutter;
+    }
+  }
+  
+  /* Section Button
+     ========================================================================== */
+  .section-button {
+    @extend .monochrome;
+    margin-bottom: $small-gutter;
+    @include breakpoint(medium up){
+      margin-bottom: 0;
+    }
+  }
+  
 
 
   /* EVEN SECTIONS / ALT SECTIONS
@@ -179,9 +279,6 @@ body {
         color: $dark-teal;
         &:hover {
           color: $red;
-        }
-        .subtitle {
-          font-weight: 100;
         }
       }
       &:last-child {
@@ -220,7 +317,7 @@ body {
         @extend %medium-heading;
         margin-bottom: $small-gutter/2;
       }
-
+      
       p {
         margin: 0;
         padding-bottom: $small-gutter;
@@ -246,7 +343,7 @@ body {
     display: flex;
     align-items: stretch;
   }
-
+  
 
   /* Main Panel
      ========================================================================== */
@@ -255,49 +352,30 @@ body {
     padding: $small-gutter;
     position: relative;
     z-index: 2;
-    
-      
-    // Top aligned on small screen
-    &.bottom {
-      box-shadow:
-        0px 5px 12px 5px rgba(0,0,0,0.2),
-        inset 10px 0px 8px -8px rgba(0,0,0,0.2),
-        inset 0px -23px 12px -20px rgba(0,0,0,0.31);
-    }
-
-    &.top {
-      box-shadow:
-        0px 4px 5px 0px rgba(0,0,0,0.2);
-      @include breakpoint(medium up){
-        box-shadow:
-          0px 5px 12px 5px rgba(0,0,0,0.2),
-          inset 10px 0px 8px -8px rgba(0,0,0,0.2),
-          inset 0px -23px 12px -20px rgba(0,0,0,0.31);
-      }
-    }
+    box-shadow:
+      0px 5px 12px 5px rgba(0,0,0,0.2),
+      inset 10px 0px 8px -8px rgba(0,0,0,0.2),
+      inset 0px -23px 12px -20px rgba(0,0,0,0.31);
   }
-
+  
 
   /* Sidebar Panel
      ========================================================================== */
 
   .sidebar {
-    background-color: $pale-grey;
+    background-color: $off-black;
     padding: $small-gutter;
     font-size: rem-calc(14);
-    //color: $white;
+    color: $white;
+    box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
     @include breakpoint(medium up){
       margin-top: rem-calc(3);
-      box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
-    }
-    * {
-      //color: $white;
     }
 
     a {
-      //color: $white;
+      color: $white;
       &:hover {
-        //color: $teal;
+        color: $teal;
       }
     }
 
@@ -316,32 +394,27 @@ body {
 
     h2 {
       @extend %medium-heading;
-      color: $off-black;
+      color: $white;
     }
 
     .intro {
-      @extend %small-heading;
-      color: $off-black;
+      @extend %display-heading;
+      color: $white;
+
       text-transform: none;
-      margin-bottom: 1rem;
-      * {
-        font-size: inherit;
-        color: $off-black;
-      }
     }
 
     p {
-      margin-bottom: 1rem;
-      &:last-child {
-        margin-bottom: 0;
-      }
+      margin-bottom: 1em;
     }
 
-
-    // Top aligned on small screen
-    &.top {
-      @include breakpoint(medium up) {
-        box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
+    .component-nav {
+      li {
+        a {
+          &:hover {
+            background-color: $black;
+          }
+        }
       }
     }
   }
