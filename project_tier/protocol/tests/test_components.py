@@ -62,4 +62,3 @@ class TestComponentPage(TestCase):
         self.assertEqual(response.context['self'], readme_page)
 
         self.assertContains(response, '<h1 data-test-id="component-title-ReadMe">')
-        self.assertContains(response, '<div class="page-intro">')
