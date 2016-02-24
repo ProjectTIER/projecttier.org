@@ -84,7 +84,8 @@ AWS_STORAGE_BUCKET_NAME = env['BUCKETEER_BUCKET_NAME']
 # Database
 
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {'default': dj_database_url.config(conn_max_age=1000)}
+    DATABASES['default'] = dj_database_url.config()
+    DATABASES['default']['CONN_MAX_AGE'] = 500
 
 else:
     DATABASES = {
