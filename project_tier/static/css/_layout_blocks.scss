@@ -386,19 +386,25 @@ body {
    ========================================================================== */
 
 .slide-panel {
-  width: 100% !important;
-  &.open {
-    width: inherit !important;
+  transition: width 0.3s;
+  &.closed {
+    width: 100% !important;
+    transition: width 0.3s ease 0.3s;
   }
 }
 .slide-drawer {
-  width: 0% !important;
-  padding-left: 0!important;
-  padding-right: 0!important;
-
-  &.open {
-    width: inherit !important;
-    padding-left: inherit!important;
-    padding-right: inherit!important;
+  transition: width 0.3s, padding 0.3s;
+  > * {
+    transition: opacity 0.3s ease 0.3s;
+  }
+  &.closed {
+    width: 0% !important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    transition: width 0.3s ease 0.3s, padding 0.3s ease 0.3s;
+    > * {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
   }
 }
