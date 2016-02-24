@@ -31,7 +31,7 @@ $(window).on('scroll', Foundation.util.throttle(function(e){
 
 
     $('.slide-toggle').each(function(){
-      var id = $(this).attr('id');
+      var id = $(this).data('slide-id');
       var panel = $('[data-slide-panel="'+id+'"]');
       var drawer = $('[data-slide-drawer="'+id+'"]');
 
