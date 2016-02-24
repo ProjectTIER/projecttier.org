@@ -8,11 +8,11 @@
 
 {% block main_panel %}
   <div class="row panel-layout protocol-process-page expanded">
-    <div class="small-12 medium-8 columns main-panel slide-panel top" data-slide-panel="component-nav-toggler">
+    <div class="small-12 medium-8 columns main-panel slide-panel closed top" data-slide-panel="component-nav-toggler">
       
       {% if self.body %}
         <div class="body-content">
-        <a href="" class="slide-toggle" id="component-nav-toggler">Slide</a>
+        <!-- <div class="body-content slide-toggle" data-slide-id="component-nav-toggler"> -->
           {% include "includes/streamfield.html" with content=self.body %}
         </div>
       {% endif %}
@@ -25,7 +25,7 @@
       {% endif %}
 
     </div>
-    <div class="small-12 medium-4 columns sidebar slide-drawer bottom" data-slide-drawer="component-nav-toggler">
+    <div class="small-12 medium-4 columns sidebar slide-drawer closed bottom" data-slide-drawer="component-nav-toggler">
       {% component_menu calling_page=self%}
     </div>
   </div>
