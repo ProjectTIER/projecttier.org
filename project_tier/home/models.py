@@ -205,10 +205,12 @@ class TestPage(Page):
 class LandingPage(Page):
     parent_page_types = ['Homepage', 'StandardPage']
     intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
     ]
 
     @property
