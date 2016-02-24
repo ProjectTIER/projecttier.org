@@ -26,9 +26,9 @@ body {
   }
 
   .page-intro {
-    @extend %display-heading;
-    text-transform: none;
     p {
+      @extend %display-heading;
+      text-transform: none;
       line-height: 1.5;
       
       &:last-child {
