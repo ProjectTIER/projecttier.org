@@ -14,13 +14,14 @@
         <div class="body-content">
         <!-- <div class="body-content slide-toggle" data-slide-id="component-nav-toggler"> -->
           {% include "includes/streamfield.html" with content=self.body %}
-        </div>
-      {% endif %}
 
-      {% if self.next_page %}
-        <div class="button-row text-right">
-          <span class="button-label">Continue</span>
-          <a class="special button" href="{% pageurl self.next_page %}">{{ self.next_page.title }}</a>
+          {% if self.next_page %}
+            <div class="button-row text-right">
+              <span class="button-label">Continue</span>
+              <a class="special button" href="{% pageurl self.next_page %}">{{ self.next_page.title }}</a>
+            </div>
+          {% endif %}
+      
         </div>
       {% endif %}
 
