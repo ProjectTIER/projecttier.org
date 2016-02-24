@@ -90,7 +90,7 @@
 
     {% for page in self.children %}
 
-      {% if page.slug != 'about' %}
+      {% if page.slug != 'about' and page.slug != 'news' %}
 
       <section class="block-section" id="{{page.slug}}-section">
         <div class="row">
