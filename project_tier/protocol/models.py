@@ -70,7 +70,7 @@ class ProtocolHomePage(Page):
         return children
 
     class Meta:
-        verbose_name = "Protocol Langing Page"
+        verbose_name = "Protocol Landing Page"
 
 
 # Components
