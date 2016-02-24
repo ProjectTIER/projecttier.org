@@ -377,3 +377,28 @@ body {
   h2 { @extend %medium-heading; }
   h3 { @extend %small-heading; }
 }
+
+
+
+
+/* ==========================================================================
+   SLIDE PANEL TOGGLER
+   ========================================================================== */
+
+.slide-panel {
+  width: 100% !important;
+  &.open {
+    width: inherit !important;
+  }
+}
+.slide-drawer {
+  width: 0% !important;
+  padding-left: 0!important;
+  padding-right: 0!important;
+
+  &.open {
+    width: inherit !important;
+    padding-left: inherit!important;
+    padding-right: inherit!important;
+  }
+}

@@ -17,10 +17,11 @@ a, %hyperlink {
    PARAGRAPHS
    ========================================================================== */
 p, %paragraph {
-  font-size: 1rem;
-  line-height: 1.4rem;
-  margin-bottom: 1.4rem;
+  font-size: rem-calc(17);
+  line-height: rem-calc(28);
+  margin-bottom: $small-gutter;
   color: $black;
+  max-width: 45em;
 
   &.secondary {
     @extend %secondary-text;
@@ -61,7 +62,7 @@ p, %paragraph {
 %display-heading {
   font-size: rem-calc(16);
   color: $off-black;
-  font-weight: 100;
+  font-weight: 900;
   text-transform: uppercase;
   line-height: 1.2;
   @include breakpoint(medium up){
@@ -77,7 +78,10 @@ p, %paragraph {
    RICH TEXT EDITOR CONTEN
    ========================================================================== */
 
-.rich-text {
+.body-content {
+  max-width: rem-calc(800);
+}
+.rich-text, .stream-field {
 
   h2 {
     @extend %large-heading;
@@ -93,6 +97,10 @@ p, %paragraph {
     font-weight: 900;
     margin-bottom: 0.5em;
     color: $off-black;
+  }
+  
+  h2,h3,h4,h5 {
+    margin-bottom: $small-gutter;
   }
 
   ul, ol {
