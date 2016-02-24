@@ -62,7 +62,7 @@ p, %paragraph {
 %display-heading {
   font-size: rem-calc(16);
   color: $off-black;
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
   line-height: 1.2;
   @include breakpoint(medium up){
