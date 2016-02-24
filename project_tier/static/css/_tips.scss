@@ -5,6 +5,7 @@
   border-radius: rem-calc(3);
   transition: background-color 0.2s;
   margin-bottom: $small-gutter * 1.25;
+  clear: both;
 
   .tip-content { 
     //display: none;
