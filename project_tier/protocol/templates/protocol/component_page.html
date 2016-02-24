@@ -9,7 +9,7 @@
 
 {% block protocol_page_header %}
   {% include "includes/protocol_menu_toggle.html" %}
-  <h1>
+  <h1 data-test-id="component-title-{{self.title}}">
     <i class="fa fa-fw {% component_icon self.type %}"></i>
     {{self.title}}
   </h1>

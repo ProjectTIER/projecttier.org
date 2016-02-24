@@ -61,5 +61,5 @@ class TestComponentPage(TestCase):
         readme_page = ComponentPage.objects.get(url_path='/home/tier/components/readme/')
         self.assertEqual(response.context['self'], readme_page)
 
-        self.assertContains(response, '<h2 data-test-id="component-title-ReadMe">')
+        self.assertContains(response, '<h1 data-test-id="component-title-ReadMe">')
         self.assertContains(response, '<div class="page-intro">')
