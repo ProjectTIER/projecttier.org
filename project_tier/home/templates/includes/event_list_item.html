@@ -4,19 +4,13 @@
 <li>
   <article class="list-item event block-link-parent">
     <header>
-      <h1>{{ event.title }}</h1>
+      <h1><a href="{% pageurl event %}" class="block-link-target" title="More Details">{{ event.title }}</a></h1>
       <div class="article-meta">
         <span class="article-meta-item">
           {{event.location}}
         </span>
         <span class="article-meta-item">
           {{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}
-        </span>
-        <span class="article-meta-item">
-          <span class="block-link">
-            More Details
-            <a href="{% pageurl event %}" class="block-link-target" title="More Details"></a>
-          </span>
         </span>
       </div>
     </header>
