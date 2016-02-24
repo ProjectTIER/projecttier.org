@@ -1,10 +1,39 @@
 {% extends "standard_layout.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags protocol_tags navigation_tags %}
 
 {% block title_suffix %}
     | An Introduction
 {% endblock %}
+
+
+{% block page_title %}
+
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+
+      <div class="off-canvas-content" data-off-canvas-content>
+        <article class="protocol-layout">
+
+        <header class="page-header">
+          <div class="row">
+
+              <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+
+              {% breadcrumbs %}
+
+              <h1>{{self.title}}</h1>
+
+              {% include "includes/intro.html" with intro=self.intro only %}
+            </div>
+          </div>
+        </header>
+
+{% endblock %}
+
+
 
 {% block main_content %}
 
