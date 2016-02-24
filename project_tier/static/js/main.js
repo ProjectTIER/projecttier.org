@@ -37,8 +37,8 @@ $(window).on('scroll', Foundation.util.throttle(function(e){
 
       $(this).on('click', function(e){
         e.preventDefault();
-        panel.toggleClass('open');
-        drawer.toggleClass('open');
+        panel.toggleClass('closed');
+        drawer.toggleClass('closed');
       });
     });
   });
