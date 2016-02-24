@@ -51,6 +51,7 @@ if 'CACHE_PURGE_URL' in env:
     }
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # Compress static files offline and minify CSS
 # http://django-compressor.readthedocs.org/en/latest/settings/#django.conf.settings.COMPRESS_OFFLINE
 COMPRESS_OFFLINE = True
@@ -59,6 +60,8 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
+LIBSASS_OUTPUT_STYLE = 'compressed'
+LIBSASS_SOURCEMAPS = true
 
 if 'STATIC_URL' in env:
     STATIC_URL = env['STATIC_URL']
