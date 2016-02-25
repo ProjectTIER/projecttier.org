@@ -11,9 +11,23 @@ $(window).on('scroll', Foundation.util.throttle(function(e){
 }, 300));
 
 
+$(window).on('resize', Foundation.util.throttle(function(e){
+  window.resizeProtocolSidebar();
+}, 300));
+
+
+window.resizeProtocolSidebar = function(){
+  var height = $('.sidebar-nav').outerHeight();
+  console.log(height);
+  $('.protocol-layout').css('min-height',height + 'px');
+}
+
+
 (function($){
 
   $(document).ready(function(){
+
+    window.resizeProtocolSidebar();
 
     /*
     * Component links inside rich text will automatically hightlight any matching component nav items 
@@ -41,6 +55,9 @@ $(window).on('scroll', Foundation.util.throttle(function(e){
         drawer.toggleClass('closed');
       });
     });
+
+
+
   });
 
 })(jQuery);
