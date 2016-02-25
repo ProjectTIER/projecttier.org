@@ -258,9 +258,10 @@ body {
     position: relative;
     z-index: 2;
     box-shadow:
-      //0px 5px 12px 5px rgba(0,0,0,0.2),
-      inset 10px 0px 8px -8px rgba(0,0,0,0.2),
-      //inset 0px -23px 12px -20px rgba(0,0,0,0.31);
+      inset 10px 0px 8px -8px rgba(0,0,0,0.2);
+    @include breakpoint(medium up){
+      margin-top: rem-calc(-3);
+    }
   }
   
 
@@ -268,19 +269,21 @@ body {
      ========================================================================== */
 
   .sidebar {
-    background-color: $off-black;
+    background-color: $pale-grey;
     padding: $small-gutter;
     font-size: rem-calc(14);
-    color: $white;
-    box-shadow: inset 0px -31px 12px -20px rgba(0,0,0,0.31);
+    //color: $black;
+    box-shadow: 
+      inset 0px -31px 12px -20px rgba(0,0,0,0.31),
+      inset 10px 0px 8px -8px rgba(0,0,0,0.2);
     @include breakpoint(medium up){
-      margin-top: rem-calc(3);
+      //margin-top: rem-calc(3);
     }
 
     a {
-      color: $white;
+      //color: $white;
       &:hover {
-        color: $teal;
+        //color: $teal;
       }
     }
 
@@ -317,7 +320,7 @@ body {
       li {
         a {
           &:hover {
-            background-color: $black;
+            //background-color: $black;
           }
         }
       }
