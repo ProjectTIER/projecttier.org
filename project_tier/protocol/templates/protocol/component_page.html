@@ -27,11 +27,11 @@
 
     <div class="small-12 medium-8 medium-pull-4 columns main-panel bottom">
       
-      <div class="description">
+      {% if self.body %}
         <div class="body-content">
-        {{ self.description|richtext }}
+          {% include "includes/streamfield.html" with content=self.body %}
         </div>
-      </div>
+      {% endif %}
     </div>
 
  </div>

@@ -72,76 +72,6 @@ class ProtocolHomePage(Page):
     class Meta:
         verbose_name = "Protocol Landing Page"
 
-
-# Components
-# --------------------------------------------------
-class ComponentIndexPage(Page):
-    intro = RichTextField(blank=True)
-
-    parent_page_types = ['ProtocolHomePage']
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-    ]
-
-    @property
-    def components(self):
-        components = ComponentPage.objects.live().descendant_of(self)
-
-        return components
-
-    @property
-    def protocol_parent(self):
-        return getProtocolParent(self)
-
-
-class ComponentPage(Page):
-    FOLDER = 'folder'
-    FILE = 'file'
-    DATA = 'data'
-    MULTIPLE_FILES = 'multiple'
-    COMPONENT_TYPE_CHOICES = (
-        (FOLDER, "Folder"),
-        (FILE, "Text"),
-        (DATA, "Data"),
-        (MULTIPLE_FILES, "Multiple")
-    )
-
-    intro = RichTextField(blank=True)
-    description = RichTextField(blank=True)
-    type = models.CharField(max_length=255,
-                            choices=COMPONENT_TYPE_CHOICES,
-                            default=FOLDER)
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('description', classname="full"),
-        FieldPanel('type', widget=forms.RadioSelect),
-    ]
-
-    search_fields = [
-        index.SearchField('title', partial_match=True),
-        index.SearchField('intro', partial_match=True),
-        index.SearchField('description', partial_match=True),
-    ]
-
-    parent_page_types = ['ComponentIndexPage', 'ComponentPage']
-
-    @property
-    def component_index(self):
-        component_index = self.get_ancestors().type(ComponentIndexPage).last()
-        return ComponentIndexPage.objects.get(pk=component_index.id)
-
-    @property
-    def protocol_parent(self):
-        return getProtocolParent(self)
-
-    class Meta:
-        verbose_name = "Protocol Component"
-
-
 # Process Pages
 # --------------------------------------------------
 
@@ -214,3 +144,71 @@ class ProtocolProcessPage(Page):
 
     class Meta:
         verbose_name = "Protocol Process Page"
+
+# Components
+# --------------------------------------------------
+class ComponentIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    parent_page_types = ['ProtocolHomePage']
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+    ]
+
+    @property
+    def components(self):
+        components = ComponentPage.objects.live().descendant_of(self)
+
+        return components
+
+    @property
+    def protocol_parent(self):
+        return getProtocolParent(self)
+
+
+class ComponentPage(Page):
+    FOLDER = 'folder'
+    FILE = 'file'
+    DATA = 'data'
+    MULTIPLE_FILES = 'multiple'
+    COMPONENT_TYPE_CHOICES = (
+        (FOLDER, "Folder"),
+        (FILE, "Text"),
+        (DATA, "Data"),
+        (MULTIPLE_FILES, "Multiple")
+    )
+
+    intro = RichTextField(blank=True)
+    body = StreamField(ProtocolProcessStreamBlock())
+    type = models.CharField(max_length=255,
+                            choices=COMPONENT_TYPE_CHOICES,
+                            default=FOLDER)
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        FieldPanel('type', widget=forms.RadioSelect),
+        StreamFieldPanel('body'),
+    ]
+
+    search_fields = [
+        index.SearchField('title', partial_match=True),
+        index.SearchField('intro', partial_match=True),
+        index.SearchField('body', partial_match=True),
+    ]
+
+    parent_page_types = ['ComponentIndexPage', 'ComponentPage', 'home.StandardPage']
+
+    @property
+    def component_index(self):
+        component_index = self.get_ancestors().type(ComponentIndexPage).last()
+        return ComponentIndexPage.objects.get(pk=component_index.id)
+
+    @property
+    def protocol_parent(self):
+        return getProtocolParent(self)
+
+    class Meta:
+        verbose_name = "Protocol Component"
