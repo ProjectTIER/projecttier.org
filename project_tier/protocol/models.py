@@ -149,12 +149,14 @@ class ProtocolProcessPage(Page):
 # --------------------------------------------------
 class ComponentIndexPage(Page):
     intro = RichTextField(blank=True)
+    body = RichTextField(blank=True)
 
     parent_page_types = ['ProtocolHomePage']
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('body', classname="full"),
     ]
 
     @property

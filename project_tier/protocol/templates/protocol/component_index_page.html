@@ -16,17 +16,9 @@
 
     <div class="small-12 columns main-panel bottom">
 
-      <div class="component-index row">
-
-        <div class="small-12 columns">
-          
-          <p><i class="fa fa-arrow-down"></i> Click on each component to learn more about its purpose.</p>
-          <hr>
-          {% component_menu calling_page=self%}
-          
-        </div>
-
-      </div>
+          {% if self.body %}
+            {{ self.body|richtext }}
+          {% endif %}
 
     </div>
 
