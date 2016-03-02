@@ -39,23 +39,25 @@ p, %paragraph {
    HEADING STYLES
    ========================================================================== */
 %large-heading, .large-heading {
-  font-size: rem-calc(25);
+  font-size: rem-calc(36);
   color: $off-black;
+  margin: $medium-gutter 0 $small-gutter/2;
   @include breakpoint(medium up){
-    font-size: rem-calc(29);
+    font-size: rem-calc(42);
   }
   @include breakpoint(large up){
-    font-size: rem-calc(33);
+    font-size: rem-calc(48);
   }
 }
 %medium-heading, .medium-heading {
-  font-size: rem-calc(22);
+  font-size: rem-calc(26);
   font-weight: 900;
   color: $off-black;
   text-transform: none;
+  margin: $medium-gutter 0 $small-gutter/2;
 }
 %small-heading, .small-heading {
-  font-size: rem-calc(16);
+  font-size: rem-calc(22);
   font-weight: 900;
   color: $off-black;
 }
@@ -99,14 +101,16 @@ p, %paragraph {
     color: $off-black;
   }
   
-  h2,h3,h4,h5 {
-    margin-bottom: $small-gutter;
-  }
+  // h2,h3,h4,h5 {
+  //   margin-bottom: $small-gutter;
+  // }
 
   ul, ol {
     @extend %paragraph;
+    padding-left: 1.5em;
     li {
       margin-bottom: 1em;
+      padding-left: .4em;
       &:last-child {
         margin-bottom: 0;
       }
