@@ -182,23 +182,6 @@ class StandardPage(Page):
     class Meta:
         verbose_name = "Page"
 
-class TestPage(Page):
-    template_path = models.CharField(max_length=255, blank=True, help_text='Use any filename in home/template/home/')
-
-    def get_template(self, request):
-        if self.template_path:
-            return "home/%s" % (self.template_path)
-
-        return 'home/standard_page.html'
-
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('template_path', classname="full"),
-    ]
-
-    class Meta:
-        verbose_name = "Test Page"
-
 
 # Landing Page
 # --------------------------------------------------
@@ -433,11 +416,16 @@ class PersonIndexPage(Page):
 
         return people
 
+    class Meta:
+        verbose_name = 'Person List Page'
+
 class NewsArticle(Page):
     intro = RichTextField(blank=True)
     body = RichTextField(blank=True)
     source = models.CharField('Source Name', max_length=255, blank=True)
     source_url = models.URLField('Source URL', max_length=255, blank=True)
+    
+    parent_page_types = ['StandardPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
