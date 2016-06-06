@@ -4,7 +4,7 @@
   background-attachment: fixed;
   background-color: $white;
   margin-bottom: -($large-gutter);
-  box-shadow: 
+  box-shadow:
       inset 0px 10px 22px -13px rgba(0,0,0,0.5);
 }
 
@@ -16,9 +16,8 @@
 .protocol-layout {
   box-shadow: inset 10px 0px 8px -8px rgba(0,0,0,0.2);
   .page-header {
-    background: none;
-    background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
-    box-shadow: inset 24px 24px 12px -20px rgba(0,0,0,0.3);
+    background-color: #EAEAEA;
+    background-image: url('../img/bg-image.svg');
   }
 }
 
@@ -53,7 +52,7 @@
    ========================================================================== */
 
 @mixin heirarchy-list(
-  $depth: 0, 
+  $depth: 0,
   $indent: $medium-gutter,
   $font-size: 1rem,
   $line-color: transparentize( $dark-teal, 0.6)
@@ -155,7 +154,7 @@
           color 0.2s,
           background 0.2s,
           box-shadow 0.2s;
-        
+
         i {
           position: relative;
           z-index: 2;
