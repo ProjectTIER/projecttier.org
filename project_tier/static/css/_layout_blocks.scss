@@ -14,7 +14,8 @@ body {
   background: $dark-red;
 }
 .page-header {
-  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
+  background-color: #EAEAEA;
+  background-image: url('../img/bg-image.svg');
   padding: $small-gutter/2 0;
   box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   @include breakpoint(medium up){
@@ -22,18 +23,6 @@ body {
   }
   h1 {
     @extend %large-heading;
-  }
-
-  .page-intro {
-    p {
-      @extend %display-heading;
-      text-transform: none;
-      line-height: 1.5;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
   }
 
   .special.button {
@@ -50,9 +39,20 @@ body {
 .page-content {
   background: $white;
   padding: $small-gutter 0;
-  box-shadow: inset 10px 0px 8px -8px rgba(0,0,0,0.2);
   @include breakpoint(medium up){
     padding: $medium-gutter 0;
+  }
+}
+
+.page-intro {
+  p {
+    @extend %display-heading;
+    text-transform: none;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -256,8 +256,6 @@ body {
     padding: $small-gutter;
     position: relative;
     z-index: 2;
-    box-shadow:
-      inset 10px 0px 8px -8px rgba(0,0,0,0.2);
     @include breakpoint(medium up){
       margin-top: rem-calc(-3);
     }

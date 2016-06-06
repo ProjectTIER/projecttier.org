@@ -20,7 +20,7 @@ window.resizeProtocolSidebar = function(){
   var height = $('.sidebar-nav').outerHeight();
   console.log(height);
   $('.protocol-layout').css('min-height',height + 'px');
-}
+};
 
 
 (function($){
@@ -30,7 +30,7 @@ window.resizeProtocolSidebar = function(){
     window.resizeProtocolSidebar();
 
     /*
-    * Component links inside rich text will automatically hightlight any matching component nav items 
+    * Component links inside rich text will automatically hightlight any matching component nav items
     */
     $('.rich-text a').each(function(){
       var href = $(this).attr('href');

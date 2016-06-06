@@ -46,8 +46,11 @@
   right: 0;
   background-color: $white;
   box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: $medium-gutter/8;
+  padding: 20px 40px;
   transition: height 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @include breakpoint(medium up) {
     top: 0;
@@ -230,7 +233,6 @@
             position: fixed;
             left: 5vw;
             z-index: 3;
-            top: $topbar-height*1.1;
             body.scrolled & {
               top: $topbar-height/1.2;
             }
@@ -239,12 +241,12 @@
             position: absolute;
             left: 0;
             width: 30vw;
-            &.length-2 {
-              width: 60vw;
-            }
-            &.length-3 {
-              width: 80vw;
-            }
+            // &.length-2 {
+            //   width: 60vw;
+            // }
+            // &.length-3 {
+            //   width: 80vw;
+            // }
           }
 
           .dropdown-panel {
@@ -302,23 +304,6 @@
             background-color: none;
             box-shadow: none;
           }
-          // LOGO
-          &#topbar-logo {
-
-            svg {
-              height: rem-calc(52);
-              width: auto;
-              * {
-                filter: drop-shadow( 1px 1px 0px #FFF );
-              }
-              #project {
-                fill: $black;
-              }
-              #tier {
-                fill: $red;
-              }
-            }
-          }
         }
       }
     }
@@ -333,36 +318,31 @@
       }
     }
   }
+}
 
-  /* Right Menu
-     ========================================================================== */
-  .top-bar-right .menu {
-    > li {
-      > a {
-        font-size: rem-calc(14);
-        font-size: rem-calc(12);
-        @include breakpoint(760){
-          font-size: rem-calc(13);
-        }
-        @include breakpoint(800){
-          font-size: rem-calc(14);
-        }
+.top-bar-left, .top-bar-right {
+  float: none;
+}
 
-        padding-left: $medium-gutter/2;
-        margin: 0;
-        @include embossed-text($special-button-highlight);
-      }
-      &.js-drilldown-back {
-        > a {
-          @include embossed-text($button-highlight);
-        }
-      }
-      .menu.submenu {
-        &.is-dropdown-submenu {
-          left: auto;
-          right: $medium-gutter/8;
-        }
-      }
+.top-bar-left {
+  flex: 1;
+}
+
+// LOGO
+#topbar-logo {
+  display: flex;
+  box-shadow: none;
+  svg {
+    height: rem-calc(52);
+    width: auto;
+    * {
+      filter: drop-shadow( 1px 1px 0px #FFF );
+    }
+    #project {
+      fill: $black;
+    }
+    #tier {
+      fill: $red;
     }
   }
 }

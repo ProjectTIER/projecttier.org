@@ -11,11 +11,11 @@
 
 <div class="top-bar" id="main-menu">
   <div class="top-bar-left">
+    <a href="/" id="topbar-logo">{% include "includes/svg_logo.html" %}</a>
+  </div>
 
+  <div class="top-bar-right">
     <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-      <li class="menu-text">
-        <a href="/" id="topbar-logo">{% include "includes/svg_logo.html" %}</a>
-      </li>
       {% for menuitem in menuitems %}
           <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
               {% if menuitem.show_dropdown %}
@@ -32,28 +32,4 @@
       {% endfor %}
     </ul>
   </div>
-
-  <!-- <div class="top-bar-right">
-    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
-      <li>
-        <a class="dropdown-toggle special button" data-toggle="dropdown" >Use the Protocols</a>
-        <ul class="submenu menu vertical" data-submenu>
-          <li class="dropdown-panel">
-            <div class="dropdown-pane-contents">
-              <p>Select the protocol you need to use.</p>
-              <div class="button-group">
-                <a href="#" class="small button">TIER</a>
-                <a href="#" class="small button">DRESS</a>
-                <a href="#" class="small button">Markdown</a>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div> -->
 </div>
-
-
-
-

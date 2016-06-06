@@ -9,7 +9,7 @@
 {% block main_panel %}
   <div class="row panel-layout protocol-process-page expanded">
     <div class="small-12 medium-8 columns main-panel slide-panel closed top" data-slide-panel="component-nav-toggler">
-      
+
       {% if self.body %}
         <div class="body-content">
           {% include "includes/streamfield.html" with content=self.body %}
@@ -20,7 +20,7 @@
               <a class="special button" href="{% pageurl self.next_page %}">{{ self.next_page.title }}</a>
             </div>
           {% endif %}
-      
+
         </div>
       {% endif %}
 
