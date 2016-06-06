@@ -2,8 +2,7 @@
    MAIN CONTAINER
    ========================================================================== */
 #main-container {
-  padding-top: $topbar-height;
-  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
+  padding-top: calc(#{$expanded-topbar-height} + 10px);
 }
 
 
@@ -30,7 +29,7 @@ body {
       @extend %display-heading;
       text-transform: none;
       line-height: 1.5;
-      
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -93,7 +92,7 @@ body {
       align-items: center;
     }
   }
-  
+
   /* Section Intro
      ========================================================================== */
   .section-intro {
@@ -125,7 +124,7 @@ body {
       font-size: 0.8em;
     }
   }
-  
+
   /* Section Desctiption
      ========================================================================== */
   .section-description {
@@ -134,7 +133,7 @@ body {
       margin-bottom: $small-gutter;
     }
   }
-  
+
   /* Section Button
      ========================================================================== */
   .section-button {
@@ -144,7 +143,7 @@ body {
       margin-bottom: 0;
     }
   }
-  
+
 
 
   /* EVEN SECTIONS / ALT SECTIONS
@@ -219,7 +218,7 @@ body {
         @extend %medium-heading;
         margin-bottom: $small-gutter/2;
       }
-      
+
       p {
         margin: 0;
         padding-bottom: $small-gutter;
@@ -248,7 +247,7 @@ body {
     display: flex;
     align-items: stretch;
   }
-  
+
 
   /* Main Panel
      ========================================================================== */
@@ -263,7 +262,7 @@ body {
       margin-top: rem-calc(-3);
     }
   }
-  
+
 
   /* Sidebar Panel
      ========================================================================== */
@@ -273,7 +272,7 @@ body {
     padding: $small-gutter;
     font-size: rem-calc(14);
     //color: $black;
-    box-shadow: 
+    box-shadow:
       inset 0px -31px 12px -20px rgba(0,0,0,0.31),
       inset 10px 0px 8px -8px rgba(0,0,0,0.2);
     @include breakpoint(medium up){

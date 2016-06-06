@@ -44,8 +44,7 @@
   top: $topbar-height;
   left: 0;
   right: 0;
-  background-color: $button-highlight;
-  background-image: linear-gradient($button-highlight, $button-shadow);
+  background-color: $white;
   box-shadow: inset 0px 10px 8px -10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: $medium-gutter/8;
   transition: height 0.2s;
@@ -99,7 +98,7 @@
         box-shadow: none;
         font-weight: 900;
         padding: $medium-gutter/3 $medium-gutter/4;
-        transition: 
+        transition:
           background 0.2s,
           box-shadow 0.2s,
           color 0.2s;
@@ -188,10 +187,10 @@
           left: $medium-gutter/8;
           top: 100%;
           //padding: $medium-gutter/8 0;
-          
+
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
           border-radius: 0 0 rem-calc(3) rem-calc(3);
-          
+
           > li {
             padding-top: $medium-gutter/8;
             a {
@@ -205,7 +204,7 @@
               }
             }
           }
-          
+
           // .dropdown-panel {
           //   width: rem-calc(300);
           //   .dropdown-pane-contents {
@@ -305,9 +304,9 @@
           }
           // LOGO
           &#topbar-logo {
-            
+
             svg {
-              height: rem-calc(27);
+              height: rem-calc(52);
               width: auto;
               * {
                 filter: drop-shadow( 1px 1px 0px #FFF );
