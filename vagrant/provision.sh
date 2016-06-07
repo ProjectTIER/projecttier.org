@@ -34,6 +34,10 @@ su - vagrant -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
                  $PYTHON $PROJECT_DIR/manage.py update_index"
 
 
+# Install Heroku toolbelt
+su - vagrant -c  "wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh"
+
+
 # Add a couple of aliases to manage.py into .bashrc
 cat << EOF >> /home/vagrant/.bashrc
 export PYTHONPATH=$PROJECT_DIR
