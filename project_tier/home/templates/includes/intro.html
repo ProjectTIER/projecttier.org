@@ -1,7 +1,11 @@
 {% load wagtailcore_tags %}
 
 {% if intro %}
-  <div class="page-intro">
-    {{ intro|richtext }}
+<div class="row">
+  <div class="small-12 medium-11 large-9 columns">
+    <div class="page-intro">
+      {{ intro|richtext }}
+    </div>
   </div>
+</div>
 {% endif %}

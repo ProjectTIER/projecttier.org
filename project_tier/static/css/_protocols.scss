@@ -9,25 +9,11 @@
 }
 
 
-
-/* ==========================================================================
-   PROTOCOL LAYOUT PAGES
-   ========================================================================== */
-.protocol-layout {
-  box-shadow: inset 10px 0px 8px -8px rgba(0,0,0,0.2);
-  .page-header {
-    background-color: #EAEAEA;
-    background-image: url('../img/bg-image.svg');
-  }
-}
-
-
 /* ==========================================================================
    OFF CANVAS MENU / PROTOCOL NAV
    ========================================================================== */
 .off-canvas-wrapper {
-  background-color: $pale-grey;
-  background-image: linear-gradient(90deg, $light-grey, $pale-grey $offcanvas-size, $pale-grey);
+  background-color: $white;
   .off-canvas-wrapper-inner {
     &.is-open-left {
       transform: translateX($offcanvas-size);
@@ -37,6 +23,7 @@
 .off-canvas-content {
   box-shadow: none;
   overflow: hidden;
+  background-color: $white;
 
 }
 .off-canvas {
