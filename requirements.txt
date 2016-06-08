@@ -37,3 +37,5 @@ coverage==4.0.3
 factory-boy==2.6.0
 django-storages==1.1.8
 boto==2.39.0
+wagtailcommonblocks==0.0.2
+wagtailhavetheabilitytoactuallyseefieldsintheadmin==1.0.0

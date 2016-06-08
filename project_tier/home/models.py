@@ -17,7 +17,7 @@ from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailsearch import index
 
-from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock
+from wagtail.wagtailcore.blocks import TextBlock, StructBlock, StreamBlock, ListBlock, FieldBlock, CharBlock, RichTextBlock, RawHTMLBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 
@@ -26,6 +26,7 @@ from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 from project_tier.protocol.models import ProtocolProcessStreamBlock
+from project_tier.blocks import SectionBlock
 
 # Abstract Classes
 # --------------------------------------------------
@@ -163,7 +164,9 @@ class HomePage(Page):
 #
 class StandardPage(Page):
     intro = RichTextField(blank=True)
-    body = StreamField(ProtocolProcessStreamBlock())
+    body = StreamField([
+        ('sections', ListBlock(SectionBlock()))
+    ])
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -424,7 +427,7 @@ class NewsArticle(Page):
     body = RichTextField(blank=True)
     source = models.CharField('Source Name', max_length=255, blank=True)
     source_url = models.URLField('Source URL', max_length=255, blank=True)
-    
+
     parent_page_types = ['StandardPage']
 
     search_fields = Page.search_fields + (

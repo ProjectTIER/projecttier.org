@@ -24,10 +24,6 @@ ADMINS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'project_tier.home',
-    'project_tier.protocol',
-    'project_tier.search',
-
     'wagtail.contrib.settings',
     'wagtail.contrib.wagtailsearchpromotions',
     'wagtail.wagtailforms',
@@ -47,6 +43,8 @@ INSTALLED_APPS = (
     'taggit',
     'django_nose',
     'storages',
+    'commonblocks',
+    'wagtailhavetheabilitytoactuallyseefieldsintheadmin',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +53,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'project_tier.home',
+    'project_tier.protocol',
+    'project_tier.search',
 )
 
 MIDDLEWARE_CLASSES = (
