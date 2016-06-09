@@ -4,7 +4,7 @@ django-libsass==0.6
 django-nose==1.4.3
 django-storages==1.1.8
 psycopg2==2.6.1
-wagtail==1.5.1
+wagtail==1.5.2
 wagtailcommonblocks==0.0.2
 wagtailfontawesome==1.0.5
 wagtailhavetheabilitytoactuallyseefieldsintheadmin==1.0.0
