@@ -10,6 +10,10 @@ from project_tier.blocks import SectionBlock
 class StandardIndexPage(Page):
     introductory_headline = models.TextField()
 
+    @property
+    def children(self):
+        return self.get_children().specific().live()
+
     search_fields = Page.search_fields + [
         SearchField('introductory_headline')
     ]

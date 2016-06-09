@@ -1,64 +1,48 @@
-{% load navigation_tags compress static wagtailuserbar %}
-
 <!DOCTYPE html>
+{% load navigation_tags compress static wagtailuserbar %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>
-        {% block title %}
-            {% if self.seo_title %}
-                {{ self.seo_title }}
-            {% else %}
-                {{ self.title }}
-            {% endif %}
-        {% endblock %}
-
-        {% block title_suffix %}
-            | Project TIER | Teaching Integrity in Empirical Research
-        {% endblock %}
-        </title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400,300,400italic,700,700italic,900,900italic,300italic|Roboto+Mono:400,700italic,400italic,700|Playfair+Display:400,700">
-        {% compress css %}
-            <link rel="stylesheet" type="text/css" href="{% static 'bower_components/components-font-awesome/css/font-awesome.css' %}">
-            <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
-        {% endcompress %}
-
-        {% block extra_css %}
-
-        {% endblock %}
-    </head>
-
-    <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
-
-        {% get_site_root as site_root %}
-        {% top_menu parent=site_root calling_page=self %}
-
-        <div id="main-container">
-
-          {% block page_title %}{% endblock %}
-
-          {% block content %}{% endblock %}
-
-        </div>
-
-        {% include 'includes/main_footer.html' %}
-
-        {% compress js %}
-          <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
-          <script src="{% static 'bower_components/foundation-sites/dist/foundation.js' %}" type="text/javascript" charset="utf-8"></script>
-          <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
-        {% endcompress %}
-
-        {% block extra_js %}
-
-        {% endblock %}
-    </body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+      {% block title %}
+        {% if self.seo_title %}
+          {{ self.seo_title }}
+        {% else %}
+          {{ self.title }}
+        {% endif %}
+      {% endblock %}
+      {% block title_suffix %}
+        | Project TIER | Teaching Integrity in Empirical Research
+      {% endblock %}
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400,300,400italic,700,700italic,900,900italic,300italic|Roboto+Mono:400,700italic,400italic,700|Playfair+Display:400,700">
+    {% compress css %}
+      <link rel="stylesheet" type="text/css" href="{% static 'bower_components/components-font-awesome/css/font-awesome.css' %}">
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
+    {% endcompress %}
+    {% block extra_css %}
+    {% endblock %}
+  </head>
+  <body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+    {% get_site_root as site_root %}
+    {% top_menu parent=site_root calling_page=self %}
+    <div id="main-container">
+      {% block page_banner %}{% endblock %}
+      {% block content %}{% endblock %}
+    </div>
+    {% include 'includes/main_footer.html' %}
+    {% compress js %}
+      <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
+      <script src="{% static 'bower_components/foundation-sites/dist/foundation.js' %}" type="text/javascript" charset="utf-8"></script>
+      <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
+    {% endcompress %}
+    {% block extra_js %}{% endblock %}
+  </body>
 </html>

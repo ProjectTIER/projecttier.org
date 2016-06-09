@@ -1,47 +1,31 @@
 {% extends "base.html" %}
-
 {% load navigation_tags wagtailcore_tags %}
 
-{% block page_title %}
-  {% with self|in_tree as in_tree %}
-
+{% block page_banner %}
   <header class="page-header">
     <div class="row">
-      {% if in_tree %}
-        <div class="small-12 medium-10 large-8 columns">
-      {% else %}
-        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-      {% endif %}
-
+      <div class="columns">
         {% breadcrumbs %}
-
-        <h1>{{self.title}}</h1>
-
+        {% block page_title %}
+          <h1>{{self.title}}</h1>
+        {% endblock %}
       </div>
     </div>
   </header>
-
-  <div class="off-canvas-wrapper">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-      {# sidebar_menu calling_page=self #}
-
-      <div class="off-canvas-content" data-off-canvas-content>
-        <article class="protocol-layout">
-
-  {% endwith %}
 {% endblock %}
 
-{% block content %}
-  <div class="page-content">
-    {% include "includes/intro.html" with intro=self.intro only %}
-    {% block main_content %} {% endblock %}
-  </div>
-
-  </article>
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    {# sidebar_menu calling_page=self #}
+    <div class="off-canvas-content" data-off-canvas-content>
+      <article class="protocol-layout">
+        {% block content %}
+          <div class="page-content">
+            {% include "includes/intro.html" with intro=self.intro only %}
+            {% block main_content %}{% endblock %}
+          </div>
+        {% endblock %}
+      </article>
     </div>
-
   </div>
 </div>
-
-{% endblock %}
