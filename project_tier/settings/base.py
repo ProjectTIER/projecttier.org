@@ -54,8 +54,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'project_tier.links',
+    'project_tier.events',
     'project_tier.home',
-    'project_tier.protocol',
+    'project_tier.people',
+    'project_tier.standard',
     'project_tier.search',
 )
 
@@ -152,30 +155,6 @@ MEDIA_URL = '/media/'
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-
-
-# Use Redis as the cache backend for extra performance
-
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': '127.0.0.1:6379',
-#         'KEY_PREFIX': 'project_tier',
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
-
-
-# Use Elasticsearch as the search backend for extra performance and better search results
-
-# WAGTAILSEARCH_BACKENDS = {
-#     'default': {
-#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-#         'INDEX': 'project_tier',
-#     },
-# }
 
 
 # Celery settings

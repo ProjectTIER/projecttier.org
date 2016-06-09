@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags homepage_tags protocol_tags %}
+{% load wagtailcore_tags homepage_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 {% block content %}
@@ -57,35 +57,6 @@
 
     </section>
     {% endif %}
-
-    <!--<section class="block-section" id="news-section">
-      <div class="row">
-        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
-          <h2 class="section-title" id="news-section-title">
-            <i class="fa fa-newspaper-o fa-fw"></i>
-            Latest News
-          </h2>
-        </div>
-
-        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
-          <ol class="news-list item-list">
-            <li>
-              <article class="news-list-item list-item">
-                <h1>TIER Protocol 3.0 Beta Released</h1>
-                <div class="article-meta">
-                  <span class="article-meta-item">
-                    <time class="article-publish-date">January 6, 2016</time>
-                  </span>
-                  <span class="article-meta-item">
-                    <a href="#" class="read-more">Read More</a>
-                  </span>
-                </div>
-              </article>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>-->
 
     {% for page in self.children %}
 

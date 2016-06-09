@@ -1,9 +1,0 @@
-{% load protocol_tags wagtailcore_tags %}
-
-<nav class="component-nav" data-test-id="component-nav">
-  <ol>
-    {% for menuitem in menuitems %}
-      {% component_menu_item menuitem calling_page=calling_page %}
-    {% endfor %}
-  </ol>
-</nav>

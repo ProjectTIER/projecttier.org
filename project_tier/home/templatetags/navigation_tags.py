@@ -1,11 +1,8 @@
 from django import template
-from django.conf import settings
-
 from project_tier.home.models import Page
 
-from project_tier.protocol.models import ProtocolHomePage
-
 register = template.Library()
+
 
 @register.assignment_tag(takes_context=True)
 def get_site_root(context):
@@ -14,18 +11,21 @@ def get_site_root(context):
     return context['request'].site.root_page
 
 
-
 def has_menu_children(page):
     return page.get_children().live().in_menu().exists()
-    
+
+
 def has_children(page):
     return page.get_children().live().exists()
+
 
 def is_active(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
 
+
 def get_ancestor(page):
-    return page.get_ancestors(True)[2];
+    return page.get_ancestors(True)[2]
+
 
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
@@ -47,6 +47,7 @@ def top_menu(context, parent, calling_page=None):
         'request': context['request'],
     }
 
+
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
@@ -58,6 +59,7 @@ def top_menu_children(context, parent):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
 
 @register.inclusion_tag('tags/protocol_menu_panel.html', takes_context=True)
 def protocol_menu_panel(context, parent):
@@ -71,6 +73,7 @@ def protocol_menu_panel(context, parent):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
 
 @register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
@@ -86,6 +89,7 @@ def breadcrumbs(context):
         'request': context['request'],
     }
 
+
 @register.inclusion_tag('tags/standard_index_listing.html', takes_context=True)
 def standard_index_listing(context, calling_page):
     pages = calling_page.get_children().live().specific()
@@ -98,6 +102,7 @@ def standard_index_listing(context, calling_page):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
 
 @register.inclusion_tag('tags/sidebar_menu.html', takes_context=True)
 def sidebar_menu(context, calling_page=None):
@@ -120,6 +125,7 @@ def sidebar_menu(context, calling_page=None):
         'ancestor': ancestor,
         'request': context['request'],
     }
+
 
 @register.filter()
 def in_tree(page):
