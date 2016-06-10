@@ -1,0 +1,6 @@
+{% load wagtailimages %}
+
+<figure>
+  {% image self.image original %}
+  <figcaption>{{self.caption}}</figcaption>
+</figure>

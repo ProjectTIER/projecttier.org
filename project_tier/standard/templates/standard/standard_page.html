@@ -1,6 +1,4 @@
 {% extends "standard_layout.html" %}
-{% load wagtailcore_tags navigation_tags %}
-
 
 {% block sidebar %}
   <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
@@ -21,7 +19,7 @@
   <div class="row">
     <div class="body-content">
       <div class="body-content">
-        {% include "includes/streamfield.html" with content=self.body %}
+        {{page.body}}
       </div>
     </div>
   </div>
