@@ -1,24 +1,28 @@
 {% extends "standard_layout.html" %}
-
 {% load wagtailcore_tags navigation_tags %}
 
+
+{% block sidebar %}
+  <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
+    <nav class="sidebar-nav">
+      <h3>In this section</h3>
+      <ul class="vertical menu">
+        {% for subpage in page.parent.children %}
+          <li class="{% if subpage.is_active %}is-active{% endif %}">
+            <a href="{{subpage.url}}">{{ subpage.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+{% endblock %}
+
 {% block main_content %}
-  {% with self|in_tree as in_tree %}
   <div class="row">
-    {% if in_tree %}
-      <div class="small-12 medium-11 large-9 columns">
-    {% else %}
-      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-    {% endif %}
-
-      {% if self.body %}
-          <div class="body-content">
-          {% include "includes/streamfield.html" with content=self.body %}
-          </div>
-      {% endif %}
-
-      {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+    <div class="body-content">
+      <div class="body-content">
+        {% include "includes/streamfield.html" with content=self.body %}
+      </div>
     </div>
   </div>
-  {% endwith %}
 {% endblock %}

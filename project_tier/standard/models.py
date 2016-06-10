@@ -33,6 +33,10 @@ class StandardPage(Page):
     ])
     listing_abstract = models.TextField()
 
+    @property
+    def parent(self):
+        return self.get_parent().specific
+
     search_fields = Page.search_fields + [
         SearchField('introductory_headline'),
         SearchField('overview'),
