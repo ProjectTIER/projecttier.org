@@ -5,21 +5,25 @@
     padding-top: $medium-gutter*2;
   }
 
+  h3 {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+
   // All links in the menu
   li {
     a {
       box-shadow: none;
       position: relative;
       color: $dark-teal;
-      transition: 
+      transition:
         background 0.2s,
-        color 0.2s
-      ;
+        color 0.2s;
       &:hover {
         background: transparentize($white, 0.5);
         color: $red;
       }
-      
+
       // caret icon
       i {
         position: absolute;
@@ -50,10 +54,10 @@
       &:last-child {
         border-bottom: none;
       }
-      
+
       // Just top level links
       > a {
-        
+
       }
 
       // Submenu level one

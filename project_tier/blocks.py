@@ -5,13 +5,16 @@ from wagtail.wagtailcore.blocks import (
     TextBlock,
     StreamBlock,
     RichTextBlock,
-    ChoiceBlock
+    ChoiceBlock,
+    ListBlock
 )
 
 
 class AccordionBlock(StructBlock):
-    title = TextBlock()
-    body = RichTextBlock()
+    panels = ListBlock(StructBlock([
+        ('title', TextBlock()),
+        ('body', RichTextBlock())
+    ]))
 
     class Meta:
         icon = 'emoji-scroll'
@@ -41,7 +44,7 @@ class CaptionedImageBlock(StructBlock):
         template = 'blocks/captioned_image.html'
 
 
-class HaverfordStreamBlock(StreamBlock):
+class ContentStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     heading = TextBlock(icon='fa-header', template='blocks/heading.html')
     smaller_heading = TextBlock(
@@ -53,12 +56,22 @@ class HaverfordStreamBlock(StreamBlock):
     accordion = AccordionBlock()
     notice = NoticeBlock()
 
+    class Meta:
+        template = 'blocks/streamfield.html'
+
 
 class SectionBlock(StructBlock):
     headline = TextBlock()
     subheadline = TextBlock()
-    body = HaverfordStreamBlock()
+    body = ContentStreamBlock()
 
     class Meta:
         icon = 'emoji-bookmark-tabs'
         template = 'blocks/section.html'
+
+
+class BodyBlock(StreamBlock):
+    section = SectionBlock()
+
+    class Meta:
+        template = 'blocks/streamfield.html'

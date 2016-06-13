@@ -18,3 +18,9 @@ def editor_js():
         </script>
         """
     )
+
+@hooks.register('insert_editor_css')
+def admin_css():
+    return format_html(
+        '<link rel="stylesheet" href="' + settings.STATIC_URL + 'css/admin.css">'
+    )

@@ -4,7 +4,7 @@ from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailsearch.index import SearchField
 
-from project_tier.blocks import SectionBlock
+from project_tier.blocks import BodyBlock
 
 
 class StandardIndexPage(Page):
@@ -28,9 +28,7 @@ class StandardIndexPage(Page):
 class StandardPage(Page):
     introductory_headline = models.TextField()
     overview = RichTextField()
-    body = StreamField([
-        ('section', SectionBlock())
-    ])
+    body = StreamField(BodyBlock())
     listing_abstract = models.TextField()
 
     @property
