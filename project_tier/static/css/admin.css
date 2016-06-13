@@ -1,3 +1,8 @@
 li.sequence-member .fields.fields {
   width: 100%;
 }
+
+.object .richtext.expanded {
+  margin-top: 2em;
+  padding-top: 1em;
+}
