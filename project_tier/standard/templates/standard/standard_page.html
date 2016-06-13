@@ -2,7 +2,7 @@
 
 {% block sidebar %}
   <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav section-nav">
       <h3>In this section</h3>
       <ul class="vertical menu">
         {% for subpage in page.parent.children %}
@@ -11,6 +11,10 @@
           </li>
         {% endfor %}
       </ul>
+    </nav>
+    <nav class="sidebar-nav article-nav">
+      <h3>In this article</h3>
+      <div id="table-of-contents"></div>
     </nav>
   </div>
 {% endblock %}

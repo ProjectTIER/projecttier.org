@@ -43,9 +43,11 @@ class CaptionedImageBlock(StructBlock):
 
 class HaverfordStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
-    h3 = TextBlock(icon='fa-header')
-    h4 = TextBlock(icon='fa-header')
-    h5 = TextBlock(icon='fa-header')
+    heading = TextBlock(icon='fa-header', template='blocks/heading.html')
+    smaller_heading = TextBlock(
+        icon='fa-header', template='blocks/smaller_heading.html')
+    smallest_heading = TextBlock(
+        icon='fa-header', template='blocks/smallest_heading.html')
     image = CaptionedImageBlock()
     download = DocumentChooserBlock(icon='fa-download')
     accordion = AccordionBlock()
