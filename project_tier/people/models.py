@@ -2,22 +2,25 @@ from __future__ import unicode_literals
 from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.wagtailadmin.edit_handlers import (
+    FieldPanel, MultiFieldPanel, InlinePanel)
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
-from taggit.models import TaggedItemBase
+from wagtail.wagtailsnippets.models import register_snippet
 
 
-class PersonPageTag(TaggedItemBase):
-    content_object = ParentalKey('PersonPage', related_name='tagged_items')
+@register_snippet
+class PersonCategory(models.Model):
+    title = models.CharField(max_length=255)
 
 
 class PersonPage(Page):
     location = models.CharField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
-    job_titles = RichTextField(blank=True)
+    main_job_title = models.TextField(blank=True)
+    academic_job_title = models.TextField(blank=True)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     website = models.URLField(max_length=255, blank=True)
@@ -28,6 +31,14 @@ class PersonPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    fellowship_year = models.TextField(blank=True)
+
+    @property
+    def categories(self):
+        categories = [
+            n.category for n in self.person_category_relationship.all()
+        ]
+        return categories
 
     parent_page_types = ['PersonIndexPage']
 
@@ -52,10 +63,13 @@ class PersonPage(Page):
             heading="Contact Information",
             classname="collapsible collapsed"
         ),
-        FieldPanel('job_titles', classname="full"),
+        FieldPanel('main_job_title', classname="full"),
+        FieldPanel('academic_job_title', classname="full"),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
         ImageChooserPanel('image'),
+        InlinePanel('person_category_relationship', label="Categories"),
+        FieldPanel('fellowship_year')
     ]
 
     @property
@@ -73,9 +87,11 @@ class PersonIndexPage(Page):
     body = RichTextField(blank=True)
     parent_page_types = [
         'home.HomePage',
-        'standard.StandardPage',
+        'standard.StandardIndexPage',
         'PersonIndexPage'
     ]
+
+    subpage_types = ['PersonPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -104,3 +120,11 @@ class PersonIndexPage(Page):
 
     class Meta:
         verbose_name = 'Person List Page'
+
+
+class PersonCategoryRelationship(models.Model):
+    person = ParentalKey(
+        'PersonPage', related_name='person_category_relationship')
+    category = models.ForeignKey('PersonCategory', related_name='+')
+
+    panels = [FieldPanel('category')]

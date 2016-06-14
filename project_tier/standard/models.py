@@ -22,8 +22,6 @@ class StandardIndexPage(Page):
         FieldPanel('introductory_headline', classname='full')
     ]
 
-    subpage_types = ['StandardPage']
-
 
 class StandardPage(Page):
     introductory_headline = models.TextField()
