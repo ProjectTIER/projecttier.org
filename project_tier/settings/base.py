@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'project_tier.home',
     'project_tier.people',
     'project_tier.standard',
+    'project_tier.testimonials',
     'project_tier.search',
 )
 
