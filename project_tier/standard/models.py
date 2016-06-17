@@ -24,10 +24,10 @@ class StandardIndexPage(Page):
 
 
 class StandardPage(Page):
-    introductory_headline = models.TextField()
-    overview = RichTextField()
+    introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.')
+    overview = RichTextField(help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.')
     body = StreamField(BodyBlock())
-    listing_abstract = models.TextField()
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
 
     @property
     def parent(self):
@@ -41,13 +41,10 @@ class StandardPage(Page):
     ]
 
     content_panels = Page.content_panels + [
+        FieldPanel('listing_abstract', classname='full'),
         FieldPanel('introductory_headline', classname='full'),
-        FieldPanel('overview'),
+        FieldPanel('overview', classname='full'),
         StreamFieldPanel('body'),
-    ]
-
-    promote_panels = Page.promote_panels + [
-        FieldPanel('listing_abstract')
     ]
 
     subpage_types = []

@@ -1,8 +1,81 @@
-li.sequence-member .fields.fields {
-  width: 100%;
-}
+#content .stream-field.stream-field.stream-field.stream-field {
+  padding: 20px; }
+  #content .stream-field.stream-field.stream-field.stream-field > fieldset {
+    padding-top: 14px; }
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-member,
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-container,
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-container-inner,
+  #content .stream-field.stream-field.stream-field.stream-field .fields,
+  #content .stream-field.stream-field.stream-field.stream-field .field-content {
+    width: 100%; }
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-member {
+    background: #f2f2f2;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    margin: 20px 0; }
+    #content .stream-field.stream-field.stream-field.stream-field .sequence-member .sequence-member {
+      background: white; }
+      #content .stream-field.stream-field.stream-field.stream-field .sequence-member .sequence-member .sequence-member {
+        background: #f2f2f2; }
+        #content .stream-field.stream-field.stream-field.stream-field .sequence-member .sequence-member .sequence-member .sequence-member {
+          background: white; }
+          #content .stream-field.stream-field.stream-field.stream-field .sequence-member .sequence-member .sequence-member .sequence-member .sequence-member {
+            background: #f2f2f2; }
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-member-inner {
+    padding: 20px; }
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-controls {
+    background: #e6e6e6;
+    border: none;
+    opacity: 1;
+    visibility: visible;
+    position: static;
+    border-radius: 0;
+    display: flex;
+    justify-content: flex-end; }
+    #content .stream-field.stream-field.stream-field.stream-field .sequence-controls label {
+      margin-top: 7px;
+      color: #666; }
+    #content .stream-field.stream-field.stream-field.stream-field .sequence-controls button {
+      background: transparent;
+      border: none; }
+      #content .stream-field.stream-field.stream-field.stream-field .sequence-controls button::before {
+        color: #666; }
+      #content .stream-field.stream-field.stream-field.stream-field .sequence-controls button:hover::before {
+        color: #43b1b0; }
+    #content .stream-field.stream-field.stream-field.stream-field .sequence-controls h3 {
+      flex: 1; }
+  #content .stream-field.stream-field.stream-field.stream-field .stream-menu {
+    opacity: 0;
+    visibility: hidden; }
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-container:hover > .stream-menu,
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-member:hover > .stream-menu {
+    opacity: 1;
+    visibility: visible; }
+  #content .stream-field.stream-field.stream-field.stream-field .sequence-container > .stream-menu .toggle {
+    top: 8px; }
+  #content .stream-field.stream-field.stream-field.stream-field .help {
+    width: auto;
+    position: static;
+    display: block;
+    float: none; }
+    #content .stream-field.stream-field.stream-field.stream-field .help::before {
+      margin-top: 0; }
+  #content .stream-field.stream-field.stream-field.stream-field .help.help {
+    opacity: 1;
+    margin: 0; }
+  #content .stream-field.stream-field.stream-field.stream-field .fields label {
+    display: block;
+    width: auto;
+    float: none; }
+  #content .stream-field.stream-field.stream-field.stream-field .fields .field {
+    display: block;
+    width: auto;
+    float: none; }
+  #content .stream-field.stream-field.stream-field.stream-field input:focus, #content .stream-field.stream-field.stream-field.stream-field textarea:focus, #content .stream-field.stream-field.stream-field.stream-field select:focus, #content .stream-field.stream-field.stream-field.stream-field .richtext:focus, #content .stream-field.stream-field.stream-field.stream-field .taggit:focus {
+    background: white; }
+  #content .stream-field.stream-field.stream-field.stream-field .richtext {
+    padding: 1em; }
+    #content .stream-field.stream-field.stream-field.stream-field .richtext *:last-child {
+      margin-bottom: 0; }
 
-.object .richtext.expanded {
-  margin-top: 2em;
-  padding-top: 1em;
-}
+/*# sourceMappingURL=admin.css.map */

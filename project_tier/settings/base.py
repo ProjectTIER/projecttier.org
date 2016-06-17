@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'django_nose',
     'storages',
     'commonblocks',
-    'wagtailhavetheabilitytoactuallyseefieldsintheadmin',
+    #'wagtailhavetheabilitytoactuallyseefieldsintheadmin',
     'wagtailfontawesome',
     'wagtailemoji',
 
