@@ -40,4 +40,4 @@ boto==2.39.0
 wagtailcommonblocks==0.0.2
 wagtailemoji==1.0.0
 wagtailfontawesome==1.0.5
-wagtailhavetheabilitytoactuallyseefieldsintheadmin==1.0.0
+wagtailbettereditor==1.0.0
