@@ -41,9 +41,9 @@ class StandardPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('listing_abstract', classname='full'),
-        FieldPanel('introductory_headline', classname='full'),
-        FieldPanel('overview', classname='full'),
+        FieldPanel('listing_abstract'),
+        FieldPanel('introductory_headline'),
+        FieldPanel('overview'),
         StreamFieldPanel('body'),
     ]
 
