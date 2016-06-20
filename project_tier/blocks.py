@@ -65,7 +65,7 @@ class ContentStreamBlock(StreamBlock):
 
 class SectionBlock(StructBlock):
     headline = TextBlock(help_text='Write a title for this section.')
-    subheadline = TextBlock(help_text='Write a subheadline for this section (optional).')
+    subheadline = TextBlock(required=False, help_text='Write a subheadline for this section (optional).')
     body = ContentStreamBlock(help_text='The section content goes here.')
 
     class Meta:
