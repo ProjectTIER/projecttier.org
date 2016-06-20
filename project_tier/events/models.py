@@ -86,6 +86,7 @@ class EventPage(Page):
     description = RichTextField(blank=True)
 
     parent_page_types = ['EventIndexPage']
+    subpage_types = []
 
     search_fields = Page.search_fields + (
         index.SearchField('location'),
