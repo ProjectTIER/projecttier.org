@@ -9,6 +9,7 @@ from project_tier.blocks import BodyBlock, ContentStreamBlock
 
 class StandardIndexPage(Page):
     introductory_headline = models.TextField()
+    body = StreamField(ContentStreamBlock())
 
     @property
     def children(self):
