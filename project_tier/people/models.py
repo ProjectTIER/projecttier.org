@@ -21,7 +21,7 @@ class PersonPage(Page):
     email = models.EmailField(max_length=255, blank=True)
     main_job_title = models.TextField(blank=True)
     academic_title = models.TextField(blank=True)
-    intro = RichTextField(blank=True)
+    introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     biography = RichTextField(blank=True)
     website = models.URLField(max_length=255, blank=True)
     image = models.ForeignKey(
@@ -43,7 +43,7 @@ class PersonPage(Page):
     parent_page_types = ['PersonIndexPage']
 
     search_fields = Page.search_fields + (
-        index.SearchField('intro'),
+        index.SearchField('introductory_headline'),
         index.SearchField('biography'),
         index.SearchField('location'),
         index.SearchField('phone'),
@@ -65,7 +65,7 @@ class PersonPage(Page):
         ),
         FieldPanel('main_job_title', classname="full"),
         FieldPanel('academic_title', classname="full"),
-        FieldPanel('intro', classname="full"),
+        FieldPanel('introductory_headline', classname="full"),
         FieldPanel('biography', classname="full"),
         ImageChooserPanel('image'),
         InlinePanel('person_category_relationship', label="Categories"),
@@ -83,7 +83,7 @@ class PersonPage(Page):
 
 
 class PersonIndexPage(Page):
-    intro = RichTextField(blank=True)
+    introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
     body = RichTextField(blank=True)
     parent_page_types = [
@@ -95,13 +95,13 @@ class PersonIndexPage(Page):
     subpage_types = ['PersonPage']
 
     search_fields = Page.search_fields + (
-        index.SearchField('intro'),
+        index.SearchField('introductory_headline'),
         index.SearchField('body'),
     )
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        FieldPanel('intro', classname="full"),
+        FieldPanel('introductory_headline', classname="full"),
         FieldPanel('listing_abstract'),
         FieldPanel('body', classname="full"),
     ]

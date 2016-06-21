@@ -26,9 +26,9 @@
           {% if self.job_titles %}
             <div class="job-titles">{{ self.job_titles|richtext }}</div>
           {% endif %}
-          
-          {% if self.intro %}
-            {% include "includes/intro.html" with intro=self.intro only %}
+
+          {% if self.introductory_headline %}
+            {% include "includes/intro.html" with intro=self.introductory_headline only %}
           {% endif %}
 
           <dl class="contact-info">
@@ -41,12 +41,12 @@
               <dt>Web</dt>
               <dd><a target="_blank" href="{{ self.website }}">{{self.website}}</a></dd>
             {% endif %}
-            
+
             {% if self.phone %}
               <dt>Call</dt>
               <dd>{{ self.phone}}</dd>
             {% endif %}
-            
+
             {% if self.location %}
               <dt>Find</dt>
               <dd>{{ self.location}}</dd>
@@ -61,17 +61,17 @@
           {% endif %}
 
         </div>
-        
+
       </div>
     </div>
   </div>
-    
 
-    
 
-    
 
-    
+
+
+
+
 
 
 
