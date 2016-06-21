@@ -1,0 +1,12 @@
+{% if section_pages %}
+  <nav class="sidebar-nav section-nav">
+    <h3>In this section</h3>
+    <ul class="vertical menu">
+      {% for section_page in section_pages %}
+        <li class="{% if section_page.is_active %}is-active{% endif %}">
+          <a href="{{section_page.url}}">{{ section_page.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

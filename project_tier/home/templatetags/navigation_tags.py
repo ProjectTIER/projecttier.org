@@ -1,5 +1,6 @@
 from django import template
 from project_tier.home.models import Page
+from project_tier.standard.models import StandardIndexPage
 
 register = template.Library()
 
@@ -58,6 +59,15 @@ def top_menu_children(context, parent):
         'menuitems_children': menuitems_children,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
+    }
+
+
+@register.inclusion_tag('tags/table_of_contents_menu.html', takes_context=True)
+def table_of_contents_menu(context):
+    page = context['page']
+    section = page.get_ancestors(inclusive=True).type(StandardIndexPage).first()
+    return {
+        'section_pages': section.get_children().specific().live(),
     }
 
 

@@ -24,6 +24,8 @@ class StandardIndexPage(Page):
         StreamFieldPanel('body')
     ]
 
+    parent_page_types = ['home.HomePage']
+
 
 class StandardPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
@@ -49,7 +51,17 @@ class StandardPage(Page):
         StreamFieldPanel('body'),
     ]
 
-    subpage_types = []
+    parent_page_types = [
+        'home.HomePage',
+        'standard.StandardPage',
+        'standard.StandardIndexPage',
+        'standard.SectionPage'
+    ]
+
+    subpage_types = [
+        'standard.StandardPage',
+        'standard.SectionPage'
+    ]
 
 
 class SectionPage(Page):
@@ -76,4 +88,14 @@ class SectionPage(Page):
         StreamFieldPanel('body'),
     ]
 
-    subpage_types = []
+    parent_page_types = [
+        'home.HomePage',
+        'standard.StandardPage',
+        'standard.StandardIndexPage',
+        'standard.SectionPage'
+    ]
+
+    subpage_types = [
+        'standard.StandardPage',
+        'standard.SectionPage'
+    ]
