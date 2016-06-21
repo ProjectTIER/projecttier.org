@@ -8,6 +8,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailsnippets.models import register_snippet
+import datetime
 
 
 @register_snippet
@@ -35,7 +36,6 @@ class PersonPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    fellowship_year = models.TextField(blank=True)
 
     @property
     def categories(self):
@@ -55,8 +55,7 @@ class PersonPage(Page):
         index.SearchField('job_titles'),
     )
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
+    content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
                 FieldPanel('location'),
@@ -67,13 +66,12 @@ class PersonPage(Page):
             heading="Contact Information",
             classname="collapsible collapsed"
         ),
-        FieldPanel('main_job_title', classname="full"),
-        FieldPanel('academic_title', classname="full"),
-        FieldPanel('introductory_headline', classname="full"),
-        FieldPanel('biography', classname="full"),
+        FieldPanel('main_job_title'),
+        FieldPanel('academic_title'),
+        FieldPanel('introductory_headline'),
+        FieldPanel('biography'),
         ImageChooserPanel('image'),
         InlinePanel('person_category_relationship', label="Categories"),
-        FieldPanel('fellowship_year')
     ]
 
     @property
@@ -86,6 +84,24 @@ class PersonPage(Page):
         verbose_name_plural = 'People'
 
 
+class FellowPersonPage(PersonPage):
+    YEAR_CHOICES = []
+    for r in range(1980, (datetime.datetime.now().year+1)):
+        YEAR_CHOICES.append((r,r))
+
+    fellowship_year = models.IntegerField(
+        choices=YEAR_CHOICES,
+        default=datetime.datetime.now().year,
+    )
+
+    content_panels = PersonPage.content_panels + [
+        FieldPanel('fellowship_year')
+    ]
+
+    class Meta:
+        verbose_name = 'fellow'
+        verbose_name_plural = 'fellows'
+
 class PersonIndexPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
@@ -96,18 +112,17 @@ class PersonIndexPage(Page):
         'PersonIndexPage'
     ]
 
-    subpage_types = ['PersonPage']
+    subpage_types = ['PersonPage', 'FellowPersonPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('introductory_headline'),
         index.SearchField('body'),
     )
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('introductory_headline', classname="full"),
+    content_panels = Page.content_panels + [
+        FieldPanel('introductory_headline'),
         FieldPanel('listing_abstract'),
-        FieldPanel('body', classname="full"),
+        FieldPanel('body'),
     ]
 
     @property

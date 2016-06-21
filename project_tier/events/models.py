@@ -31,10 +31,9 @@ class EventIndexPage(Page):
         index.SearchField('intro'),
     )
 
-    content_panels = [
-        FieldPanel('title', classname="title"),
-        FieldPanel('intro', classname="full"),
-        FieldPanel('show_events', classname="")
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        FieldPanel('show_events')
     ]
 
     @property
@@ -90,8 +89,7 @@ class EventPage(Page):
         index.SearchField('description'),
     )
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
+    content_panels = Page.content_panels + [
         FieldPanel('date_from'),
         FieldPanel('date_to'),
         FieldPanel('time_from'),
@@ -100,7 +98,7 @@ class EventPage(Page):
             FieldPanel('university'),
             FieldPanel('department'),
         ], heading="Address"),
-        FieldPanel('description', classname="full"),
+        FieldPanel('description'),
         InlinePanel('related_links', label="Related links"),
     ]
 

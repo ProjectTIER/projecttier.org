@@ -45,7 +45,7 @@ class HomePage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('headline', classname='full'),
+        FieldPanel('headline'),
         PageChooserPanel('featured_index_page', 'standard.StandardIndexPage'),
         MultiFieldPanel([
             PageChooserPanel('featured_index_page_2', 'standard.StandardIndexPage'),
