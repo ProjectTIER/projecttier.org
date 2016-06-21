@@ -20,7 +20,8 @@ class StandardIndexPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('introductory_headline', classname='full')
+        FieldPanel('introductory_headline', classname='full'),
+        StreamFieldPanel('body')
     ]
 
 

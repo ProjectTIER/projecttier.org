@@ -84,6 +84,7 @@ class PersonPage(Page):
 
 class PersonIndexPage(Page):
     intro = RichTextField(blank=True)
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
     body = RichTextField(blank=True)
     parent_page_types = [
         'home.HomePage',
@@ -101,6 +102,7 @@ class PersonIndexPage(Page):
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('intro', classname="full"),
+        FieldPanel('listing_abstract'),
         FieldPanel('body', classname="full"),
     ]
 
