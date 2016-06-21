@@ -3,7 +3,8 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, MultiFieldPanel, InlinePanel)
+    FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
+)
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
@@ -149,3 +150,30 @@ class PersonCategoryRelationship(models.Model):
     category = models.ForeignKey('PersonCategory', related_name='+')
 
     panels = [FieldPanel('category')]
+
+
+# This is basically just a different view of a PersonIndexPage
+class FellowshipsIndexPage(Page):
+    related_person_index_page = models.ForeignKey(
+        'wagtailcore.Page',
+        on_delete=models.PROTECT,
+        related_name='+',
+        help_text='Select the person index page to pull the list of fellows from.'
+    )
+
+    @property
+    def fellowship_years(self):
+        fellowship_years = {}
+        fellows = self.related_person_index_page.get_children().live().type(FellowPersonPage).specific()
+        for fellow in fellows:
+            year = fellow.fellowship_year
+            try:
+                fellowship_years[year]
+            except KeyError:
+                fellowship_years[year] = []
+            fellowship_years[year].append(fellow)
+        return fellowship_years
+
+    content_panels = Page.content_panels + [
+        PageChooserPanel('related_person_index_page', 'people.PersonIndexPage')
+    ]

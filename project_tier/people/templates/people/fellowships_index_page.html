@@ -1,0 +1,8 @@
+{% for year, fellows in page.fellowship_years.items %}
+  <h1>{{year}}</h1>
+  {% for fellow in fellows %}
+    <div class="fellow">
+      {{fellow.title}}
+    </div>
+  {% endfor %}
+{% endfor %}
