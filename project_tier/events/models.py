@@ -11,10 +11,6 @@ from modelcluster.fields import ParentalKey
 from project_tier.links.models import RelatedLink
 
 
-class EventIndexPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('EventIndexPage', related_name='related_links')
-
-
 class EventIndexPage(Page):
     UPCOMING = 'gte'
     PAST = 'lt'
@@ -37,8 +33,7 @@ class EventIndexPage(Page):
     content_panels = [
         FieldPanel('title', classname="title"),
         FieldPanel('intro', classname="full"),
-        FieldPanel('show_events', classname=""),
-        InlinePanel('related_links', label="Related links"),
+        FieldPanel('show_events', classname="")
     ]
 
     @property

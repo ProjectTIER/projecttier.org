@@ -68,18 +68,4 @@
 
   {% endif %}
 
-  {% if self.related_links.all %}
-  <section class="related-links-list">
-    <div class="row">
-      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-        <ul>
-          {% for related_link in self.related_links.all %}
-            <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
 {% endblock %}
