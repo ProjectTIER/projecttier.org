@@ -15,83 +15,37 @@
       </div>
     </section>
 
-    {% if self.news %}
-    <section class="block-section" id="news-section">
-
-      <div class="row">
-        <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
-          <h2 class="section-title" id="news-section-title">Latest News</h2>
-        </div>
-
-        <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
-          <ol class="news-list item-list">
-          {% for article in self.news %}
-            <li>
-              <article class="news-list-item list-item">
-                <h1>{{ article.title }}</h1>
-                <div class="article-meta">
-                  <span class="article-meta-item">
-                    <time class="article-publish-date">{{ article.go_live_at|date:"F j, Y" }}</time>
-                  </span>
-                  <span class="article-meta-item">
-                    <a href="{% pageurl article %}" class="read-more">Read More</a>
-                  </span>
-                </div>
-              </article>
-            </li>
-          {% endfor %}
-          </ol>
-        </div>
-      </div>
-
-    </section>
-    {% endif %}
-
-    {% for page in self.children %}
-
-      {% if page.slug != 'about' and page.slug != 'news' %}
-
-      <section class="block-section" id="{{page.slug}}-section">
+    {% if page.featured_index_page %}
+      <section class="block-section">
         <div class="row">
-          <div class="section-intro small-12 text-center medium-4 medium-text-right large-5 columns">
-            <h2 class="section-title">{{ page.title }}</h2>
-            <div class="section-description">{{ page.intro | richtext }}</div>
-            <a href={% pageurl page %} class="section-button small button">More About {{page.title}}</a>
+          <div class="section-intro columns">
+            <h2 class="section-title">{{ page.featured_index_page.title }}</h2>
+            <div class="section-description">{{ page.featured_index_page.listing_abstract }}</div>
+            <a href={% pageurl page.featured_index_page %} class="section-button small button">More About {{page.featured_index_page.title}}</a>
           </div>
-
-          <div class="small-12 text-center medium-8 medium-text-left large-7 columns">
-           {% if page.slug == 'events' %}
-              <ol class="events-list item-list">
-                {% for event in page.events %}
-                  {% if forloop.counter < 4 %}
-                    {% include "includes/event_list_item.html" %}
-                  {% endif %}
-                {% endfor %}
-
-                <a href={% pageurl page %} class="">See all <strong>{{ page.events|length}}</strong> upcoming events</a>
-              </ol>
-            {% else %}
-              <ul class="section-link-list">
-                {% for child in page.get_children.live.in_menu.specific %}
-                  <li>
-                    <a href={% pageurl child %} class="section-link">
-                      {{child.title}}
-                      {% if child.subtitle %}
-                        <span class="subtitle">{{child.subtitle}}</span>
-                      {% endif %}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </div>
-
         </div>
       </section>
+    {% endif %}
 
-      {% endif %}
-
-    {% endfor %}
+    <section class="block-section">
+      <div class="row">
+        <div class="section-intro large-4 columns">
+          <h2 class="section-title">{{ page.featured_index_page_2.title }}</h2>
+          <div class="section-description">{{ page.featured_index_page_2.listing_abstract }}</div>
+          <a href={% pageurl page.featured_index_page_2 %} class="section-button small button">More About {{page.featured_index_page_2.title}}</a>
+        </div>
+        <div class="section-intro large-4 columns">
+          <h2 class="section-title">{{ page.featured_index_page_3.title }}</h2>
+          <div class="section-description">{{ page.featured_index_page_3.listing_abstract }}</div>
+          <a href={% pageurl page.featured_index_page_3 %} class="section-button small button">More About {{page.featured_index_page_3.title}}</a>
+        </div>
+        <div class="section-intro large-4 columns">
+          <h2 class="section-title">{{ page.featured_events_page.title }}</h2>
+          <div class="section-description">{{ page.featured_events_page.listing_abstract }}</div>
+          <a href={% pageurl page.featured_events_page %} class="section-button small button">More About {{page.featured_events_page.title}}</a>
+        </div>
+      </div>
+    </section>
 
     <div id="twitter-newsletter" class="block-section">
       <div class="row">
