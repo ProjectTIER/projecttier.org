@@ -8,7 +8,7 @@
       },
       populateToolbar: function(toolbar) {
         var whitelist = [
-          'halloformat', 'hallowagtaillink', 'hallowagtaildoclink'
+          'halloformat', 'hallowagtaillink', 'hallowagtaildoclink', 'hallolists'
         ];
         $(toolbar).children().filter(function() {
           var className = this.className.split(/\s+/)[0];
