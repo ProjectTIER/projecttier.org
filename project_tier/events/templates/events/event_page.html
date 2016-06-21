@@ -13,9 +13,9 @@
               {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}{% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
             </time>
             <div class="event-meta-item">
-              {% if self.location %}{{ self.location }}{% endif %}
-              {% if self.location and self.address %}<br>{% endif %}
-              {% if self.address %}{{ self.address }}{% endif %}
+              {% if self.university %}{{ self.university }}{% endif %}
+              {% if self.university and self.department %}<br>{% endif %}
+              {% if self.department %}{{ self.department }}{% endif %}
             </div>
             <div class="event-meta-item">
               <a class='calendar' href= "{{ self.url }}?format=ical">Add to calendar</a>

@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, InlinePanel)
+    FieldPanel, InlinePanel, MultiFieldPanel
+)
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
 from project_tier.links.models import RelatedLink
@@ -77,9 +78,9 @@ class EventPage(Page):
     time_from = models.TimeField("Start time", null=True, blank=True)
     time_to = models.TimeField("End time", null=True, blank=True)
 
-    location = models.CharField(max_length=255)
     description = RichTextField(blank=True)
-    address = RichTextField(blank=True)
+    university = models.CharField(max_length=255)
+    department = RichTextField(blank=True)
 
     parent_page_types = ['EventIndexPage']
     subpage_types = []
@@ -95,7 +96,10 @@ class EventPage(Page):
         FieldPanel('date_to'),
         FieldPanel('time_from'),
         FieldPanel('time_to'),
-        FieldPanel('location'),
+        MultiFieldPanel([
+            FieldPanel('university'),
+            FieldPanel('department'),
+        ], heading="Address"),
         FieldPanel('description', classname="full"),
         InlinePanel('related_links', label="Related links"),
     ]
