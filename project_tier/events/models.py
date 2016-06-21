@@ -80,7 +80,7 @@ class EventPage(Page):
 
     description = RichTextField(blank=True)
     university = models.CharField(max_length=255)
-    department = RichTextField(blank=True)
+    department = models.CharField(max_length=255, blank=True)
 
     parent_page_types = ['EventIndexPage']
     subpage_types = []
