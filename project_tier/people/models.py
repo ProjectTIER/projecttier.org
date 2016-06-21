@@ -107,6 +107,7 @@ class PersonIndexPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
     body = RichTextField(blank=True)
+
     parent_page_types = [
         'home.HomePage',
         'standard.StandardIndexPage',
@@ -160,6 +161,9 @@ class FellowshipsIndexPage(Page):
         related_name='+',
         help_text='Select the person index page to pull the list of fellows from.'
     )
+    introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
+    body = RichTextField(blank=True)
 
     @property
     def fellowship_years(self):
@@ -172,8 +176,11 @@ class FellowshipsIndexPage(Page):
             except KeyError:
                 fellowship_years[year] = []
             fellowship_years[year].append(fellow)
-        return fellowship_years
+        return sorted(fellowship_years.items(), reverse=True)
 
     content_panels = Page.content_panels + [
-        PageChooserPanel('related_person_index_page', 'people.PersonIndexPage')
+        PageChooserPanel('related_person_index_page', 'people.PersonIndexPage'),
+        FieldPanel('introductory_headline'),
+        FieldPanel('listing_abstract'),
+        FieldPanel('body')
     ]
