@@ -84,6 +84,7 @@ class EventPage(Page):
 
     location = models.CharField(max_length=255)
     description = RichTextField(blank=True)
+    address = RichTextField(blank=True)
 
     parent_page_types = ['EventIndexPage']
     subpage_types = []
