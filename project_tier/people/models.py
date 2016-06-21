@@ -14,6 +14,10 @@ from wagtail.wagtailsnippets.models import register_snippet
 class PersonCategory(models.Model):
     title = models.CharField(max_length=255)
 
+    def __str__(self):              # __unicode__ on Python 2
+        # We're returning the string that populates the snippets screen. Note it returns as plain-text
+        return self.title
+
 
 class PersonPage(Page):
     location = models.CharField(max_length=255, blank=True)
