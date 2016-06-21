@@ -20,7 +20,7 @@ class PersonPage(Page):
     phone = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
     main_job_title = models.TextField(blank=True)
-    academic_job_title = models.TextField(blank=True)
+    academic_title = models.TextField(blank=True)
     intro = RichTextField(blank=True)
     biography = RichTextField(blank=True)
     website = models.URLField(max_length=255, blank=True)
@@ -64,7 +64,7 @@ class PersonPage(Page):
             classname="collapsible collapsed"
         ),
         FieldPanel('main_job_title', classname="full"),
-        FieldPanel('academic_job_title', classname="full"),
+        FieldPanel('academic_title', classname="full"),
         FieldPanel('intro', classname="full"),
         FieldPanel('biography', classname="full"),
         ImageChooserPanel('image'),
