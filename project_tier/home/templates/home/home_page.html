@@ -34,8 +34,8 @@
     <section class="block-section subfeatured-content">
       <div class="row">
         {% if page.featured_index_page_2 %}
-          <div class="section-intro large-4 columns">
-            <h2 class="section-title">{{ page.featured_index_page_2.title }}</h2>
+          <div class="subfeature-section-intro large-4 columns">
+            <h2 class="subfeature-section-title">{{ page.featured_index_page_2.title }}</h2>
             <ul>
               {% for childpage in page.featured_index_page_2.specific.children|slice:"3" %}
                 <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
@@ -44,8 +44,8 @@
           </div>
         {% endif %}
         {% if page.featured_index_page_3 %}
-          <div class="section-intro large-4 columns">
-            <h2 class="section-title">{{ page.featured_index_page_3.title }}</h2>
+          <div class="subfeature-section-intro large-4 columns">
+            <h2 class="subfeature-section-title">{{ page.featured_index_page_3.title }}</h2>
             <ul>
               {% for childpage in page.featured_index_page_3.specific.children|slice:"3" %}
                 <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
@@ -54,8 +54,8 @@
           </div>
         {% endif %}
         {% if page.featured_events_page %}
-          <div class="section-intro large-4 columns">
-            <h2 class="section-title">Upcoming Events</h2>
+          <div class="subfeature-section-intro large-4 columns">
+            <h2 class="subfeature-section-title">Upcoming Events</h2>
             <ul>
               {% for childpage in page.featured_events_page.specific.children|slice:"3" %}
                 <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>

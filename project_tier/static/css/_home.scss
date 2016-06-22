@@ -114,6 +114,7 @@
       padding: 3px 12px;
       &:before {
         content: "\f054";
+        color: $blue;
         font-family: FontAwesome;
         margin: 0 5px 0 -15px;
       }
@@ -136,6 +137,43 @@
     }
   }
 }
+
+#home-page .subfeatured-content {
+  h2 {
+    font-size: 1.15rem;
+    border-bottom: 3px solid #ddd;
+    padding-bottom: 20px;
+    display: block;
+    text-transform: uppercase;
+  }
+}
+.subfeature-section-intro ul li {
+      &::before {
+        content: "\f054";
+        color: $red;
+        font-family: FontAwesome;
+        margin: 0 5px 0 0px;
+      }
+      &::after {
+          content: "";
+          display: block;
+          height: 1px;
+          width: 100%;
+          margin: 10px 0 0 0;
+          background-color: $light-grey;
+          opacity: 0.9;
+      }
+      a {
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 600;
+        font-size: 1.1rem;
+        &:hover {
+          color: $red;
+        }
+      }
+    }
+
 
   /* Events Section
      ========================================================================== */
