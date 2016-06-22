@@ -29,21 +29,27 @@
 
     <section class="block-section">
       <div class="row">
-        <div class="section-intro large-4 columns">
-          <h2 class="section-title">{{ page.featured_index_page_2.title }}</h2>
-          <div class="section-description">{{ page.featured_index_page_2.listing_abstract }}</div>
-          <a href={% pageurl page.featured_index_page_2 %} class="section-button small button">More About {{page.featured_index_page_2.title}}</a>
-        </div>
-        <div class="section-intro large-4 columns">
-          <h2 class="section-title">{{ page.featured_index_page_3.title }}</h2>
-          <div class="section-description">{{ page.featured_index_page_3.listing_abstract }}</div>
-          <a href={% pageurl page.featured_index_page_3 %} class="section-button small button">More About {{page.featured_index_page_3.title}}</a>
-        </div>
-        <div class="section-intro large-4 columns">
-          <h2 class="section-title">{{ page.featured_events_page.title }}</h2>
-          <div class="section-description">{{ page.featured_events_page.listing_abstract }}</div>
-          <a href={% pageurl page.featured_events_page %} class="section-button small button">More About {{page.featured_events_page.title}}</a>
-        </div>
+        {% if page.featured_index_page_2 %}
+          <div class="section-intro large-4 columns">
+            <h2 class="section-title">{{ page.featured_index_page_2.title }}</h2>
+            <div class="section-description">{{ page.featured_index_page_2.listing_abstract }}</div>
+            <a href={{ page.featured_index_page_2.url }} class="section-button small button">More About {{page.featured_index_page_2.title}}</a>
+          </div>
+        {% endif %}
+        {% if page.featured_index_page_3 %}
+          <div class="section-intro large-4 columns">
+            <h2 class="section-title">{{ page.featured_index_page_3.title }}</h2>
+            <div class="section-description">{{ page.featured_index_page_3.listing_abstract }}</div>
+            <a href={{ page.featured_index_page_3.url }} class="section-button small button">More About {{page.featured_index_page_3.title}}</a>
+          </div>
+        {% endif %}
+        {% if page.featured_events_page %}
+          <div class="section-intro large-4 columns">
+            <h2 class="section-title">{{ page.featured_events_page.title }}</h2>
+            <div class="section-description">{{ page.featured_events_page.listing_abstract }}</div>
+            <a href={{page.featured_events_page.url}} class="section-button small button">More About {{page.featured_events_page.title}}</a>
+          </div>
+        {% endif %}
       </div>
     </section>
 
