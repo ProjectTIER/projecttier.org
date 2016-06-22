@@ -2,14 +2,11 @@
    LINKS
    ========================================================================== */
 a, %hyperlink {
-  color: $dark-teal;
-
-  box-shadow: 0 (rem-calc(4)) 0 0 transparentize($dark-teal, 0.7);
+  color: $blue;
+  text-decoration: underline;
   transition: color 0.2s, box-shadow 0.2s;
-
   &:hover, &:active {
     color: $red;
-    box-shadow: 0 (rem-calc(4)) 0 0 $red;
   }
 }
 
@@ -20,104 +17,101 @@ p, %paragraph {
   font-size: rem-calc(17);
   line-height: rem-calc(28);
   margin-bottom: $small-gutter;
-  color: $black;
+  color: $dark-grey;
   max-width: 45em;
-
-  &.secondary {
-    @extend %secondary-text;
-  }
-}
-.secondary-text, %secondary-text {
-  color: $off-black;
-  font-size: rem-calc(12);
-  @include breakpoint(medium up){
-    font-size: rem-calc(13);
-  }
 }
 
 /* ==========================================================================
    HEADING STYLES
    ========================================================================== */
-%large-heading, .large-heading {
-  font-size: rem-calc(36);
+h2/*, %large-heading, .large-heading*/ {
   color: $off-black;
+  font-size: rem-calc(36);
   margin: $medium-gutter 0 $small-gutter/2;
   @include breakpoint(medium up){
-    font-size: rem-calc(42);
+    font-size: rem-calc(40);
   }
   @include breakpoint(large up){
-    font-size: rem-calc(48);
+    font-size: rem-calc(44);
   }
 }
-%medium-heading, .medium-heading {
-  font-size: rem-calc(26);
-  font-weight: 900;
+h3, /* %medium-heading, .medium-heading,*/ .heading {
   color: $off-black;
-  text-transform: none;
+  font-size: rem-calc(28);
   margin: $medium-gutter 0 $small-gutter/2;
+  text-transform: none;
+  @include breakpoint(medium up){
+    font-size: rem-calc(32);
+  }
+  @include breakpoint(large up){
+    font-size: rem-calc(36);
+  }
 }
-%small-heading, .small-heading {
-  font-size: rem-calc(22);
-  font-weight: 900;
+h4, /*%small-heading, .small-heading,*/ .smaller-heading {
   color: $off-black;
+  font-size: rem-calc(20);
+    @include breakpoint(medium up){
+    font-size: rem-calc(24);
+  }
+  @include breakpoint(large up){
+    font-size: rem-calc(28);
+  }
 }
-%display-heading {
+h5, /*%display-heading,*/ .smallest-heading {
+  color: $off-black;
   font-size: rem-calc(16);
-  color: $off-black;
-  font-weight: 700;
-  text-transform: uppercase;
   line-height: 1.2;
   @include breakpoint(medium up){
-    font-size: rem-calc(20);
+    font-size: rem-calc(16);
   }
   @include breakpoint(large up){
-    font-size: rem-calc(24);
+    font-size: rem-calc(20);
   }
 }
 
 
 /* ==========================================================================
-   RICH TEXT EDITOR CONTEN
+   UL and OL 
+   TODO, these are also being defined somewhere else. Foundation?
    ========================================================================== */
 
 .body-content {
   max-width: rem-calc(800);
 }
-.rich-text, .stream-field {
 
-  h2 {
-    @extend %large-heading;
-  }
-  h3 {
-    @extend %medium-heading;
-  }
-  h4 {
-    @extend %small-heading;
-  }
-  h5 {
-    @extend %paragraph;
-    font-weight: 900;
-    margin-bottom: 0.5em;
-    color: $off-black;
-  }
-
-  // h2,h3,h4,h5 {
-  //   margin-bottom: $small-gutter;
-  // }
-
-  ul, ol {
-    @extend %paragraph;
-    padding-left: 1.5em;
-    li {
-      margin-bottom: 1em;
-      padding-left: .4em;
-      &:last-child {
-        margin-bottom: 0;
-      }
+ul {
+  padding-left: 0;
+  li {
+    padding-left: 0;
+    list-style: none;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:before{
+      content: "■";
+      color: $blue;
+      margin-right: $small-gutter;
     }
   }
 }
-
+ol {
+  padding-left: 0;
+  li {
+    counter-increment: list;
+    list-style-type: none;
+    padding-left: 1.9em; /* to account for the after negative margin */
+    position: relative;
+    &:after {
+      /* TODO do with JS */
+      content: counter(list) ".";
+      position: absolute;
+      left: -1.1em;
+      width: 2em;
+      text-align: right;
+      color: $blue;
+    }
+  }
+}
 
 /* ==========================================================================
    CODE / MONOSPACE TEXT
