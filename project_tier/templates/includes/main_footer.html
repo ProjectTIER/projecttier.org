@@ -1,6 +1,19 @@
 <footer id="main-footer">
   <div class="row">
     <div class="small-12 columns">
+    
+        <div id="twitter-newsletter" class="block-section">
+          <div class="row">
+            
+            <div class="small-12 columns mailchimp">
+              {% include "includes/mailchimp_signup.html" %}
+            </div>
+          </div>
+          <div class="small-12 twitter">
+              {% include "includes/twitter_section.html" %}
+          </div>
+        </div>
+
         <p id="sponsor-logo">
           <a href="/">
             <span class="show-for-sr">Project TIER</span>
@@ -14,9 +27,7 @@
         </p>
       <nav id="footer-nav">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about/contact">Contact Us</a></li>
-          <li><a href="mailto:info@projecttier.org" target="_blank">Email info@projecttier.org</a></li>
+          
         </ul>
       </nav>
     </div>
@@ -27,6 +38,9 @@
         <nav id="legal-nav">
           <ul>
             <li><a href="/">© 2016 Project TIER</a></li>
+            <li><a href="/">Home</a></li>
+          <li><a href="/about/contact">Contact Us</a></li>
+          <li><a href="mailto:info@projecttier.org" target="_blank">Email info@projecttier.org</a></li>
           </ul>
         </nav>
       </div>

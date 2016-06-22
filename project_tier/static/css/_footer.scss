@@ -2,7 +2,6 @@
   background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
   color: $white;
   padding: $small-gutter 0 0;
-  box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.34);
   position: relative;
   z-index: 3;
   
@@ -70,6 +69,7 @@
   }
 
   #footer-nav {
+    margin-top: 40px 0 0 0;
     ul {
       list-style: none;
       margin: 0 0 $small-gutter 0;
@@ -83,11 +83,15 @@
         @include breakpoint(medium up) {
           margin: 0 $small-gutter 0 0;
         }
+        &::before {
+          display: none;
+        }
         a {
           color: $white;
-          box-shadow: 0 (rem-calc(4)) 0 0 transparentize($white, 0.7);
+          text-decoration: none;
+          transition: opacity 0.3s;
           &:hover {
-            box-shadow: 0 (rem-calc(4)) 0 0 $white;
+            opacity: 0.8;
           }
         }
       }
@@ -110,6 +114,9 @@
         li {
           display: inline-block;
           margin: 0 $small-gutter/2;
+          &::before {
+            display: none;
+          }
           @include breakpoint(medium up) {
             margin: 0 $small-gutter 0 0;
           }
@@ -125,3 +132,68 @@
     }
   }
 }
+
+/* Mailing list */
+#newsletter-section > .row {
+  color: $light-grey;
+  > .footer-title {
+    h2 {
+      color: $off-white;
+      font-size: 1.3em;
+      &::before {
+        content: "\f003";
+        font-family: FontAwesome;
+        display: block;
+        float: left;
+        margin-right: 10px;
+        opacity: 0.7;
+      }
+    }
+  }
+  .footer-description p {
+    color: $light-grey;
+    margin-left: 18px;
+  }
+  .mailchimp-signup {
+    /* TODO improve this */
+    margin: 30px -0px -12px -100px;
+    .button {
+    }
+  }
+}
+
+#twitter-section {
+  > h2 {
+    font-size: 1.3em;
+    > a {
+      color: $off-white;
+      font-size: 1em;
+      text-decoration: none;
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
+      &::before {
+        content: "\f099";
+        font-family: FontAwesome;
+        display: block;
+        float: left;
+        margin-right: 10px;
+        opacity: 0.7;
+      }
+    }
+  }
+  iframe {
+    background-color: white;
+    border-radius: 8px;
+    display: block;
+    clear: both;
+    opacity: 0.8;
+    &:last-child {
+      background-color: transparent;
+      margin: 20px 155px;
+    }
+      }
+    }
+
+
