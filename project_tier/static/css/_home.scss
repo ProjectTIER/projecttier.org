@@ -82,10 +82,10 @@
   }
 
 /* Edd TODO and unhack this */
-#home-page .featured-index-page {
+.featured-index-page {
   padding-left: 40px;
 }
-#home-page .featured-index-page h2 {
+.featured-index-page h2.section-title {
     font-size: 1.25rem;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -138,15 +138,13 @@
   }
 }
 
-#home-page .subfeatured-content {
-  h2 {
+section.subfeatured-content h2.subfeature-section-title {
     font-size: 1.15rem;
     border-bottom: 3px solid #ddd;
     padding-bottom: 20px;
     display: block;
     text-transform: uppercase;
   }
-}
 .subfeature-section-intro ul li {
       &::before {
         content: "\f054";

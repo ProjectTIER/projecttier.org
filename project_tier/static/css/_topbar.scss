@@ -1,6 +1,28 @@
 /* ==========================================================================
    SMALL-SCREEN TITLE BAR / MENU ICON
    ========================================================================== */
+.top-bar .menu > li {
+  text-transform: uppercase;
+  padding: 0 50px 0 0!important;
+  &::before {
+    display: none;
+  }
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: $grey!important;
+  }
+  &:after {
+    content: "\f107";
+    color: $blue;
+    font-family: FontAwesome;
+    float: right;
+    margin-right: -10px;
+    margin-top: -30px;
+  }
+}
+
+
 .title-bar {
   position: fixed;
   z-index: 3;
