@@ -19,7 +19,7 @@
   {# Uses method defined in models.py to retrieve all upcoming events #}
   {# See also standard index for creating a listing with a tag #}
 
-  {% if self.show_events == 'gte' %}
+  {% if self.events %}
     {% with self.events.all as events %}
       <div class="row">
         <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
@@ -30,26 +30,27 @@
               {% endfor %}
             </ol>
           {% else %}
-            <p>There are currently no upcoming events.</p>
+            <p>There are currently no upcoming events added. This is, most likely, an error. You can get in touch with <a href="mailto:info@projecttier.org">info@projecttier.org</a> for more information.</p>
           {% endif %}
         </div>
       </div>
     {% endwith %}
 
-<!--    {% if self.past_events %}
+{% if self.past_events %}
     {% with self.past_events as events %}
       <div class="row">
         <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-
-          <hr/>
-          <h4>The last {{events|length}} previous events</h4>
-
+          {% if events %}
+          <h4>Past events</h4>
           <ol class="events-index item-list">
           {% for event in events %}
             {% include "includes/event_list_item.html" with event=event %}
           {% endfor %}
           </ol>
+          {% else %}
+            <p>There's been no previous events.</p>
         </div>
+        {% endif %}
       </div>
     {% endwith %}
   {% else %}
@@ -71,5 +72,5 @@
     </div>
 
   {% endif %}
-{% endif %} -->
+{% endif %} 
 {% endblock %}

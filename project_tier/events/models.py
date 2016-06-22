@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, InlinePanel, MultiFieldPanel
+    FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
 )
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
@@ -46,7 +46,7 @@ class EventIndexPage(Page):
 
         events = events.filter(**kwargs)
 
-        events = events.order_by('date_from' if self.show_events == 'gte' else '-date_from')
+        events = events.order_by('date_from')
 
         return events
 
@@ -54,20 +54,22 @@ class EventIndexPage(Page):
     def past_events(self):
         events = EventPage.objects.live().filter(date_from__lt=date.today())
         events = events.order_by('-date_from')
-        events = events.all()[:10]
+        events = events.all()  # [:10]
 
         return events
 
-    class Meta:
-        verbose_name = "Event List"
+        class Meta:
+            verbose_name = "Event List"
 
+    @property
+    def past_event(self):
+        event = EventPage.objects.live().filter(date_from__lt=date.today())
 
-class EventPageRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('EventPage', related_name='related_links')
+        return event
 
 
 class EventPage(Page):
-    date_from = models.DateField("Start date")
+    date_from = models.DateField("Start date", help_text="Required for us to know if the event is in the future or past")
     date_to = models.DateField(
         "End date",
         null=True,
@@ -77,10 +79,9 @@ class EventPage(Page):
     time_from = models.TimeField("Start time", null=True, blank=True)
     time_to = models.TimeField("End time", null=True, blank=True)
 
-    description = RichTextField(blank=True)
-    university = models.CharField(max_length=255)
-    department = models.CharField(max_length=255, blank=True)
-
+    meta_information = RichTextField(blank=True, help_text="Meta information about the event e.g. Haverford College, Department of economics")
+    description = RichTextField(blank=True, help_text="The description written as though in the future")
+    description_past = RichTextField(blank=True, help_text="The description written as though in the past")
     parent_page_types = ['EventIndexPage']
     subpage_types = []
 
@@ -90,16 +91,15 @@ class EventPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('date_from'),
-        FieldPanel('date_to'),
-        FieldPanel('time_from'),
-        FieldPanel('time_to'),
+        FieldRowPanel([
+            FieldPanel('date_from'),
+            FieldPanel('date_to'),
+        ],),
+        FieldPanel('meta_information'),
         MultiFieldPanel([
-            FieldPanel('university'),
-            FieldPanel('department'),
-        ], heading="Address"),
-        FieldPanel('description'),
-        InlinePanel('related_links', label="Related links"),
+            FieldPanel('description'),
+            FieldPanel('description_past'),
+        ], heading="Description of event"),
     ]
 
     @property
@@ -107,6 +107,7 @@ class EventPage(Page):
         # Find closest ancestor which is an event index
         return self.get_ancestors().type(EventIndexPage).last()
 
+# This is a legacy from PromptWorks. It introduces an ical download on the event page
     def serve(self, request):
         if "format" in request.GET:
             if request.GET['format'] == 'ical':
