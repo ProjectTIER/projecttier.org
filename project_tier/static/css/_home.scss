@@ -81,6 +81,61 @@
     }
   }
 
+/* Edd TODO and unhack this */
+#home-page .featured-index-page {
+  padding-left: 40px;
+}
+#home-page .featured-index-page h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.section-intro {
+  display: flex;
+  margin-bottom: 20px;
+  .section-description {
+    background-color: $grey;
+    color: $pale-grey;
+    columns: 300px 3;
+    column-gap: 20px;
+    padding: 20px;
+    max-width: 45rem;
+    float: left;
+  }
+  .section-children {
+    float: left;
+    background-color: $grey;
+    padding: 20px;
+    min-width: 18rem;
+    margin-left: 40px;
+    overflow: hidden;
+    li {
+      list-style: none;
+      padding: 3px 12px;
+      &:before {
+        content: "\f054";
+        font-family: FontAwesome;
+        margin: 0 5px 0 -15px;
+      }
+      &::after {
+          content: "";
+          display: block;
+          height: 1px;
+          width: 150%;
+          margin: 10px 0 0px -20%;
+          background-color: $light-grey;
+          opacity: 0.3;
+        }
+      a {
+        text-decoration: none;
+        transition: opacity 0.2s;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
 
   /* Events Section
      ========================================================================== */
