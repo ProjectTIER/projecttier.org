@@ -16,38 +16,49 @@
     </section>
 
     {% if page.featured_index_page %}
-      <section class="block-section">
+      <section class="block-section featured-index-page">
         <div class="row">
           <div class="section-intro columns">
             <h2 class="section-title">{{ page.featured_index_page.title }}</h2>
             <div class="section-description">{{ page.featured_index_page.listing_abstract }}</div>
-            <a href={% pageurl page.featured_index_page %} class="section-button small button">More About {{page.featured_index_page.title}}</a>
           </div>
         </div>
       </section>
     {% endif %}
 
-    <section class="block-section">
+    <section class="block-section subfeatured-content">
       <div class="row">
         {% if page.featured_index_page_2 %}
           <div class="section-intro large-4 columns">
             <h2 class="section-title">{{ page.featured_index_page_2.title }}</h2>
             <div class="section-description">{{ page.featured_index_page_2.listing_abstract }}</div>
-            <a href={{ page.featured_index_page_2.url }} class="section-button small button">More About {{page.featured_index_page_2.title}}</a>
+            <ul>
+              {% for childpage in page.featured_index_page_2.specific.children %}
+                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
+              {% endfor %}
+            </ul>
           </div>
         {% endif %}
         {% if page.featured_index_page_3 %}
           <div class="section-intro large-4 columns">
             <h2 class="section-title">{{ page.featured_index_page_3.title }}</h2>
             <div class="section-description">{{ page.featured_index_page_3.listing_abstract }}</div>
-            <a href={{ page.featured_index_page_3.url }} class="section-button small button">More About {{page.featured_index_page_3.title}}</a>
+            <ul>
+              {% for childpage in page.featured_index_page_3.specific.children %}
+                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
+              {% endfor %}
+            </ul>
           </div>
         {% endif %}
         {% if page.featured_events_page %}
           <div class="section-intro large-4 columns">
-            <h2 class="section-title">{{ page.featured_events_page.title }}</h2>
+            <h2 class="section-title">Upcoming Events</h2>
             <div class="section-description">{{ page.featured_events_page.listing_abstract }}</div>
-            <a href={{page.featured_events_page.url}} class="section-button small button">More About {{page.featured_events_page.title}}</a>
+            <ul>
+              {% for childpage in page.featured_events_page.specific.children %}
+                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
+              {% endfor %}
+            </ul>
           </div>
         {% endif %}
       </div>
