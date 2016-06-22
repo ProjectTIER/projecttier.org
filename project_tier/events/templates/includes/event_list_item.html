@@ -2,16 +2,22 @@
 
 {# Individual event item in a list - used on event index and home page #}
 <li>
-  <article class="list-item event block-link-parent">
+  <article class="list-item event event-index block-link-parent">
     <header>
       <h1><a href="{% pageurl event %}" class="block-link-target" title="More Details">{{ event.title }}</a></h1>
       <div class="article-meta">
+        
+        <div class="small-5 columns meta">
         <span class="article-meta-item">
-          {{event.location}}
+          {{event.university}}, {{event.department}}
         </span>
         <span class="article-meta-item">
           {{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}
         </span>
+      </div>
+      <div class="small-4 columns end description">
+        {{event.description|richtext}}
+      </div>
       </div>
     </header>
   </article>

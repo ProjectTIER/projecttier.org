@@ -113,3 +113,43 @@ section {
   }
 }
 }
+
+.event-index {
+.article-meta .article-meta-item::after { display: none;}
+ h1 {
+      &:first-child {
+      margin-top: 0;
+    }
+    a.block-link-target {
+    text-decoration: none;
+    font-size: 1.7rem;
+    margin-bottom: 0px;
+    &::before {
+      content: "\f105";
+      color: $light-grey;
+      font-family: FontAwesome;
+      font-size: 1.3rem;
+      margin: 0 30px 0 0px;
+    }
+  }
+}
+    .article-meta {
+      margin-left: 40px;
+    }
+    .meta { 
+      opacity: 0.4;
+      padding-left: 0;
+    }
+    .article-meta-item {
+      clear: both;
+      margin-bottom: 5px;
+      display: block;
+    }
+  border-bottom: 1px solid $light-grey;
+  padding-bottom: 20px;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.events-index > li::after { display: none; }
