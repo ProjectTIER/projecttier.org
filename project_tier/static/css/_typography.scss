@@ -79,10 +79,6 @@ h5, /*%display-heading,*/ .smallest-heading {
    TODO, these are also being defined somewhere else. Foundation?
    ========================================================================== */
 
-.body-content {
-  max-width: rem-calc(800);
-}
-
 ul {
   margin-left: 0;
   padding-left: 0;
@@ -117,6 +113,15 @@ ol {
       color: $blue;
     }
   }
+}
+
+.introduction {
+  font-size: rem-calc(22);
+}
+
+.overview {
+  font-size: rem-calc(22);
+  font-weight: 700;
 }
 
 /* ==========================================================================

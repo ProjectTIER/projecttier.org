@@ -28,8 +28,9 @@
    ========================================================================== */
   #intro-section {
     background-color: #EAEAEA;
-    background-image: url('../img/bg-image.svg');
+    background-image: url('../img/bg-image.png');
     padding: $large-gutter 0;
+    background-size: 60px;
     @include breakpoint(medium up){
       padding: $large-gutter*2 0;
     }

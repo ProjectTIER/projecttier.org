@@ -1,21 +1,15 @@
-/* ==========================================================================
-   MAIN CONTAINER
-   ========================================================================== */
 #main-container {
   padding-top: calc(#{$expanded-topbar-height} + 10px);
 }
 
 
-
-/* ==========================================================================
-   PAGE LAYOUT
-   ========================================================================== */
 body {
   background: $dark-red;
 }
 .page-header {
   background-color: #EAEAEA;
-  background-image: url('../img/bg-image.svg');
+  background-image: url('../img/bg-image.png');
+  background-size: 60px;
   padding: $small-gutter/2 0;
   box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   @include breakpoint(medium up){
@@ -34,6 +28,10 @@ body {
       margin-top: 0;
     }
   }
+}
+
+.body-content {
+  max-width: rem-calc(800);
 }
 
 .page-content {
@@ -58,9 +56,6 @@ body {
 
 
 
-/* ==========================================================================
-   ROW OVERRIDES
-   ========================================================================== */
 .row {
   &.full-width {
     max-width: none;
@@ -68,14 +63,6 @@ body {
 }
 
 
-
-
-
-
-
-/* ==========================================================================
-   MAIN PANEL
-   ========================================================================== */
 
 .block-section {
   padding: $small-gutter 0 $medium-gutter;
@@ -93,8 +80,7 @@ body {
     }
   }
 
-  /* Section Intro
-     ========================================================================== */
+ 
   .section-intro {
     &::after {
       content: '';
@@ -114,7 +100,6 @@ body {
   /* Section Title
      ========================================================================== */
   .section-title {
-    @extend %display-heading;
     text-transform: uppercase;
     margin: 0 0 $small-gutter;
     .subtitle {
@@ -124,228 +109,13 @@ body {
       font-size: 0.8em;
     }
   }
+}
 
   /* Section Desctiption
      ========================================================================== */
-  .section-description {
+  /* .section-description {
     @extend %secondary-text;
     p {
       margin-bottom: $small-gutter;
     }
-  }
-
-  /* Section Button
-     ========================================================================== */
-  .section-button {
-    @extend .monochrome;
-    margin-bottom: $small-gutter;
-    @include breakpoint(medium up){
-      margin-bottom: 0;
-    }
-  }
-
-
-
-  /* EVEN SECTIONS / ALT SECTIONS
-     ========================================================================== */
-  &:nth-child(even) {
-    background: $pale-grey;
-    box-shadow: inset 10px 0px 8px -8px rgba(0,0,0,0.2);
-  }
-
-  &.alternate {
-    background: $pale-grey;
-    &:nth-child(2n){
-      background: $white;
-    }
-  }
-
-
-  /* Minimized, narrower, less padding
-     ========================================================================== */
-  &.minimized {
-    padding: $small-gutter 0 0;
-  }
-
-
-  /* Link List
-     ========================================================================== */
-  .section-link-list {
-    list-style: none;
-    margin: 0;
-    li {
-      margin-bottom: $small-gutter;
-      a {
-        @extend %medium-heading;
-        color: $dark-teal;
-        &:hover {
-          color: $red;
-        }
-      }
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-
-/* ==========================================================================
-   GRID BLOCK SECTIONS
-   ========================================================================== */
-  &.grid {
-
-    .row {
-      align-items: stretch;
-    }
-
-    .section-grid-item {
-      position: relative;
-      &::after {
-        display: block;
-        content: '';
-        width: 50%;
-        height: 1px;
-        background: $transparent-black;
-        margin: $small-gutter auto;
-      }
-      @include breakpoint(medium up){
-        &::after {
-          display: none;
-        }
-      }
-
-      .section-title {
-        @extend %medium-heading;
-        margin-bottom: $small-gutter/2;
-      }
-
-      p {
-        margin: 0;
-        padding-bottom: $small-gutter;
-      }
-      .button {
-        @include breakpoint(small only){
-          width: 100%;
-          font-size: rem-calc(13);
-        }
-      }
-    }
-  }
-}
-
-.off-canvas {
-  //box-shadow: 0px 5px 5px rgba(0,0,0,0.5) !important;
-  //z-index: 2;
-}
-
-
-/* ==========================================================================
-   PANEL LAYOUT (i.e Protocol Pages)
-   ========================================================================== */
-.row.panel-layout {
-  @include breakpoint(medium up){
-    display: flex;
-    align-items: stretch;
-  }
-
-
-  /* Main Panel
-     ========================================================================== */
-  .main-panel {
-    background: $white;
-    padding: $small-gutter;
-    position: relative;
-    z-index: 2;
-    @include breakpoint(medium up){
-      margin-top: rem-calc(-3);
-    }
-  }
-
-
-  /* Sidebar Panel
-     ========================================================================== */
-
-  .sidebar {
-    background-color: $pale-grey;
-    padding: $small-gutter;
-    font-size: rem-calc(14);
-    //color: $black;
-    box-shadow:
-      inset 0px -31px 12px -20px rgba(0,0,0,0.31),
-      inset 10px 0px 8px -8px rgba(0,0,0,0.2);
-    @include breakpoint(medium up){
-      //margin-top: rem-calc(3);
-    }
-
-    a {
-      //color: $white;
-      &:hover {
-        //color: $teal;
-      }
-    }
-
-    .fa-arrow-left {
-      padding-right: rem-calc(5);
-      transform: rotate(-90deg);
-      @include breakpoint(medium up){
-        transform: none;
-      }
-    }
-
-    h2 {
-      @extend %medium-heading;
-      color: $white;
-    }
-
-    .intro {
-      @extend %display-heading;
-      color: $white;
-
-      text-transform: none;
-    }
-
-    p {
-      margin-bottom: 1em;
-    }
-
-    .component-nav {
-      li {
-        a {
-          &:hover {
-            //background-color: $black;
-          }
-        }
-      }
-    }
-  }
-}
-
-
-
-/* ==========================================================================
-   SLIDE PANEL TOGGLER
-   ========================================================================== */
-
-.slide-panel {
-  transition: width 0.3s;
-  &.closed {
-    width: 100% !important;
-    transition: width 0.3s ease 0.3s;
-  }
-}
-.slide-drawer {
-  transition: width 0.3s, padding 0.3s;
-  > * {
-    transition: opacity 0.3s ease 0.3s;
-  }
-  &.closed {
-    width: 0% !important;
-    padding-left: 0!important;
-    padding-right: 0!important;
-    transition: width 0.3s ease 0.3s, padding 0.3s ease 0.3s;
-    > * {
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-  }
-}
+  } */
