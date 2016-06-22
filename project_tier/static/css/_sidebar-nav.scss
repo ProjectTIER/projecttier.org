@@ -1,85 +1,108 @@
 /* SIDEBAR NAV
    ========================================================================== */
+/* Foundation overrides */
+.position-left.reveal-for-large ~ .off-canvas-content {
+  margin-left: 23rem;
+}
+
+.off-canvas.position-left {
+  width: 22rem;
+  overflow: hidden;
+}
+
 .sidebar-nav {
   @include breakpoint(large up) {
-    padding-top: $medium-gutter*2;
+    padding: 0 $small-gutter 0 $small-gutter*3.3;
   }
 
   h3 {
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 0;
+    &:after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 150%;
+      margin: 10px 0 0px -50%;
+      background-color: $light-grey;
+    }
   }
 
   // All links in the menu
   li {
+    list-style: none;
+    &:before {
+      display: none;
+    }
     a {
       box-shadow: none;
+      color: $blue;
+      font-weight: 600;
+      padding: 0.7rem 0!important;
       position: relative;
-      color: $dark-teal;
-      transition:
-        background 0.2s,
-        color 0.2s;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
       &:hover {
-        background: transparentize($white, 0.5);
         color: $red;
       }
-
-      // caret icon
-      i {
-        position: absolute;
-        right: rem-calc(5);
-        top: rem-calc(11);
-        transition: transform 0.5s;
+      &:before {
+        content: ">";
+        margin: 0 5px 0 -15px;
       }
     }
     &.is-active {
       > a {
-        background: transparentize($white, 0.5);
-        i {
-          transform: rotate(180deg);
-        }
+        color: $black;
+        font-weight: 800;
       }
     }
   }
 
   > .menu {
-
-    // Top level items
     > li {
-      border-bottom: 1px solid $button-shadow;
-      border-top: 1px solid $button-highlight;
-      &:first-child {
-        border-top: none;
-      }
-      &:last-child {
-        border-bottom: none;
-      }
+      text-transform: uppercase;
+      font-size: 0.9rem;
+        &::after {
+          content: "";
+          display: block;
+          height: 2px;
+          width: 150%;
+          margin: 0px 0 0px -50%;
+          background-color: $pale-grey;
+        }
 
       // Just top level links
       > a {
-
+      }
+    }
+  }
+}
+#table-of-contents {
+  ul {
+    margin: 0;
+    li {
+      > a {
+        padding-left: 0;
       }
 
-      // Submenu level one
-      > ul {
-        margin: 0;
-        background: transparentize($white, 0.5);
+      // Submenu level two
+      ul {
+        margin: -10px 0 0 0;
+        &::after {
+          content: "";
+          display: block;
+          height: 2px;
+          width: 150%;
+          margin: 5px 0 0px -50%;
+          background-color: $pale-grey;
+        }
         > li {
           > a {
-            padding-left: $medium-gutter;
-            font-size: rem-calc(14);
-            font-weight: 900;
-          }
-
-          // Submenu level two
-          > ul {
-            margin: 0;
-            background: transparentize($white, 0.5);
-            > li {
-              > a {
-                padding-left: $medium-gutter + rem-calc(5);
-                font-size: rem-calc(12);
-              }
+            color: $black;
+            font-size: rem-calc(12);
+            &::before {
+              content: "-";
             }
           }
         }
@@ -90,7 +113,7 @@
 
 /* Protocol Menu Toggle Button
    ========================================================================== */
-#protocol-menu-toggle {
+/* #protocol-menu-toggle {
   float: left;
   font-size: rem-calc(14);
   position: relative;
@@ -101,4 +124,4 @@
   @include breakpoint(medium up){
     left: -($medium-gutter/2);
   }
-}
+} */

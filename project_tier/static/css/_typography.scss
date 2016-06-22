@@ -24,6 +24,10 @@ p, %paragraph {
 /* ==========================================================================
    HEADING STYLES
    ========================================================================== */
+h1 {
+  font-size: rem-calc(64);
+}
+
 h2/*, %large-heading, .large-heading*/ {
   color: $off-black;
   font-size: rem-calc(36);
@@ -80,6 +84,7 @@ h5, /*%display-heading,*/ .smallest-heading {
 }
 
 ul {
+  margin-left: 0;
   padding-left: 0;
   li {
     padding-left: 0;
@@ -95,6 +100,7 @@ ul {
   }
 }
 ol {
+  margin-left: 0;
   padding-left: 0;
   li {
     counter-increment: list;
@@ -122,33 +128,11 @@ code, %monospace-text {
   font-family: $font-family-monospace;
   font-weight: 700;
   background: $pale-grey;
-
-  strong {
-    color: $red;
-  }
-  .sidebar & {
-    background: rgba(255, 255, 255, 0.5);
-  }
-  .sidebar .callout & {
-    color: foreground($callout-bg-highlight);
-    background: foreground($callout-bg-highlight, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.25));
-
-    strong {
-      color: foreground($callout-bg-highlight, $red, $teal);
-    }
-  }
-  .sidebar .special.callout & {
-    color: foreground($special-callout-bg-highlight);
-    background: foreground($special-callout-bg-highlight, rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.25));
-
-    strong {
-      color: foreground($special-callout-bg-highlight, $red, $teal);
-    }
-  }
 }
 
 /* ==========================================================================
    EMBOSSED TEXT STYLE
+   TODO remove this
    ========================================================================== */
 @mixin embossed-text($background-color) {
   color: foreground($background-color, $black, $white);
@@ -236,23 +220,33 @@ code, %monospace-text {
    BREADCRUMBS
    ========================================================================== */
 .breadcrumbs {
+  margin: 0 0 0 0;
   ul {
     list-style: none;
-    margin: 0;
+    margin: 0 0 0 0;
     li {
       color: $off-black;
-      @extend .secondary-text;
-      text-transform: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      &:before {
+        display: none;
+      }
       a {
-        color: $dark-teal;
+        background-color: $blue;
+        border-radius: 4px;
+        color: $white;
+        padding: 3px 5px;
+        text-decoration: none;
+        transition: background-color 0.2s;
         &:hover {
-          color: $red;
+          background-color: $red;
           text-decoration: none;
         }
       }
       &:not(:last-child) {
         &::after {
         color: $off-black;
+        margin: 0 0.5rem;
       }
       }
     }
