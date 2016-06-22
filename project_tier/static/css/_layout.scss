@@ -292,11 +292,6 @@ body {
       }
     }
 
-    .callout {
-      margin: 0 (-$small-gutter);
-    }
-
-
     h2 {
       @extend %medium-heading;
       color: $white;
@@ -324,38 +319,6 @@ body {
     }
   }
 }
-
-
-
-
-
-/* ==========================================================================
-   CALLOUT PANELS
-   ========================================================================== */
-.callout {
-  border: none;
-  padding: $small-gutter;
-  color: foreground($callout-bg-highlight, $black, $white);
-  background-color: $callout-bg-highlight;
-  background-image: linear-gradient(90deg, $callout-bg-highlight, $callout-bg-shadow);
-
-  &.special {
-    color: foreground($special-callout-bg-highlight, $black, $white);
-    font-weight: foreground($special-callout-bg-highlight, 400, 700);
-    background-color: $special-callout-bg-highlight;
-    background-image: linear-gradient(90deg, $special-callout-bg-highlight, $special-callout-bg-shadow);
-  }
-}
-
-
-/* ==========================================================================
-   STREAMFIELD SECTIONS
-   ========================================================================== */
-.stream-field {
-  h2 { @extend %medium-heading; }
-  h3 { @extend %small-heading; }
-}
-
 
 
 

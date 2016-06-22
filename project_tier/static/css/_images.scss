@@ -14,7 +14,6 @@ figcaption {
 }
 
 .img, %img {
-  box-shadow: 0 2px 3px rgba(0,0,0,0.6);
   margin-bottom: $small-gutter;
   max-width: 100%;
   height: auto;
@@ -68,26 +67,8 @@ figcaption {
 
 
 /* ==========================================================================
-   RICH TEXT IMAGES
+Embeds
    ========================================================================== */
-.rich-text img {
-  @extend %img;
-  height: auto;
-
-  @include breakpoint(medium up){
-    max-width: 75%;
-    
-    &.richtext-image.left {
-      float: left;
-      margin-right: $small-gutter;
-    }
-    &.richtext-image.right {
-      float: right;
-      margin-left: $small-gutter;
-    }
-  }
-}
-
 .responsive-object {
   position: relative;
 }

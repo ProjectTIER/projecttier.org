@@ -92,7 +92,7 @@ ul {
     &:last-child {
       margin-bottom: 0;
     }
-    &:before{
+    &::before{
       content: "■";
       color: $blue;
       margin-right: $small-gutter;
@@ -107,7 +107,7 @@ ol {
     list-style-type: none;
     padding-left: 1.9em; /* to account for the after negative margin */
     position: relative;
-    &:after {
+    &::after {
       /* TODO do with JS */
       content: counter(list) ".";
       position: absolute;
@@ -228,7 +228,7 @@ code, %monospace-text {
       color: $off-black;
       font-size: 0.8rem;
       text-transform: uppercase;
-      &:before {
+      &::before {
         display: none;
       }
       a {

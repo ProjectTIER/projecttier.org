@@ -1,4 +1,72 @@
-#protocol-intro-sections {
+// Note this was previously names _protocols
+
+
+ul.accordion {
+  background-color: $blue;
+  color: white;
+    li {
+      a {
+        color: $pale-grey;
+        font-size: rem-calc(18);
+        text-decoration: none;
+        transition: color 0.2s, background-color 0.2s;
+        &:hover, &:focus {
+            color: darken( $blue, 20% );
+            background-color: $pale-grey;
+        }
+      }
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+.accordion-title::before {
+  font-size: rem-calc(32);
+  margin-top: -1.1rem;
+}
+
+.callout {
+  background-color: #F9F1F1;
+  border-radius: 2px;
+  border: 0;
+  margin-left: -80px;
+  padding: 0.5rem 0.5rem 0.5rem 5rem;
+  &::before {
+    content: "\f05a";
+    color: $grey;
+    font-family: FontAwesome;
+    font-size: 2.8rem;
+    display: inline;
+    float: left;
+    margin-left: -56px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &.success {
+      &::before {
+        content: "\f058";
+        color: $dark-teal;
+      }
+    }
+    &.warning {
+      &::before {
+        content: "\f059";
+        color: #ff6c54;
+      }
+    }
+    &.alert {
+      &::before {
+        content: "\f071";
+        color: $red;
+    }
+  }
+}
+
+
+/* #protocol-intro-sections {
   background-image: url('../img/workshop-light.jpg');
   background-size: cover;
   background-attachment: fixed;
@@ -12,23 +80,7 @@
 /* ==========================================================================
    OFF CANVAS MENU / PROTOCOL NAV
    ========================================================================== */
-.off-canvas-wrapper {
-  background-color: $white;
-  .off-canvas-wrapper-inner {
-    &.is-open-left {
-      transform: translateX($offcanvas-size);
-    }
-  }
-}
-.off-canvas-content {
-  box-shadow: none;
-  overflow: hidden;
-  background-color: $white;
-
-}
-.off-canvas {
-  background: none;
-}
+/*
 
 
 
@@ -38,7 +90,7 @@
    COMPONENT NAV
    ========================================================================== */
 
-@mixin heirarchy-list(
+/*@mixin heirarchy-list(
   $depth: 0,
   $indent: $medium-gutter,
   $font-size: 1rem,
@@ -183,7 +235,7 @@
    COMPONENTS INDEX PAGE
    ========================================================================== */
 
-.component-index {
+/*.component-index {
   padding-bottom: $large-gutter;
 
   .component-nav {
@@ -213,7 +265,7 @@
 /* ==========================================================================
    COMPONENT PAGE
    ========================================================================== */
-.sidebar {
+/*.sidebar {
 
   .component-nav {
 
@@ -244,4 +296,4 @@
       }
     }
   }
-}
+}*/

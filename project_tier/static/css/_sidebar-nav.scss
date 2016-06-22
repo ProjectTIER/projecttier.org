@@ -3,12 +3,32 @@
 /* Foundation overrides */
 .position-left.reveal-for-large ~ .off-canvas-content {
   margin-left: 23rem;
+  overflow: visible;
 }
 
 .off-canvas.position-left {
   width: 22rem;
   overflow: hidden;
 }
+
+.off-canvas-wrapper {
+  background-color: $white;
+  .off-canvas-wrapper-inner {
+    &.is-open-left {
+      transform: translateX($offcanvas-size);
+    }
+  }
+}
+.off-canvas-content {
+  box-shadow: none;
+  overflow: hidden;
+  background-color: $white;
+
+}
+.off-canvas {
+  background: none;
+}
+/* end overrides */
 
 .sidebar-nav {
   @include breakpoint(large up) {
@@ -47,7 +67,8 @@
         color: $red;
       }
       &:before {
-        content: ">";
+        content: "\f054";
+        font-family: FontAwesome;
         margin: 0 5px 0 -15px;
       }
     }

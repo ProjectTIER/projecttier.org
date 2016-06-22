@@ -38,12 +38,12 @@
 @include foundation-tooltip;
 @include foundation-top-bar;
 @import 'typography';
-@import 'layout_blocks';
+@import 'layout';
 @import 'controls';
 @import 'topbar';
 @import 'home';
 @import 'sidebar-nav';
-@import 'protocols';
+@import 'blocks';
 @import 'tips';
 @import 'process-extended-info';
 @import 'events';
