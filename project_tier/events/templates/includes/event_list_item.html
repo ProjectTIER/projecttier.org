@@ -9,13 +9,13 @@
         
         <div class="small-5 columns meta">
         <span class="article-meta-item">
-          {{event.university}}, {{event.department}}
+          {{event.university}}, <br />{{event.department}}
         </span>
         <span class="article-meta-item">
           {{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}
         </span>
       </div>
-      <div class="small-4 columns end description">
+      <div class="small-7 columns end description">
         {{event.description|richtext}}
       </div>
       </div>

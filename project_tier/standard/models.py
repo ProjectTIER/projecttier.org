@@ -8,7 +8,7 @@ from project_tier.blocks import BodyBlock, ContentStreamBlock
 
 
 class StandardIndexPage(Page):
-    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     body = StreamField(ContentStreamBlock())
 
