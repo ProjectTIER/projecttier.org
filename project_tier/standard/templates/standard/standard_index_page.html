@@ -9,6 +9,7 @@
 {% block main_content %}
   <div class="row">
     <div class="body-content">
+      {{page.title}}
       {% for subpage in page.children %}
         <article class="subpage-abstract">
           <h2><a href="{{subpage.url}}">{{subpage.title}}</a></h2>
