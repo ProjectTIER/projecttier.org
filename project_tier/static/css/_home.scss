@@ -13,13 +13,6 @@
         left: -.25em
       }
     }
-
-    &:nth-child(even){
-      background: $white;
-    }
-    &:nth-child(odd){
-      background: $pale-grey;
-    }
   }
 
 
@@ -180,6 +173,29 @@
         border: 1px solid $special-button-shadow;
         border-left: none;
       }
+    }
+  }
+
+  .featured-index-page {
+    background: $dark-grey;
+    color: $white;
+    * {
+      color: $white;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+  .subfeatured-content {
+    .row {
+      display: block;
+    }
+    background: white;
+    h2 {
+      font-size: 1.25rem;
+      border-bottom: 3px solid #ddd;
+      padding-bottom: 20px;
+      display: block;
     }
   }
 
