@@ -135,17 +135,6 @@ code, %monospace-text {
   background: $pale-grey;
 }
 
-/* ==========================================================================
-   EMBOSSED TEXT STYLE
-   TODO remove this
-   ========================================================================== */
-@mixin embossed-text($background-color) {
-  color: foreground($background-color, $black, $white);
-  font-weight: foreground($background-color, 400, 700);
-  text-shadow: 1px 1px 0px foreground($background-color, $white, transparent), -1px -1px 0px foreground($background-color, transparent, rgba(0, 0, 0, 0.2));
-}
-
-
 
 /* ==========================================================================
    LISTS
@@ -253,6 +242,9 @@ code, %monospace-text {
         color: $off-black;
         margin: 0 0.5rem;
       }
+      }
+      span {
+        display: none;
       }
     }
   }

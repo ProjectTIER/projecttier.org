@@ -69,23 +69,3 @@
    ========================================================================== */
    $button-highlight:   $pale-grey;
    $button-shadow:      $light-grey;
-
-   $special-button-highlight: $teal;
-   $special-button-shadow:    $medium-teal;
-
-/* Callout Colors
-   ========================================================================== */
-   $callout-bg-highlight:  $grey;
-   $callout-bg-shadow:     $dark-grey;
-
-   $special-callout-bg-highlight:   $red;
-   $special-callout-bg-shadow:      $dark-red;
-
-
-/* ==========================================================================
-   SHADOWS
-   ========================================================================== */
-
-   %inner-panel-shadow-left {
-      box-shadow: inset 7px 0px 7px -5px rgba(0, 0, 0, 0.2);
-   }

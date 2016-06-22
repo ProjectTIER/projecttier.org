@@ -111,7 +111,6 @@
         @include breakpoint(880){
           font-size: rem-calc(15);
         }
-        @include embossed-text($button-highlight);
         border-radius: rem-calc(3);
         box-shadow: none;
         font-weight: 900;
@@ -139,7 +138,6 @@
         > a {
 
           &::after {
-            @include embossed-text($button-highlight);
             margin: rem-calc(3) 0 0 rem-calc(5);
             border: none;
             content: '▾';
@@ -150,14 +148,12 @@
             height: auto;
           }
           &.special::after {
-            @include embossed-text($special-button-highlight);
           }
         }
       }
       &.is-drilldown-submenu-parent {
         > a {
           &::after {
-            @include embossed-text($button-highlight);
             border: none;
             content: '▸';
             display: inline;
@@ -166,12 +162,10 @@
             height: auto;
           }
           &.special::after {
-            @include embossed-text($special-button-highlight);
           }
         }
       }
       &.js-drilldown-back::before {
-        @include embossed-text($button-highlight);
         border: none;
         content: '▸';
         display: inline;

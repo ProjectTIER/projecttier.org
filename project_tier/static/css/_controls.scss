@@ -6,30 +6,26 @@
    ========================================================================== */
 .button, button {
   color: $black;
-  background-color: $button-highlight;
-  background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
+  background-color: $light-grey;
   font-size: rem-calc(16);
   margin: 0;
   border: none;
   border-radius: rem-calc(3);
   box-shadow: none;
-  @include embossed-text($button-highlight);
   background-size: 200%;
   background-position: 0% 0%;
   transition: box-shadow 0.1s ease 0, background-position 0.1s ease 0, border-color 0.1s ease 0;
-
   &:hover, &:focus {
     background-color: $button-shadow;
     background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
     box-shadow: none;
-    @include embossed-text($button-highlight);
     background-size: 200%;
     background-position: 0% 100%;
   }
   &:active {
-    box-shadow: inset 0 rem-calc(4) rem-calc(8) 0 rgba(0, 0, 0, 0.2);
     transition: none;
   }
+}
 
   /* Small Buttons
      ========================================================================== */
@@ -37,94 +33,6 @@
     font-size: rem-calc(13);
     padding: rem-calc(7.5) 0.75rem;
   }
-
-  /* Special Buttons
-     ========================================================================== */
-  &.special {
-    background-color: $special-button-highlight;
-    background-image: linear-gradient($special-button-highlight, $special-button-shadow, $special-button-shadow);
-    background-size: 200%;
-    @include embossed-text($special-button-highlight);
-
-    &:hover {
-      background-color: $special-button-shadow;
-      background-image: linear-gradient($special-button-highlight, $special-button-shadow, $special-button-shadow);
-      background-size: 200%;
-      background-position: 0% 100%;
-    }
-  }
-
-  /* Sidebar Buttons
-     ========================================================================== */
-  .sidebar &, &.monochrome {
-    @extend .small;
-    background-color: $white;
-    background-image: linear-gradient($white, $button-highlight, $button-highlight);
-    border: 1px solid $button-shadow;
-    background-size: 200%;
-    background-position: 0% 0%;
-
-    &:hover, &:focus {
-      background-color: $button-highlight;
-      background-image: linear-gradient($white, $button-highlight, $button-highlight);
-      background-size: 200%;
-      background-position: 0% 100%;
-    }
-  }
-  .sidebar .callout & {
-    @extend .special;
-    border: 1px solid $special-button-shadow;
-  }
-  .sidebar .special.callout & {
-    background-color: $special-callout-bg-highlight;
-    background-image: linear-gradient($special-callout-bg-highlight, $special-callout-bg-shadow, $special-callout-bg-shadow);
-    border: 1px solid $special-callout-bg-shadow;
-  }
-}
-
-/* ==========================================================================
-BUTTON GROUPS
-========================================================================== */
-.button-group {
-  display: flex;
-  .button {
-    border-radius: 0;
-    color: $black;
-
-    @include breakpoint(small only){
-      flex-grow: 2;
-      font-size: rem-calc(12);
-    }
-
-    &:first-child {
-      border-radius: rem-calc(3) 0 0 rem-calc(3);
-    }
-    &:last-child {
-      border-top-right-radius: rem-calc(3);
-      border-bottom-right-radius: rem-calc(3);
-    }
-    &:not(:last-child) {
-      border-right: 1px solid $button-shadow;
-    }
-    &:not(:first-child) {
-      border-left: 1px solid $button-highlight;
-    }
-    &:hover {
-      border-color: transparent;
-    }
-
-
-    &.special {
-      color: $white;
-      &:not(:last-child) {
-        border-right: 1px solid $special-button-shadow;
-      }
-      &:not(:first-child) {
-        border-left: 1px solid $special-button-highlight;
-      }
-    }
-  }
-}
 
 /* ==========================================================================
 FORMS
@@ -136,7 +44,6 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
   line-height: rem-calc(35);
   padding: 0 0.75em;
   border-radius: rem-calc(3);
-  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid transparent;
   width: 100%;
   max-width: 40em;
@@ -146,7 +53,6 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
     outline: none;
     color: $dark-teal;
     border: 1px solid $medium-teal;
-    box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.1), (rem-calc(-8)) 0 0 0 $medium-teal;
   }
 }
 label {
@@ -154,59 +60,4 @@ label {
   font-weight: 900;
   color: $black;
 }
-
-/* Input Groups
-   ========================================================================== */
-.input-group {
-  .input-group-field {
-    height: rem-calc(35);
-    line-height: rem-calc(35);
-  }
-  .input-group-button input {
-    height: rem-calc(35);
-    line-height: rem-calc(35);
-    padding: 0 0.75em;
-    border-radius: 0 rem-calc(3) rem-calc(3) 0;
-    font-size: rem-calc(14);
-  }
-}
-
-
-/* ==========================================================================
-   BLOCK LINKS
-   ========================================================================== */
-
-.block-link-parent {
-  position: relative;
-  overflow: hidden;
-
-  .block-link {
-    @extend %hyperlink;
-    
-    .block-link-target {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      box-shadow: none;
-    }
-  }
-}
-
-
-/* ==========================================================================
-   BUTTON ROW  i.e. Bottom of process page
-   ========================================================================== */
-
-.button-row {
-  text-align: right;
-
-  .button-label {
-    @extend %small-heading;
-    vertical-align: middle;
-    padding-right: $small-gutter;
-  }
-}
-
 
