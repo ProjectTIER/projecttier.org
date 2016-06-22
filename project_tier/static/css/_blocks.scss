@@ -66,6 +66,48 @@ ul.accordion {
 }
 
 
+.download {
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid $light-grey;
+    transition: background-color 0.3s;
+    &::before {
+      content: "\f019";
+      color: $light-grey;
+      font-family: FontAwesome;
+      float: left;
+      font-size: 4rem;
+      margin-top: -10px;
+    }
+    &:hover {
+      background-color: $off-white;
+      &:before {
+        color: white;
+      }
+    }
+    
+    > * {
+      margin-left: 80px;
+    }
+    h5 {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      &::after {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background-color: $light-grey;
+        left: 40px;
+        display: block;
+        margin: 10px 0;
+      }
+    }
+    p {
+      margin-bottom: 0;
+    }
+}
+
 /* #protocol-intro-sections {
   background-image: url('../img/workshop-light.jpg');
   background-size: cover;

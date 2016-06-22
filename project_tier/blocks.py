@@ -55,7 +55,7 @@ class ContentStreamBlock(StreamBlock):
     smallest_heading = TextBlock(
         icon='fa-header', template='blocks/smallest_heading.html')
     image = CaptionedImageBlock()
-    download = DocumentChooserBlock(icon='fa-download')
+    download = DocumentChooserBlock(icon='fa-download', template='blocks/download.html')
     accordion = AccordionBlock()
     notice = NoticeBlock()
 
