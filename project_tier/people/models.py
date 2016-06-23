@@ -103,6 +103,7 @@ class FellowPersonPage(PersonPage):
         verbose_name = 'fellow'
         verbose_name_plural = 'fellows'
 
+
 class PersonIndexPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
@@ -128,18 +129,23 @@ class PersonIndexPage(Page):
     ]
 
     @property
-    def main_groups(self):
-        return self.get_children().live().in_menu()
-
-    @property
-    def secondary_groups(self):
-        return self.get_children().live().not_in_menu().not_type(PersonPage)
-
-    @property
     def people(self):
         people = PersonPage.objects.live().child_of(self).order_by('title')
-
         return people
+
+    @property
+    def sections(self):
+        sections = []
+        categories = PersonCategory.objects.all()
+        for category in categories:
+            # Get people for category
+            people = self.people.filter(person_category_relationship__category__pk=category.pk)
+            if people:
+                sections.append({
+                    "category": category,
+                    "people": people
+                })
+        return sorted(sections)
 
     class Meta:
         verbose_name = 'Person List Page'

@@ -1,6 +1,19 @@
 {% extends "standard_layout.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% block sidebar %}
+  <nav class="sidebar-nav section-nav">
+    <h3>In this section</h3>
+    <ul class="vertical menu">
+      {% for section in self.sections %}
+        <li class="{% if section.category.is_active %}is-active{% endif %}">
+          <a href="#{{section.category.title|slugify}}">{{ section.category.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}
+
 {% block main_content %}
 
   <div class="row">
@@ -15,35 +28,11 @@
     </div>
   </div>
 
-  {% if self.people %}
-    {% include "includes/person_list.html" with group=self.title list=self.people %}
-  {% endif %}
-
-  {% if self.main_groups %}
-    {% for main_group in self.main_groups %}
-      {% with main_group.get_children.live.specific as people %}
-        {% include "includes/person_list.html" with group=main_group.title list=people %}
-      {% endwith %}
+  {% if self.sections %}
+    {% for section in self.sections %}
+      <a name="{{section.category.title|slugify}}"></a>
+      {% include "includes/person_list.html" with group=section.category.title list=section.people %}
     {% endfor %}
-  {% endif %}
-
-  {% if self.secondary_groups %}
-    <section class="block-section alternate">
-      <div class="row">
-        <div class="section-intro small-12 text-center medium-4 medium-text-right large-4 columns">
-          <h2 class="section-title" id="news-section-title">More People</h2>
-        </div>
-        <div class="small-12 medium-8 large-8 columns">
-          <ul class="section-link-list">
-          {% for group in self.secondary_groups %}
-            <li>
-              <a href="{% pageurl group %}" class="section-link" title="More about {{group}}">{{group}}</a>
-            </li>
-          {% endfor %}
-          </ul>
-        </div>
-      </div>
-    </section>
   {% endif %}
 
 {% endblock %}
