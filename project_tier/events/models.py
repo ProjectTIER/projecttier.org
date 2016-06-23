@@ -10,6 +10,7 @@ from wagtail.wagtailadmin.edit_handlers import (
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
 from project_tier.links.models import RelatedLink
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class EventIndexPage(Page):
@@ -26,6 +27,7 @@ class EventIndexPage(Page):
     intro = RichTextField(blank=True)
 
     parent_page_types = ['home.HomePage']
+    subpage_types = ['events.EventPage']
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -38,24 +40,19 @@ class EventIndexPage(Page):
 
     @property
     def events(self):
-        events = EventPage.objects.live()
-
+        events = EventPage.objects.child_of(self).live()
         kwargs = {
             '{0}__{1}'.format('date_from', self.show_events): date.today(),
         }
-
         events = events.filter(**kwargs)
-
         events = events.order_by('date_from')
-
         return events
 
     @property
     def past_events(self):
-        events = EventPage.objects.live().filter(date_from__lt=date.today())
+        events = EventPage.objects.child_of(self).live().filter(date_from__lt=date.today())
         events = events.order_by('-date_from')
         events = events.all()  # [:10]
-
         return events
 
         class Meta:
@@ -63,9 +60,31 @@ class EventIndexPage(Page):
 
     @property
     def past_event(self):
-        event = EventPage.objects.live().filter(date_from__lt=date.today())
-
+        event = EventPage.objects.child_of(self).live().filter(date_from__lt=date.today())
         return event
+
+    def get_context(self, request):
+        past_events = self.past_events
+
+        # Pagination
+        page = request.GET.get('page', 1)
+        paginator = Paginator(past_events, 20)
+
+        try:
+            past_events = paginator.page(page)
+        except PageNotAnInteger:
+            past_events = paginator.page(1)
+        except EmptyPage:
+            past_events = paginator.page(paginator.num_pages)
+
+        context = super(EventIndexPage, self).get_context(request)
+
+        # Hide upcoming events if past page 1
+        if int(page) == 1:
+            context['events'] = self.events
+
+        context['past_events'] = past_events
+        return context
 
 
 class EventPage(Page):
@@ -107,7 +126,7 @@ class EventPage(Page):
         # Find closest ancestor which is an event index
         return self.get_ancestors().type(EventIndexPage).last()
 
-# This is a legacy from PromptWorks. It introduces an ical download on the event page
+    # This is a legacy from PromptWorks. It introduces an ical download on the event page
     def serve(self, request):
         if "format" in request.GET:
             if request.GET['format'] == 'ical':

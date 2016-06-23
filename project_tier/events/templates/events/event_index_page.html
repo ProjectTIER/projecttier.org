@@ -19,11 +19,11 @@
   {# Uses method defined in models.py to retrieve all upcoming events #}
   {# See also standard index for creating a listing with a tag #}
 
-  {% if self.events %}
-    {% with self.events.all as events %}
+  {% if events %}
       <div class="row">
         <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
           {% if events %}
+          <h4>Upcoming events</h4>
             <ol class="events-index item-list">
               {% for event in events %}
                 {% include "includes/event_list_item.html" with event=event %}
@@ -34,43 +34,36 @@
           {% endif %}
         </div>
       </div>
-    {% endwith %}
+    {% endif %}
 
-{% if self.past_events %}
-    {% with self.past_events as events %}
-      <div class="row">
-        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-          {% if events %}
-          <h4>Past events</h4>
-          <ol class="events-index item-list">
-          {% for event in events %}
-            {% include "includes/event_list_item.html" with event=event %}
-          {% endfor %}
-          </ol>
-          {% else %}
-            <p>There's been no previous events.</p>
-        </div>
-        {% endif %}
-      </div>
-    {% endwith %}
-  {% else %}
-
-    {% regroup self.events.all by date_from|date:"Y" as events_by_year %}
-
-    <div class="row">
-      <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-        <ol class="events-index item-list">
-          {% for group in events_by_year %}
-            <h4>{{group.grouper}}</h4>
-
-            {% for event in group.list %}
+    {% if past_events %}
+        <div class="row">
+          <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+            {% if past_events %}
+            <a name="past-events"></a>
+            <h4>Past events</h4>
+            <ol class="events-index item-list">
+            {% for event in past_events %}
               {% include "includes/event_list_item.html" with event=event %}
             {% endfor %}
-          {% endfor %}
-        </ol>
-      </div>
-    </div>
+            </ol>
+            {% else %}
+              <p>There's been no previous events.</p>
+          </div>
+          {% endif %}
+        </div>
 
-  {% endif %}
-{% endif %} 
+        {% if past_events.paginator.num_pages > 1 %}
+          <div class="pagination">
+            <div class="label">Pages</div>
+            <div class="page-numbers">
+              {% for p in past_events.paginator.page_range %}
+                <a class="page-no{% if past_events.number == p %} active{% endif %}" href="{% if search_query %}{% url 'search' %}?query={{ search_query|urlencode }}&amp;{% else %}?{% endif %}page={{ p }}">{{ p }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+      {% endif %}
+
 {% endblock %}
