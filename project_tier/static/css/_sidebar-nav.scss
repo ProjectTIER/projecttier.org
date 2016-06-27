@@ -1,35 +1,3 @@
-/* SIDEBAR NAV
-   ========================================================================== */
-/* Foundation overrides */
-.position-left.reveal-for-large ~ .off-canvas-content {
-  margin-left: 23rem;
-  overflow: visible;
-}
-
-.off-canvas.position-left {
-  width: 22rem;
-  overflow: hidden;
-}
-
-.off-canvas-wrapper {
-  background-color: $white;
-  .off-canvas-wrapper-inner {
-    &.is-open-left {
-      transform: translateX($offcanvas-size);
-    }
-  }
-}
-.off-canvas-content {
-  box-shadow: none;
-  overflow: hidden;
-  background-color: $white;
-
-}
-.off-canvas {
-  background: none;
-}
-/* end overrides */
-
 .sidebar-nav {
   @include breakpoint(large up) {
     padding: 0 $small-gutter 0 $small-gutter*3.3;
@@ -71,9 +39,7 @@
         font-family: FontAwesome;
         margin: 0 10px 0 -15px;
       }
-    }
-    &.is-active {
-      > a {
+      &.active {
         color: $black;
         font-weight: 800;
       }
