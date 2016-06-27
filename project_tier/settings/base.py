@@ -55,10 +55,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wagtail.contrib.modeladmin',
 
     'project_tier.links',
     'project_tier.events',
     'project_tier.home',
+    'project_tier.news',
     'project_tier.people',
     'project_tier.standard',
     'project_tier.testimonials',
