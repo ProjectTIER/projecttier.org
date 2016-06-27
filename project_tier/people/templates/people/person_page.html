@@ -23,8 +23,11 @@
         </div>
 
         <div class="small-12 medium-8 large-7 columns">
-          {% if self.job_titles %}
-            <div class="job-titles">{{ self.job_titles|richtext }}</div>
+          {% if self.main_job_title %}
+            <div class="job-titles">{{ self.main_job_title }}</div>
+          {% endif %}
+          {% if self.academic_title %}
+            <div class="job-titles">{{ self.academic_title }}</div>
           {% endif %}
 
           {% if self.introductory_headline %}
@@ -65,15 +68,5 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+  {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}
