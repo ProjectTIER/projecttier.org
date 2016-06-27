@@ -99,6 +99,8 @@ class FellowPersonPage(PersonPage):
         FieldPanel('fellowship_year')
     ]
 
+    template = 'people/person_page.html'
+
     class Meta:
         verbose_name = 'fellow'
         verbose_name_plural = 'fellows'
