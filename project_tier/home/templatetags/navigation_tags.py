@@ -63,11 +63,17 @@ def top_menu_children(context, parent):
 
 
 @register.inclusion_tag('tags/table_of_contents_menu.html', takes_context=True)
-def table_of_contents_menu(context):
+def table_of_contents_menu(context, streamfield=None):
     page = context['page']
     section = page.get_ancestors(inclusive=True).type(StandardIndexPage).first()
+    headings = []
+    if streamfield:
+        for block in streamfield:
+            if block.block_type == 'heading':
+                headings.append(block.value)
     return {
         'section_pages': section.get_children().specific().live(),
+        'article_headings': headings
     }
 
 

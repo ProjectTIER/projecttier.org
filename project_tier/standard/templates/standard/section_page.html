@@ -6,16 +6,6 @@
   <p class="introduction">{{page.introductory_headline}}</p>
 {% endblock %}
 
-{% block sidebar %}
-  <div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
-    {% table_of_contents_menu %}
-    <nav class="sidebar-nav article-nav">
-      <h3>On this page</h3>
-      <div id="table-of-contents"></div>
-    </nav>
-  </div>
-{% endblock %}
-
 {% block main_content %}
   <div class="row">
     <div class="body-content">
