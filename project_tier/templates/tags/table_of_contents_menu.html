@@ -1,24 +1,26 @@
-<div class="off-canvas position-left reveal-for-large" id="offCanvasLeft" data-off-canvas>
-  {% if section_pages %}
-    <nav class="sidebar-nav section-nav">
-      <h3>In this section</h3>
-      <ul class="vertical menu">
-        {% for section_page in section_pages %}
-          <li class="{% if section_page.is_active %}is-active{% endif %}">
-            <a href="{{section_page.url}}">{{ section_page.title }}</a>
-          </li>
+<div data-sticky-container>
+  <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-anchor="main-page-content">
+    {% if section_pages %}
+      <nav class="sidebar-nav section-nav">
+        <h3>In this section</h3>
+        <ul class="vertical menu">
+          {% for section_page in section_pages %}
+            <li class="{% if section_page.is_active %}is-active{% endif %}">
+              <a href="{{section_page.url}}">{{ section_page.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+    {% if article_headings %}
+    <nav class="sidebar-nav article-nav">
+      <h3>On this page</h3>
+      <ul class="vertical menu" data-magellan data-bar-offset="60">
+        {% for heading in article_headings %}
+          <li><a href="#{{heading|slugify}}">{{heading}}</a></li>
         {% endfor %}
       </ul>
     </nav>
-  {% endif %}
-  {% if article_headings %}
-  <nav class="sidebar-nav article-nav">
-    <h3>On this page</h3>
-    <ul>
-      {% for heading in article_headings %}
-        <li><a href="#{{heading|slugify}}">{{heading}}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
-  {% endif %}
+    {% endif %}
+  </div>
 </div>

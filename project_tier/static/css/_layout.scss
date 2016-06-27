@@ -1,6 +1,6 @@
-/* TODO Unhack apart */
 #main-container {
-  padding-top: calc(#{$expanded-topbar-height} + 10px);
+  background: white;
+  padding-top: $expanded-topbar-height;
 }
 
 
@@ -135,7 +135,7 @@ section {
     .article-meta {
       margin-left: 40px;
     }
-    .meta { 
+    .meta {
       opacity: 0.4;
       padding-left: 0;
     }

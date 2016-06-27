@@ -16,18 +16,18 @@
 {% endblock %}
 
 {% block content %}
-  <div class="off-canvas-wrapper">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+  <main class="row">
+    <div class="large-3 columns show-for-large">
       {% block sidebar %}
         {% table_of_contents_menu streamfield=page.body %}
       {% endblock %}
-      <div class="off-canvas-content" data-off-canvas-content>
-        <article class="protocol-layout">
-          <div class="page-content">
-            {% block main_content %}{% endblock %}
-          </div>
-        </article>
-      </div>
     </div>
-  </div>
+    <div class="large-9 columns">
+      <article id="main-page-content" class="protocol-layout">
+        <div class="page-content">
+          {% block main_content %}{% endblock %}
+        </div>
+      </article>
+    </div>
+  </main>
 {% endblock %}
