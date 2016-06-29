@@ -1,3 +1,6 @@
+.sidebar {
+  margin-left: -60px;
+}
 .sidebar-nav {
   @include breakpoint(large up) {
     padding: 0 $small-gutter 0 $small-gutter*3.3;
