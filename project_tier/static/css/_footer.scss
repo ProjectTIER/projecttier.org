@@ -7,9 +7,13 @@
   
   #sponsor-logo {
     text-align: center;
-    @include breakpoint(medium up) {
+    margin: 20px auto;
+    display: block;
+    float: none;
+    @include breakpoint(large up) {
       text-align: right;
       float: right;
+      margin-top: -120px;
     }
 
     a {
@@ -152,12 +156,14 @@
   }
   .footer-description p {
     color: $light-grey;
-    margin-left: 18px;
   }
   .mailchimp-signup {
-    /* TODO improve this */
-    margin: 30px -0px -12px -100px;
+    padding-left: 0;
     .button {
+      padding: 10px 20px 9px 20px;
+      &:hover {
+        color: $dark-red;
+      }
     }
   }
 }
