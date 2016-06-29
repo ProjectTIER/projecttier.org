@@ -1,41 +1,46 @@
-/* ==========================================================================
-   PEOPLE LISTS
-   ========================================================================== */
-
-.item-list.person-list {
-  display: block !important;
-}
-
-
-/* ==========================================================================
-   PERSON PAGE
-   ========================================================================== */
-
-.job-titles {
-  p {
-    font-weight: 900;
-    color: $off-black;
+ul.person-list {
+  li {
+    &::before {
+      display: none;
+    }
+  article.person {
+    border: 1px solid $light-grey;
+    border-radius: 4px;
+    overflow: hidden;
+    .img-thumbnail {
+      margin: 0 0 20px 0;
+    }
+    .title {
+      padding: 1.6rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+      span {
+        color: $grey;
+        opacity: 0.5;
+      }
+    }
+    h4 {
+      font-size: 100%;
+      font-family: $body-font-family;
+      font-weight: 400;
+    }
+    }
+  }
+  a {
+    text-decoration: none;
   }
 }
 
-dl.contact-info {
-  dt {
-    float: left;
-    clear: left;
-    margin: 0;
-    padding-right: $small-gutter/2;
-    font-weight: 900;
-    color: $off-black;
+.people, .fellowships {
+  h1 {
+    font-size: 2rem;
   }
-  dd {
-    color: $black;
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
   }
-}
-
-.person-img {
-  display: block;
-  margin: 0 auto;
-  @include breakpoint(medium up){
-    float: right;
+  .block-section {
+    padding-left: 20px;
   }
 }

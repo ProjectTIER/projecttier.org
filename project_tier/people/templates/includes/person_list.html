@@ -1,39 +1,33 @@
 {% load wagtailcore_tags wagtailimages_tags %}
-<section class="block-section alternate">
+<section class="block-section">
 
   <div class="row">
-    <div class="section-intro small-12 text-center medium-4 medium-text-right large-4 columns">
-      <h2 class="section-title" id="news-section-title">{{group}}</h2>
+    <div class="section-intro small-12">
+      <h2 class="section-title">{{group}}</h2>
     </div>
-    <div class="small-12 medium-8 large-8 columns">
-      <ul class="item-list person-list row small-up-1 large-up-2">
+    <div class="small-12">
+      <ul class="item-list person-list row small-up-2 medium-up-3 large-up-4" data-equalizer>
       {% for person in list %}
 
         <li class="column">
-          <article class="list-item block-link-parent">
+          <a href="{{person.url}}">
+            <article class="person list-item" data-equalizer-watch>
             {% if person.image %}
-              {% image person.image width-100 as photo %}
+              {% image person.image fill-200x200-c100 as photo %}
               <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
             {% else %}
-              <div class="placeholder img-thumbnail">
-                <span class="fa-stack fa-2x">
-                  <i class="fa fa-user fa-stack-2x"></i>
-                  <i class="fa fa-question fa-stack-1x"></i>
-                </span>
+              <img class="placeholder img-thumbnail">
               </div>
             {% endif %}
-            <h1>{{person.title}}</h1>
-            <div class="article-meta">
-              <span class="article-meta-item">
-                <span class="block-link">
-                  <a href="{{person.url}}" class="block-link-target" title="More about {{person.title}}">More info</a>
-                </span>
-              </span>
+            <div class="title text-center">
+            <h2>{{person.title}}, <span class="academic-title">{{ person.academic_title }}</span></h2>
+            <h4>{{ person.main_job_title }}</h4>
             </div>
           </article>
+          </a>
         </li>
-
       {% endfor %}
+
       </ul>
     </div>
   </div>

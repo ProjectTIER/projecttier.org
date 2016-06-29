@@ -15,22 +15,18 @@
 {% endblock %}
 
 {% block main_content %}
-
+{% if self.body %}
   <div class="row">
-    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-
-      {% if self.body %}
           <div class="body-content">
               {{ self.body|richtext }}
           </div>
-      {% endif %}
-
-    </div>
   </div>
+{% endif %}  
 
   {% if self.sections %}
     <div class="people">
-      <h2>People</h2>
+      <h1>People</h1>
+
       {% for section in self.sections %}
         <a name="{{section.category.title|slugify}}"></a>
         {% include "includes/person_list.html" with group=section.category.title list=section.people %}
@@ -40,7 +36,7 @@
 
   {% if self.fellowship_years %}
     <div class="fellowships">
-      <h2>Fellowships</h2>
+      <h1>Fellowships</h1>
       {% for year, fellows in page.fellowship_years %}
         {% include "includes/person_list.html" with group=year list=fellows %}
       {% endfor %}

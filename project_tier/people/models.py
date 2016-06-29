@@ -88,7 +88,7 @@ class PersonPage(Page):
 class FellowPersonPage(PersonPage):
     YEAR_CHOICES = []
     for r in range(1980, (datetime.datetime.now().year+1)):
-        YEAR_CHOICES.append((r,r))
+        YEAR_CHOICES.append((r, r))
 
     fellowship_year = models.IntegerField(
         choices=YEAR_CHOICES,
@@ -96,7 +96,7 @@ class FellowPersonPage(PersonPage):
     )
 
     content_panels = PersonPage.content_panels + [
-        FieldPanel('fellowship_year')
+        FieldPanel('fellowship_year'),
     ]
 
     template = 'people/person_page.html'
