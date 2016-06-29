@@ -11,4 +11,4 @@ class NewsItem(Orderable):
 
     class Meta:
         verbose_name = 'news'
-        verbose_name_plural = 'news'
+        verbose_name_plural = 'news items'

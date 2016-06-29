@@ -10,5 +10,7 @@ class NewsItemModelAdmin(ModelAdmin):
     add_to_settings_menu = False
     list_display = ('__str__',)
     search_fields = ('__str__',)
+    verbose_name = "What's new"
+    verbose_name_plural = "What's new"
 
 modeladmin_register(NewsItemModelAdmin)

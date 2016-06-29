@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags homepage_tags %}
+{% load wagtailcore_tags homepage_tags news_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 {% block content %}
@@ -7,10 +7,17 @@
 
     <section id="intro-section">
       <div class="row">
-        <div class="small-12 text-center medium-6 medium-text-left large-7 columns">
+        <div class="intro-subtitle small-12 medium-7 columns">
           <h1>
             <span id="intro-subtitle">{{self.headline}}</span>
           </h1>
+        </div>
+       <!-- <div class="news small-12 medium-4 medium-offset-1 columns"> -->
+       <div class="news columns">
+          {% block news %}
+          <h2>What's new</h2>
+          {% news_listing %}
+          {% endblock %}
         </div>
       </div>
     </section>
