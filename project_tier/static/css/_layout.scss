@@ -32,6 +32,9 @@ body {
 
 .body-content {
   max-width: rem-calc(800);
+  &.columns:first-of-type {
+    padding-left: 0;
+  }
 }
 
 .page-content {

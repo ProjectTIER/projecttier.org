@@ -20,7 +20,7 @@
               </div>
             {% endif %}
             <div class="title text-center">
-            <h2>{{person.title}}, <span class="academic-title">{{ person.academic_title }}</span></h2>
+            <h2>{{person.title}}{% if person.academic_title %}<span class="academic-title">, {{ person.academic_title }}</span>{% endif %}</h2>
             <h4>{{ person.main_job_title }}</h4>
             </div>
           </article>

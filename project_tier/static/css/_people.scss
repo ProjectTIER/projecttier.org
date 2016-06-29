@@ -1,3 +1,4 @@
+/* PERSON INDEX PAGE */
 ul.person-list {
   li {
     &::before {
@@ -43,4 +44,25 @@ ul.person-list {
   .block-section {
     padding-left: 20px;
   }
+}
+
+/* PERSON PAGE */
+.job-titles {
+  font-size: 1.5rem;
+}
+span.academic-title {
+      color: $grey;
+      opacity: 0.5;
+      font-size: 2.8rem;    
+  }
+
+.people.meta {
+    word-break: break-all;
+    dt {
+      margin-bottom: 0;
+      font-family: $header-font-family;
+    }
+    dd {
+      margin-bottom: 1rem;
+    }
 }

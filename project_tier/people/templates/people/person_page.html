@@ -1,69 +1,66 @@
 {% extends "standard_layout.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags %}
 
-{% block sidebar %}{% endblock %}
+{% block page_banner %}
+  <header class="page-header">
+    <div class="row">
+      <div class="columns">
+        {% breadcrumbs %}
+        {% block page_title %}
+          <h1>{{self.title}}{% if self.academic_title %}<span class="academic-title">, {{ self.academic_title }}</span>{% endif %}</h1>
+        {% endblock %}
+          {% if self.main_job_title %}
+            <div class="job-titles">{{ self.main_job_title }}</div>
+      {% endif %}
+    </div>
+          </div>
+  </header>
+{% endblock %}
+
 
 {% block main_content %}
 
   <div class="row">
-    <div class="small-12 medium-11 medium-centered large-10 columns">
-      <div class="row">
+    <div class="body-content small-12 medium-7 columns">
+        {% if self.introductory_headline %}
+        <p class="overview"><strong>{{ self.introductory_headline }}</strong></p>
+        {% endif %}
+          {% if self.biography %}
+            {{ self.biography|richtext }}
+        {% endif %}
+    </div>
 
-        <div class="small-12 medium-4 large-5 columns">
-          {% if self.image %}
+    <aside class="people meta small-12 medium-4 columns">
+        {% if self.image %}
           {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
-            {% image self.image width-400 as photo %}
+            {% image self.image fill-250x250-c100 as photo %}
             <img class="img person-img" src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
           {% else %}
-            <div class="placeholder img person-img">
-              <span class="fa-stack fa-4x">
-                <i class="fa fa-user fa-stack-2x"></i>
-                <i class="fa fa-question fa-stack-1x"></i>
-              </span>
-            </div>
+            <img class="placeholder img person-img">
           {% endif %}
-        </div>
-
-        <div class="small-12 medium-8 large-7 columns">
-          {% if self.main_job_title %}
-            <div class="job-titles">{{ self.main_job_title }}</div>
-          {% endif %}
-          {% if self.academic_title %}
-            <div class="job-titles">{{ self.academic_title }}</div>
-          {% endif %}
-
-          {% if self.introductory_headline %}
-            {% include "includes/intro.html" with intro=self.introductory_headline only %}
-          {% endif %}
-
-          <dl class="contact-info">
+        <dl class="contact-info">
             {% if self.email %}
               <dt>Email</dt>
               <dd><a href="mailto:{{self.email}}">{{self.email}}</a></dd>
             {% endif %}
 
             {% if self.website %}
-              <dt>Web</dt>
+              <dt>Website</dt>
               <dd><a target="_blank" href="{{ self.website }}">{{self.website}}</a></dd>
             {% endif %}
 
             {% if self.phone %}
-              <dt>Call</dt>
+              <dt>Phone number</dt>
               <dd>{{ self.phone}}</dd>
             {% endif %}
 
             {% if self.location %}
-              <dt>Find</dt>
+              <dt>Address</dt>
               <dd>{{ self.location}}</dd>
             {% endif %}
 
           </dl>
-
-          {% if self.biography %}
-            <hr>
-            <h3 class="small-heading">About {{self.title}}</h3>
-            {{ self.biography|richtext }}
-          {% endif %}
+      </aside>
 
         </div>
 
