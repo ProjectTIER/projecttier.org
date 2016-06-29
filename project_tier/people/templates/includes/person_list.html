@@ -6,14 +6,14 @@
       <h2 class="section-title">{{group}}</h2>
     </div>
     <div class="small-12">
-      <ul class="item-list person-list row small-up-2 medium-up-3 large-up-4" data-equalizer>
+      <ul class="item-list person-list row small-up-2 medium-up-3" data-equalizer>
       {% for person in list %}
 
         <li class="column">
           <a href="{{person.url}}">
             <article class="person list-item" data-equalizer-watch>
             {% if person.image %}
-              {% image person.image fill-200x200-c100 as photo %}
+              {% image person.image fill-280x280-c100 as photo %}
               <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
             {% else %}
               <img class="placeholder img-thumbnail">
