@@ -12,7 +12,6 @@ body {
   background-image: url('../img/bg-image.png');
   background-size: 60px;
   padding: $small-gutter/2 0;
-  box-shadow: inset 0px -6px 22px -13px rgba(0,0,0,0.5);
   @include breakpoint(medium up){
     padding: ($topbar-height) 0 $small-gutter;
   }
