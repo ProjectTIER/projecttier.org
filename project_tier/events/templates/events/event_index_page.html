@@ -5,65 +5,61 @@
 {% endblock %}
 
 {% block main_content %}
-
   {% if self.body %}
   <div class="row">
-    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
       <div class="body-content">
         {{ self.body|richtext }}
       </div>
-    </div>
   </div>
   {% endif %}
 
   {# Uses method defined in models.py to retrieve all upcoming events #}
   {# See also standard index for creating a listing with a tag #}
 
-  {% if events %}
-      <div class="row">
-        <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-          {% if events %}
-          <h4>Upcoming events</h4>
-            <ol class="events-index item-list">
-              {% for event in events %}
-                {% include "includes/event_list_item.html" with event=event %}
-              {% endfor %}
-            </ol>
-          {% else %}
-            <p>There are currently no upcoming events added. This is, most likely, an error. You can get in touch with <a href="mailto:info@projecttier.org">info@projecttier.org</a> for more information.</p>
-          {% endif %}
+{% if events %}
+    <div class="row">
+      <div class="body-content body-events">
+        {% if events %}
+        <h2>Upcoming events</h2>
+          <ol class="events-index item-list">
+            {% for event in events %}
+              {% include "includes/event_list_item.html" with event=event %}
+            {% endfor %}
+          </ol>
+        {% else %}
+          <p>There are currently no upcoming events added. This is, most likely, an error. You can get in touch with <a href="mailto:info@projecttier.org">info@projecttier.org</a> for more information.</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+{% if past_events %}
+    <div class="row">
+       <div class="body-content">
+        {% if past_events %}
+        <a name="past-events"></a>
+        <h2>Past events</h2>
+        <ol class="events-index item-list">
+        {% for event in past_events %}
+          {% include "includes/event_list_item.html" with event=event %}
+        {% endfor %}
+        </ol>
+        {% else %}
+          <p>There's been no previous events added to the site yet.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if past_events.paginator.num_pages > 1 %}
+      <div class="pagination">
+        <div class="label">Pages</div>
+        <div class="page-numbers">
+          {% for p in past_events.paginator.page_range %}
+            <a class="page-no{% if past_events.number == p %} active{% endif %}" href="{% if search_query %}{% url 'search' %}?query={{ search_query|urlencode }}&amp;{% else %}?{% endif %}page={{ p }}">{{ p }}</a>
+          {% endfor %}
         </div>
       </div>
     {% endif %}
-
-    {% if past_events %}
-        <div class="row">
-          <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-            {% if past_events %}
-            <a name="past-events"></a>
-            <h4>Past events</h4>
-            <ol class="events-index item-list">
-            {% for event in past_events %}
-              {% include "includes/event_list_item.html" with event=event %}
-            {% endfor %}
-            </ol>
-            {% else %}
-              <p>There's been no previous events.</p>
-          </div>
-          {% endif %}
-        </div>
-
-        {% if past_events.paginator.num_pages > 1 %}
-          <div class="pagination">
-            <div class="label">Pages</div>
-            <div class="page-numbers">
-              {% for p in past_events.paginator.page_range %}
-                <a class="page-no{% if past_events.number == p %} active{% endif %}" href="{% if search_query %}{% url 'search' %}?query={{ search_query|urlencode }}&amp;{% else %}?{% endif %}page={{ p }}">{{ p }}</a>
-              {% endfor %}
-            </div>
-          </div>
-        {% endif %}
-
-      {% endif %}
+{% endif %}
 
 {% endblock %}

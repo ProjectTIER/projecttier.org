@@ -1,41 +1,31 @@
 {% extends "standard_layout.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-
 {% block sidebar %}
 {% endblock %}
 
-
 {% block main_content %}
-
+<div class="row">
   <div class="row">
-    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
-
-      <div class="row">
-        <div class="small-12 medium-4 medium-push-8 large-3 large-push-9 columns">
-          <div class="event-meta">
-            <time class="event-meta-item">
-              {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}{% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
-            </time>
-            <div class="event-meta-item">
-              {% if self.university %}{{ self.university }}{% endif %}
-              {% if self.university and self.department %}<br>{% endif %}
-              {% if self.department %}{{ self.department }}{% endif %}
-            </div>
-            <div class="event-meta-item">
-              <a class='calendar' href= "{{ self.url }}?format=ical">Add to calendar</a>
-            </div>
-          </div>
-        </div>
-        <div class="small-12 medium-8 medium-pull-4 large-9 large-pull-3 columns">
-          {% if self.description %}
-            {{ self.description|richtext }}
-          {% endif %}
-        </div>
-      </div>
-
+    <div class="body-content small-12 medium-7 columns">
+      {% if self.description %}
+        {{ self.description|richtext }}
+      {% endif %}
     </div>
-  </div>
+    <div class="event meta small-12 medium-4 columns">
+      <time class="event-meta-item">
+        <p>{{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}</p>
+        {% if self.time_from %}<p>{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
+      </time>
+      <div class="event-meta-item">
+        {% if self.university %}{{ self.university }}{% endif %}
+        {% if self.university and self.department %}<br>{% endif %}
+        {% if self.department %}{{ self.department }}{% endif %}
+      </div>
+      <div class="event-meta-item">
+        <a class='calendar' href= "{{ self.url }}?format=ical">Add to calendar</a>
+      </div>
+    </div>
+</div>
 
-  {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}
