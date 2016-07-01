@@ -16,8 +16,7 @@
               {% image person.image fill-280x280-c100 as photo %}
               <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
             {% else %}
-              <img class="placeholder img-thumbnail">
-              </div>
+              <img class="placeholder img-thumbnail" />
             {% endif %}
             <div class="title text-center">
             <h2>{{person.title}}{% if person.academic_title %}<span class="academic-title">, {{ person.academic_title }}</span>{% endif %}</h2>
