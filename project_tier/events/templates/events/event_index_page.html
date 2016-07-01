@@ -2,6 +2,17 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block sidebar %}
+  <div data-sticky-container>
+    <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
+      <nav class="sidebar-nav article-nav">
+        <h3>On this page</h3>
+        <ul class="vertical menu" data-magellan data-bar-offset="60">
+          <li><a href="#upcoming-events">Upcoming events</a></li>
+          <li><a href="#past-events">Past events</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 {% endblock %}
 
 {% block main_content %}
@@ -20,7 +31,7 @@
     <div class="row">
       <div class="body-content body-events">
         {% if events %}
-        <h2>Upcoming events</h2>
+        <h2 id="upcoming-events" data-magellan-target="upcoming-events">Upcoming events</h2>
           <ol class="events-index item-list">
             {% for event in events %}
               {% include "includes/event_list_item.html" with event=event %}
@@ -33,33 +44,30 @@
     </div>
   {% endif %}
 
-{% if past_events %}
-    <div class="row">
-       <div class="body-content">
-        {% if past_events %}
-        <a name="past-events"></a>
-        <h2>Past events</h2>
+  <div class="row">
+     <div class="body-content">
+      {% if past_events %}
+        <h2 id="past-events" data-magellan-target="past-events">Past events</h2>
         <ol class="events-index item-list">
-        {% for event in past_events %}
-          {% include "includes/event_list_item.html" with event=event %}
-        {% endfor %}
+          {% for event in past_events %}
+            {% include "includes/event_list_item.html" with event=event %}
+          {% endfor %}
         </ol>
-        {% else %}
-          <p>There's been no previous events added to the site yet.</p>
-      </div>
+      {% else %}
+        <p>There's been no previous events added to the site yet.</p>
       {% endif %}
     </div>
+  </div>
 
-    {% if past_events.paginator.num_pages > 1 %}
-      <div class="pagination">
-        <div class="label">Pages</div>
-        <div class="page-numbers">
-          {% for p in past_events.paginator.page_range %}
-            <a class="page-no{% if past_events.number == p %} active{% endif %}" href="{% if search_query %}{% url 'search' %}?query={{ search_query|urlencode }}&amp;{% else %}?{% endif %}page={{ p }}">{{ p }}</a>
-          {% endfor %}
-        </div>
+  {% if past_events.paginator.num_pages > 1 %}
+    <div class="pagination">
+      <div class="label">Pages</div>
+      <div class="page-numbers">
+        {% for p in past_events.paginator.page_range %}
+          <a class="page-no{% if past_events.number == p %} active{% endif %}" href="{% if search_query %}{% url 'search' %}?query={{ search_query|urlencode }}&amp;{% else %}?{% endif %}page={{ p }}">{{ p }}</a>
+        {% endfor %}
       </div>
-    {% endif %}
-{% endif %}
+    </div>
+  {% endif %}
 
 {% endblock %}

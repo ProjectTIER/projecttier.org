@@ -160,7 +160,7 @@ class PersonIndexPage(Page):
                     "category": category,
                     "people": people
                 })
-        return sorted(sections)
+        return sections
 
     class Meta:
         verbose_name = 'Person List Page'
