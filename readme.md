@@ -10,6 +10,7 @@ brew install python3 postgresql
 createdb project_tier
 ```
 
+
 ### Setup the project
 ```
 git clone git@github.com:promptworks/project_tier.git
