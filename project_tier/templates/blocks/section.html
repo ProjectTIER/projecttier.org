@@ -1,7 +1,6 @@
 <section>
   <header>
-    <a name="{{self.headline|slugify}}"></a>
-    <h2>{{self.headline}}</h2>
+    <h2 id="{{self.headline|slugify}}" data-magellan-target="{{self.headline|slugify}}">{{self.headline}}</h2>
     <p class="subheadline">{{self.subheadline}}</p>
   </header>
   {{self.body}}

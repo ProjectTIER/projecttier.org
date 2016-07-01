@@ -69,7 +69,9 @@ def table_of_contents_menu(context, streamfield=None):
     headings = []
     if streamfield:
         for block in streamfield:
-            if block.block_type == 'heading':
+            if block.block_type == 'section':
+                headings.append(block.value['headline'])
+            elif block.block_type == 'heading':
                 headings.append(block.value)
     return {
         'section_pages': section.get_children().specific().live(),
