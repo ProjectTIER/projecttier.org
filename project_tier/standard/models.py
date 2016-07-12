@@ -33,7 +33,7 @@ class StandardPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     overview = RichTextField(help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.', blank=True)
     body = StreamField(ContentStreamBlock())
-    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
 
     @property
     def parent(self):
@@ -70,7 +70,7 @@ class SectionPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     overview = RichTextField(help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.', blank=True)
     body = StreamField(BodyBlock())
-    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
 
     @property
     def parent(self):
