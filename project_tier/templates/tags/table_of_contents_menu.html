@@ -17,7 +17,16 @@
         <h3>On this page</h3>
         <ul class="vertical menu" data-magellan data-bar-offset="60">
           {% for heading in article_headings %}
-            <li><a href="#{{heading|slugify}}">{{heading}}</a></li>
+            <li>
+              <a href="#{{heading.value|slugify}}">{{heading.value}}</a>
+              {% if heading.children %}
+                <ul>
+                  {% for subheading in heading.children %}
+                    <li><a href="#{{subheading|slugify}}">{{subheading}}</a>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
           {% endfor %}
         </ul>
       </nav>

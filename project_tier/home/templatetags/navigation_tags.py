@@ -70,9 +70,25 @@ def table_of_contents_menu(context, streamfield=None):
     if streamfield:
         for block in streamfield:
             if block.block_type == 'section':
-                headings.append(block.value['headline'])
+                value = block.value['headline']
+                children = []
+                for child in block.value['body']:
+                    if child.block_type == 'heading':
+                        children.append(child.value)
+                headings.append({
+                    'value': value,
+                    'children': children,
+                })
             elif block.block_type == 'heading':
-                headings.append(block.value)
+                headings.append({
+                    'value': block.value,
+                    'children': [],
+                })
+            elif block.block_type == 'smaller_heading':
+                try:
+                    headings[-1]['children'].append(block.value)
+                except:
+                    pass
     return {
         'section_pages': section.get_children().specific().live(),
         'article_headings': headings
