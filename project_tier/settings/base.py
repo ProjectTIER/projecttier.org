@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'taggit',
     'django_nose',
     'storages',
+    'raven.contrib.django.raven_compat',
     'commonblocks',
     'wagtailfontawesome',
     'wagtailemoji',
