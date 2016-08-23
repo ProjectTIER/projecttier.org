@@ -103,3 +103,6 @@ class SectionPage(Page):
         'standard.StandardPage',
         'standard.SectionPage'
     ]
+
+    class Meta:
+        verbose_name = "Standard page with content sections"
