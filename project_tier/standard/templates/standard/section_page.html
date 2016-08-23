@@ -12,7 +12,9 @@
   <div class="row">
     <div class="body-content">
       <div class="body-content">
+        {% if page.overview %}
         <p class="overview"><strong>{{page.overview|richtext}}</strong></p>
+        {% endif %}
         {{page.body}}
       </div>
     </div>
