@@ -1,4 +1,4 @@
-{% load navigation_tags wagtailcore_tags protocol_tags %}
+{% load navigation_tags wagtailcore_tags %}
 {% get_site_root as site_root %}
 
 {% if calling_page|has_protocol_parent and calling_page.content_type.model == 'standardpage' %}
