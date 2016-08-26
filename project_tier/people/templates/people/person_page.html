@@ -38,6 +38,9 @@
           {% else %}
             <img class="placeholder img person-img">
           {% endif %}
+          {% if self.image_credit %}
+          <figcaption class="people"><span>Photo courtesy of</span> {{ self.image_credit }}</figcaption>
+          {% endif %}
         <dl class="contact-info">
             {% if self.email %}
               <dt>Email</dt>

@@ -1,5 +1,6 @@
 .sidebar {
   margin-left: -60px;
+  width: 30%;
 }
 .sidebar-nav {
   @include breakpoint(large up) {

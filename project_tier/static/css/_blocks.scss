@@ -70,6 +70,7 @@ ul.accordion {
     padding: 20px;
     border-radius: 4px;
     border: 1px solid $light-grey;
+    margin-bottom: 10px;
     transition: background-color 0.3s;
     &::before {
       content: "\f019";
@@ -105,5 +106,8 @@ ul.accordion {
     }
     p {
       margin-bottom: 0;
+    }
+    + .download {
+      margin-top: 10px;
     }
 }

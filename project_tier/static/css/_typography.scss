@@ -15,7 +15,7 @@ a, %hyperlink {
    ========================================================================== */
 p, %paragraph {
   font-size: rem-calc(17);
-  line-height: rem-calc(28);
+  line-height: 1.55rem;
   margin-bottom: $small-gutter;
   color: $dark-grey;
   max-width: 45em;
@@ -26,6 +26,9 @@ p, %paragraph {
    ========================================================================== */
 h1 {
   font-size: rem-calc(64);
+  .title_suffix {
+    opacity: 0.5;
+  }
 }
 
 h2/*, %large-heading, .large-heading*/ {
@@ -91,7 +94,7 @@ ul {
     &::before{
       content: "■";
       color: $blue;
-      margin-right: $small-gutter;
+      margin-right: 1.2rem;
     }
   }
 }
@@ -111,6 +114,15 @@ ol {
       width: 2em;
       text-align: right;
       color: $blue;
+    }
+  }
+}
+
+.body-content ul {
+  li {
+    padding-left: 2em;
+    &::before {
+      margin-left: -2rem;
     }
   }
 }

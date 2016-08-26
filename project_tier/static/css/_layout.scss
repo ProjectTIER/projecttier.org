@@ -34,7 +34,8 @@ body {
 }
 
 .body-content {
-  max-width: rem-calc(800);
+  max-width: 40rem;
+  margin-left: 40px;
   &.columns:first-of-type {
     padding-left: 0;
   }
@@ -118,4 +119,27 @@ section {
     }
   }
 }
+}
+
+.pagination {
+  label {
+    float: left;
+    margin: 23px 20px 0 0;
+    opacity: 0.5;
+  }
+  .page-numbers {
+    display: inline-block;
+    margin-top: 20px;
+    a {
+      text-decoration: none;
+      .active {
+        background-color: $red;
+        color: $off-white;
+      }
+      &:hover {
+        background-color: $red;
+        color: $off-white;
+      }
+    }
+  }
 }

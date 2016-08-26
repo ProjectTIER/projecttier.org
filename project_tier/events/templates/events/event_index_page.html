@@ -32,11 +32,11 @@
       <div class="body-content body-events">
         {% if events %}
         <h2 id="upcoming-events" data-magellan-target="upcoming-events">Upcoming events</h2>
-          <ol class="events-index item-list">
+          <div class="events-index item-list">
             {% for event in events %}
               {% include "includes/event_list_item.html" with event=event %}
             {% endfor %}
-          </ol>
+          </div>
         {% else %}
           <p>There are currently no upcoming events added. This is, most likely, an error. You can get in touch with <a href="mailto:info@projecttier.org">info@projecttier.org</a> for more information.</p>
         {% endif %}

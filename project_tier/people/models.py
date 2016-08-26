@@ -37,6 +37,7 @@ class PersonPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    image_credit = models.CharField(max_length=255, blank=True, help_text="Add credit for photo if necessary. Note: add only their name 'Photo courtesy of' is hardcoded")
 
     @property
     def categories(self):
@@ -71,7 +72,13 @@ class PersonPage(Page):
         FieldPanel('academic_title'),
         FieldPanel('introductory_headline'),
         FieldPanel('biography'),
-        ImageChooserPanel('image'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('image'),
+                FieldPanel('image_credit'),
+            ],
+            heading="Person image"
+        ),
         InlinePanel('person_category_relationship', label="Categories"),
     ]
 
@@ -145,7 +152,7 @@ class PersonIndexPage(Page):
 
     @property
     def people(self):
-        people = PersonPage.objects.live().child_of(self).order_by('title')
+        people = PersonPage.objects.live().child_of(self)
         return people
 
     @property

@@ -9,7 +9,10 @@ ul.person-list {
     border-radius: 4px;
     overflow: hidden;
     .img-thumbnail {
+      background-color: $grey;
       margin: 0 0 20px 0;
+      min-width: 280px;
+      min-height: 280px;
     }
     .title {
       padding: 1.6rem;
@@ -32,6 +35,10 @@ ul.person-list {
   a {
     text-decoration: none;
   }
+}
+
+.fellowships {
+  margin-top: 20px;
 }
 
 .people, .fellowships {
@@ -66,4 +73,23 @@ span.academic-title {
     dd {
       margin-bottom: 1rem;
     }
+}
+
+.person-img {
+  + figcaption {
+        margin-top: -10px;
+        span {
+          display: block;
+          font-weight: 600;
+          opacity: 0.5;
+        }
+        &::before {
+          display:none;
+        }
+      }
+}
+
+figcaption.people {
+  background-color: transparent;
+  padding: 0;
 }
