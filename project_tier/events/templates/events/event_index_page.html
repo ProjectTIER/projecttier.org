@@ -48,11 +48,11 @@
      <div class="body-content">
       {% if past_events %}
         <h2 id="past-events" data-magellan-target="past-events">Past events</h2>
-        <ol class="events-index item-list">
+        <div class="events-index item-list">
           {% for event in past_events %}
             {% include "includes/event_list_item.html" with event=event %}
           {% endfor %}
-        </ol>
+        </div>
       {% else %}
         <p>There's been no previous events added to the site yet.</p>
       {% endif %}
