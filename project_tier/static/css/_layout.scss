@@ -122,15 +122,16 @@ section {
 }
 
 .pagination {
-  label {
+  .label {
     float: left;
-    margin: 23px 20px 0 0;
+    margin: 23px 20px 0 20px;
     opacity: 0.5;
   }
   .page-numbers {
     display: inline-block;
-    margin-top: 20px;
     a {
+      display: inline-block;
+      margin-top: 20px;
       text-decoration: none;
       .active {
         background-color: $red;
