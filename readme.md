@@ -1,46 +1,39 @@
-project_tier
+Project Tier
 ==================
 
-## Setting up local development
+## Local development
 
-### Setup your machine
+### Setup
+Ensure that [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) are installed. Then run:
 
 ```
-brew install python3 postgresql
-createdb project_tier
-```
-
-
-### Setup the project
-```
-git clone git@github.com:promptworks/project_tier.git
-cd project-tier
-pyvenv venv
-source venv/bin/activate
-pip install -r requirements.txt
-./manage.py migrate
-./manage.py createsuperuser
+git clone git@github.com:torchbox/project-tier.git
+vagrant up
+vagrant ssh
 ```
 
 ### Run the server
+(Inside of the Vagrant VM)
 ```
-./manage.py runserver
+djrun
 ```
 
-## Setup prod db locally
+## Pull production database locally
+(Inside of the Vagrant VM)
 
-Assuming the production heroku db is our source of truth, it's simple to download locally
+You have to run `heroku` one time to log into Heroku. Then you can pull the database from Heroku.
 
-```bash
-./bin/download_prod_db # Downloads the latest database to latest.dump
-./bin/import_prod_db # Overrides your local db with prods
 ```
+fab pull_production_data
+```
+
+When you run this, the progress will eventually freeze, and you should see the word `Password: ` about 15-20 lines up. This part is sorta weird. You have to type `vagrant` (typing will be invisible) and hit enter. At the very end this will happen a second time; you will see `Password: ` and must type `vagrant` and hit enter.
 
 ## Bringing in others changes
 
-Make sure, every time you bring in new code from others to run
+Make sure, every time you bring in new code from others to run:
 
 ```bash
 pip install -r requirements.txt
-./manage.py migrate
+dj migrate
 ```

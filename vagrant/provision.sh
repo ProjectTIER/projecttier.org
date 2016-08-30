@@ -9,6 +9,14 @@ PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
 
+# Upgrade postgres
+sudo echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install -y postgresql-9.5
+sudo ln -s /usr/lib/postgresql/9.5/bin/pg_dump /usr/bin/pg_dump --force
+
+
 # Create database
 su - vagrant -c "createdb $PROJECT_NAME"
 
