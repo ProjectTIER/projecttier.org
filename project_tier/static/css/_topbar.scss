@@ -1,52 +1,115 @@
-.title-bar {
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: $button-highlight;
-  background-image: linear-gradient($button-highlight, $button-shadow);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: right;
-  height: $topbar-height;
+/* LOGO */
+#topbar-logo {
+  display: flex;
+  box-shadow: none;
+  float: left;
+  margin-right: 20px;
+  svg {
+    height: rem-calc(52);
+    width: auto;
+    * {
+      filter: drop-shadow( 1px 1px 0px #FFF );
+    }
+    #project {
+      fill: $black;
+    }
+    #tier {
+      fill: $red;
+    }
+  }
+}
 
+.title-bar {
+  background-color: $white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  .menu-icon {
+    @include hamburger($dark-grey, $red, 10px, 10px, 2px, 3);
+  }
+}
+
+.is-drilldown {
+  height: 0;
+}
+
+.mobile-menu {
+  position: relative;
+  z-index: 200;
+}
+
+.title-bar-title {
+    margin-left: 80px;
+    margin-top: 30px;
+}
+/* Mobile menu */
+/* c/f http://foundation.zurb.com/sites/docs/responsive-navigation.html for refenence */
+/*.title-bar {
+  background-color: $white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: auto;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative;
+  text-align: right;
+  z-index: 3;
+  .mobile-menu {
+    align-self: center;
+  }
   a {
     box-shadow: none;
 
     .title-bar-title {
       color: $dark-grey;
     }
-    .menu-icon {
-      @include hamburger($dark-grey, $red, 10px, 10px, 2px, 3);
-    }
+
     &:hover .title-bar-title {
       color: $red;
+    }
+  }
+}*/
+
+/* Stopping FOUC on mobile */
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+  @include breakpoint(medium up) {
+    .title-bar {
+      display: none;
     }
   }
 }
 
 /* TOP BAR */
-.top-bar {
-  position: fixed;
-  z-index: 3;
-  top: $topbar-height;
-  left: 0;
-  right: 0;
-  background-color: $white;
-  padding: 20px 40px;
-  transition: height 0.2s;
+.top-bar-left {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+    @include breakpoint(small only) {
+      display: none;
+    }
+}
+.top-bar {
   @include breakpoint(medium up) {
+    position: fixed;
+    z-index: 3;
+    top: $topbar-height;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    padding: 20px 40px;
+    transition: height 0.2s;
+    display: flex;
+    align-items: center;
     top: 0;
     height: $expanded-topbar-height;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    body.scrolled & {
-      height: $topbar-height;
+      body.scrolled & {
+        height: $topbar-height;
+      }
     }
+  @include breakpoint(xlarge) {
+    padding-left: 4.5rem;
   }
 
 .menu {
@@ -188,31 +251,9 @@
   }
 
 
-.top-bar-left, .top-bar-right {
-//  float: none;
-}
 
-.top-bar-left {
+#top-bar-logo {
   flex: 1;
-}
-
-/* LOGO */
-#topbar-logo {
-  display: flex;
-  box-shadow: none;
-  svg {
-    height: rem-calc(52);
-    width: auto;
-    * {
-      filter: drop-shadow( 1px 1px 0px #FFF );
-    }
-    #project {
-      fill: $black;
-    }
-    #tier {
-      fill: $red;
-    }
-  }
 }
 
 .dropdown.menu .is-dropdown-submenu-parent.is-right-arrow > a::after {

@@ -51,6 +51,12 @@ ul.person-list {
   }
   .block-section {
     padding-left: 20px;
+    @include breakpoint(small up) {
+      padding-left: 10px;
+    }
+    @include breakpoint(large up) {
+      padding-left: 15px;
+    }
   }
 }
 

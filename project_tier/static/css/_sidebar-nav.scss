@@ -1,8 +1,15 @@
 .sidebar {
-  margin-left: -60px;
+  margin-left: -80px;
   width: 30%;
+  @include breakpoint(medium only) {
+    margin-left: -20px;
+    width: 25%;
+  }
 }
 .sidebar-nav {
+  @include breakpoint(medium up) {
+    padding: 0 0 0 $small-gutter*1.1;
+  }
   @include breakpoint(large up) {
     padding: 0 $small-gutter 0 $small-gutter*3.3;
   }
@@ -46,6 +53,13 @@
       &.active {
         color: $black;
         font-weight: 800;
+      }
+    }
+    li {
+      line-height: 1.2rem;
+      margin-bottom: 0.5rem;
+      a {
+        font-weight: 400;
       }
     }
   }

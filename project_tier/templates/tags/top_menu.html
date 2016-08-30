@@ -1,34 +1,33 @@
 {% load navigation_tags wagtailcore_tags %}
 {% get_site_root as site_root %}
 
-<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-  <a href="#" data-toggle>
-    <i class="menu-icon"></i>
-    <div class="title-bar-title">Menu</div>
+<div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="large">
+  <a href="/" id="topbar-logo">{% include "includes/svg_logo.html" %}</a>
+  <!--<button class="menu-icon" type="button" data toggle></button>
+  <div class="title-bar-title">Menu</div>-->
+  <a href="#" data-toggle class="mobile-menu">
+    <div class="title-bar-title"><i class="menu-icon"></i> Menu</div>
   </a>
 </div>
 
 
-<div class="top-bar" id="main-menu">
+<div class="top-bar">
   <div class="top-bar-left">
     <a href="/" id="topbar-logo">{% include "includes/svg_logo.html" %}</a>
-  </div>
-
-  <div class="top-bar-right">
-    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown" id="main-menu">
       {% for menuitem in menuitems %}
-          <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
-              {% if menuitem.show_dropdown %}
-                  <a data-toggle="dropdown" class="dropdown-toggle" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-                  {% if menuitem.url == '/protocols/' %}
-                    {% protocol_menu_panel parent=menuitem %}
-                  {% else %}
-                    {% top_menu_children parent=menuitem %}
-                  {% endif %}
-              {% else %}
-                  <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-              {% endif %}
-          </li>
+        <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
+            {% if menuitem.show_dropdown %}
+                <a data-toggle="dropdown" class="dropdown-toggle" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                {% if menuitem.url == '/protocols/' %}
+                  {% protocol_menu_panel parent=menuitem %}
+                {% else %}
+                  {% top_menu_children parent=menuitem %}
+                {% endif %}
+            {% else %}
+                <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+            {% endif %}
+        </li>
       {% endfor %}
     </ul>
   </div>

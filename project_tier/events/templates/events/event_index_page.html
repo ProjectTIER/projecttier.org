@@ -7,8 +7,8 @@
       <nav class="sidebar-nav article-nav">
         <h3>On this page</h3>
         <ul class="vertical menu" data-magellan data-bar-offset="60">
-          <li><a href="#upcoming-events">Upcoming events</a></li>
-          <li><a href="#past-events">Past events</a></li>
+          <li><a href="{{ request.get_host }}/events#upcoming-events">Upcoming events</a></li>
+          <li><a href="{{ request.get_host }}/events#past-events">Past events</a></li>
         </ul>
       </nav>
     </div>

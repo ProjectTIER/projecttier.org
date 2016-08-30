@@ -7,11 +7,11 @@
       <h3>{{ event.title }}</h3>
     </header>
     
-    <div class="small-5 columns meta">
+    <div class="small-12 medium-5 columns meta">
           {{ event.meta_information|richtext }}
           {{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}
     </div>
-    <div class="small-7 columns end description">
+    <div class="small-12 medium-7 columns end description">
         {% if event in self.past_events %}
           {{event.description_past|richtext}}
           {% else %}

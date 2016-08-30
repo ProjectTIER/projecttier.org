@@ -1,10 +1,14 @@
 #main-container {
   background: white;
-  padding-top: $expanded-topbar-height;
+  @include breakpoint(large up) {
+    padding-top: $expanded-topbar-height;
+  }
 }
 
-.row {
-  margin-left: 20px;
+main {
+  @include breakpoint(xlarge) {
+    padding-left: 3rem;
+  }
 }
 
 body {
@@ -17,6 +21,9 @@ body {
   padding: $small-gutter/2 0;
   @include breakpoint(medium up){
     padding: ($topbar-height) 0 $small-gutter;
+  }
+  @include breakpoint(xlarge) {
+    padding-left: 2rem;
   }
   h1 {
     @extend %large-heading;
@@ -35,9 +42,17 @@ body {
 
 .body-content {
   max-width: 40rem;
-  margin-left: 40px;
   &.columns:first-of-type {
     padding-left: 0;
+  }
+  @include breakpoint(small up) {
+    margin-left: 10px;
+  }
+  @include breakpoint(medium up) {
+    margin-left: 15px;
+  }
+  @include breakpoint(large up) {
+    margin-left: 40px;
   }
 }
 
@@ -62,8 +77,11 @@ body {
 }
 
 
-
 .row {
+  margin: 0 20px;
+  @include breakpoint(large up) {
+    margin: 0 0 0 20px;
+  }
   &.full-width {
     max-width: none;
   }
@@ -81,6 +99,7 @@ section {
     }
     > h2 {
       font-size: 2.5rem;
+      line-height: 2.8rem;
       margin-bottom: 0;
     }
     > .subheadline {
@@ -115,9 +134,12 @@ section {
       color: $light-grey;
       font-family: FontAwesome;
       font-size: 1.3rem;
-      margin: 0 30px 0 -50px;
+      margin: 0 30px 0 -40px;
     }
   }
+}
+@include breakpoint(small only) {
+  margin-left: 0px;
 }
 }
 

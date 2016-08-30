@@ -17,12 +17,12 @@
 
 {% block content %}
   <main class="row">
-    <div class="sidebar large-3 columns show-for-large">
+    <div class="sidebar medium-3 columns show-for-medium">
       {% block sidebar %}
         {% table_of_contents_menu streamfield=page.body %}
       {% endblock %}
     </div>
-    <div class="large-9 columns">
+    <div class="medium-9 columns">
       <article id="main-page-content" class="protocol-layout">
         <div class="page-content">
           {% block main_content %}{% endblock %}

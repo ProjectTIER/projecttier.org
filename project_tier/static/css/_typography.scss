@@ -26,6 +26,7 @@ p, %paragraph {
    ========================================================================== */
 h1 {
   font-size: rem-calc(64);
+  line-height: rem-calc(62);
   .title_suffix {
     opacity: 0.5;
   }
@@ -37,31 +38,36 @@ h2/*, %large-heading, .large-heading*/ {
   margin: $medium-gutter 0 $small-gutter/2;
   @include breakpoint(medium up){
     font-size: rem-calc(40);
+    line-height: rem-calc(38);
   }
   @include breakpoint(large up){
     font-size: rem-calc(44);
+    line-height: rem-calc(42);
   }
 }
 h3, /* %medium-heading, .medium-heading,*/ .heading {
   color: $off-black;
-  font-size: rem-calc(28);
+  font-size: rem-calc(24);
+  line-height: rem-calc(24);
   margin: $medium-gutter 0 $small-gutter/2;
   text-transform: none;
   @include breakpoint(medium up){
-    font-size: rem-calc(32);
+    font-size: rem-calc(26);
+    line-height: rem-calc(26);
   }
   @include breakpoint(large up){
-    font-size: rem-calc(36);
+    font-size: rem-calc(30);
+    line-height: rem-calc(30);
   }
 }
 h4, /*%small-heading, .small-heading,*/ .smaller-heading {
   color: $off-black;
   font-size: rem-calc(20);
     @include breakpoint(medium up){
-    font-size: rem-calc(24);
+    font-size: rem-calc(22);
   }
   @include breakpoint(large up){
-    font-size: rem-calc(28);
+    font-size: rem-calc(24);
   }
 }
 h5, /*%display-heading,*/ .smallest-heading {
@@ -128,7 +134,8 @@ ol {
 }
 
 .introduction {
-  font-size: rem-calc(22);
+  font-size: rem-calc(18);
+  line-height: rem-cal(21);
 }
 
 .overview {
@@ -260,6 +267,10 @@ code, %monospace-text {
       }
     }
   }
+}
+
+.breadcrumbs ~ h1 {
+  margin-top: 20px;
 }
 
 /* ==========================================================================
