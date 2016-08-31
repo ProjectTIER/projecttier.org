@@ -18,9 +18,11 @@
    INTRO
    ========================================================================== */
   #intro-section {
-    background-color: #EAEAEA;
-    background-image: url('../img/bg-image.png');
-    padding: $large-gutter 0;
+    background-color: $red;
+    color: $white;
+    //background-color: #EAEAEA;
+    background-image: url('../img/bg-image-15.png');
+    //padding: $large-gutter 0;
     background-size: 60px;
     @include breakpoint(medium up){
       padding: $large-gutter*2 0;

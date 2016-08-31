@@ -238,7 +238,7 @@ code, %monospace-text {
     list-style: none;
     margin: 0 0 0 0;
     li {
-      color: $off-black;
+      color: $white;
       font-size: 0.8rem;
       text-transform: uppercase;
       &::before {
@@ -258,7 +258,6 @@ code, %monospace-text {
       }
       &:not(:last-child) {
         &::after {
-        color: $off-black;
         margin: 0 0.5rem;
       }
       }
