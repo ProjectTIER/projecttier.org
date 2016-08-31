@@ -36,7 +36,7 @@
 
   {% if self.fellowship_years %}
     <div class="fellowships">
-      <h1>Fellowships</h1>
+      <h1>Fellows</h1>
       {% for year, fellows in page.fellowship_years %}
         {% include "includes/person_list.html" with group=year list=fellows %}
       {% endfor %}

@@ -20,6 +20,10 @@ class PersonCategory(models.Model):
         # We're returning the string that populates the snippets screen. Note it returns as plain-text
         return self.title
 
+    class Meta:
+        verbose_name = 'People category'
+        verbose_name_plural = 'People categories'
+
 
 class PersonPage(Page):
     location = models.CharField(max_length=255, blank=True)
