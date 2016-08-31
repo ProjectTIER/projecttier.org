@@ -25,6 +25,7 @@ class EventIndexPage(Page):
                                    default=UPCOMING)
 
     intro = RichTextField(blank=True)
+    intro_homepage = models.TextField(help_text='Describe the events index page. This is displayed on the homepage.', blank=True)
 
     parent_page_types = ['home.HomePage']
     subpage_types = ['events.EventPage']
@@ -35,7 +36,7 @@ class EventIndexPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
-        FieldPanel('show_events')
+        FieldPanel('intro_homepage')
     ]
 
     @property

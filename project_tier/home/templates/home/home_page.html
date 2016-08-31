@@ -62,13 +62,10 @@
         {% endif %}
         {% if page.featured_events_page %}
           <div class="subfeature-section-intro large-4 columns">
-            <h2 class="subfeature-section-title">Upcoming Events</h2>
-            <ul>
-              {% for childpage in page.featured_events_page.specific.events|slice:"3" %}
-                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
-              {% endfor %}
+            <h2 class="subfeature-section-title">{{ page.featured_events_page.title }}</h2>
+            <ul>{{ page.featured_events_page.specific.intro_homepage }}
             </ul>
-            <p>See <a href="{{page.featured_events_page.url}}">More events</a></p>
+            <p>See all <a href="{{page.featured_events_page.url}}">{{ page.featured_events_page.title|lower }}</a></p>
           </div>
         {% endif %}
       </div>
