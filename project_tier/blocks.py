@@ -1,5 +1,6 @@
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailcore.blocks import (
     StructBlock,
     TextBlock,
@@ -58,6 +59,7 @@ class ContentStreamBlock(StreamBlock):
     download = DocumentChooserBlock(icon='fa-download', template='blocks/download.html')
     accordion = AccordionBlock()
     notice = NoticeBlock()
+    embed = EmbedBlock(icon="media")
 
     class Meta:
         template = 'blocks/streamfield.html'
