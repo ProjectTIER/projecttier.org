@@ -252,7 +252,8 @@ code, %monospace-text {
         text-decoration: none;
         transition: background-color 0.2s;
         &:hover {
-          background-color: $red;
+          background-color: $white;
+          color: $blue;
           text-decoration: none;
         }
       }
