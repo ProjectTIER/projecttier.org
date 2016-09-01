@@ -55,9 +55,11 @@ You have to run `heroku` one time to log into Heroku. Then you can pull the data
 
 ```bash
 `fab pull_production_data`
-(wait... eventually the progress will freeze)
+
+# wait... eventually the progress will freeze
 `↲` (e.g. hit the 'enter' key)
-(wait... the progress will freeze again. You should see the word 'password' about 15 - 20 lines up in the tracestack)
+
+# wait... the progress will freeze again. You should see the word 'password' about 15 - 20 lines up in the tracestack
 `vagrant`
 ```
 
