@@ -48,6 +48,15 @@ class CaptionedImageBlock(StructBlock):
         help_text = 'Select an image and add a caption (optional).'
 
 
+class LimitedStreamBlock(StreamBlock):
+    paragraph = RichTextBlock(icon='fa-paragraph')
+    smaller_heading = TextBlock(
+        icon='fa-header', template='blocks/smaller_heading.html')
+
+    class Meta:
+        template = 'blocks/streamfield.html'
+
+
 class ContentStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     heading = TextBlock(icon='fa-header', template='blocks/heading.html')

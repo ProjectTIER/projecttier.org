@@ -4,14 +4,14 @@ from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailsearch.index import SearchField
 
-from project_tier.blocks import BodyBlock, ContentStreamBlock
+from project_tier.blocks import BodyBlock, LimitedStreamBlock, ContentStreamBlock
 
 
 class StandardIndexPage(Page):
     title_suffix = models.CharField(help_text="Additional text to display after the page title e.g. '(Version 3.0)", max_length=255, blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
-    body = StreamField(ContentStreamBlock(), blank=True)
+    body = StreamField(LimitedStreamBlock(), blank=True)
 
     @property
     def children(self):
