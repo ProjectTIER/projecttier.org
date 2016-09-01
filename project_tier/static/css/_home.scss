@@ -18,9 +18,11 @@
    INTRO
    ========================================================================== */
   #intro-section {
-    background-color: #EAEAEA;
-    background-image: url('../img/bg-image.png');
-    padding: $large-gutter 0;
+    background-color: $red;
+    color: $white;
+    //background-color: #EAEAEA;
+    background-image: url('../img/bg-image-15.png');
+    //padding: $large-gutter 0;
     background-size: 60px;
     @include breakpoint(medium up){
       padding: $large-gutter*2 0;
@@ -190,6 +192,7 @@ section.subfeatured-content h2.subfeature-section-title {
 /* TODO This appears to be styling most of the homepage. Odd semantics */
   .featured-index-page {
     background: $dark-grey;
+    border-top: 12px solid $grey;
     color: $white;
     * {
       color: $white;

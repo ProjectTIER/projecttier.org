@@ -12,12 +12,13 @@ main {
 }
 
 body {
-  background: $dark-red;
+  background: $white;
 }
 .page-header {
-  background-color: #EAEAEA;
-  background-image: url('../img/bg-image.png');
+  background-color: $red;
+  background-image: url('../img/bg-image-15.png');
   background-size: 60px;
+  color: $white;
   padding: $small-gutter/2 0;
   @include breakpoint(medium up){
     padding: ($topbar-height) 0 $small-gutter;
@@ -27,6 +28,9 @@ body {
   }
   h1 {
     @extend %large-heading;
+  }
+  .introductory-headline {
+    color: $white;
   }
 
   .special.button {

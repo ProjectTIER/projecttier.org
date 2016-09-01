@@ -238,7 +238,7 @@ code, %monospace-text {
     list-style: none;
     margin: 0 0 0 0;
     li {
-      color: $off-black;
+      color: $white;
       font-size: 0.8rem;
       text-transform: uppercase;
       &::before {
@@ -252,13 +252,13 @@ code, %monospace-text {
         text-decoration: none;
         transition: background-color 0.2s;
         &:hover {
-          background-color: $red;
+          background-color: $white;
+          color: $blue;
           text-decoration: none;
         }
       }
       &:not(:last-child) {
         &::after {
-        color: $off-black;
         margin: 0 0.5rem;
       }
       }
