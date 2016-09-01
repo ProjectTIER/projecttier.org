@@ -103,14 +103,17 @@
     background-color: $grey;
     border-radius: 6px;
     color: $pale-grey;
-    columns: 250px 3;
-    column-gap: 20px;
+    font-size: 1.3em;
     padding: 20px;
     max-width: 42rem;
     float: left;
     @include breakpoint(small only) {
+      font-size: 1em;
       max-width: 100%;
       margin-bottom: 20px;
+    }
+    @include breakpoint(medium only) {
+      font-size: 1.1rem;
     }
   }
   .section-children {
@@ -118,13 +121,16 @@
     float: left;
     background-color: $grey;
     padding: 20px;
-    min-width: 18rem;
+    min-width: 26rem;
     margin-left: 40px;
     overflow: hidden;
     @include breakpoint(small only) {
       float: none;
       margin-left: 0;
       max-width: 100%;
+    }
+    @include breakpoint(medium only) {
+      min-width: 22rem;
     }
     li {
       list-style: none;
@@ -222,6 +228,8 @@ section.subfeatured-content h2.subfeature-section-title {
   border-radius: 8px;
   min-width: 18rem;
   @include breakpoint(small up) {
+    margin-bottom: 20px;
+    margin-top: 20px;
     max-width: 100%;
   }
   @include breakpoint(medium up) {  
@@ -239,6 +247,7 @@ section.subfeatured-content h2.subfeature-section-title {
   h2 {
     font-size: 1.25rem;
     margin-bottom: 20px;
+    margin-top: 12px;
     text-transform: uppercase;
     }
   p {
