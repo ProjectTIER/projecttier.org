@@ -10,6 +10,9 @@
           <a href="#{{section.category.title|slugify}}">{{ section.category.title }}</a>
         </li>
       {% endfor %}
+        <li class="{% if section.category.is_active %}is-active{% endif %}">
+          <a href="#fellows">Fellows</a>
+        </li>
     </ul>
   </nav>
 {% endblock %}
@@ -35,7 +38,7 @@
   {% endif %}
 
   {% if self.fellowship_years %}
-    <div class="fellowships">
+    <div class="fellowships"><a name="fellows"></a>
       <h1>Fellows</h1>
       {% for year, fellows in page.fellowship_years %}
         {% include "includes/person_list.html" with group=year list=fellows %}

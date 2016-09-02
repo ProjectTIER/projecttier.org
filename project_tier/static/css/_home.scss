@@ -252,7 +252,10 @@ section.subfeatured-content h2.subfeature-section-title {
     }
   p {
     font-size: 100%;
-    &::after {
+  }
+  ul.news-items {
+    li {
+      &::after {
       content: "";
       display: block;
       height: 1px;
@@ -261,9 +264,6 @@ section.subfeatured-content h2.subfeature-section-title {
       background-color: $white;
       opacity: 1;
     }
-  }
-  ul.news-items {
-    li {
       &::before {
         display: none;
       }
