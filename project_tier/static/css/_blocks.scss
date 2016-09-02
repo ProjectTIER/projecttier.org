@@ -45,6 +45,9 @@ ul.accordion {
     top: 50%;
     transform: translateY(-50%);
   }
+  @include breakpoint(small) {
+    margin-left: 0;
+  }
   &.success {
       &::before {
         content: "\f058";

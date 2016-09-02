@@ -9,7 +9,7 @@ from wagtail.wagtailadmin.edit_handlers import (
 )
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
-from project_tier.links.models import RelatedLink
+#from project_tier.links.models import RelatedLink
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 

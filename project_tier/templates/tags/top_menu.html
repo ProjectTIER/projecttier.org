@@ -11,10 +11,10 @@
 </div>
 
 
-<div class="top-bar">
+<div class="top-bar" id="main-menu">
   <div class="top-bar-left">
     <a href="/" id="topbar-logo">{% include "includes/svg_logo.html" %}</a>
-    <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown" id="main-menu">
+    <ul class="vertical large-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
       {% for menuitem in menuitems %}
         <li class="{% if menuitem.show_dropdown %}has-submenu{% endif %} {% if menuitem.active %}current{% endif %}">
             {% if menuitem.show_dropdown %}
