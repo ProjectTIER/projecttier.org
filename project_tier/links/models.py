@@ -25,7 +25,7 @@ class LinkFields(models.Model):
         if self.link_page:
             return self.link_page.url
         elif self.link_document:
-            return self.link_document.url
+            return self.link_document.file.url
         else:
             return self.link_external
 
