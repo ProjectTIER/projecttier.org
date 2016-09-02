@@ -1,5 +1,7 @@
+{% load wagtailcore_tags %}
+
 <ul class="news-items">
   {% for news_item in news_items|slice:":3" %}
-    <li class="news-item">{{ news_item.body|safe }}</li>
+    <li class="news-item">{{ news_item.body|richtext }}</li>
   {% endfor %}
 </ul>
