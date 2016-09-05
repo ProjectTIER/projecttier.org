@@ -19,78 +19,15 @@
   }
 }
 
-.title-bar {
-  background-color: $white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  .menu-icon {
-    @include hamburger($dark-grey, $red, 10px, 10px, 2px, 3);
-  }
-}
-
-.is-drilldown {
-  height: 0;
-}
-
-.mobile-menu {
-  position: relative;
-  z-index: 200;
-}
-
-.title-bar-title {
-    margin-left: 80px;
-    margin-top: 30px;
-}
-/* Mobile menu */
-/* c/f http://foundation.zurb.com/sites/docs/responsive-navigation.html for refenence */
-/*.title-bar {
-  background-color: $white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  height: auto;
-  justify-content: space-between;
-  padding: 20px;
-  position: relative;
-  text-align: right;
-  z-index: 3;
-  .mobile-menu {
-    align-self: center;
-  }
-  a {
-    box-shadow: none;
-
-    .title-bar-title {
-      color: $dark-grey;
-    }
-
-    &:hover .title-bar-title {
-      color: $red;
-    }
-  }
-}*/
-
-/* Stopping FOUC on mobile */
-.no-js {
-  @include breakpoint(small only) {
-    .top-bar {
-      display: none;
-    }
-  }
-  @include breakpoint(medium up) {
-    .title-bar {
-      display: none;
-    }
-  }
-}
-
-/* TOP BAR */
+/* DESKTOP */
 .top-bar-left {
-  display: flex;
-    @include breakpoint(small only) {
-      display: none;
+  display: none;
+    @include breakpoint(large) {
+      display: flex;
     }
 }
 .top-bar {
-  @include breakpoint(medium up) {
+  @include breakpoint(large up) {
     position: fixed;
     z-index: 3;
     top: $topbar-height;
@@ -111,6 +48,13 @@
   @include breakpoint(xlarge) {
     padding-left: 4.5rem;
   }
+  ul {
+    background: none;
+    @include breakpoint(xlarge) {
+      display: flex;
+    }
+  }
+}
 
 .menu {
   background: none;
@@ -128,6 +72,11 @@
       background-color: $pale-grey;
     }
   }
+  &:hover {
+      a {
+      background-color: $pale-grey;
+    }
+  }
   a {
     text-decoration: none;
     font-weight: 600;
@@ -136,17 +85,11 @@
     transition:
       background 0.2s,
       color 0.2s;
-    font-size: rem-calc(11);
-    @include breakpoint(700){
-      font-size: rem-calc(12);
-    }
-    @include breakpoint(760){
-      font-size: rem-calc(13);
-    }
-    @include breakpoint(820){
+    font-size: rem-calc(13);
+    @include breakpoint(large){
       font-size: rem-calc(14);
     }
-    @include breakpoint(880){
+    @include breakpoint(xlarge){
       font-size: rem-calc(15);
     }
     &:hover {
@@ -155,108 +98,50 @@
     }
     &.current {
       background-color: $pale-grey;
+      }
     }
   }
-}
 
-  /* Dropdown menu */
-  .menu.submenu {
-    background-color: $pale-grey;
-    &.is-dropdown-submenu {
-      border: none;
-      left: $medium-gutter/8;
-      top: 100%;
-      box-shadow: 0 3px 0px rgba(0, 0, 0, 0.2);
-      > li {
-        padding-top: $medium-gutter/8;
-        a {
-          font-weight: 400;
-          text-transform: none;
-        }
-        &.overview-item {
-          a {
-            border-bottom: 1px solid $light-grey;
-            font-weight: 900;
-          }
-        }
-      }
-    }
-
-    .dropdown-panel {
-      width: 100%;
-      padding: $small-gutter/4 $small-gutter/2 $small-gutter;
-
-      .panel-overview-link {
-        display: block;
-        border-bottom: 1px solid $light-grey;
-        font-weight: 900;
-      }
-
-      .protocol-sections {
-        display: flex;
-
-        .protocol-section {
-          flex-grow: 2;
-          .panel-section-title {
-            @extend %display-heading;
-            line-height: 1;
-            display: inline-block;
-            padding: $medium-gutter/3 $medium-gutter/4 0;
-          }
-          ul {
-            list-style: none;
-            margin: 0 $small-gutter/2 0 0;
-            background: none;
-            li {
-              a {
-                display: inline-block;
-                padding: rem-calc(4) $medium-gutter/4;
-                font-weight: 400;
-                line-height: 1.2;
-              }
-            }
-          }
-        }
+/* Dropdown menu */
+.menu.submenu {
+  background-color: $pale-grey;
+  &.is-dropdown-submenu {
+    border: none;
+    left: $medium-gutter/8;
+    top: 100%;
+    box-shadow: 0 3px 0px rgba(0, 0, 0, 0.2);
+    > li {
+      padding-top: $medium-gutter/8;
+      a {
+        font-weight: 400;
+        text-transform: none;
       }
     }
   }
 }
 
-      &.menu-text {
-        display: none;
-
-        @include breakpoint(medium up) {
-          display: table-cell;
-        }
-        a {
-          padding: 0;
-
-          &:hover {
-            background-color: none;
-            box-shadow: none;
-          }
-        }
-      }
-    }
-  
-
-  .is-drilldown {
-    overflow: visible;
-    .menu {
-      background: $pale-grey;
-      &.is-drilldown-submenu {
-        height: auto;
+&.menu-text {
+  display: none;
+  a {
+    padding: 0;
+    &:hover {
+      background-color: none;
+      box-shadow: none;
       }
     }
   }
-
-
-
-#top-bar-logo {
-  flex: 1;
 }
 
-.dropdown.menu .is-dropdown-submenu-parent.is-right-arrow > a::after {
+.dropdown.menu {
+  li {
+    @include breakpoint(large up) {
+      float:left;
+    }
+  }
+}
+
+.dropdown.menu .is-dropdown-submenu-parent {
+  &.is-right-arrow > a::after {
       border: 0;
       content: "\f107";
       color: $blue;
@@ -264,4 +149,68 @@
       float: right;
       margin-top: -1px;
     }
+  }
 
+/* MOBILE */
+.title-bar {
+  background-color: $white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  .menu-icon {
+    @include hamburger($dark-grey, $red, 20px, 15px, 2px, 3);
+  }
+}
+
+.is-drilldown {
+  height: 0;
+}
+
+.mobile-menu {
+  position: relative;
+  z-index: 200;
+}
+
+.mobile-menu {
+  position: absolute;
+  right: 20px;
+  .title-bar-title {
+      font-size: 1.1em;
+      margin-left: 20px;
+      margin-top: 15px;
+      text-transform: uppercase;
+  }
+}
+
+.is-drilldown {
+  overflow: visible;
+  .menu {
+    background: $pale-grey;
+    &.is-drilldown-submenu {
+      height: auto;
+    }
+    .js-drilldown-back {
+      &::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 3px 5.2px 3px 0;
+        border-color: transparent #2198e8 transparent transparent;
+      }
+    }
+  }
+}
+
+/* Stopping FOUC on mobile */
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+  @include breakpoint(medium up) {
+    .title-bar {
+      display: none;
+    }
+  }
+}

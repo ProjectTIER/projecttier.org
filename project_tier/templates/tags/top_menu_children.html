@@ -1,6 +1,6 @@
 {% load navigation_tags wagtailcore_tags %}
-<ul class="submenu menu vertical" data-submenu>
-  <!--<li class="overview-item"><a href="{% pageurl parent %}">Overview</a></li>-->
+<ul class="submenu vertical menu" data-submenu>
+  <li class="overview-item hide-for-large"><a href="{% pageurl parent %}">Overview</a></li>
   {% for child in menuitems_children %}
     <li><a href="{% pageurl child %}">{{ child.title }}</a></li>
   {% endfor %}
