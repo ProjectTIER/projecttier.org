@@ -10,9 +10,12 @@ ul.person-list {
     overflow: hidden;
     .img-thumbnail {
       background-color: $grey;
-      margin: 0 0 20px 0;
+      margin: 0 0 0 0;
       min-width: 280px;
       min-height: 280px;
+      @include breakpoint(medium) {
+        margin: 0 0 20px 0;
+      }
     }
     .title {
       padding: 1.6rem;
