@@ -26,6 +26,9 @@
       display: flex;
     }
 }
+body.scrolled .top-bar {
+    height: 4.75rem;
+}
 .top-bar {
   @include breakpoint(large up) {
     position: fixed;
