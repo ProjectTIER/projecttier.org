@@ -57,7 +57,11 @@
         h1 {
             @extend %display-heading;
             text-transform: none;
-            font-size: 3rem;
+            font-size: 2rem;
+            line-height: 1.2;
+            @include breakpoint(medium up){
+                font-size: 3rem;
+            }
         }
         #intro-text {
             p {
