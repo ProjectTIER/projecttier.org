@@ -18,6 +18,7 @@
     text-transform: uppercase;
     font-size: 1rem;
     margin-bottom: 0;
+
     &:after {
       content: "";
       display: block;
@@ -26,14 +27,17 @@
       margin: 10px 0 0px -50%;
       background-color: $light-grey;
     }
+
   }
 
   // All links in the menu
   li {
     list-style: none;
+
     &:before {
       display: none;
     }
+
     a {
       box-shadow: none;
       color: $blue;
@@ -42,32 +46,43 @@
       position: relative;
       text-decoration: none;
       transition: background 0.2s, color 0.2s;
+
       &:hover {
         color: $red;
       }
+
       &:before {
         content: "\f105";
         font-family: FontAwesome;
         margin: 0 10px 0 -15px;
       }
+
       &.active {
         color: $black;
         font-weight: 800;
       }
+
     }
+
     li {
       line-height: 1.2rem;
       margin-bottom: 0.5rem;
+
       a {
         font-weight: 400;
       }
+
     }
+
   }
 
   > .menu {
+
     > li {
       text-transform: uppercase;
       font-size: 0.9rem;
+      padding: 0;
+
         &::after {
           content: "";
           display: block;
@@ -79,10 +94,15 @@
 
       // Just top level links
       > a {
+          border-radius: 0;
       }
+
     }
+
   }
+
 }
+
 #table-of-contents {
   ul {
     margin: 0;
