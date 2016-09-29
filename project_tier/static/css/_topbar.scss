@@ -4,19 +4,25 @@
   box-shadow: none;
   float: left;
   margin-right: 20px;
+
   svg {
     height: rem-calc(52);
     width: auto;
-    * {
-      filter: drop-shadow( 1px 1px 0px #FFF );
-    }
+
+    // * {
+    //   filter: drop-shadow( 1px 1px 0px #FFF );
+    // }
+
     #project {
       fill: $black;
     }
+
     #tier {
       fill: $red;
     }
+
   }
+
 }
 
 /* DESKTOP */
