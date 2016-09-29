@@ -1,104 +1,110 @@
 /* PERSON INDEX PAGE */
 ul.person-list {
-  li {
-    &::before {
-      display: none;
+    li {
+        &::before {
+            display: none;
+        }
+        article.person {
+            border: 1px solid $light-grey;
+            border-radius: 4px;
+            overflow: hidden;
+
+            .img-thumbnail {
+                background-color: $grey;
+                margin: 0 0 20px 0;
+                width: 100%;
+                height: auto;
+                float: none;
+
+                @include breakpoint(medium) {
+                    float: left;
+                    width: auto;
+                    min-width: 280px;
+                    min-height: 280px;
+                }
+            }
+            .title {
+                padding: 1.6rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+                span {
+                    color: $grey;
+                    opacity: 0.5;
+                    font-size: 1.3rem;
+                }
+            }
+            h4 {
+                font-size: 100%;
+                font-family: $body-font-family;
+                font-weight: 400;
+            }
+        }
     }
-  article.person {
-    border: 1px solid $light-grey;
-    border-radius: 4px;
-    overflow: hidden;
-    .img-thumbnail {
-      background-color: $grey;
-      margin: 0 0 0 0;
-      min-width: 280px;
-      min-height: 280px;
-      @include breakpoint(medium) {
-        margin: 0 0 20px 0;
-      }
+    a {
+        text-decoration: none;
     }
-    .title {
-      padding: 1.6rem;
-    }
-    h2 {
-      font-size: 1.3rem;
-      span {
-        color: $grey;
-        opacity: 0.5;
-        font-size: 1.3rem;
-      }
-    }
-    h4 {
-      font-size: 100%;
-      font-family: $body-font-family;
-      font-weight: 400;
-    }
-    }
-  }
-  a {
-    text-decoration: none;
-  }
 }
 
 .fellowships {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .people, .fellowships {
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-    margin-top: 0;
-  }
-  .block-section {
-    padding-left: 20px;
-    @include breakpoint(small up) {
-      padding-left: 10px;
+    h1 {
+        font-size: 2rem;
     }
-    @include breakpoint(large up) {
-      padding-left: 15px;
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 0;
     }
-  }
+    .block-section {
+        padding-left: 20px;
+        @include breakpoint(small up) {
+            padding-left: 10px;
+        }
+        @include breakpoint(large up) {
+            padding-left: 15px;
+        }
+    }
 }
 
 /* PERSON PAGE */
 .job-titles {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 span.academic-title {
-      color: $grey;
-      opacity: 0.5;
-      font-size: 2.8rem;    
-  }
+    color: $grey;
+    opacity: 0.5;
+    font-size: 2.8rem;
+}
 
 .people.meta {
     word-break: break-all;
     dt {
-      margin-bottom: 0;
-      font-family: $header-font-family;
+        margin-bottom: 0;
+        font-family: $header-font-family;
     }
     dd {
-      margin-bottom: 1rem;
+        margin-bottom: 1rem;
     }
 }
 
 .person-img {
-  + figcaption {
+    + figcaption {
         margin-top: -10px;
         span {
-          display: block;
-          font-weight: 600;
-          opacity: 0.5;
+            display: block;
+            font-weight: 600;
+            opacity: 0.5;
         }
         &::before {
-          display:none;
+            display:none;
         }
-      }
+    }
 }
 
 figcaption.people {
-  background-color: transparent;
-  padding: 0;
+    background-color: transparent;
+    padding: 0;
 }
