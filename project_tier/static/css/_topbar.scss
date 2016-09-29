@@ -50,10 +50,18 @@ body.scrolled .top-bar {
     top: 0;
     height: $expanded-topbar-height;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
       body.scrolled & {
         height: $topbar-height;
       }
+
+      .menu>li.current a {
+          color: #000;
+          background-color: transparent;
+      }
+
     }
+    
   @include breakpoint(xlarge) {
     padding-left: 4.5rem;
   }

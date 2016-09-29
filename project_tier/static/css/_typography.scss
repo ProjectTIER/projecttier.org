@@ -84,7 +84,7 @@ h5, /*%display-heading,*/ .smallest-heading {
 
 
 /* ==========================================================================
-   UL and OL 
+   UL and OL
    TODO, these are also being defined somewhere else. Foundation?
    ========================================================================== */
 
@@ -125,12 +125,16 @@ ol {
 }
 
 .body-content ul {
+
   li {
     padding-left: 2em;
+
     &::before {
       margin-left: -2rem;
     }
+
   }
+  
 }
 
 .introduction {

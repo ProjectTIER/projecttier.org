@@ -1645,7 +1645,7 @@ select {
 
 .accordion-title {
   display: block;
-  padding: 1.25rem 1rem;
+  padding: 1.25rem 3rem 1.25rem 1rem;
   line-height: 1;
   font-size: 0.75rem;
   color: #2199e8;

@@ -4,21 +4,32 @@
 ul.accordion {
   background-color: $blue;
   color: white;
+
     li {
+
+        &.accordion-item {
+            padding-left: 0;
+        }
+
       a {
         color: $pale-grey;
         font-size: rem-calc(18);
         text-decoration: none;
         transition: color 0.2s, background-color 0.2s;
+
         &:hover, &:focus {
             color: darken( $blue, 20% );
             background-color: $pale-grey;
         }
+
       }
+
       &::before {
         display: none;
       }
+
     }
+
   }
 
 .accordion-title::before {
@@ -89,7 +100,7 @@ ul.accordion {
         color: white;
       }
     }
-    
+
     > * {
       margin-left: 80px;
     }
