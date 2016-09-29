@@ -25,8 +25,12 @@ p, %paragraph {
    HEADING STYLES
    ========================================================================== */
 h1 {
-  font-size: rem-calc(64);
-  line-height: rem-calc(62);
+  font-size: rem-calc(44);
+  line-height: rem-calc(42);
+  @include breakpoint(medium up){
+      font-size: rem-calc(64);
+      line-height: rem-calc(62);
+  }
   .title_suffix {
     opacity: 0.5;
   }
@@ -134,7 +138,7 @@ ol {
     }
 
   }
-  
+
 }
 
 .introduction {
