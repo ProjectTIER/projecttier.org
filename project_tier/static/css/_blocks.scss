@@ -12,10 +12,14 @@ ul.accordion {
         }
 
       a {
-        color: $pale-grey;
+        color: darken( $blue, 20% );
         font-size: rem-calc(18);
         text-decoration: none;
         transition: color 0.2s, background-color 0.2s;
+
+        &:before {
+            color: darken( $blue, 20% );
+        }
 
         &:hover, &:focus {
             color: darken( $blue, 20% );
