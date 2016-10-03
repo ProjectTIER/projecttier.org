@@ -2,8 +2,8 @@
 
 
 ul.accordion {
-  background-color: $blue;
-  color: white;
+  background-color: $pale-grey;
+  color: darken( $blue, 20% );
 
     li {
 
@@ -19,7 +19,7 @@ ul.accordion {
 
         &:hover, &:focus {
             color: darken( $blue, 20% );
-            background-color: $pale-grey;
+            background-color: $white;
         }
 
       }
