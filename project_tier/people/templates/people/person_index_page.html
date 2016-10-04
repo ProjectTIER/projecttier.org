@@ -1,5 +1,5 @@
 {% extends "standard_layout.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags people_tags %}
 
 {% block sidebar %}
   <nav class="sidebar-nav section-nav">
@@ -24,7 +24,7 @@
               {{ self.body|richtext }}
           </div>
   </div>
-{% endif %}  
+{% endif %}
 
   {% if self.sections %}
     <div class="people">
@@ -41,7 +41,7 @@
     <div class="fellowships"><a name="fellows"></a>
       <h1>Fellows</h1>
       {% for year, fellows in page.fellowship_years %}
-        {% include "includes/person_list.html" with group=year list=fellows %}
+        {% include "includes/person_list.html" with group=year|academic_range list=fellows %}
       {% endfor %}
     </div>
   {% endif %}
