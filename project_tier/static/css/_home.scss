@@ -138,7 +138,7 @@
                 margin-left: 0;
                 max-width: 100%;
             }
-            @include breakpoint(medium only) {
+            @include breakpoint(medium up) {
                 min-width: 22rem;
             }
             li {
