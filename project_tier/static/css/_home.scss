@@ -60,7 +60,13 @@
             font-size: 2rem;
             line-height: 1.2;
             @include breakpoint(medium up){
-                font-size: 3rem;
+                font-size: 4.5rem;
+            }
+
+            span {
+                display: block;
+                font-size: 0.7em;
+                color: rgba(255,255,255, 0.8);
             }
         }
         #intro-text {
@@ -125,7 +131,6 @@
             float: left;
             background-color: $grey;
             padding: 20px;
-            min-width: 26rem;
             margin-left: 40px;
             overflow: hidden;
             @include breakpoint(small only) {
