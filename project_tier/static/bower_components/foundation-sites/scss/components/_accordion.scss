@@ -116,7 +116,7 @@ $accordion-content-padding: 1rem !default;
             padding-left: 0;
             color: #0a0a0a;
 
-            &::before {
+            &:before {
                 content: "■";
                 color: #1d7ac9;
                 margin-right: 1.2rem;
@@ -125,6 +125,10 @@ $accordion-content-padding: 1rem !default;
             a {
                 font-size: 1rem;
                 text-decoration: underline;
+
+                &:hover {
+                    color: #A32428;
+                }
             }
 
         }
