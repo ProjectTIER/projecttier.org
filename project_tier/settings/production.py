@@ -11,13 +11,6 @@ DEBUG = False
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
 
-# Raven config for Sentry error logging
-
-RAVEN_CONFIG = {
-    'dsn': 'https://***REMOVED***:***REMOVED***@***REMOVED***/25?verify_ssl=0',
-}
-
-
 # Configuration from environment variables
 # Alternatively, you can set these in a local.py file on the server
 
