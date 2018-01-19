@@ -85,6 +85,8 @@ If these don't work, you may have an issue with your local Heroku configuration 
 
 ## License and credits
 
-Copyright © 2018 Richard Ball, Some rights reserved.
+Copyright © 2018 Richard Ball.
+
+Licensed under the GNU AGPL 3.0. See the [`LICENSE`](LICENSE) file for the full license.
 
 This project was originally developed by [PromptWorks](https://www.promptworks.com/). In April 2016 the project was inherited by [Torchbox](https://torchbox.com/) who continued its development. In January 2018 the project was transferred to [Candlewaster](https://candlewaster.co/) who continues to develop the project.
