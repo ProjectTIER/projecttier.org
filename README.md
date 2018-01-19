@@ -1,13 +1,9 @@
-Project Tier
-==================
+Project TIER
+============
 
-## Background
+**Project TIER (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists.**
 
-Torchbox inherited this site from PromptWorks in April 2016. Torchbox now has responsibility for the repo and project.
-
-The build is a standard Wagtail build and follows most of the principles that a normal Torchbox-started Wagtail project would have.
-
-We are, however, hosting the site with Heroku, which introduces some differences are pulling data and deployment.
+This repository is Project TIER's website (https://www.projecttier.org/), which is developed in Python using the Django-based [Wagtail](https://wagtail.io/) framework.
 
 ## Local development
 
@@ -103,3 +99,9 @@ git push heroku-dev
 ```
 
 Note: We could (and should), if the users of the Project TIER Heroku project, were given admin rights to the Github repo automate deployments. This is probably useful thing to do in the long run.
+
+## License and credits
+
+Copyright © 2018 Richard Ball, Some rights reserved.
+
+This project was originally developed by [PromptWorks](https://www.promptworks.com/). In April 2016 the project was inherited by [Torchbox](https://torchbox.com/) who continued its development. In January 2018 the project was transferred to [Candlewaster](https://candlewaster.co/) who continues to develop the project.
