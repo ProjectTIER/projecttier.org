@@ -1,5 +1,8 @@
 ![Project TIER](project_tier/static/img/logo.svg)
 
+[![Build Status](https://travis-ci.org/project-tier/project-tier.svg?branch=master)](https://travis-ci.org/project-tier/project-tier)
+[![Coverage Status](https://coveralls.io/repos/github/project-tier/project-tier/badge.svg?branch=master)](https://coveralls.io/github/project-tier/project-tier?branch=master)
+
 **Project TIER** (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists.
 
 This repository is Project TIER's website (https://www.projecttier.org/), which is developed in Python using the Django-based [Wagtail](https://wagtail.io/) framework.

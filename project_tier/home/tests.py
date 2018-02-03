@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-from project_tier.home.models import (
-    PersonPage, PersonIndexPage, StandardPage, HomePage,
-    EventPage, EventIndexPage)
+from project_tier.home.models import HomePage
+from project_tier.events.models import EventPage, EventIndexPage
+from project_tier.people.models import PersonPage, PersonIndexPage
+from project_tier.standard.models import StandardPage
 from wagtail.tests.utils import WagtailPageTests
 
 
