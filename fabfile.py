@@ -2,8 +2,8 @@ from fabric.api import *
 
 
 def deploy_staging():
-    local('heroku git:remote -a project-tier-dev')
-    local('git push heroku master')
+    local('heroku git:remote --remote heroku-staging -a project-tier-dev')
+    local('git push heroku-staging master')
 
 
 def deploy_production():
