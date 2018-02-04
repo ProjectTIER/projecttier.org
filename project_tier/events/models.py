@@ -2,12 +2,12 @@ from __future__ import unicode_literals
 from datetime import date
 from django.db import models
 from django.http import HttpResponse
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.models import Page, Orderable
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import (
     FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
 )
-from wagtail.wagtailsearch import index
+from wagtail.search import index
 from modelcluster.fields import ParentalKey
 #from project_tier.links.models import RelatedLink
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -30,9 +30,9 @@ class EventIndexPage(Page):
     parent_page_types = ['home.HomePage']
     subpage_types = ['events.EventPage']
 
-    search_fields = Page.search_fields + (
-        index.SearchField('intro'),
-    )
+    search_fields = Page.search_fields + [
+        index.SearchField('intro')
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
@@ -105,10 +105,10 @@ class EventPage(Page):
     parent_page_types = ['EventIndexPage']
     subpage_types = []
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('location'),
-        index.SearchField('description'),
-    )
+        index.SearchField('description')
+    ]
 
     content_panels = Page.content_panels + [
         FieldRowPanel([

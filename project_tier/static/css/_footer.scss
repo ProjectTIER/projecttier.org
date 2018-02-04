@@ -4,7 +4,7 @@
   padding: $small-gutter 0 0;
   position: relative;
   z-index: 3;
-  
+
   #sponsor-logo {
     text-align: center;
     margin: 20px auto;
@@ -22,7 +22,6 @@
     }
 
     .joining-text {
-      @extend %secondary-text;
       display: inline-block;
       color: $white;
       max-width: 6em;
@@ -110,8 +109,7 @@
       @include breakpoint(medium up) {
         text-align: left;
       }
-      
-      @extend .secondary-text;
+
       ul {
         list-style: none;
         margin: 0;
@@ -202,5 +200,3 @@
     }
       }
     }
-
-

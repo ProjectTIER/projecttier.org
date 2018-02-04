@@ -1,23 +1,28 @@
-from __future__ import unicode_literals
 from django.db import models
-from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel, MultiFieldPanel, PageChooserPanel)
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.admin.edit_handlers import (
+    FieldPanel, MultiFieldPanel, PageChooserPanel
+)
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 
 
 class LinkFields(models.Model):
+    """
+    RelatedLink inherits this. Otherwise unused.
+    """
     link_external = models.URLField("External link", blank=True)
     link_page = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
         blank=True,
-        related_name='+'
+        related_name='+',
+        on_delete=models.DO_NOTHING  # FIXME: possibly not ideal
     )
     link_document = models.ForeignKey(
-        'wagtaildocs.Document',
+        'documents.Document',
         null=True,
         blank=True,
-        related_name='+'
+        related_name='+',
+        on_delete=models.DO_NOTHING  # FIXME: possibly not ideal
     )
 
     @property
@@ -40,6 +45,9 @@ class LinkFields(models.Model):
 
 
 class RelatedLink(LinkFields):
+    """
+    Unused. Unclear what it's for.
+    """
     title = models.CharField(max_length=255, help_text="Link title")
 
     panels = [

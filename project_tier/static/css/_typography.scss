@@ -36,7 +36,7 @@ h1 {
   }
 }
 
-h2/*, %large-heading, .large-heading*/ {
+h2 {
   color: $off-black;
   font-size: rem-calc(36);
   margin: $medium-gutter 0 $small-gutter/2;
@@ -64,7 +64,7 @@ h3, /* %medium-heading, .medium-heading,*/ .heading {
     line-height: rem-calc(30);
   }
 }
-h4, /*%small-heading, .small-heading,*/ .smaller-heading {
+h4, .smaller-heading {
   color: $off-black;
   font-size: rem-calc(20);
     @include breakpoint(medium up){
@@ -74,7 +74,7 @@ h4, /*%small-heading, .small-heading,*/ .smaller-heading {
     font-size: rem-calc(24);
   }
 }
-h5, /*%display-heading,*/ .smallest-heading {
+h5, .smallest-heading {
   color: $off-black;
   font-size: rem-calc(16);
   line-height: 1.2;
@@ -184,14 +184,12 @@ code, %monospace-text {
       }
 
       h1 {
-        @extend %small-heading;
         margin-bottom:0.25em;
         .subtitle {
           font-weight: 400;
         }
       }
       .article-meta {
-        @extend %secondary-text;
 
         .article-meta-item {
           &::after {
@@ -245,7 +243,7 @@ code, %monospace-text {
   ul {
     list-style: none;
     margin: 0 0 0 0;
-    
+
     li {
       color: $white;
       font-size: 0.8rem;
@@ -290,7 +288,6 @@ code, %monospace-text {
    ========================================================================== */
 
 .article-meta {
-  @extend %secondary-text;
   margin-bottom: $small-gutter;
   .article-meta-item {
     &::after {

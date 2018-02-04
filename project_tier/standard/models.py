@@ -1,8 +1,8 @@
 from django.db import models
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField, RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailsearch.index import SearchField
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField, RichTextField
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.search.index import SearchField
 
 from project_tier.blocks import BodyBlock, LimitedStreamBlock, ContentStreamBlock
 

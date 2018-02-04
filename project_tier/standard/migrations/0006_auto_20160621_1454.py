@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='sectionpage',
             name='overview',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.'),
+            field=wagtail.core.fields.RichTextField(blank=True, help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.'),
         ),
         migrations.AlterField(
             model_name='standardindexpage',
@@ -35,6 +35,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='standardpage',
             name='overview',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.'),
+            field=wagtail.core.fields.RichTextField(blank=True, help_text='Give a general overview of what this topic is about. Limit yourself to 3 paragraphs.'),
         ),
     ]

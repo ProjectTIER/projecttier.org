@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 from django.db import models
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.models import Page, Orderable
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import (
     FieldPanel, MultiFieldPanel, InlinePanel)
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.snippets.models import register_snippet
 
 
 class Testimonial(Orderable):
@@ -16,7 +16,12 @@ class Testimonial(Orderable):
     school = models.CharField(max_length=255)
     testimony = RichTextField()
 
-    index_page = ParentalKey('TestimonialIndexPage', related_name='related_testimonials')
+    index_page = ParentalKey(
+        'TestimonialIndexPage',
+        related_name='related_testimonials',
+        on_delete=models.CASCADE
+    )
+
     panels = [
         FieldPanel('name'),
         FieldPanel('year'),

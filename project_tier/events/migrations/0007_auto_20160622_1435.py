@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='eventpage',
             name='description_past',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='The description written as though in the past'),
+            field=wagtail.core.fields.RichTextField(blank=True, help_text='The description written as though in the past'),
         ),
         migrations.AlterField(
             model_name='eventpage',
@@ -33,6 +33,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='eventpage',
             name='description',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='The description written as though in the future'),
+            field=wagtail.core.fields.RichTextField(blank=True, help_text='The description written as though in the future'),
         ),
     ]

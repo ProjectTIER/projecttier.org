@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.documents.blocks
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -35,8 +35,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('introductory_headline', models.TextField()),
-                ('overview', wagtail.wagtailcore.fields.RichTextField()),
-                ('body', wagtail.wagtailcore.fields.StreamField((('section', wagtail.wagtailcore.blocks.StructBlock((('headline', wagtail.wagtailcore.blocks.TextBlock()), ('subheadline', wagtail.wagtailcore.blocks.TextBlock()), ('body', wagtail.wagtailcore.blocks.StreamBlock((('paragraph', wagtail.wagtailcore.blocks.RichTextBlock(icon='pilcrow')), ('h2', wagtail.wagtailcore.blocks.TextBlock()), ('h3', wagtail.wagtailcore.blocks.TextBlock()), ('h4', wagtail.wagtailcore.blocks.TextBlock()), ('h5', wagtail.wagtailcore.blocks.TextBlock()), ('image', wagtail.wagtailcore.blocks.StructBlock((('image', wagtail.wagtailimages.blocks.ImageChooserBlock()), ('caption', wagtail.wagtailcore.blocks.TextBlock(required=False))))), ('download', wagtail.wagtaildocs.blocks.DocumentChooserBlock()), ('accordion', wagtail.wagtailcore.blocks.StructBlock((('title', wagtail.wagtailcore.blocks.TextBlock()), ('body', wagtail.wagtailcore.blocks.RichTextBlock())))), ('notice', wagtail.wagtailcore.blocks.StructBlock((('message', wagtail.wagtailcore.blocks.RichTextBlock()), ('indicator', wagtail.wagtailcore.blocks.ChoiceBlock(choices=[('', 'Standard'), ('success', 'Success'), ('alert', 'Alert'), ('warning', 'Warning')], required=False))))))))))),))),
+                ('overview', wagtail.core.fields.RichTextField()),
+                ('body', wagtail.core.fields.StreamField((('section', wagtail.core.blocks.StructBlock((('headline', wagtail.core.blocks.TextBlock()), ('subheadline', wagtail.core.blocks.TextBlock()), ('body', wagtail.core.blocks.StreamBlock((('paragraph', wagtail.core.blocks.RichTextBlock(icon='pilcrow')), ('h2', wagtail.core.blocks.TextBlock()), ('h3', wagtail.core.blocks.TextBlock()), ('h4', wagtail.core.blocks.TextBlock()), ('h5', wagtail.core.blocks.TextBlock()), ('image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('caption', wagtail.core.blocks.TextBlock(required=False))))), ('download', wagtail.documents.blocks.DocumentChooserBlock()), ('accordion', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.TextBlock()), ('body', wagtail.core.blocks.RichTextBlock())))), ('notice', wagtail.core.blocks.StructBlock((('message', wagtail.core.blocks.RichTextBlock()), ('indicator', wagtail.core.blocks.ChoiceBlock(choices=[('', 'Standard'), ('success', 'Success'), ('alert', 'Alert'), ('warning', 'Warning')], required=False))))))))))),))),
                 ('listing_abstract', models.TextField()),
             ],
             options={

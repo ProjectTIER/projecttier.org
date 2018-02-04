@@ -1,14 +1,14 @@
 from __future__ import unicode_literals
 from django.db import models
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.models import Page
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import (
     FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
 )
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.snippets.models import register_snippet
 import datetime
 
 
@@ -52,14 +52,14 @@ class PersonPage(Page):
 
     parent_page_types = ['PersonIndexPage']
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('introductory_headline'),
         index.SearchField('biography'),
         index.SearchField('location'),
         index.SearchField('phone'),
         index.SearchField('email'),
-        index.SearchField('job_titles'),
-    )
+        index.SearchField('job_titles')
+    ]
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -143,10 +143,10 @@ class PersonIndexPage(Page):
 
     subpage_types = ['PersonPage', 'FellowPersonPage']
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('introductory_headline'),
         index.SearchField('body'),
-    )
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('introductory_headline'),
@@ -179,8 +179,13 @@ class PersonIndexPage(Page):
 
 class PersonCategoryRelationship(models.Model):
     person = ParentalKey(
-        'PersonPage', related_name='person_category_relationship')
-    category = models.ForeignKey('PersonCategory', related_name='+')
+        'PersonPage',
+        related_name='person_category_relationship',
+        on_delete=models.CASCADE
+    )
+    category = models.ForeignKey(
+        'PersonCategory', related_name='+', on_delete=models.CASCADE
+    )
 
     panels = [FieldPanel('category')]
 

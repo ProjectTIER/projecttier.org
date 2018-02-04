@@ -27,9 +27,6 @@ body {
   @include breakpoint(xlarge) {
     padding-left: 2rem;
   }
-  h1 {
-    @extend %large-heading;
-  }
   .introductory-headline {
     color: $white;
   }
@@ -71,7 +68,6 @@ body {
 
 .page-intro {
   p {
-    @extend %display-heading;
     text-transform: none;
     line-height: 1.5;
 

@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import django.db.models.deletion
 import modelcluster.fields
 
 
@@ -22,7 +23,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TestimonialIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(primary_key=True, to='wagtailcore.Page', serialize=False, parent_link=True, auto_created=True)),
+                ('page_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, to='wagtailcore.Page', serialize=False, parent_link=True, auto_created=True)),
             ],
             options={
                 'abstract': False,
@@ -34,7 +35,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('sort_order', models.IntegerField(editable=False, null=True, blank=True)),
-                ('page', modelcluster.fields.ParentalKey(to='testimonials.TestimonialIndexPage', related_name='related_testimonials')),
+                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, to='testimonials.TestimonialIndexPage', related_name='related_testimonials')),
             ],
             options={
                 'abstract': False,

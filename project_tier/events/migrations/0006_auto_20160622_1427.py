@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='eventpage',
             name='meta_information',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='Meta information about the event e.g. Haverford College, Department of economics'),
+            field=wagtail.core.fields.RichTextField(blank=True, help_text='Meta information about the event e.g. Haverford College, Department of economics'),
         ),
         migrations.DeleteModel(
             name='EventPageRelatedLink',

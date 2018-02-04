@@ -5,9 +5,9 @@ from project_tier.home.models import Page
 
 register = template.Library()
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_site_root(context):
-    # NB this returns a core.Page, not the implementation-specific model used
+    # NB this returns a wagtailcore.Page, not the implementation-specific model used
     # so object-comparison to self will return false as objects would differ
     return context['request'].site.root_page
 

@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('show_events', models.CharField(choices=[('gte', 'Upcoming Events'), ('lt', 'Past Events')], default='gte', max_length=3)),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'verbose_name': 'Event List',
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('time_from', models.TimeField(blank=True, null=True, verbose_name='Start time')),
                 ('time_to', models.TimeField(blank=True, null=True, verbose_name='End time')),
                 ('location', models.CharField(max_length=255)),
-                ('description', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('description', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'verbose_name': 'Event',

@@ -1,6 +1,6 @@
 from django.utils.html import format_html, format_html_join
 from django.conf import settings
-from wagtail.wagtailcore import hooks
+from wagtail.core import hooks
 
 
 @hooks.register('insert_editor_js')

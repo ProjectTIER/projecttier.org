@@ -1,5 +1,5 @@
-from wagtail.wagtailcore.models import Orderable
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.core.models import Orderable
+from wagtail.core.fields import RichTextField
 from django.utils.html import strip_tags
 
 

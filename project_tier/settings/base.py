@@ -24,40 +24,7 @@ ADMINS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'wagtail.contrib.settings',
-    'wagtail.contrib.wagtailsearchpromotions',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
-
-    'modelcluster',
-    'compressor',
-    'taggit',
-    'django_nose',
-    'storages',
-    'commonblocks',
-    'wagtailfontawesome',
-    'wagtailemoji',
-    'wagtailbettereditor',
-
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'wagtail.contrib.wagtailstyleguide',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'wagtail.contrib.modeladmin',
-
-    'project_tier.links',
+    'project_tier.links',  # FIXME: unused?
     'project_tier.events',
     'project_tier.home',
     'project_tier.news',
@@ -65,20 +32,47 @@ INSTALLED_APPS = (
     'project_tier.standard',
     'project_tier.testimonials',
     'project_tier.search',
+
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
+    'modelcluster',
+    'compressor',
+    'taggit',
+    'django_nose',
+    'storages',
+    'wagtailfontawesome',
+    'wagtailemoji',
+
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'wagtail.contrib.modeladmin',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 )
 
 ROOT_URLCONF = 'project_tier.urls'

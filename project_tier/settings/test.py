@@ -59,9 +59,9 @@ USE_TZ = True
 #         'APP_DIRS': True,
 #         'OPTIONS': {
 #             'extensions': [
-#                 'wagtail.wagtailcore.jinja2tags.core',
-#                 'wagtail.wagtailadmin.jinja2tags.userbar',
-#                 'wagtail.wagtailimages.jinja2tags.images',
+#                 'wagtail.core.jinja2tags.core',
+#                 'wagtail.admin.jinja2tags.userbar',
+#                 'wagtail.images.jinja2tags.images',
 #             ],
 #         },
 #     },
@@ -76,7 +76,7 @@ USE_TZ = True
 #     'django.contrib.messages.middleware.MessageMiddleware',
 #     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 #
-#     'wagtail.wagtailcore.middleware.SiteMiddleware',
+#     'wagtail.core.middleware.SiteMiddleware',
 #
 #     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 # )
@@ -101,15 +101,15 @@ USE_TZ = True
 #     'wagtail.contrib.wagtailsearchpromotions',
 #     'wagtail.contrib.settings',
 #     'wagtail.wagtailforms',
-#     'wagtail.wagtailsearch',
-#     'wagtail.wagtailembeds',
-#     'wagtail.wagtailimages',
+#     'wagtail.search',
+#     'wagtail.embeds',
+#     'wagtail.images',
 #     'wagtail.wagtailsites',
 #     'wagtail.wagtailusers',
-#     'wagtail.wagtailsnippets',
-#     'wagtail.wagtaildocs',
-#     'wagtail.wagtailadmin',
-#     'wagtail.wagtailcore',
+#     'wagtail.snippets',
+#     'wagtail.documents',
+#     'wagtail.admin',
+#     'wagtail.core',
 #
 #     'taggit',
 #     'compressor',
@@ -143,7 +143,7 @@ COMPRESS_ENABLED = False  # disable compression so that we can run tests on the 
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.db',
+        'BACKEND': 'wagtail.search.backends.db',
     }
 }
 
@@ -151,7 +151,7 @@ WAGTAILSEARCH_BACKENDS = {
 
 if 'ELASTICSEARCH_URL' in os.environ:
     WAGTAILSEARCH_BACKENDS['elasticsearch'] = {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+        'BACKEND': 'wagtail.search.backends.elasticsearch',
         'URLS': [os.environ['ELASTICSEARCH_URL']],
         'TIMEOUT': 10,
         'max_retries': 1,
