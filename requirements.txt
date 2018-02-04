@@ -13,6 +13,9 @@ wagtailatomicadmin==0.2.5
 psycopg2==2.7.3.2
 whitenoise==3.3.1
 
+# Heroku webserver
+gunicorn==19.7.1
+
 # Tests
 django-nose==1.4.5
 factory_boy==2.10.0
