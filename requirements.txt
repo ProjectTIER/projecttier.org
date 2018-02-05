@@ -10,6 +10,7 @@ dj-database-url==0.4.2
 wagtailfontawesome==1.1.2
 wagtailemoji==1.0.2
 wagtailatomicadmin==0.2.5
+wagalytics==0.7
 psycopg2==2.7.3.2
 whitenoise==3.3.1
 

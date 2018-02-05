@@ -16,9 +16,14 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-ADMINS = []
+
+# Configuration from environment variables
+env = os.environ.copy()
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
+ADMINS = []
 
 
 # Application definition
@@ -169,3 +174,11 @@ CELERYD_LOG_COLOR = False
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "project_tier"
+
+
+# Wagalytics
+
+if 'GA_KEY_CONTENT' in env and 'GA_VIEW_ID' in env:
+    GA_KEY_CONTENT = env['GA_KEY_CONTENT']
+    GA_VIEW_ID = env['GA_VIEW_ID']
+    INSTALLED_APPS += ('wagalytics',)
