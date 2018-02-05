@@ -5,7 +5,7 @@ from django.test import TestCase
 from .models import PersonPage
 
 
-class PersonPageFactory(factory.DjangoModelFactory):
+class PersonPageFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = PersonPage
 
