@@ -152,21 +152,14 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
+        'console': {
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
-        'django.request': {
-            'handlers':     ['mail_admins'],
-            'level':        'ERROR',
-            'propagate':    False,
-        },
-        'django.security': {
-            'handlers':     ['mail_admins'],
-            'level':        'ERROR',
-            'propagate':    False,
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR'),
         },
     },
 }

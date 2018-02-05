@@ -1,1 +1,1 @@
-web: gunicorn project_tier.wsgi --log-file -
+web: gunicorn project_tier.wsgi
