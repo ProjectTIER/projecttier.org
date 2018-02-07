@@ -4,6 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/project-tier/project-tier/badge.svg?branch=master)](https://coveralls.io/github/project-tier/project-tier?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/project-tier/project-tier/badge.svg)](https://snyk.io/test/github/project-tier/project-tier)
 [![Requirements Status](https://requires.io/github/project-tier/project-tier/requirements.svg?branch=master)](https://requires.io/github/project-tier/project-tier/requirements/?branch=master)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 **Project TIER** (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists.
 
