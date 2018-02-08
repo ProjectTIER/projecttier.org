@@ -19,52 +19,6 @@ This repository is Project TIER's website (https://www.projecttier.org/), which 
 5. Run the development server: `docker-compose up`
 6. Visit `localhost:8000` in your browser. **IMPORTANT:** `0.0.0.0:8000` will not work.
 
-## Deployment
-
-The Project TIER website is hosted on [Heroku](https://www.heroku.com/), and this repo is configured to make deployments to Heroku. It also provides a wrapper script, [`fabfile.py`](fabfile.py), for common deployment commands using [Fabric](http://www.fabfile.org/).
-
-The Vagrant VM provides the Heroku Toolkit preinstalled, so you can make deployments from inside of the VM.
-
-### Heroku setup
-
-Before doing anything, you'll need to login to Heroku and set it up. Follow the steps below.
-
-- Create a Heroku account
-- Create an app (or get added to the Project TIER project if you're working with us)
-- Install Heroku toolbelt
-- Type `heroku` in the command line
-- Login with your login details
-
-### Pull production database locally
-
-After logging into Heroku, you can run the following within the VM to pull the production database into your local environment.
-
-```bash
-fab pull_production_data
-
-# wait... eventually the progress will freeze
-↲ # (e.g. hit the 'enter' key)
-
-# wait... the progress will freeze again.
-# You should see the word 'password' about
-# 15–20 lines up in the tracestack
-vagrant
-```
-
-### Pushing code
-
-Within the VM, you may run these commands to push up your code:
-
-```bash
-# Push to production
-fab deploy_production
-
-# or, push to staging
-fab deploy_staging
-```
-
-If these don't work, you may have an issue with your local Heroku configuration or you don't have access to the projects on Heroku.
-
 ## License and credits
 
 Copyright © 2018 Richard Ball.
