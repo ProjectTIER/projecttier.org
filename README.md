@@ -12,36 +12,12 @@ This repository is Project TIER's website (https://www.projecttier.org/), which 
 
 ## Local development
 
-Ensure that [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/) are installed. Then, follow the instructions below.
-
-```bash
-# Clone the repo locally
-git clone https://github.com/project-tier/project-tier.git
-
-# Enter the repo
-cd project-tier
-
-# Start the VM
-vagrant up
-
-# Shell into the VM
-vagrant ssh
-```
-
-### Run the development server
-
-Inside of the Vagrant VM, simply run:
-
-```bash
-# Start the local development server
-djrun
-```
-
-**Note:** `djrun` is an alias for `python manage.py runserver 0.0.0.0:8000`. This IP address is needed so the development server can be accessed from the host machine.
-
-You may also run `dj <command>` in place of `python manage.py <command>`.
-
-For example, `dj makemigrations` or `dj migrate`. These aliases are installed into the VM when it's first provisioned by Vagrant. See [`provision.sh`](vagrant/provision.sh) for the full script.
+1. Install [Docker](https://asciinema.org/a/158200) and [docker-compose](https://docs.docker.com/compose/install/), if you haven't already.
+2. Clone the project: `git clone https://github.com/project-tier/project-tier.git`
+3. Enter the project directory: `cd project-tier`
+4. Run migrations: `docker-compose run web python manage.py migrate`
+5. Run the development server: `docker-compose up`
+6. Visit `localhost:8000` in your browser. **IMPORTANT:** `0.0.0.0:8000` will not work.
 
 ## Deployment
 

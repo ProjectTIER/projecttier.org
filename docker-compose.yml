@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:10-alpine
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - .netrc:/root/.netrc
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://postgres@db:5432/postgres
+    depends_on:
+      - db
