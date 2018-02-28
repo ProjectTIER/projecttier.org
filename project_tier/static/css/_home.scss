@@ -169,6 +169,35 @@
         }
     }
 
+    .block-section.promo {
+      margin: 20px 0 40px 0;
+
+      .section-title {
+        font-size: 45px;
+        font-weight: normal;
+        color: $red;
+      }
+      .section-description {
+        font-family: $header-font-family;
+        font-size: 25px;
+        color: #4d4d4d;
+        margin: 20px 0;
+      }
+
+      a.button {
+        background-color: $red;
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: bold;
+        background-image: none;
+
+        &:hover {
+          background-color: lighten($red, 10%);
+        }
+      }
+    }
+
     section.subfeatured-content h2.subfeature-section-title {
         font-size: 1.15rem;
         border-bottom: 3px solid #ddd;

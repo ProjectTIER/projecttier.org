@@ -5,6 +5,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import (
     FieldPanel, PageChooserPanel, MultiFieldPanel
 )
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class HomePage(Page):
@@ -43,6 +44,17 @@ class HomePage(Page):
         related_name='+',
         help_text='Select the main events listing page.'
     )
+    promo_headline = models.CharField(max_length=255, blank=True)
+    promo_text = RichTextField(blank=True)
+    promo_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    promo_cta_link = models.URLField(blank=True)
+    promo_cta_text = models.CharField(max_length=20, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('headline'),
@@ -51,7 +63,14 @@ class HomePage(Page):
             PageChooserPanel('featured_index_page_2', 'standard.StandardIndexPage'),
             PageChooserPanel('featured_index_page_3', 'standard.StandardIndexPage'),
             PageChooserPanel('featured_events_page', 'events.EventIndexPage'),
-        ], heading="Secondary featured section")
+        ], heading="Secondary featured section"),
+        MultiFieldPanel([
+            FieldPanel('promo_headline'),
+            FieldPanel('promo_text'),
+            ImageChooserPanel('promo_image'),
+            FieldPanel('promo_cta_link'),
+            FieldPanel('promo_cta_text'),
+        ], heading="Promo")
     ]
 
     # Only let the root page be a parent
