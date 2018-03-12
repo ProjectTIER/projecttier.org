@@ -106,7 +106,6 @@ class EventPage(Page):
     subpage_types = []
 
     search_fields = Page.search_fields + [
-        index.SearchField('location'),
         index.SearchField('description')
     ]
 

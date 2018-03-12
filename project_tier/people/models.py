@@ -58,7 +58,8 @@ class PersonPage(Page):
         index.SearchField('location'),
         index.SearchField('phone'),
         index.SearchField('email'),
-        index.SearchField('job_titles')
+        index.SearchField('main_job_title'),
+        index.SearchField('academic_title')
     ]
 
     content_panels = Page.content_panels + [
