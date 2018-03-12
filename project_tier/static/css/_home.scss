@@ -177,11 +177,12 @@
         font-weight: normal;
         color: $red;
       }
-      .section-description {
+      .section-description p {
         font-family: $header-font-family;
         font-size: 25px;
         color: #4d4d4d;
         margin: 20px 0;
+        line-height: normal;
       }
 
       a.button {
