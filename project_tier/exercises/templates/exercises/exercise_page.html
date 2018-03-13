@@ -1,0 +1,21 @@
+{% extends "standard_layout.html" %}
+{% load navigation_tags wagtailcore_tags %}
+
+{% block page_title %}
+  <h1>{{self.title}}</h1>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block main_content %}
+  <div class="row">
+    <div class="body-content">
+      <ul>
+        <li><a href="{{ page.cover_sheet.url }}">Cover Sheet</a></li>
+        <li><a href="{{ page.instructor_notes }}">Instruction Notes</a></li>
+        <li><a href="{{ page.exercise }}">The Exercise</a></li>
+        <li><a href="{{ page.sample_solution }}">Sample Solution</a></li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

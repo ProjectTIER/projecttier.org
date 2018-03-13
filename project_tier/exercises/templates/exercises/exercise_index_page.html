@@ -1,0 +1,35 @@
+{% extends "standard_layout.html" %}
+{% load navigation_tags wagtailcore_tags %}
+
+{% block page_title %}
+  <h1>{{self.title}}</h1>
+{% endblock %}
+
+{% block sidebar %}
+  <div data-sticky-container>
+    <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
+      <nav class="sidebar-nav article-nav">
+        <h3>Filter Exercises</h3>
+        <!-- TODO: Create filter -->
+      </nav>
+    </div>
+  </div>
+{% endblock %}
+
+{% block main_content %}
+  <div class="row">
+    <div class="body-content">
+      <div class="exercises">
+        {% for exercise in page.get_children %}
+          <h2><a href="{{ exercise.url }}">{{ exercise.title }}</a></h2>
+          <div class="tags">
+            {% for tag in exercise.specific.tags.all %}
+              <a class="tag" href="?tag={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+          </div>
+          <p class="excerpt">{{ exercise.specific.listing_excerpt }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
