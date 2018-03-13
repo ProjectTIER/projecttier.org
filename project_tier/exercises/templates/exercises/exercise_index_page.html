@@ -20,7 +20,7 @@
   <div class="row">
     <div class="body-content">
       <div class="exercises">
-        {% for exercise in page.get_children %}
+        {% for exercise in exercises %}
           <h2><a href="{{ exercise.url }}">{{ exercise.title }}</a></h2>
           <div class="tags">
             {% for tag in exercise.specific.tags.all %}

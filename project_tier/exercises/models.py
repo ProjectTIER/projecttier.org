@@ -7,10 +7,6 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 
-class ExerciseIndexPage(Page):
-    subpage_types = ['exercises.ExercisePage']
-
-
 class ExercisePageTag(TaggedItemBase):
     content_object = ParentalKey(
         'exercises.ExercisePage',
@@ -63,3 +59,18 @@ class ExercisePage(Page):
         DocumentChooserPanel('exercise'),
         DocumentChooserPanel('sample_solution'),
     ]
+
+
+class ExerciseIndexPage(Page):
+    subpage_types = ['exercises.ExercisePage']
+
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        context['exercises'] = ExercisePage.objects.child_of(self).live()
+
+        tag = request.GET.get('tag')
+        if tag:
+            context['exercises'] = context['exercises'].filter(tags__name=tag)
+
+        return context
