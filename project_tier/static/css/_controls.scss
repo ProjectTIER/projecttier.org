@@ -15,7 +15,9 @@
   background-size: 200%;
   background-position: 0% 0%;
   transition: box-shadow 0.1s ease 0, background-position 0.1s ease 0, border-color 0.1s ease 0;
+  text-decoration: none;
   &:hover, &:focus {
+    color: $black;
     background-color: $button-shadow;
     background-image: linear-gradient($button-highlight, $button-shadow, $button-shadow);
     box-shadow: none;

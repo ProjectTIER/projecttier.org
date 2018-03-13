@@ -1,0 +1,24 @@
+.exercise-detail object.pdf {
+  width: 100%;
+  height: calc(11in + 50px);
+  max-width: calc(8.5in + 48px);
+  max-height: calc(100vh - 120px);
+}
+
+.exercise-detail h2 {
+  margin: 0.625rem 0 1.875rem;
+}
+
+.exercise-list h2 {
+  font-size: 30px;
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+.tags .tag {
+  background-color: #ececec;
+  text-decoration: none;
+  padding: 3px 5px;
+}

@@ -1,0 +1,24 @@
+.tabs.vertical > li {
+  float: left;
+  &::before,
+  &::after {
+    margin: 0;
+    display: none;
+  }
+  border: 1px solid #ececec;
+  padding: 0;
+  margin-right: 2px;
+  a {
+    text-decoration: none;
+    color: $black;
+    font-size: 1em;
+  }
+}
+
+.vertical.tabs {
+  border: 0;
+}
+
+.tabs-content {
+  background-color: #ececec;
+}

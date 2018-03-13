@@ -1,7 +1,8 @@
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf import settings
 from django.contrib import admin
 from project_tier.search.views import search
+from project_tier.core.views import view_document
 
 
 urlpatterns = [
@@ -9,6 +10,8 @@ urlpatterns = [
 
     path('admin/', include('wagtail.admin.urls')),
     path('documents/', include('wagtail.documents.urls')),
+
+    re_path(r'^document/view/(\d+)/(.*)$', view_document, name='view_document'),  # noqa
 
     path('search/', search, name='search'),
 

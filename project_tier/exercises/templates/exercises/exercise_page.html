@@ -1,21 +1,46 @@
 {% extends "standard_layout.html" %}
-{% load navigation_tags wagtailcore_tags %}
+{% load navigation_tags wagtailcore_tags projecttier_tags %}
 
 {% block page_title %}
   <h1>{{self.title}}</h1>
 {% endblock %}
 
-{% block sidebar %}{% endblock %}
-
 {% block main_content %}
   <div class="row">
-    <div class="body-content">
-      <ul>
-        <li><a href="{{ page.cover_sheet.url }}">Cover Sheet</a></li>
-        <li><a href="{{ page.instructor_notes }}">Instruction Notes</a></li>
-        <li><a href="{{ page.exercise }}">The Exercise</a></li>
-        <li><a href="{{ page.sample_solution }}">Sample Solution</a></li>
+    <div class="exercise-detail body-content">
+
+      <ul class="vertical tabs" data-tabs id="resources-tabs">
+        <li class="tabs-title is-active"><a href="#cover" aria-selected="true">Cover Sheet</a></li>
+        <li class="tabs-title"><a href="#notes">Instructor Notes</a></li>
+        <li class="tabs-title"><a href="#exercise">The Exercise</a></li>
+        <li class="tabs-title"><a href="#solution">Sample Solution</a></li>
       </ul>
+
+      <div class="tabs-content" data-tabs-content="resources-tabs">
+        <div class="tabs-panel is-active" id="cover">
+          <h2>Cover Sheet</h2>
+          <object class="pdf" data="{{ page.cover_sheet|document_view_url }}" type="application/pdf">
+            <a class="button" href="{{ page.cover_sheet.url }}"><i class="fa fa-download"></i> Download</a>
+          </object>
+        </div>
+        <div class="tabs-panel" id="notes">
+          <h2>Instructor Notes</h2>
+          <object class="pdf" data="{{ page.instructor_notes|document_view_url }}" type="application/pdf">
+            <a class="button" href="{{ page.instructor_notes.url }}"><i class="fa fa-download"></i> Download</a>
+          </object>
+        </div>
+        <div class="tabs-panel" id="exercise">
+          <h2>The Exercise</h2>
+          <object class="pdf" data="{{ page.exercise|document_view_url }}" type="application/pdf">
+            <a class="button" href="{{ page.exercise.url }}"><i class="fa fa-download"></i> Download</a>
+          </object>
+        </div>
+        <div class="tabs-panel" id="solution">
+          <h2>Sample Solution</h2>
+          <a class="button" href="{{ page.sample_solution.url }}"><i class="fa fa-download"></i> Download</a>
+        </div>
+      </div>
+
     </div>
   </div>
 {% endblock %}
