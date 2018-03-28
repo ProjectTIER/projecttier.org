@@ -7,7 +7,9 @@ from wagtail.core.blocks import (
     StreamBlock,
     RichTextBlock,
     ChoiceBlock,
-    ListBlock
+    ListBlock,
+    PageChooserBlock,
+    CharBlock
 )
 
 
@@ -21,6 +23,17 @@ class AccordionBlock(StructBlock):
         icon = 'emoji-scroll'
         template = 'blocks/accordion.html'
         help_text = 'Accordions are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.'
+
+
+class CallToActionButtonBlock(StructBlock):
+    button_target = PageChooserBlock(required=False, help_text='Choose where this button should link to.')
+    button_text = CharBlock(required=False, help_text='What should the button say?')
+
+    class Meta:
+        icon = 'fa-arrow-right'
+        template = 'blocks/button.html'
+        help_text = 'Create a cll to action button to help guide users to the next step.'
+
 
 
 class NoticeBlock(StructBlock):
@@ -69,6 +82,7 @@ class ContentStreamBlock(StreamBlock):
     accordion = AccordionBlock()
     notice = NoticeBlock()
     embed = EmbedBlock(icon="media")
+    button = CallToActionButtonBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
