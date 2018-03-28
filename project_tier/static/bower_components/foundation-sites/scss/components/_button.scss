@@ -263,3 +263,8 @@ $button-opacity-disabled: 0.25 !default;
     }
   }
 }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
