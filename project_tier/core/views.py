@@ -14,5 +14,9 @@ def view_document(request, document_id, document_filename):
         [x for x in contdisp.split("; ") if x != "attachment"]
     )
 
+    # Force content-type for pdf files
+    if document_filename.split('.')[-1] == 'pdf':
+        response['Content-Type'] = 'application/pdf'
+
     # Return the response
     return response
