@@ -18,26 +18,23 @@
 
       <div class="tabs-content" data-tabs-content="resources-tabs">
         <div class="tabs-panel is-active" id="cover">
+          <a class="button" href="{{ page.cover_sheet.url }}"><i class="fa fa-download"></i> Download</a>
           <h2>Cover Sheet</h2>
-          <object class="pdf" data="{{ page.cover_sheet|document_view_url }}" type="application/pdf">
-            <a class="button" href="{{ page.cover_sheet.url }}"><i class="fa fa-download"></i> Download</a>
-          </object>
+          <object class="pdf" data="{{ page.cover_sheet|document_view_url }}" type="application/pdf"></object>
         </div>
         <div class="tabs-panel" id="notes">
+          <a class="button" href="{{ page.instructor_notes.url }}"><i class="fa fa-download"></i> Download</a>
           <h2>Instructor Notes</h2>
-          <object class="pdf" data="{{ page.instructor_notes|document_view_url }}" type="application/pdf">
-            <a class="button" href="{{ page.instructor_notes.url }}"><i class="fa fa-download"></i> Download</a>
-          </object>
+          <object class="pdf" data="{{ page.instructor_notes|document_view_url }}" type="application/pdf"></object>
         </div>
         <div class="tabs-panel" id="exercise">
+          <a class="button" href="{{ page.exercise.url }}"><i class="fa fa-download"></i> Download</a>
           <h2>The Exercise</h2>
-          <object class="pdf" data="{{ page.exercise|document_view_url }}" type="application/pdf">
-            <a class="button" href="{{ page.exercise.url }}"><i class="fa fa-download"></i> Download</a>
-          </object>
+          <object class="pdf" data="{{ page.exercise|document_view_url }}" type="application/pdf"></object>
         </div>
         <div class="tabs-panel" id="solution">
-          <h2>Sample Solution</h2>
           <a class="button" href="{{ page.sample_solution.url }}"><i class="fa fa-download"></i> Download</a>
+          <h2>Sample Solution</h2>
         </div>
       </div>
 

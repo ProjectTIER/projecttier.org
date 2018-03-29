@@ -1,3 +1,7 @@
+.exercise-detail .tabs-panel a.button {
+  float: right;
+}
+
 .exercise-detail object.pdf {
   width: 100%;
   height: calc(11in + 50px);
@@ -17,8 +21,60 @@
   }
 }
 
+.exercise-list p.excerpt {
+  margin: 0.5em 0 1.25rem 0;
+}
+
 .tags .tag {
   background-color: #ececec;
   text-decoration: none;
   padding: 3px 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.exercise-filter {
+  padding-bottom: 60px;
+
+  .tag-group {
+    margin: 20px 0;
+  }
+
+  .tag label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+
+    .tag-checkbox {
+      margin-bottom: 0;
+      transform: translate(0, 1px);
+    }
+  }
+
+  .clear-button {
+    background-color: #E7DEDE;
+    display: inline-block;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+}
+
+p.filter-text {
+  opacity: 0.7;
+  font-style: italic;
+  font-size: 1em;
+}
+
+@media(max-width: 600px) {
+  .exercise-detail .tabs-panel {
+    a.button {
+      float: none;
+    }
+    object.pdf {
+      display: none;
+    }
+  }
 }
