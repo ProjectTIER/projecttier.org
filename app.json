@@ -1,14 +1,33 @@
 {
-  "name": "project_tier",
-  "description": "Project TIER website",
-  "repository": "https://github.com/promptworks/project_tier",
-  "logo": "https://pbs.twimg.com/profile_images/565163458262339586/RuvQXerZ_400x400.jpeg",
-  "keywords": ["wagtail", "django"],
+  "name": "projecttier.org",
+  "description": "Wagtail website for Project TIER",
+  "website": "https://www.projecttier.org/",
+  "repository": "https://github.com/ProjectTIER/projecttier.org",
+  "logo": "https://avatars0.githubusercontent.com/u/17191910",
+  "keywords": ["wagtail", "django", "education", "research"],
   "env": {
-    "DJANGO_SETTINGS_MODULE": "project_tier.settings.heroku"
+    "DATABASE_URL": {
+      "required": true
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "required": true
+    },
+    "SECRET_KEY": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "BUCKETEER_AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "BUCKETEER_AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "BUCKETEER_BUCKET_NAME": {
+      "required": true
+    },
   },
   "scripts": {
-    "postdeploy": "django-admin.py migrate && echo 'from wagtail.wagtailimages.models import Rendition; Rendition.objects.all().delete()' | django-admin.py shell"
+    "postdeploy": "django-admin.py migrate"
   },
   "addons": [
     "heroku-postgresql:hobby-dev"
