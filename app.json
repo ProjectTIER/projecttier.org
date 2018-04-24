@@ -24,7 +24,7 @@
     },
     "BUCKETEER_BUCKET_NAME": {
       "required": true
-    },
+    }
   },
   "scripts": {
     "postdeploy": "django-admin.py migrate"
