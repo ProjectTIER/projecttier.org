@@ -1,4 +1,4 @@
-.exercise-detail .tabs-panel a.button {
+.exercise-detail .tabs-panel > a.button {
   float: right;
 }
 
@@ -73,7 +73,26 @@ p.filter-text {
     a.button {
       float: none;
     }
-    object.pdf {
+  }
+  .tabs.vertical {
+    display: none;
+  }
+  .tabs-content {
+    background-color: transparent;
+    border: 0;
+  }
+  .tabs-content > * {
+    display: block;
+    margin: 10px 0;
+    background: $tab-background-active;
+    display: flex !important;
+    flex-direction: column;
+
+    > a.button {
+      order: 2;
+    }
+
+    > object.pdf, div > .large.button {
       display: none;
     }
   }
