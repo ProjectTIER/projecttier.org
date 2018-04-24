@@ -68,6 +68,11 @@ p.filter-text {
   font-size: 1em;
 }
 
+.exercise-detail a.download-all {
+  display: block;
+  text-align: right;
+}
+
 @media(max-width: 600px) {
   .exercise-detail .tabs-panel {
     a.button {
