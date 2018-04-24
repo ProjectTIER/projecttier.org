@@ -1,0 +1,137 @@
+{% extends "standard_sidebar_layout.html" %}
+{% load navigation_tags wagtailcore_tags %}
+
+{% block page_title %}
+  <h1>{{self.title}}</h1>
+{% endblock %}
+
+{% block sidebar %}
+  <div data-sticky-container>
+    <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
+      <nav class="sidebar-nav article-nav exercise-filter">
+        <h3>Filter Course Materials</h3>
+
+        {% if discipline_tags %}
+          <div class="tag-group">
+            <h6>Discipline</h6>
+            {% for tag in discipline_tags %}
+              <div class="tag">
+                <label>
+                  <input class="tag-checkbox" data-tag="disciplines" name="{{ tag }}" type="checkbox"{% if tag.name in discipline_tags_checked %} checked{% endif %}>
+                  <span class="tag-name">{{ tag }}</span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if course_level_tags %}
+          <div class="tag-group">
+            <h6>Course Level</h6>
+            {% for tag in course_level_tags %}
+              <div class="tag">
+                <label>
+                  <input class="tag-checkbox" data-tag="course-levels" name="{{ tag }}" type="checkbox"{% if tag.name in course_level_tags_checked %} checked{% endif %}>
+                  <span class="tag-name">{{ tag }}</span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if protocol_tags %}
+          <div class="tag-group">
+            <h6>Protocol</h6>
+            {% for tag in protocol_tags %}
+              <div class="tag">
+                <label>
+                  <input class="tag-checkbox" data-tag="protocols" name="{{ tag }}" type="checkbox"{% if tag.name in protocol_tags_checked %} checked{% endif %}>
+                  <span class="tag-name">{{ tag }}</span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if results.filtered %}
+          <a class="clear-button" href="{{ page.url }}">
+            <i class="fa fa-times-circle"></i> Clear filters
+          </a>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+{% endblock %}
+
+{% block main_content %}
+  <div class="course-materials-list row">
+    <div class="body-content">
+      {% if results.filtered %}
+        <p class="filter-text">{{ results.hidden }} course materials{{ results.hidden|pluralize:" is,s are" }} hidden. <a href="{{ page.url }}">Clear filters <i class="fa fa-times"></i></a></p>
+      {% else %}
+        <p class="filter-text">{{ results.shown }} course materials{{ results.shown|pluralize}} found.</p>
+      {% endif %}
+      <div class="course-materials">
+        {% for course-materials in course-materials %}
+          <h2>{{ course-materials.specific.course_title }}, {{course-materials.specific.university }}</h2>
+          <div class="tags">
+            {% for tag in course-materials.specific.discipline_tags.all %}
+              <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+            {% for tag in course-materials.specific.course_level_tags.all %}
+              <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+            {% for tag in course-materials.specific.protocol_tags.all %}
+              <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+          </div>
+          <h3>{{course-materials.specific.course_name, course-materials.specific.semester }}</h3>
+          <h3>Instructor: {{ course-materials.specific.instructor }}</h3>
+          <p class="excerpt">{{ course-materials.specific.course_description }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    // Takes a list of tag elements and returns a concatenated string,
+    // eg. "psychology|economics|history"
+    function catTags(tagElems) {
+      var result = '';
+      for(var i=0; i<tagElems.length; i++) {
+        if(i>0) {
+          result += '|';
+        }
+        result += $(tagElems[i]).attr('name');
+      }
+      return result;
+    }
+    // Get checkbox states and create URL query
+    function serializeFilters() {
+      // Get all checked tags
+      var tags = $('.course-materials-filter input[type="checkbox"]:checked');
+      // Loop each tag type and build the query string
+      var queryString = '?';
+      var tagTypes = ['disciplines', 'course-levels', 'protocols'];
+      for(var i=0; i<tagTypes.length; i++) {
+        var tagType = tagTypes[i];
+        var filteredTags = tags.filter('[data-tag="' + tagType + '"]');
+        var tagString = catTags(filteredTags);
+        if(tagString) {
+          if(queryString.length>1) {
+            queryString += '&';
+          }
+          queryString += tagType + '=' + tagString;
+        }
+      }
+      return queryString;
+    }
+
+    // Handle ticking a filter checkbox
+    $('.course-materials-filter input[type="checkbox"]').change(function(e) {
+      window.location.href = serializeFilters();
+    });
+  </script>
+{% endblock %}
