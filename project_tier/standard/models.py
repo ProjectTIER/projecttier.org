@@ -101,7 +101,8 @@ class SectionPage(Page):
 
     subpage_types = [
         'standard.StandardPage',
-        'standard.SectionPage'
+        'standard.SectionPage',
+        'exercises.ExerciseIndexPage'
     ]
 
     class Meta:

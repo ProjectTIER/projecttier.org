@@ -1,4 +1,4 @@
-{% extends "standard_layout.html" %}
+{% extends "standard_sidebar_layout.html" %}
 {% load navigation_tags wagtailcore_tags %}
 
 {% block page_title %}
@@ -15,6 +15,6 @@
         <p class="overview"><strong>{{page.overview|richtext}}</strong></p>
         {% endif %}
         {{page.body}}
-      </div>
+    </div>
   </div>
 {% endblock %}

@@ -30,6 +30,7 @@ ADMINS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'project_tier.core',
     'project_tier.links',  # FIXME: unused?
     'project_tier.events',
     'project_tier.home',
@@ -38,6 +39,7 @@ INSTALLED_APPS = (
     'project_tier.standard',
     'project_tier.testimonials',
     'project_tier.search',
+    'project_tier.exercises',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

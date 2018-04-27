@@ -58,3 +58,5 @@ window.resizeProtocolSidebar = function(){
   });
 
 })(jQuery);
+
+$('.row.has-sidebar').css('min-height', $('.sticky').outerHeight() + 'px');

@@ -1,0 +1,104 @@
+.exercise-detail .tabs-panel > a.button {
+  float: right;
+}
+
+.exercise-detail object.pdf {
+  width: 100%;
+  height: calc(11in + 50px);
+  max-width: calc(8.5in + 48px);
+  max-height: calc(100vh - 120px);
+}
+
+.exercise-detail h2 {
+  margin: 0.625rem 0 1.875rem;
+}
+
+.exercise-list h2 {
+  font-size: 30px;
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+.exercise-list p.excerpt {
+  margin: 0.5em 0 1.25rem 0;
+}
+
+.tags .tag {
+  background-color: #ececec;
+  text-decoration: none;
+  padding: 3px 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.exercise-filter {
+  padding-bottom: 60px;
+
+  .tag-group {
+    margin: 20px 0;
+  }
+
+  .tag label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+
+    .tag-checkbox {
+      margin-bottom: 0;
+      transform: translate(0, 1px);
+    }
+  }
+
+  .clear-button {
+    background-color: #E7DEDE;
+    display: inline-block;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+}
+
+p.filter-text {
+  opacity: 0.7;
+  font-style: italic;
+  font-size: 1em;
+}
+
+.exercise-detail a.download-all {
+  display: block;
+  text-align: right;
+}
+
+@media(max-width: 600px) {
+  .exercise-detail .tabs-panel {
+    a.button {
+      float: none;
+    }
+  }
+  .tabs.vertical {
+    display: none;
+  }
+  .tabs-content {
+    background-color: transparent;
+    border: 0;
+  }
+  .tabs-content > * {
+    display: block;
+    margin: 10px 0;
+    background: $tab-background-active;
+    display: flex !important;
+    flex-direction: column;
+
+    > a.button {
+      order: 2;
+    }
+
+    > object.pdf, div > .large.button {
+      display: none;
+    }
+  }
+}
