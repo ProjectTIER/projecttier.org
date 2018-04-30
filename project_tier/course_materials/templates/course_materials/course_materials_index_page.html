@@ -69,25 +69,25 @@
       {% if results.filtered %}
         <p class="filter-text">{{ results.hidden }} course materials{{ results.hidden|pluralize:" is,s are" }} hidden. <a href="{{ page.url }}">Clear filters <i class="fa fa-times"></i></a></p>
       {% else %}
-        <p class="filter-text">{{ results.shown }} course materials{{ results.shown|pluralize}} found.</p>
+        <p class="filter-text">{{ results.shown }} course {{ results.shown|pluralize}} found.</p>
       {% endif %}
       <div class="course-materials">
-        {% for course-materials in course-materials %}
-          <h2>{{ course-materials.specific.course_title }}, {{course-materials.specific.university }}</h2>
+        {% for course in course_materials %}
+          <h2>{{ course.specific.course_title }}, {{course.specific.university }}</h2>
           <div class="tags">
-            {% for tag in course-materials.specific.discipline_tags.all %}
+            {% for tag in course.specific.discipline_tags.all %}
               <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
             {% endfor %}
-            {% for tag in course-materials.specific.course_level_tags.all %}
+            {% for tag in course.specific.course_level_tags.all %}
               <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
             {% endfor %}
-            {% for tag in course-materials.specific.protocol_tags.all %}
+            {% for tag in course.specific.protocol_tags.all %}
               <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
             {% endfor %}
           </div>
-          <h3>{{course-materials.specific.course_name, course-materials.specific.semester }}</h3>
-          <h3>Instructor: {{ course-materials.specific.instructor }}</h3>
-          <p class="excerpt">{{ course-materials.specific.course_description }}</p>
+          <h3>{{course.specific.course_name}}, {{course.specific.semester }}</h3>
+          <h3>Instructor: {{ course.specific.instructor }}</h3>
+          <p class="excerpt">{{ course.specific.course_description }}</p>
         {% endfor %}
       </div>
     </div>
