@@ -1,5 +1,6 @@
 {% extends "standard_layout.html" %}
 {% load navigation_tags wagtailcore_tags projecttier_tags %}
+{% get_site_root as site_root %}
 
 {% block page_title %}
   <h1>{{self.title}}</h1>
@@ -24,20 +25,20 @@
         <div class="tabs-panel is-active" id="cover">
           <a class="button" href="{{ page.cover_sheet.url }}"><i class="fa fa-download"></i> Download</a>
           <h2>Cover Sheet</h2>
-          <object class="pdf" data="{{ page.cover_sheet|document_view_url }}" type="application/pdf"></object>
+          <iframe class="pdf" src="{% pdfview page.cover_sheet %}"></iframe>
         </div>
         {% if page.instructor_notes %}
           <div class="tabs-panel" id="notes">
             <a class="button" href="{{ page.instructor_notes.url }}"><i class="fa fa-download"></i> Download</a>
             <h2>Instructor Notes</h2>
-            <object class="pdf" data="{{ page.instructor_notes|document_view_url }}" type="application/pdf"></object>
+            <iframe class="pdf" src="{% pdfview page.instructor_notes %}"></iframe>
           </div>
         {% endif %}
         {% if page.exercise %}
           <div class="tabs-panel" id="exercise">
             <a class="button" href="{{ page.exercise.url }}"><i class="fa fa-download"></i> Download</a>
             <h2>The Exercise</h2>
-            <object class="pdf" data="{{ page.exercise|document_view_url }}" type="application/pdf"></object>
+            <iframe class="pdf" src="{% pdfview page.exercise %}"></iframe>
           </div>
         {% endif %}
         {% if page.sample_solution %}

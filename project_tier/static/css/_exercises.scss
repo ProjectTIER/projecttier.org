@@ -2,11 +2,12 @@
   float: right;
 }
 
-.exercise-detail object.pdf {
+.exercise-detail .pdf {
   width: 100%;
   height: calc(11in + 50px);
   max-width: calc(8.5in + 48px);
   max-height: calc(100vh - 120px);
+  border: 0;
 }
 
 .exercise-detail h2 {
@@ -97,7 +98,7 @@ p.filter-text {
       order: 2;
     }
 
-    > object.pdf, div > .large.button {
+    > .pdf, div > .large.button {
       display: none;
     }
   }
