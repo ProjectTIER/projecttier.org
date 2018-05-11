@@ -73,7 +73,7 @@
       {% endif %}
       <div class="course-materials">
         {% for course in course_materials %}
-          <h2>{{ course.specific.course_title }}, {{course.specific.university }}</h2>
+          <h2>{{ course.title }}, {{course.specific.university }}</h2>
           <div class="tags">
             {% for tag in course.specific.discipline_tags.all %}
               <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
@@ -87,7 +87,7 @@
           </div>
           <h3>{{course.specific.course_name}}, {{course.specific.semester }}</h3>
           <h3>Instructor: {{ course.specific.instructor }}</h3>
-          <p class="excerpt">{{ course.specific.course_description }}</p>
+          <div class="excerpt">{{ course.specific.course_description|richtext }}</div>
         {% endfor %}
       </div>
     </div>

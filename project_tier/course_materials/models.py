@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.core.models import Page
+from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from modelcluster.fields import ParentalKey
@@ -7,28 +8,10 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
 
 """
-Okay, the way these tags work is horrifying. The below three models aren't
-actual `Tag` subclasses, they're through-models. Eg, they represent the
-relationship between the page and each type of tag, so don't let their names
-fool you.
+The way these tags work is weird, but unavoidable? See the comment in
+`project_tier.exercises.models` for more information.
 
-The Wagtail docs say to do it this way:
-http://docs.wagtail.io/en/v2.0/getting_started/tutorial.html#tagging-posts
-
-Unfortunately it doesn't cover how to have multiple tags on a single page,
-which we need since we're tagging 3 different things. By default, the tags'
-reverse-accessors clash. See: https://github.com/alex/django-taggit/issues/50
-
-Per this test, we can set the `related_name` of the managers:
-https://github.com/alex/django-taggit/blob/590918f/tests/models.py#L23-L25
-Setting to `+` removes the reverse accessor clash.
-
-However, since we use ParentalKey in the through-models, we're forced to set
-a `related_name` for each relationship. The name cannot be the same as
-the managers we add to the model, so `_relationship` has been appended to them.
-
-It's messy, but perhaps the best way to achieve what we want here, short of
-changing the actual tagging API within Wagtail or django-taggit.
+TODO: Find a way to consolidate the code from both apps and clean it up.
 """
 
 class DisciplineTag(TaggedItemBase):
@@ -66,21 +49,28 @@ class CourseMaterialsPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
-    course_description = models.TextField()
-
-    course_title = models.TextField()
-
-    university = models.TextField()
-
-    course_name = models.TextField()
-
-    semester = models.TextField()
-
-    instructor = models.TextField()
-
-
-
+    university = models.CharField(
+        max_length=255,
+        help_text="Name of the university this exercise originated from, ex "
+                  "Harvard University"
+    )
+    instructor = models.CharField(
+        max_length=255,
+        help_text="Name of the instructor who teaches this course, ex "
+                  "Janet Black"
+    )
+    course_name = models.CharField(
+        max_length=255,
+        help_text="The name of the course this exercise appears in, ex. "
+                  "Statistical and Data Sciences 220"
+    )
+    semester = models.CharField(
+        max_length=255,
+        help_text="The semester of this course, ex. Spring 2017"
+    )
+    course_description = RichTextField(
+        help_text="1-3 paragraph description of this entry."
+    )
     discipline_tags = ClusterTaggableManager(
         through=DisciplineTag,
         # disabling reverse accessors solves a naming clash
@@ -104,11 +94,12 @@ class CourseMaterialsPage(Page):
     )
 
     parent_page_types = ['course_materials.CourseMaterialsIndexPage']
+    subpage_types = []
 
-    content_panels = Page.content_panels + [
+    content_panels = [
         MultiFieldPanel(
             [
-                FieldPanel('course_title'),
+                FieldPanel('title'),
                 FieldPanel('university'),
                 FieldPanel('instructor'),
                 FieldPanel('course_name'),
