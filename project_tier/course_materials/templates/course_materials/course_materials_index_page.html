@@ -67,29 +67,50 @@
   <div class="course-materials-list row">
     <div class="body-content">
       {% if results.filtered %}
-        <p class="filter-text">{{ results.hidden }} course materials{{ results.hidden|pluralize:" is,s are" }} hidden. <a href="{{ page.url }}">Clear filters <i class="fa fa-times"></i></a></p>
+        <p class="filter-text">{{ results.hidden }} course material{{ results.hidden|pluralize:" is,s are" }} hidden. <a href="{{ page.url }}">Clear filters <i class="fa fa-times"></i></a></p>
       {% else %}
         <p class="filter-text">{{ results.shown }} course{{ results.shown|pluralize}} found.</p>
       {% endif %}
-      <div class="course-materials">
-        {% for course in course_materials %}
-          <h2>{{ course.title }}, {{course.specific.university }}</h2>
-          <div class="tags">
-            {% for tag in course.specific.discipline_tags.all %}
-              <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-            {% for tag in course.specific.course_level_tags.all %}
-              <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-            {% for tag in course.specific.protocol_tags.all %}
-              <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-          </div>
-          <h3>{{course.specific.course_name}}, {{course.specific.semester }}</h3>
-          <h3>Instructor: {{ course.specific.instructor }}</h3>
-          <div class="excerpt">{{ course.specific.course_description|richtext }}</div>
-        {% endfor %}
-      </div>
+
+      {% if page.intro %}
+        <p>{{ page.intro|richtext }}</p>
+      {% endif %}
+
+      {% for course in course_materials %}
+        {% with course as course.specific %}
+          <section class="course-material">
+            <header>
+              <h2>{{ course.title }}, {{course.university }}</h2>
+              <div class="tags">
+                {% for tag in course.specific.discipline_tags.all %}
+                  <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+                {% for tag in course.specific.course_level_tags.all %}
+                  <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+                {% for tag in course.specific.protocol_tags.all %}
+                  <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
+                {% endfor %}
+              </div>
+              <h5>{{ course.course_name }}, {{course.semester }}</h5>
+              {% if course.instructor %}
+                <h5>Instructor: {{ course.instructor }}</h5>
+              {% endif %}
+            </header>
+            <ul class="accordion" data-accordion data-accordion data-allow-all-closed="true">
+              <li class="accordion-item" data-accordion-item>
+                <a href="#" class="accordion-title">Course description</a>
+                <div class="accordion-content" data-tab-content>
+                  <div class="rich-text"><p>{{ course.course_description|richtext }}</p></div>
+                </div>
+              </li>
+            </ul>
+            {% if course.syllabus %}
+              <p><a class="button" href="{{ course.syllabus.url }}"><i class="fa fa-download"></i> Download course documents</a></p>
+            {% endif %}
+          </section>
+        {% endwith %}
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

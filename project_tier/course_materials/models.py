@@ -126,7 +126,16 @@ class CourseMaterialsPage(Page):
 
 
 class CourseMaterialsIndexPage(Page):
+    intro = RichTextField(
+        blank=True,
+        help_text="1-3 paragraphs explaining the course materials."
+    )
+
     subpage_types = ['course_materials.CourseMaterialsPage']
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro')
+    ]
 
     def get_context(self, request):
         context = super().get_context(request)
