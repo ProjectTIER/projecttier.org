@@ -23,10 +23,3 @@ def pull_production_data():
     local('dropdb project_tier')
     local('heroku pg:pull DATABASE_URL project_tier --app projecttier-production')
     local('psql -d project_tier -c "alter role vagrant password null;"')
-
-
-def pull_staging_data():
-    local('psql -d project_tier -c "ALTER USER vagrant with password \'vagrant\';"')
-    local('dropdb project_tier')
-    local('heroku pg:pull DATABASE_URL project_tier --app project-tier-dev')
-    local('psql -d project_tier -c "alter role vagrant password null;"')
