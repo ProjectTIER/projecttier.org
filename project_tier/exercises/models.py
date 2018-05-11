@@ -62,7 +62,7 @@ class ExercisePage(Page):
     cover_sheet = models.ForeignKey(
         'wagtaildocs.Document',
         null=True,
-        blank=True,
+        blank=False,  # cover sheet is required
         on_delete=models.SET_NULL,
         related_name='+'
     )
@@ -86,6 +86,14 @@ class ExercisePage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
+    )
+    all_files = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="An archive containing all of this exercise's files."
     )
 
     listing_excerpt = models.TextField()
@@ -130,6 +138,7 @@ class ExercisePage(Page):
                 DocumentChooserPanel('instructor_notes'),
                 DocumentChooserPanel('exercise'),
                 DocumentChooserPanel('sample_solution'),
+                DocumentChooserPanel('all_files'),
             ],
             heading="files",
         ),

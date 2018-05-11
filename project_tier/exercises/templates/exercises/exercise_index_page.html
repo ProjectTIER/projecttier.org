@@ -86,6 +86,9 @@
             {% endfor %}
           </div>
           <p class="excerpt">{{ exercise.specific.listing_excerpt }}</p>
+          {% if exercise.all_files %}
+            <a class="download-all" href="{{ exercise.all_files.url }}"><i class="fa fa-download"></i> Download all files</a>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
