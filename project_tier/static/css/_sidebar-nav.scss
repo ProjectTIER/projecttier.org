@@ -5,6 +5,12 @@
     margin-left: -20px;
     width: 25%;
   }
+
+  .menu > li a:hover,
+  .menu > li:hover a {
+    /* By default Foundation puts colored backgrounds here but they look ugly */
+    background: transparent;
+  }
 }
 .sidebar-nav {
   @include breakpoint(medium up) {

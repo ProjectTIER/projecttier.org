@@ -15,7 +15,7 @@
     <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
       <nav class="sidebar-nav article-nav">
         <h3 id="on-this-page">On this page</h3>
-        <ul class="vertical menu" data-magellan data-bar-offset="60">
+        <ul class="vertical menu" data-magellan data-bar-offset="60" data-deep-linking="true">
           {% for heading in article_headings %}
             <li>
               <a href="#{{heading.value|slugify}}">{{heading.value}}</a>

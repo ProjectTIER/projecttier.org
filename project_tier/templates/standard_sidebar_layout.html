@@ -32,3 +32,17 @@
   </main>
   <div id="main-end"></div>
 {% endblock %}
+
+{% block extra_js %}
+  <script>
+    $(document).ready(function() {
+      // Forces Magellan to activate on pageload if there's a hash in the URL.
+      // Otherwise the topnav covers the content.
+      // see: https://github.com/ProjectTIER/projecttier.org/issues/32
+      // TODO: Upgrading Foundation to the latest version might let us remove this.
+      if(window.location.hash.length > 0) {
+        $('.menu[data-magellan]').find('[href='+window.location.hash+']').click();
+      }
+    });
+  </script>
+{% endblock %}
