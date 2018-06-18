@@ -100,7 +100,9 @@ class PersonPage(Page):
 class FellowPersonPage(PersonPage):
     YEAR_CHOICES = []
     for r in range(2010, (datetime.datetime.now().year+1)):
-        YEAR_CHOICES.append((r, r))
+        YEAR_CHOICES.append(
+            (r, "{}–{}".format(r, r + 1))
+        )
 
     fellowship_year = models.IntegerField(
         choices=YEAR_CHOICES,
