@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load navigation_tags compress static wagtailuserbar %}
+{% load navigation_tags compress static wagtailuserbar projecttier_tags %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -41,15 +41,18 @@
     {% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}">
-    <!-- Google Tag Manager -->
-      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TTPSWS"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-TTPSWS');</script>
-    <!-- End Google Tag Manager -->
+    {% get_setting "ANALYTICS_ENABLED" as analytics_enabled %}
+    {% if not request.is_preview and analytics_enabled %}
+      <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TTPSWS"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TTPSWS');</script>
+      <!-- End Google Tag Manager -->
+    {% endif %}
     {% wagtailuserbar %}
     {% get_site_root as site_root %}
     {% top_menu parent=site_root calling_page=self %}

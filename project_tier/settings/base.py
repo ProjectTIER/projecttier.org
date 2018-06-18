@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'storages',
     'wagtailfontawesome',
     'wagtailemoji',
+    'wagalytics',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -185,9 +186,11 @@ CELERYD_LOG_COLOR = False
 WAGTAIL_SITE_NAME = "project_tier"
 
 
-# Wagalytics
+# Analytics
+
+if 'ANALYTICS_ENABLED' in env:
+    ANALYTICS_ENABLED = env['ANALYTICS_ENABLED'].lower() in ['1', 'true']
 
 if 'GA_KEY_CONTENT' in env and 'GA_VIEW_ID' in env:
     GA_KEY_CONTENT = env['GA_KEY_CONTENT']
     GA_VIEW_ID = env['GA_VIEW_ID']
-    INSTALLED_APPS += ('wagalytics',)
