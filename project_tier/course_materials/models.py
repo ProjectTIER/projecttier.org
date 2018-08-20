@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Count
+from django.db.models.functions import Lower
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
@@ -147,11 +149,22 @@ class CourseMaterialsIndexPage(Page):
         # the tag is used as a DisciplineTag anywhere. Therefore, we check that
         # it's not null.
         context['discipline_tags'] = Tag.objects.filter(
-            course_materials_disciplinetag_items__isnull=False).distinct()
+            course_materials_disciplinetag_items__isnull=False
+        ).annotate(
+            num_results=Count('course_materials_disciplinetag_items')
+        ).order_by('-num_results', Lower('name')).distinct()
+
         context['course_level_tags'] = Tag.objects.filter(
-            course_materials_courseleveltag_items__isnull=False).distinct()
+            course_materials_courseleveltag_items__isnull=False
+        ).annotate(
+            num_results=Count('course_materials_courseleveltag_items')
+        ).order_by('-num_results', Lower('name')).distinct()
+
         context['protocol_tags'] = Tag.objects.filter(
-            course_materials_protocoltag_items__isnull=False).distinct()
+            course_materials_protocoltag_items__isnull=False
+        ).annotate(
+            num_results=Count('course_materials_protocoltag_items')
+        ).order_by('-num_results', Lower('name')).distinct()
 
         # Filters course materials by the tag name in the URL
         tag_groups = [

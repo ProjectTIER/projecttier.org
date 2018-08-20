@@ -18,7 +18,7 @@
               <div class="tag">
                 <label>
                   <input class="tag-checkbox" data-tag="disciplines" name="{{ tag }}" type="checkbox"{% if tag.name in discipline_tags_checked %} checked{% endif %}>
-                  <span class="tag-name">{{ tag }}</span>
+                  <span class="tag-name">{{ tag }} <span class="count">({{ tag.course_materials_disciplinetag_items.count }})</span></span>
                 </label>
               </div>
             {% endfor %}
@@ -32,7 +32,7 @@
               <div class="tag">
                 <label>
                   <input class="tag-checkbox" data-tag="course-levels" name="{{ tag }}" type="checkbox"{% if tag.name in course_level_tags_checked %} checked{% endif %}>
-                  <span class="tag-name">{{ tag }}</span>
+                  <span class="tag-name">{{ tag }} <span class="count">({{ tag.course_materials_courseleveltag_items.count }})</span></span>
                 </label>
               </div>
             {% endfor %}
@@ -46,7 +46,7 @@
               <div class="tag">
                 <label>
                   <input class="tag-checkbox" data-tag="protocols" name="{{ tag }}" type="checkbox"{% if tag.name in protocol_tags_checked %} checked{% endif %}>
-                  <span class="tag-name">{{ tag }}</span>
+                  <span class="tag-name">{{ tag }} <span class="count">({{ tag.course_materials_protocoltag_items.count }})</span></span>
                 </label>
               </div>
             {% endfor %}
