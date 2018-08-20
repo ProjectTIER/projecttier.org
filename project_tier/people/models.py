@@ -15,12 +15,18 @@ import datetime
 @register_snippet
 class PersonCategory(models.Model):
     title = models.CharField(max_length=255)
+    order = models.IntegerField(
+        null=True, blank=True,
+        help_text="Lower numbers are shown first. If left blank, it will "
+                  "show up at the end."
+    )
 
     def __str__(self):              # __unicode__ on Python 2
         # We're returning the string that populates the snippets screen. Note it returns as plain-text
         return self.title
 
     class Meta:
+        ordering = ['order', 'title']
         verbose_name = 'People category'
         verbose_name_plural = 'People categories'
 

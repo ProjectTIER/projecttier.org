@@ -108,3 +108,12 @@ figcaption.people {
     background-color: transparent;
     padding: 0;
 }
+
+ul.accordion .accordion-content ul li.column::before {
+  display: none;
+}
+
+.fellowships ul.accordion .accordion-content ul li a {
+  text-decoration: none;
+  color: #1d7ac9;
+}
