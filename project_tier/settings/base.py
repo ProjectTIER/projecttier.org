@@ -186,6 +186,12 @@ CELERYD_LOG_COLOR = False
 WAGTAIL_SITE_NAME = "project_tier"
 
 
+# Taggit
+# https://django-taggit.readthedocs.io/en/latest/
+
+TAGGIT_CASE_INSENSITIVE = True
+
+
 # Analytics
 
 if 'ANALYTICS_ENABLED' in env:
