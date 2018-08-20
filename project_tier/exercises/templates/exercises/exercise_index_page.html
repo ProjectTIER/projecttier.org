@@ -71,6 +71,9 @@
       {% else %}
         <p class="filter-text">{{ results.shown }} exercise{{ results.shown|pluralize}} found.</p>
       {% endif %}
+      <div class="notes">
+        {{ self.notes|safe }}
+      </div>
       <div class="exercises">
         {% for exercise in exercises %}
           <h2><a href="{{ exercise.url }}">{{ exercise.title }}</a></h2>

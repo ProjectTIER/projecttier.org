@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.core.models import Page
+from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from modelcluster.fields import ParentalKey
@@ -147,6 +148,12 @@ class ExercisePage(Page):
 
 class ExerciseIndexPage(Page):
     subpage_types = ['exercises.ExercisePage']
+
+    notes = RichTextField(help_text='A brief note to help the readers', blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('notes'),
+    ]
 
     def get_context(self, request):
         context = super().get_context(request)
