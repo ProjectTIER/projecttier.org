@@ -16,3 +16,4 @@ pip-selfcheck.json
 *.log
 
 .coverage
+.s3cfg
