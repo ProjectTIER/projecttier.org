@@ -47,6 +47,10 @@ apt install -y openssl
 su - vagrant -c  "wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh"
 
 
+# Install s3cmd for copying media files from S3-compatible services
+su - vagrant -c "$PIP install s3cmd"
+
+
 # Add a couple of aliases to manage.py into .bashrc
 cat << EOF >> /home/vagrant/.bashrc
 export PYTHONPATH=$PROJECT_DIR
