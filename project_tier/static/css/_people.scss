@@ -8,6 +8,7 @@ ul.person-list {
             border: 1px solid $light-grey;
             border-radius: 4px;
             overflow: hidden;
+            height: auto !important;
 
             .img-thumbnail {
                 background-color: $grey;
