@@ -61,7 +61,7 @@ body.scrolled .top-bar {
       }
 
     }
-    
+
   @include breakpoint(xlarge) {
     padding-left: 4.5rem;
   }
@@ -76,7 +76,6 @@ body.scrolled .top-bar {
 .menu {
   background: none;
   > li {
-    text-transform: uppercase;
     box-shadow: none;
   @include breakpoint(735){
     padding: $small-gutter/2 $medium-gutter/8 0;
