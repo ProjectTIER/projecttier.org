@@ -11,7 +11,12 @@ class StandardIndexPage(Page):
     title_suffix = models.CharField(help_text="Additional text to display after the page title e.g. '(Version 3.0)", max_length=255, blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
-    body = StreamField(LimitedStreamBlock(), blank=True)
+    body = StreamField(
+        LimitedStreamBlock(
+            required=False  # https://github.com/wagtail/wagtail/issues/4306#issuecomment-384099847
+        ),
+        blank=True
+    )
 
     @property
     def children(self):
