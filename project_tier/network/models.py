@@ -47,3 +47,7 @@ class Person(models.Model):
         default='',
         blank=True,
     )
+
+    class Meta:
+        verbose_name = 'Person'
+        verbose_name_plural = 'People'
