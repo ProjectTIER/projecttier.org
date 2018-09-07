@@ -41,10 +41,8 @@ class Person(models.Model):
             (r, "{}–{}".format(r, r + 1))
         )
 
-    fellowship_year = models.CharField(
-        max_length=4,
+    fellowship_year = models.IntegerField(
         choices=YEAR_CHOICES,
-        default='',
         blank=True,
     )
 
