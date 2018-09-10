@@ -1,0 +1,75 @@
+{% extends "standard_sidebar_layout.html" %}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags %}
+
+{% block page_banner %}
+  <header class="page-header">
+    <div class="row">
+      <div class="columns">
+        {% breadcrumbs %}
+        {% block page_title %}
+          <h1>{{object.name}}{% if object.academic_title %}<span class="academic-title">, {{ object.academic_title }}</span>{% endif %}</h1>
+        {% endblock %}
+          {% if object.main_job_title %}
+            <div class="job-titles">{{ object.main_job_title }}</div>
+      {% endif %}
+    </div>
+          </div>
+  </header>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block main_content %}
+
+  <div class="row">
+    <div class="body-content small-12 medium-7 columns">
+        {% if object.introductory_headline %}
+        <p class="overview"><strong>{{ object.introductory_headline }}</strong></p>
+        {% endif %}
+          {% if object.biography %}
+            {{ object.biography|richtext }}
+        {% endif %}
+    </div>
+
+    <aside class="people meta small-12 medium-4 columns">
+        {% if object.image %}
+          {# Person image - first store image as a variable in order to construct an image tag with a class applied #}
+            {% image object.image fill-250x250-c100 as photo %}
+            <img class="img person-img" src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+          {% else %}
+            <img class="placeholder img person-img">
+          {% endif %}
+          {% if object.image_credit %}
+          <figcaption class="people"><span>Photo courtesy of</span> {{ object.image_credit }}</figcaption>
+          {% endif %}
+        <dl class="contact-info">
+            {% if object.email %}
+              <dt>Email</dt>
+              <dd><a href="mailto:{{object.email}}">{{object.email}}</a></dd>
+            {% endif %}
+
+            {% if object.website %}
+              <dt>Website</dt>
+              <dd><a target="_blank" href="{{ object.website }}">{{object.website}}</a></dd>
+            {% endif %}
+
+            {% if object.phone %}
+              <dt>Phone number</dt>
+              <dd>{{ object.phone}}</dd>
+            {% endif %}
+
+            {% if object.location %}
+              <dt>Address</dt>
+              <dd>{{ object.location}}</dd>
+            {% endif %}
+
+          </dl>
+      </aside>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% include "includes/related_links.html" with related_links=object.related_links.all only %}
+{% endblock %}

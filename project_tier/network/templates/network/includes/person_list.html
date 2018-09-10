@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<section class="block-section">
+
+  <div class="row">
+    <div class="section-intro small-12">
+      <h2 class="section-title">{{group}}</h2>
+    </div>
+    <div class="small-12">
+      <ul class="item-list person-list row small-up-1 medium-up-2 large-up-3" data-equalizer>
+      {% for person in list %}
+
+        <li class="column">
+          <a href="/person/{{person.slug}}">
+            <article class="person list-item" data-equalizer-watch>
+            {% if person.image %}
+              {% image person.image fill-280x280-c100 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+            {% else %}
+              <img class="placeholder img-thumbnail" />
+            {% endif %}
+            <div class="title text-center">
+            <h2>{{person.name}}{% if person.academic_title %}<span class="academic-title">, {{ person.academic_title }}</span>{% endif %}</h2>
+            <h4>{{ person.main_job_title }}</h4>
+            </div>
+          </article>
+          </a>
+        </li>
+      {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+</section>

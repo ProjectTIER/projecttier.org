@@ -1,0 +1,22 @@
+{% extends "standard_sidebar_layout.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block main_content %}
+
+  <div class="row">
+    <div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+
+      {% if self.body %}
+          <div class="body-content">
+              {{ self.body|richtext }}
+          </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+  {% for year, fellows in page.fellowship_years %}
+    {% include "includes/person_list.html" with group=year list=fellows %}
+  {% endfor %}
+
+{% endblock %}

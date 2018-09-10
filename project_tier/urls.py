@@ -15,6 +15,8 @@ urlpatterns = [
 
     path('search/', search, name='search'),
 
+    path('', include('project_tier.network.urls'))
+
 ]
 
 if settings.DEBUG:

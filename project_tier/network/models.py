@@ -1,4 +1,10 @@
 from django.db import models
+from wagtail.core.models import Page
+from wagtail.core.fields import RichTextField
+from wagtail.search import index
+from wagtail.admin.edit_handlers import (
+    FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
+)
 import datetime
 
 
@@ -23,9 +29,9 @@ class Person(models.Model):
     show_in_people = models.BooleanField(default=False, blank=False)
 
     CATEGORIES = (
-        ('fellows', 'Fellows'),
+        ('fellows', 'Fellow'),
         ('advisory_board', 'Advisory Board'),
-        ('project_directors', 'Project Directors'),
+        ('project_directors', 'Project Director'),
         ('network_other', 'Network Other')
     )
     category = models.CharField(
@@ -44,8 +50,72 @@ class Person(models.Model):
     fellowship_year = models.IntegerField(
         choices=YEAR_CHOICES,
         blank=True,
+        null=True
     )
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = 'Person'
         verbose_name_plural = 'People'
+
+
+class PersonIndexPage2(Page):
+    introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
+    body = RichTextField(blank=True)
+
+    @property
+    def fellowship_years(self):
+        fellowship_years = {}
+        fellows = Person.objects.filter(category='fellows', show_in_people=True)
+        for fellow in fellows:
+            year = fellow.fellowship_year
+            try:
+                fellowship_years[year]
+            except KeyError:
+                fellowship_years[year] = []
+            fellowship_years[year].append(fellow)
+        return sorted(fellowship_years.items(), reverse=True)
+
+    parent_page_types = [
+        'home.HomePage',
+        'standard.StandardIndexPage',
+        'PersonIndexPage2'
+    ]
+
+    subpage_types = []
+
+    search_fields = Page.search_fields + [
+        index.SearchField('introductory_headline'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('introductory_headline'),
+        FieldPanel('listing_abstract'),
+        FieldPanel('body'),
+    ]
+
+    @property
+    def people(self):
+        people = Person.objects.filter(show_in_people=True)
+        return people
+
+    @property
+    def sections(self):
+        sections = []
+        categories = Person.CATEGORIES
+        for category in categories:
+            # Get people for category
+            people = self.people.filter(category=category[0])
+            if people:
+                sections.append({
+                    "category": category,
+                    "people": people
+                })
+        return sections
+
+    class Meta:
+        verbose_name = 'Person List Page'
