@@ -33,7 +33,6 @@
 
    {% if self.sections %}
     <div class="people">
-      <h1>People</h1>
 
        {% for section in self.sections %}
 
@@ -48,7 +47,7 @@
         {% else %}
 
           {% include "network/includes/person_list.html" with group=section.category.1 list=section.people %}
-          
+
         {% endif %}
 
       {% endfor %}
