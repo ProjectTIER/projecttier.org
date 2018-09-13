@@ -3,9 +3,13 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.search import index
 from wagtail.admin.edit_handlers import (
-    FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
+    FieldPanel, MultiFieldPanel
 )
 import datetime
+from wagtail.admin.edit_handlers import (
+    FieldPanel, MultiFieldPanel
+)
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class Person(models.Model):
@@ -14,16 +18,22 @@ class Person(models.Model):
     """
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    academic_title = models.CharField(max_length=255, blank=True)
     slug = models.SlugField()
     main_job_title = models.CharField(max_length=255, blank=True)
-    academic_title = models.CharField(max_length=255, blank=True)
     affiliation = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     website = models.URLField(max_length=255, blank=True)
     twitter = models.CharField(max_length=255, blank=True)
     bio = models.TextField(blank=True)
-    image = models.ImageField(upload_to='uploads/', blank=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     image_credit = models.CharField(max_length=255, blank=True, help_text="Add credit for photo if necessary. Note: add only their name 'Photo courtesy of' is hardcoded")
 
     show_in_network = models.BooleanField(default=True, blank=False)
@@ -54,8 +64,43 @@ class Person(models.Model):
         null=True
     )
 
-    def __str__(self):
-        return self.name
+    panels = [
+        MultiFieldPanel(
+            [
+                FieldPanel('first_name'),
+                FieldPanel('last_name'),
+                FieldPanel('academic_title'),
+                FieldPanel('affiliation'),
+                FieldPanel('main_job_title'),
+                FieldPanel('slug'),
+            ],
+            heading="Basic Person Info"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('email'),
+                FieldPanel('phone'),
+                FieldPanel('website'),
+                FieldPanel('twitter'),
+            ],
+            heading="Person Contact Info"
+        ),
+        FieldPanel('bio'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('image'),
+                FieldPanel('image_credit'),
+            ],
+            heading="Person image"
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel('show_in_network'),
+                FieldPanel('show_in_people'),
+            ],
+            heading="Display Settings"
+        ),
+    ]
 
     class Meta:
         verbose_name = 'Person'
