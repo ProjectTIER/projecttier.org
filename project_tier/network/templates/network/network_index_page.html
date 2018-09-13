@@ -1,0 +1,47 @@
+{% extends "standard_layout.html" %}
+{% load wagtailcore_tags wagtailimages_tags people_tags %}
+
+{% block main_content %}
+
+{% if self.body %}
+<div class="row">
+  <div class="body-content">
+    {{ self.body|richtext }}
+  </div>
+</div>
+{% endif %}
+
+<div class="people">
+  <h1>TIER Network</h1>
+
+  {% load wagtailcore_tags wagtailimages_tags %}
+  <section class="block-section">
+
+    <ul class="item-list person-list row small-up-1 medium-up-2 large-up-3" data-equalizer>
+
+      {% for person in self.people %}
+
+      <li class="column">
+        <a href="/person/{{person.slug}}">
+          <article class="person list-item" data-equalizer-watch>
+            {% if person.image %}
+            {% image person.image fill-280x280-c100 as photo %}
+            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+            {% else %}
+            <img class="placeholder img-thumbnail" />
+            {% endif %}
+            <div class="title text-center">
+              <h2>{{person.first_name}} {{person.last_name}}</h2>
+              <h3 class="academic-title">{% if person.academic_title %} {{ person.academic_title }},{% endif %} {{ person.affiliation }}</h3>
+              <h4>{{ person.main_job_title }}</h4>
+            </div>
+          </article>
+        </a>
+      </li>
+      {% endfor %}
+
+    </ul>
+  </section>
+</div>
+
+{% endblock %}

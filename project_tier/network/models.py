@@ -12,7 +12,8 @@ class Person(models.Model):
     """
     A member of the Tier Network, including Fellows and other connections.
     """
-    name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
     slug = models.SlugField()
     main_job_title = models.CharField(max_length=255, blank=True)
     academic_title = models.CharField(max_length=255, blank=True)
@@ -82,7 +83,6 @@ class PersonIndexPage2(Page):
     parent_page_types = [
         'home.HomePage',
         'standard.StandardIndexPage',
-        'PersonIndexPage2'
     ]
 
     subpage_types = []
@@ -119,3 +119,35 @@ class PersonIndexPage2(Page):
 
     class Meta:
         verbose_name = 'Person List Page'
+
+
+class NetworkIndexPage(Page):
+    introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
+    body = RichTextField(blank=True)
+
+    parent_page_types = [
+        'home.HomePage',
+        'standard.StandardIndexPage',
+    ]
+
+    subpage_types = []
+
+    search_fields = Page.search_fields + [
+        index.SearchField('introductory_headline'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('introductory_headline'),
+        FieldPanel('listing_abstract'),
+        FieldPanel('body'),
+    ]
+
+    @property
+    def people(self):
+        people = Person.objects.filter(show_in_network=True).order_by('last_name')
+        return people
+
+    class Meta:
+        verbose_name = 'Network List Page'
