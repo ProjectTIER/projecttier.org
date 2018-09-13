@@ -4,21 +4,24 @@
   <h1 id="fellows" data-magellan-target="fellows">Fellows</h1>
 
   {% with year=page.fellowship_years.0.0 fellows=page.fellowship_years.0.1 %}
-    {% include "includes/person_list.html" with group=year|academic_range list=fellows %}
+    {% include "network/includes/person_list.html" with group=year|academic_range list=fellows %}
   {% endwith %}
 
   {% with past_fellows=page.fellowship_years|slice:"1:" %}
+
     {% if past_fellows %}
       <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
         {% for year, fellows in past_fellows %}
           <li class="accordion-item" data-accordion-item>
             <a href="#" class="accordion-title">Fellows, {{ year|academic_range }}</a>
             <div class="accordion-content" data-tab-content>
-              {% include "includes/person_list.html" with group=year|academic_range list=fellows %}
+              {% include "network/includes/person_list.html" with group=year|academic_range list=fellows %}
             </div>
           </li>
         {% endfor %}
       </ul>
     {% endif %}
+
   {% endwith %}
+
 </div>
