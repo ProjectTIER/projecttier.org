@@ -40,9 +40,9 @@ class Person(models.Model):
     show_in_people = models.BooleanField(default=False, blank=False)
 
     CATEGORIES = (
-        ('fellows', 'Fellow'),
+        ('fellows', 'Fellows'),
         ('advisory_board', 'Advisory Board'),
-        ('project_directors', 'Project Director'),
+        ('project_directors', 'Project Directors'),
         ('network_other', 'Network Other')
     )
     category = models.CharField(
@@ -95,6 +95,7 @@ class Person(models.Model):
         ),
         MultiFieldPanel(
             [
+                FieldPanel('category'),
                 FieldPanel('show_in_network'),
                 FieldPanel('show_in_people'),
             ],
