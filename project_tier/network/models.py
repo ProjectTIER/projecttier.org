@@ -25,7 +25,7 @@ class Person(models.Model):
     email = models.EmailField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     website = models.URLField(max_length=255, blank=True)
-    twitter = models.CharField(max_length=255, blank=True)
+    twitter = models.CharField(max_length=255, blank=True, help_text="Note: Do not include @")
     bio = models.TextField(blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -40,9 +40,9 @@ class Person(models.Model):
     show_in_people = models.BooleanField(default=False, blank=False)
 
     CATEGORIES = (
-        ('fellows', 'Fellows'),
+        ('fellow', 'Fellows'),
         ('advisory_board', 'Advisory Board'),
-        ('project_directors', 'Project Directors'),
+        ('project_director', 'Project Directors'),
         ('network_other', 'Network Other')
     )
     category = models.CharField(

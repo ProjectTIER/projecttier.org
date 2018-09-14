@@ -95,7 +95,7 @@ span.academic-title {
     + figcaption {
         margin-top: -10px;
         span {
-            display: block;
+            display: inline;
             font-weight: 600;
             opacity: 0.5;
         }
@@ -108,6 +108,7 @@ span.academic-title {
 figcaption.people {
     background-color: transparent;
     padding: 0;
+    margin-bottom: 15px;
 }
 
 ul.accordion .accordion-content ul li.column::before {
@@ -117,4 +118,9 @@ ul.accordion .accordion-content ul li.column::before {
 .fellowships ul.accordion .accordion-content ul li a {
   text-decoration: none;
   color: #1d7ac9;
+}
+
+.network {
+  width: 75%;
+  margin: 0 auto;
 }
