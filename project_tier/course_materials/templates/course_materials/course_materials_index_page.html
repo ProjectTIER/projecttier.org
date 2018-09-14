@@ -1,5 +1,6 @@
 {% extends "standard_sidebar_layout.html" %}
 {% load navigation_tags wagtailcore_tags static %}
+{% block body_class %}wide-content{% endblock %}
 
 {% block page_title %}
   <h1>{{self.title}}</h1>
@@ -76,41 +77,66 @@
         <p>{{ page.intro|richtext }}</p>
       {% endif %}
 
-      {% for course in course_materials %}
-        {% with course as course.specific %}
-          <section class="course-material">
-            <header>
-              <h2>{{ course.title }}, {{course.university }}</h2>
-              <div class="tags">
-                {% for tag in course.specific.discipline_tags.all %}
-                  <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
-                {% endfor %}
-                {% for tag in course.specific.course_level_tags.all %}
-                  <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
-                {% endfor %}
-                {% for tag in course.specific.protocol_tags.all %}
-                  <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
-                {% endfor %}
+      <div class="materials cards">
+        {% for course in course_materials %}
+          {% with course as course.specific %}
+            <div class="card" data-open="course-{{course.id}}-modal">
+              <div class="card-divider">
+                <h2>{{ course.title }}</h2>
+                {{course.university }}
               </div>
-              <h5>{{ course.course_name }}, {{course.semester }}</h5>
-              {% if course.instructor %}
-                <h5>Instructor: {{ course.instructor }}</h5>
-              {% endif %}
-            </header>
-            <ul class="accordion" data-accordion data-accordion data-allow-all-closed="true">
-              <li class="accordion-item" data-accordion-item>
-                <a href="#" class="accordion-title">Course description</a>
-                <div class="accordion-content" data-tab-content>
-                  <div class="rich-text"><p>{{ course.course_description|richtext }}</p></div>
+              <div class="card-section">
+                <div class="tags">
+                  {% for tag in course.specific.discipline_tags.all %}
+                    <span class="tag">{{ tag }}</span>
+                  {% endfor %}
+                  {% for tag in course.specific.course_level_tags.all %}
+                    <span class="tag">{{ tag }}</span>
+                  {% endfor %}
+                  {% for tag in course.specific.protocol_tags.all %}
+                    <span class="tag">{{ tag }}</span>
+                  {% endfor %}
                 </div>
-              </li>
-            </ul>
-            {% if course.syllabus %}
-              <p><a class="button" href="{{ course.syllabus.url }}"><i class="fa fa-download"></i> Download course documents</a></p>
-            {% endif %}
-          </section>
-        {% endwith %}
-      {% endfor %}
+                <div><strong>{{ course.course_name }}, {{course.semester }}</strong></div>
+                {% if course.instructor %}
+                  <div><strong>Instructor: {{ course.instructor }}</strong></div>
+                {% endif %}
+                {{ course.course_description|richtext|truncatechars_html:100 }}
+              </div>
+            </div>
+            <div class="reveal" id="course-{{course.id}}-modal" data-reveal>
+              <div class="top">
+                <h2>{{ course.title }}</h2>
+              </div>
+              <div class="inner">
+                <h3>{{course.university }}</h3>
+                <div class="tags">
+                  {% for tag in course.specific.discipline_tags.all %}
+                    <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
+                  {% endfor %}
+                  {% for tag in course.specific.course_level_tags.all %}
+                    <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
+                  {% endfor %}
+                  {% for tag in course.specific.protocol_tags.all %}
+                    <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
+                  {% endfor %}
+                </div>
+                <div><strong>{{ course.course_name }}, {{course.semester }}</strong></div>
+                {% if course.instructor %}
+                  <div><strong>Instructor: {{ course.instructor }}</strong></div>
+                {% endif %}
+                {{ course.course_description|richtext }}
+                {% if course.syllabus %}
+                  <p><a class="button" href="{{ course.syllabus.url }}"><i class="fa fa-download"></i> Download course documents</a></p>
+                {% endif %}
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          {% endwith %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 {% endblock %}

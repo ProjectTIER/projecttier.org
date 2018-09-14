@@ -43,7 +43,6 @@ body {
 }
 
 .has-sidebar .body-content {
-  max-width: 40rem;
   &.columns:first-of-type {
     padding-left: 0;
   }
@@ -56,6 +55,11 @@ body {
   @include breakpoint(large up) {
     margin-left: 40px;
   }
+}
+
+/* Allow wider pages on Course Materials index and some templates */
+body.wide-content .has-sidebar .body-content {
+  max-width: auto;
 }
 
 .page-content {
