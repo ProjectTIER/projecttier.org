@@ -1,0 +1,28 @@
+{% extends "standard_layout.html" %}
+{% load wagtailcore_tags wagtailimages_tags people_tags %}
+
+{% block main_content %}
+
+{% if self.body %}
+<div class="row">
+  <div class="body-content">
+    {{ self.body|richtext }}
+  </div>
+</div>
+{% endif %}
+
+<div class="people network">
+  <h1>TIER Network</h1>
+
+  {% load wagtailcore_tags wagtailimages_tags %}
+  <section class="block-section">
+
+    <ul class="item-list person-list row small-up-1 medium-up-2 large-up-3" data-equalizer>
+
+      {% include "network/includes/person_list.html" with list=self.people %}
+
+    </ul>
+  </section>
+</div>
+
+{% endblock %}
