@@ -108,7 +108,7 @@ class Person(models.Model):
         verbose_name_plural = 'People'
 
 
-class PersonIndexPage2(Page):
+class PersonListPage(Page):
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.')
     body = RichTextField(blank=True)

@@ -12,6 +12,17 @@ from wagtail.snippets.models import register_snippet
 import datetime
 
 
+################################################################
+#
+# DO NOT ADD NEW CODE TO THIS APP.
+# THIS IS PRESERVED FOR POSTERITY.
+#
+# ALL NEW CODE TAKES PLACE IN THE `network` APP AND THIS APP
+# HAS BEEN DISABLED.
+#
+#################################################################
+
+
 @register_snippet
 class PersonCategory(models.Model):
     title = models.CharField(max_length=255)

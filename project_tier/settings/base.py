@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'project_tier.events',
     'project_tier.home',
     'project_tier.news',
-    'project_tier.people',
+    'project_tier.people',  # Use the `network` app instead.
     'project_tier.standard',
     'project_tier.testimonials',
     'project_tier.search',
