@@ -155,6 +155,10 @@ class PersonListPage(Page):
         sections = []
         categories = Person.CATEGORIES
         for category in categories:
+
+            if category[0] == 'network_other':
+                continue
+
             # Get people for category
             people = self.people.filter(category=category[0])
             if people:
