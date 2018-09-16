@@ -98,6 +98,7 @@ class Person(models.Model):
                 FieldPanel('category'),
                 FieldPanel('show_in_network'),
                 FieldPanel('show_in_people'),
+                FieldPanel('fellowship_year'),
             ],
             heading="Display Settings"
         ),
