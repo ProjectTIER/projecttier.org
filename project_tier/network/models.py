@@ -117,7 +117,7 @@ class PersonListPage(Page):
     @property
     def fellowship_years(self):
         fellowship_years = {}
-        fellows = Person.objects.filter(category='fellows', show_in_people=True)
+        fellows = Person.objects.filter(category='fellow', show_in_people=True)
         for fellow in fellows:
             year = fellow.fellowship_year
             try:
