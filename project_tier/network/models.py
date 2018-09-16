@@ -11,6 +11,8 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from ckeditor.fields import RichTextField
+
 
 class Person(models.Model):
     """
@@ -26,7 +28,7 @@ class Person(models.Model):
     phone = models.CharField(max_length=255, blank=True)
     website = models.URLField(max_length=255, blank=True)
     twitter = models.CharField(max_length=255, blank=True, help_text="Note: Do not include @")
-    bio = models.TextField(blank=True)
+    bio = RichTextField(blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
