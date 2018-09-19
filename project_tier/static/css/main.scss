@@ -29,7 +29,7 @@
 // @include foundation-progress-bar;
 // @include foundation-slider;
 @include foundation-sticky;
-// @include foundation-reveal;
+@include foundation-reveal;
 @include foundation-switch;
 @include foundation-table;
 @include foundation-tabs;
@@ -37,6 +37,8 @@
 @include foundation-title-bar;
 @include foundation-tooltip;
 @include foundation-top-bar;
+@import 'card';
+@include foundation-card;
 @import 'typography';
 @import 'layout';
 @import 'controls';
@@ -50,3 +52,46 @@
 @import 'exercises';
 @import 'images';
 @import 'footer';
+
+.reveal-overlay {
+  background-color: rgba(225, 225, 225, 0.9);
+}
+
+.reveal {
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px 10px;
+  outline: none;
+  padding: 0;
+}
+
+.reveal .top {
+  background: #e6e6e6;
+}
+
+.reveal .top h2 {
+  margin: 0;
+  font-size: 18px;
+  font-family: "Lato", Arial, sans-serif;
+  padding: 10px 15px;
+}
+
+.reveal .inner {
+  padding: 15px;
+}
+
+.reveal .close-button {
+  background: transparent;
+}
+
+.fancy.button {
+  background: #a32428;
+  border: 3px solid;
+  border-color: white;
+  color: white;
+  transition: 0.2s;
+}
+
+.fancy.button:hover {
+  background: white;
+  border-color: #a32428;
+  color: #a32428;
+}

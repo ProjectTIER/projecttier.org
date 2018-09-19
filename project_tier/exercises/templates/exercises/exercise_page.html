@@ -10,8 +10,21 @@
     <div class="exercise-detail body-content">
 
       {% if page.all_files %}
-        <a class="download-all" href="{{ page.all_files.url }}"><i class="fa fa-download"></i> Download all files</a>
+        <a class="download-all fancy button" href="{{ page.all_files.url }}"><i class="fa fa-download"></i> Download all files (zip)</a>
       {% endif %}
+
+      <div class="tags">
+        <span class="label">Tags:</span>
+        {% for tag in page.discipline_tags.all %}
+          <a class="tag" href="../?disciplines={{ tag }}">{{ tag }}</a>
+        {% endfor %}
+        {% for tag in page.course_level_tags.all %}
+          <a class="tag" href="../?course-levels={{ tag }}">{{ tag }}</a>
+        {% endfor %}
+        {% for tag in page.protocol_tags.all %}
+          <a class="tag" href="../?protocols={{ tag }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
 
       <ul class="vertical tabs" data-tabs id="resources-tabs">
         <li class="tabs-title is-active"><a href="#cover" aria-selected="true">Cover Sheet</a></li>
@@ -22,30 +35,30 @@
 
       <div class="tabs-content" data-tabs-content="resources-tabs">
         <div class="tabs-panel is-active" id="cover">
-          <a class="button" href="{{ page.cover_sheet.url }}"><i class="fa fa-download"></i> Download</a>
+          <a class="button" href="{{ page.cover_sheet.url }}"><i class="fa fa-download"></i> Download Cover Sheet (pdf)</a>
           <h2>Cover Sheet</h2>
           <object class="pdf" data="{{ page.cover_sheet|document_view_url }}" type="application/pdf"></object>
         </div>
         {% if page.instructor_notes %}
           <div class="tabs-panel" id="notes">
-            <a class="button" href="{{ page.instructor_notes.url }}"><i class="fa fa-download"></i> Download</a>
+            <a class="button" href="{{ page.instructor_notes.url }}"><i class="fa fa-download"></i> Download Instructor Notes (pdf)</a>
             <h2>Instructor Notes</h2>
             <object class="pdf" data="{{ page.instructor_notes|document_view_url }}" type="application/pdf"></object>
           </div>
         {% endif %}
         {% if page.exercise %}
           <div class="tabs-panel" id="exercise">
-            <a class="button" href="{{ page.exercise.url }}"><i class="fa fa-download"></i> Download</a>
+            <a class="button" href="{{ page.exercise.url }}"><i class="fa fa-download"></i> Download Exercise (pdf)</a>
             <h2>The Exercise</h2>
             <object class="pdf" data="{{ page.exercise|document_view_url }}" type="application/pdf"></object>
           </div>
         {% endif %}
         {% if page.sample_solution %}
           <div class="tabs-panel" id="solution">
-            <a class="button" href="{{ page.sample_solution.url }}"><i class="fa fa-download"></i> Download</a>
+            <a class="button" href="{{ page.sample_solution.url }}"><i class="fa fa-download"></i> Download Sample Solution (zip)</a>
             <h2>Sample Solution</h2>
             <div>
-              <a class="large button" href="{{ page.sample_solution.url }}"><i class="fa fa-download"></i> Download solution</a>
+              <a class="large button" href="{{ page.sample_solution.url }}"><i class="fa fa-download"></i> Download Sample Solution (zip)</a>
             </div>
           </div>
         {% endif %}
