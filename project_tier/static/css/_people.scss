@@ -134,3 +134,19 @@ ul.accordion .accordion-content ul li.column::before {
 .people .section-intro {
   margin-top: 20px;
 }
+
+
+.card .img-thumbnail {
+    background-color: $grey;
+    margin: 0 0 20px 0;
+    width: 100%;
+    height: auto;
+    float: none;
+
+    @include breakpoint(medium) {
+        float: left;
+        width: auto;
+        min-width: 280px;
+        min-height: 280px;
+    }
+}
