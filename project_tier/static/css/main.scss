@@ -81,3 +81,17 @@
 .reveal .close-button {
   background: transparent;
 }
+
+.fancy.button {
+  background: #a32428;
+  border: 3px solid;
+  border-color: white;
+  color: white;
+  transition: 0.2s;
+}
+
+.fancy.button:hover {
+  background: white;
+  border-color: #a32428;
+  color: #a32428;
+}
