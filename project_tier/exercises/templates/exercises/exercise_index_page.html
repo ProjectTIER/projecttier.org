@@ -1,5 +1,6 @@
 {% extends "standard_sidebar_layout.html" %}
 {% load navigation_tags wagtailcore_tags static %}
+{% block body_class %}wide-content{% endblock %}
 
 {% block page_title %}
   <h1>{{self.title}}</h1>
@@ -76,24 +77,30 @@
           {{ self.notes|richtext }}
         </div>
       {% endif %}
-      <div class="exercises">
+
+      <div class="materials cards">
         {% for exercise in exercises %}
-          <h2><a href="{{ exercise.url }}">{{ exercise.title }}</a></h2>
-          <div class="tags">
-            {% for tag in exercise.specific.discipline_tags.all %}
-              <a class="tag" href="?disciplines={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-            {% for tag in exercise.specific.course_level_tags.all %}
-              <a class="tag" href="?course-levels={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-            {% for tag in exercise.specific.protocol_tags.all %}
-              <a class="tag" href="?protocols={{ tag }}">{{ tag }}</a>
-            {% endfor %}
-          </div>
-          <p class="excerpt">{{ exercise.specific.listing_excerpt }}</p>
-          {% if exercise.all_files %}
-            <a class="download-all" href="{{ exercise.all_files.url }}"><i class="fa fa-download"></i> Download all files</a>
-          {% endif %}
+          {% with exercise as exercise.specific %}
+            <a class="card" href="{{ exercise.url }}">
+              <div class="card-divider">
+                <h2>{{ exercise.title }}</h2>
+              </div>
+              <div class="card-section">
+                <div class="tags">
+                  {% for tag in exercise.specific.discipline_tags.all %}
+                    <span class="tag" href="?disciplines={{ tag }}">{{ tag }}</span>
+                  {% endfor %}
+                  {% for tag in exercise.specific.course_level_tags.all %}
+                    <span class="tag" href="?course-levels={{ tag }}">{{ tag }}</span>
+                  {% endfor %}
+                  {% for tag in exercise.specific.protocol_tags.all %}
+                    <span class="tag" href="?protocols={{ tag }}">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+                <p class="excerpt">{{ exercise.specific.listing_excerpt|truncatechars_html:100 }}</p>
+              </div>
+            </a>
+          {% endwith %}
         {% endfor %}
       </div>
     </div>

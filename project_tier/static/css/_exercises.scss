@@ -73,8 +73,7 @@ p.filter-text {
 }
 
 .exercise-detail a.download-all {
-  display: block;
-  text-align: right;
+  float: right;
 }
 
 @media(max-width: 600px) {
@@ -107,6 +106,15 @@ p.filter-text {
   }
 }
 
+a.card {
+  text-decoration: none;
+}
+
+a.card:hover,
+a.card:focus {
+  color: black;
+}
+
 .materials {
   &.cards.row .columns {
     padding: 0 10px;
@@ -115,7 +123,6 @@ p.filter-text {
   &.cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     margin-left: -10px;
     margin-top: -20px
   }
@@ -159,4 +166,25 @@ p.filter-text {
     margin-bottom: 0px;
     line-height: 1.5;
   }
+}
+
+.exercise-detail .tags {
+  margin: 20px 0;
+}
+
+.exercise-detail .tags .label {
+  font-weight: bold;
+}
+
+.exercise-detail .tag {
+  background: transparent;
+  padding: 0;
+}
+
+.exercise-detail .tag::after {
+  content: ", ";
+  color: black;
+}
+.exercise-detail .tag:last-child::after {
+  display: none;
 }
