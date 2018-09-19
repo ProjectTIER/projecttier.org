@@ -68,7 +68,32 @@
   <div class="course-materials-list row">
     <div class="body-content">
       {% if results.filtered %}
-        <p class="filter-text">{{ results.hidden }} course material{{ results.hidden|pluralize:" is,s are" }} hidden. <a href="{{ page.url }}">Clear filters <i class="fa fa-times"></i></a></p>
+        {# 7 number of results match your filters: XXX, X, XXX. View all 21983  #}
+        {# <p class="filter-text">{{ results.hidden }} course material{{ results.hidden|pluralize:" is,s are" }} hidden. <a href="{{ page.url }}">Clear filters <i class="fa fa-times"></i></a></p> #}
+
+        <p class="filter-text">{{ results.shown }} of {{ results.total }} total results match your filters:
+          {% if discipline_tags_checked %}
+            {% for tag in discipline_tags_checked %}
+              <span class="tag-indicator">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+
+          {% if course_level_tags_checked %}
+            {% for tag in course_level_tags_checked %}
+              <span class="tag-indicator">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+
+          {% if protocol_tags_checked %}
+            {% for tag in protocol_tags_checked %}
+              <span class="tag-indicator">{{ tag }}</span>
+            {% endfor %}
+          {% endif %}
+          
+          <a href="{{ page.url }}">Clear all filters <i class="fa fa-times"></i></a>
+        </p>
+
+
       {% else %}
         <p class="filter-text">{{ results.shown }} course{{ results.shown|pluralize}} found.</p>
       {% endif %}

@@ -195,10 +195,12 @@ class CourseMaterialsIndexPage(Page):
         # Info about page results
         course_materials_count = context['course_materials'].count()
         hidden_course_materials = CourseMaterialsPage.objects.count() - course_materials_count
+        total_course_materials = CourseMaterialsPage.objects.count()
         context['results'] = {
             'shown': course_materials_count,
             'hidden': hidden_course_materials,
-            'filtered': hidden_course_materials > 0
+            'filtered': hidden_course_materials > 0,
+            'total': total_course_materials
         }
 
         return context

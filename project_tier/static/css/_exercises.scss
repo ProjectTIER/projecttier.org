@@ -25,6 +25,23 @@
   margin: 0.5em 0 1.25rem 0;
 }
 
+.tag-indicator {
+  color: #a32428;
+}
+
+.tag-indicator:after {
+  content: ", ";
+  color: #8c8c8c;
+}
+
+.tag-indicator:last-of-type:after {
+  content: "";
+}
+
+.tag-indicator:last-of-type {
+  padding-right: 7px;
+}
+
 .tags .tag {
   background-color: #ececec;
   text-decoration: none;
