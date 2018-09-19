@@ -200,10 +200,12 @@ class ExerciseIndexPage(Page):
         # Info about page results
         exercises_count = context['exercises'].count()
         hidden_exercises = ExercisePage.objects.count() - exercises_count
+        total_exercises = ExercisePage.objects.count()
         context['results'] = {
             'shown': exercises_count,
             'hidden': hidden_exercises,
-            'filtered': hidden_exercises > 0
+            'filtered': hidden_exercises > 0,
+            'total': total_exercises
         }
 
         return context
