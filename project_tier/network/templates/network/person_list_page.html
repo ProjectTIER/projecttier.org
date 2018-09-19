@@ -24,10 +24,8 @@
  {% block main_content %}
 
   {% if self.body %}
-    <div class="row">
-      <div class="body-content">
-        {{ self.body|richtext }}
-      </div>
+    <div class="body-content">
+      {{ self.body|richtext }}
     </div>
   {% endif %}
 
