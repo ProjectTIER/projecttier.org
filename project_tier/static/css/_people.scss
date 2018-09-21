@@ -120,14 +120,15 @@ ul.accordion .accordion-content ul li.column::before {
   color: #1d7ac9;
 }
 
-.network {
-  width: 75%;
-  margin: 0 auto;
-}
 
 .people {
   margin-left: -25px;
   margin-top: -10px;
+}
+
+.network {
+  width: 75%;
+  margin: 0 auto;
 }
 
 .people .section-intro {
@@ -144,7 +145,7 @@ ul.accordion .accordion-content ul li.column::before {
 
     @include breakpoint(medium) {
         float: left;
-        width: auto;
+        // width: auto;
         min-width: 280px;
         min-height: 280px;
     }
