@@ -2,38 +2,42 @@
 
 <section class="block-section">
    <div class="row">
+
     <div class="section-intro small-12">
       <h2 class="section-title">{{group}}</h2>
     </div>
-    <div class="small-12">
-      <ul class="item-list person-list row small-up-1 medium-up-2 large-up-3" data-equalizer>
 
-      {% for person in list %}
-         <li class="column">
-          <a href="/person/{{person.slug}}">
-            <article class="person list-item" data-equalizer-watch>
 
-            {% if person.image %}
-              {% image person.image fill-280x280-c100 as photo %}
-              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+    <div class="course-materials-list row">
+      <div class="body-content">
+      <div class="materials people cards">
 
-            {% else %}
-              <img class="placeholder img-thumbnail" />
+        {% for person in list %}
 
-            {% endif %}
+          <div class="card">
+            <a href="/person/{{person.slug}}">
+              {% if person.image %}
+                {% image person.image fill-280x280-c100 as photo %}
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
 
-            <div class="title text-center">
-              <h2>{{ person.first_name }} {{ person.last_name }}{% if person.academic_title %},<span class="academic-title"> {{ person.academic_title }}</span>{% endif %}</h2>
-              <h4>{{ person.main_job_title }}</h4>
-              <h4>{{ person.affiliation }}</h4>
+              {% else %}
+                <img class="placeholder img-thumbnail" />
+
+              {% endif %}
+            </a>
+
+            <div class="card-divider">
+                <h2>{{ person.first_name }} {{ person.last_name }}{% if person.academic_title %},<span class="academic-title"> {{ person.academic_title }}</span>{% endif %}</h2>
             </div>
-          </article>
-          </a>
-        </li>
+            <div class="card-section">
+              <p><strong>{{ person.main_job_title }}</strong></p>
+              <p>{{ person.affiliation }}<p>
+            </div>
+          </div>
 
-      {% endfor %}
+        {% endfor %}
 
-       </ul>
+      </div>
     </div>
   </div>
 </section>

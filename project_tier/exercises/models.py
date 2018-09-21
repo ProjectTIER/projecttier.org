@@ -158,7 +158,7 @@ class ExerciseIndexPage(Page):
     def get_context(self, request):
         context = super().get_context(request)
 
-        context['exercises'] = ExercisePage.objects.child_of(self).live()
+        context['exercises'] = ExercisePage.objects.child_of(self).live().order_by('-first_published_at')
 
         # Filters tags by type (using reverse accessors).
         # eg. `Tag.exercises_disciplinetag_items` will contain rows if
@@ -200,10 +200,12 @@ class ExerciseIndexPage(Page):
         # Info about page results
         exercises_count = context['exercises'].count()
         hidden_exercises = ExercisePage.objects.count() - exercises_count
+        total_exercises = ExercisePage.objects.count()
         context['results'] = {
             'shown': exercises_count,
             'hidden': hidden_exercises,
-            'filtered': hidden_exercises > 0
+            'filtered': hidden_exercises > 0,
+            'total': total_exercises
         }
 
         return context
