@@ -98,6 +98,8 @@ class CourseMaterialsPage(Page):
     parent_page_types = ['course_materials.CourseMaterialsIndexPage']
     subpage_types = []
 
+    settings_panels = Page.settings_panels + [ FieldPanel('first_published_at')]
+
     content_panels = [
         MultiFieldPanel(
             [
@@ -142,7 +144,7 @@ class CourseMaterialsIndexPage(Page):
     def get_context(self, request):
         context = super().get_context(request)
 
-        context['course_materials'] = CourseMaterialsPage.objects.child_of(self).live().order_by('-latest_revision_created_at')
+        context['course_materials'] = CourseMaterialsPage.objects.child_of(self).live().order_by('-first_published_at')
 
         # Filters tags by type (using reverse accessors).
         # eg. `Tag.course_materials_disciplinetag_items` will contain rows if
