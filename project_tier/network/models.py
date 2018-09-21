@@ -117,7 +117,7 @@ class PersonListPage(Page):
     @property
     def fellowship_years(self):
         fellowship_years = {}
-        fellows = Person.objects.filter(category='fellow', show_in_people=True)
+        fellows = Person.objects.filter(category='fellow', show_in_people=True).order_by('last_name')
         for fellow in fellows:
             year = fellow.fellowship_year
             try:
@@ -147,7 +147,7 @@ class PersonListPage(Page):
 
     @property
     def people(self):
-        people = Person.objects.filter(show_in_people=True)
+        people = Person.objects.filter(show_in_people=True).order_by('last_name')
         return people
 
     @property
