@@ -191,7 +191,9 @@ WAGTAIL_SITE_NAME = "project_tier"
 # Taggit
 # https://django-taggit.readthedocs.io/en/latest/
 
-# TAGGIT_CASE_INSENSITIVE = True
+# Just query tags in a case-insensitive way instead.
+# https://github.com/alex/django-taggit/issues/448
+TAGGIT_CASE_INSENSITIVE = False
 
 
 # Analytics
