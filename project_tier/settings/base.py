@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'wagtailfontawesome',
     'wagtailemoji',
     'wagalytics',
+    'wagtaillinkchecker',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -177,8 +178,6 @@ COMPRESS_PRECOMPILERS = (
 # When you have multiple sites using the same Redis server,
 # specify a different Redis DB. e.g. redis://localhost/5
 
-BROKER_URL = 'redis://'
-
 CELERY_SEND_TASK_ERROR_EMAILS = True
 CELERYD_LOG_COLOR = False
 
@@ -204,3 +203,8 @@ if 'ANALYTICS_ENABLED' in env:
 if 'GA_KEY_CONTENT' in env and 'GA_VIEW_ID' in env:
     GA_KEY_CONTENT = env['GA_KEY_CONTENT']
     GA_VIEW_ID = env['GA_VIEW_ID']
+
+
+# Link checker
+
+DEFAULT_PER_PAGE = 50
