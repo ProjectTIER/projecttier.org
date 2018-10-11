@@ -19,7 +19,11 @@ class Person(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     academic_title = models.CharField(max_length=255, blank=True)
-    slug = models.SlugField()
+    slug = models.SlugField(
+        help_text="All lowercase, hyphenated name that will appear in the URL."
+                  " For example, entering norm-medeiros will result in the URL"
+                  " projecttier.org/person/norm-medeiros"
+    )
     main_job_title = models.CharField(max_length=255, blank=True)
     affiliation = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
