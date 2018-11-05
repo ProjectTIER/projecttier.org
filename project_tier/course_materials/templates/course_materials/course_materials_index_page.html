@@ -165,28 +165,5 @@
 
 {% block extra_js %}
   <script src="{% static "js/filters.js" %}"></script>
-  <script>
-
-    function changeURL(e){
-      var hash = e.currentTarget.id;
-      window.location.hash = "#" + hash;
-    }
-
-    function getHashFromCards(){
-      var cards = document.querySelectorAll('.card');
-      for (i = 0; i < cards.length; i++) {
-        cards[i].addEventListener("click", changeURL);
-      }
-    }
-
-    getHashFromCards();
-    //
-    // function openModal(){
-    //   var hash = window.location.hash;
-    //   console.log(hash);
-    //   return hash
-    // }
-    // openModal();
-
-  </script>
+  <script src="{% static "js/modals.js" %}">></script>
 {% endblock %}
