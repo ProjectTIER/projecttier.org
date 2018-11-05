@@ -206,6 +206,21 @@ a.card:focus {
   display: none;
 }
 
+@media(max-width: 900px) {
+  .materials .card {
+    width: calc(50% - 20px);
+    max-width: 400px;
+    margin: 20px auto;
+  }
+}
+
+@media(max-width: 600px) {
+  .materials .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+
 .materials .join.card .logo {
   background-color: white;
   width: 280px;
