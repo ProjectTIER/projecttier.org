@@ -205,3 +205,10 @@ a.card:focus {
 .exercise-detail .tag:last-child::after {
   display: none;
 }
+
+.materials .join.card .logo {
+  background-color: white;
+  width: 280px;
+  height: 280px;
+  padding:5px;
+}
