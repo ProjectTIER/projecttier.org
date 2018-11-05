@@ -10,6 +10,10 @@ PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
 
+# Upgrade postgres to 10 to match Heroku and TravisCI
+apt update && apt-get install postgresql-client-10
+
+
 # Create database
 set +e
 su - vagrant -c "createdb $PROJECT_NAME"

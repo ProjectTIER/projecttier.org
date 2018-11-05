@@ -1,20 +1,27 @@
 language: python
 
+dist: xenial
+sudo: true
+
 services:
   - postgresql
+
+addons:
+  postgresql: "10"
 
 python:
   - "3.6"
 
 env:
-  - DATABASE_URL="postgres://postgres@localhost:5432/projecttier"
+  global:
+    - DATABASE_URL="postgres://postgres@localhost:5432/projecttier"
 
 install:
   - pip install -r requirements.txt
   - pip install coveralls
 
 before_script:
-  - psql -c 'create database projecttier;' -d postgres -U postgres
+  - psql -c 'create database projecttier;' -U postgres
 
 script:
   - coverage run --source='.' manage.py test project_tier
