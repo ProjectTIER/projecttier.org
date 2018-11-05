@@ -32,6 +32,7 @@ It's messy, but perhaps the best way to achieve what we want here, short of
 changing the actual tagging API within Wagtail or django-taggit.
 """
 
+
 class DisciplineTag(TaggedItemBase):
     content_object = ParentalKey(
         'exercises.ExercisePage',
@@ -55,6 +56,15 @@ class ProtocolTag(TaggedItemBase):
         'exercises.ExercisePage',
         # django-modelcluster requires this to be set
         related_name='protocol_tags_relationship',
+        on_delete=models.CASCADE
+    )
+
+
+class SoftwareTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'exercises.ExercisePage',
+        # django-modelcluster requires this to be set
+        related_name='software_tags_relationship',
         on_delete=models.CASCADE
     )
 
@@ -120,6 +130,13 @@ class ExercisePage(Page):
         blank=True,
         verbose_name="protocol tags"
     )
+    software_tags = ClusterTaggableManager(
+        through=SoftwareTag,
+        # disabling reverse accessors solves a naming clash
+        related_name="+",
+        blank=True,
+        verbose_name="software tags"
+    )
 
     parent_page_types = ['exercises.ExerciseIndexPage']
 
@@ -130,6 +147,7 @@ class ExercisePage(Page):
                 FieldPanel('discipline_tags'),
                 FieldPanel('course_level_tags'),
                 FieldPanel('protocol_tags'),
+                FieldPanel('software_tags'),
             ],
             heading="tags",
         ),
@@ -170,13 +188,16 @@ class ExerciseIndexPage(Page):
             exercises_courseleveltag_items__isnull=False).distinct()
         context['protocol_tags'] = Tag.objects.filter(
             exercises_protocoltag_items__isnull=False).distinct()
+        context['software_tags'] = Tag.objects.filter(
+            exercises_softwaretag_items__isnull=False).distinct()
 
         # Filters exercises by the tag name in the URL
         tag_groups = [
             # (The name in the URL, the name of the Python model attribute)
             ('disciplines', 'discipline'),
             ('course-levels', 'course_level'),
-            ('protocols', 'protocol')
+            ('protocols', 'protocol'),
+            ('softwares', 'software'),
         ]
         # Loop through the given tag groups from above
         for tag_group in tag_groups:
