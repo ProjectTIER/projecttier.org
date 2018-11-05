@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+set -xe
 
 PROJECT_NAME=$1
 
@@ -9,16 +10,15 @@ PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
 
-# Upgrade postgres
-echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-apt update
-apt install -y postgresql-9.5
-ln -s /usr/lib/postgresql/9.5/bin/pg_dump /usr/bin/pg_dump --force
+# Upgrade postgres to 10 to match Heroku and TravisCI
+apt update && apt-get install postgresql-client-10
 
 
 # Create database
+set +e
 su - vagrant -c "createdb $PROJECT_NAME"
+set -e
+
 
 
 # Virtualenv setup for project
@@ -43,7 +43,7 @@ su - vagrant -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
 
 
 # Install Heroku toolbelt
-apt install -y openssl
+apt-get install -y openssl
 su - vagrant -c  "wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh"
 
 
