@@ -16,7 +16,7 @@ function serializeFilters() {
   var tags = $('.exercise-filter input[type="checkbox"]:checked');
   // Loop each tag type and build the query string
   var queryString = '?';
-  var tagTypes = ['disciplines', 'course-levels', 'protocols'];
+  var tagTypes = ['disciplines', 'course-levels', 'protocols', 'softwares'];
   for(var i=0; i<tagTypes.length; i++) {
     var tagType = tagTypes[i];
     var filteredTags = tags.filter('[data-tag="' + tagType + '"]');
