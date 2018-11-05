@@ -4,7 +4,7 @@
 // Displays the ID ofthe card in the URL
 function changeURL(e){
   var hash = e.currentTarget.id;
-  window.location.hash = "#" + hash;
+  window.location.hash = "#modal" + hash;
 }
 
 function getHashFromCards(){
@@ -18,9 +18,8 @@ getHashFromCards();
 
 // Opens the modal on page load
 function openModal(){
-  var location = window.location.hash.substring(1);;
+  var location = window.location.hash.substring(6);;
   var modal = "course-" + location + "-modal"
-  window.location = "#";
   $("#" + modal).foundation("open");
 }
 openModal();
