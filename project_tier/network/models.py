@@ -199,6 +199,14 @@ class NetworkIndexPage(Page):
         FieldPanel('body'),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        # displays the "Join the TIER Nework" block in the personlist
+        # for this page.
+        context['join_block'] = "true"
+
+        return context
+
     @property
     def people(self):
         people = Person.objects.filter(show_in_network=True).order_by('last_name')
