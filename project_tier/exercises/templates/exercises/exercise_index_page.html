@@ -54,6 +54,20 @@
           </div>
         {% endif %}
 
+        {% if software_tags %}
+          <div class="tag-group">
+            <h6>Software</h6>
+            {% for tag in software_tags %}
+              <div class="tag">
+                <label>
+                  <input class="tag-checkbox" data-tag="softwares" name="{{ tag }}" type="checkbox"{% if tag.name in software_tags_checked %} checked{% endif %}>
+                  <span class="tag-name">{{ tag }}</span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         {% if results.filtered %}
           <a class="clear-button" href="{{ page.url }}">
             <i class="fa fa-times-circle"></i> Clear filters
@@ -88,6 +102,12 @@
           {% endfor %}
         {% endif %}
 
+        {% if software_tags_checked %}
+          {% for tag in software_tags_checked %}
+            <span class="tag-indicator">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+
         <a href="{{ page.url }}">Clear all filters <i class="fa fa-times"></i></a>
       </p>
 
@@ -117,6 +137,9 @@
                   {% endfor %}
                   {% for tag in exercise.specific.protocol_tags.all %}
                     <span class="tag" href="?protocols={{ tag }}">{{ tag }}</span>
+                  {% endfor %}
+                  {% for tag in exercise.specific.software_tags.all %}
+                    <span class="tag" href="?softwares={{ tag }}">{{ tag }}</span>
                   {% endfor %}
                 </div>
                 <p class="excerpt">{{ exercise.specific.listing_excerpt|truncatechars_html:100 }}</p>
