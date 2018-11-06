@@ -102,7 +102,7 @@
       <div class="materials cards">
         {% for course in course_materials %}
           {% with course as course.specific %}
-            <div class="card" data-open="course-{{course.id}}-modal">
+            <div class="card" data-open="course-{{course.id}}-modal" id="{{ course.id }}">
               <div class="card-divider">
                 <h2>{{ course.title }}</h2>
                 {{course.university }}
@@ -165,4 +165,5 @@
 
 {% block extra_js %}
   <script src="{% static "js/filters.js" %}"></script>
+  <script src="{% static "js/modals.js" %}"></script>
 {% endblock %}
