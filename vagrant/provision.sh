@@ -11,7 +11,7 @@ PIP=$VIRTUALENV_DIR/bin/pip
 
 
 # Upgrade postgres to 10 to match Heroku and TravisCI
-apt update && apt-get install postgresql-client-10
+apt update && apt-get install -y postgresql-client-10
 
 
 # Create database
