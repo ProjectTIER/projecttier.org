@@ -19,7 +19,10 @@ getHashFromCards();
 // Opens the modal on page load
 function openModal(){
   var location = window.location.hash.substring(6);
-  var modal = "course-" + location + "-modal";
-  $("#" + modal).foundation("open");
+  console.log(location);
+  if (location != "") {
+    var modal = "course-" + location + "-modal";
+    $("#" + modal).foundation("open");
+  }
 }
 openModal();
