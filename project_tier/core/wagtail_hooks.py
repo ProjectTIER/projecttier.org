@@ -13,11 +13,11 @@ def register_tip_feature(features):
     and is stored as HTML with a `<span data-tip>` tag.
     """
     feature_name = 'tip'
-    type_ = 'tip'
+    type_ = 'TIP'
 
     control = {
         'type': type_,
-        'label': 'i',
+        'label': 'ⓘ',
         'description': 'Tip',
     }
 
