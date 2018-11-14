@@ -23,22 +23,21 @@ class TipSource extends React.Component {
         const newContent = Modifier.replaceText(content, selection, text, null, entityKey);
         const nextState = EditorState.push(editorState, newContent, 'insert-characters');
 
-        ModalWorkflow({
+        var modal = ModalWorkflow({
             url: window.chooserUrls.documentChooser,
             onload: DOCUMENT_CHOOSER_MODAL_ONLOAD_HANDLERS,
             responses: {
                 documentChosen: function(docData) {
                     console.log("tip modal: document was selected")
+                    modal.close();
+                    onComplete(nextState);
                 }
             }
         });
 
-        onComplete(nextState);
-
     }
 
     render() {
-        console.log("TipSource rendered")
         return null;
     }
 }
