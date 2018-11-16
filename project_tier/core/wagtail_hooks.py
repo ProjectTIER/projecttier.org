@@ -25,7 +25,7 @@ def register_tip_feature(features):
         'draftail', feature_name, draftail_features.EntityFeature(
             control,
             js=['js/tip.js'],
-            # css={'all': ['tip.css']}
+            # css={'all': ['css/tip.css']}
         )
     )
 
