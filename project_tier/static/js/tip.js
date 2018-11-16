@@ -52,7 +52,7 @@ function getChooserConfig(entityType, entity, selectedText) {
   if (entityType.type == 'TIP') {
     console.log("getChooserConfig: entityType.type == 'TIP'")
     return {
-      url: `${global.chooserUrls.imageChooser}?select_format=true`,
+      url: `${global.chooserUrls.imageChooser}?select_format=true`,  // TODO: use custom ModalWorkflow
       urlParams: {},
       onload: global.IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
     };
@@ -82,10 +82,6 @@ class TipSource extends React.Component {
       onload,
       responses: {
         imageChosen: this.onChosen,
-        // Discard the first parameter (HTML) to only transmit the data.
-        embedChosen: (_, data) => this.onChosen(data),
-        documentChosen: this.onChosen,
-        pageChosen: this.onChosen,
       },
       onError: () => {
         // eslint-disable-next-line no-alert
@@ -103,34 +99,21 @@ class TipSource extends React.Component {
 
   onChosen(data) {
     const { editorState, entityType, onComplete } = this.props;
+
     const content = editorState.getCurrentContent();
     const selection = editorState.getSelection();
 
-    const entityData = filterEntityData(entityType, data);
-    const mutability = MUTABILITY[entityType.type];
-    const contentWithEntity = content.createEntity(entityType.type, mutability, entityData);
+    // Uses the Draft.js API to create a new entity with the right data.
+    const contentWithEntity = content.createEntity(entityType.type, 'IMMUTABLE', {
+        tip: "TIP CONTENT GOES HERE", // TODO
+    });
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
 
-    let nextState;
+    // We also add some text for the entity to be activated on.
+    const text = 'ⓘ';
 
-    if (entityType.block) {
-      // Only supports adding entities at the moment, not editing existing ones.
-      // See https://github.com/springload/draftail/blob/cdc8988fe2e3ac32374317f535a5338ab97e8637/examples/sources/ImageSource.js#L44-L62.
-      // See https://github.com/springload/draftail/blob/cdc8988fe2e3ac32374317f535a5338ab97e8637/examples/sources/EmbedSource.js#L64-L91
-      nextState = AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' ');
-    } else {
-      // Replace text if the chooser demands it, or if there is no selected text in the first place.
-      const shouldReplaceText = data.prefer_this_title_as_link_text || selection.isCollapsed();
-
-      if (shouldReplaceText) {
-        // If there is a title attribute, use it. Otherwise we inject the URL.
-        const newText = data.title || data.url;
-        const newContent = Modifier.replaceText(content, selection, newText, null, entityKey);
-        nextState = EditorState.push(editorState, newContent, 'insert-characters');
-      } else {
-        nextState = RichUtils.toggleLink(editorState, selection, entityKey);
-      }
-    }
+    const newContent = Modifier.replaceText(content, selection, text, null, entityKey);
+    const nextState = EditorState.push(editorState, newContent, 'insert-characters');
 
     // IE11 crashes when rendering the new entity in contenteditable if the modal is still open.
     // Other browsers do not mind. This is probably a focus management problem.
@@ -152,45 +135,6 @@ class TipSource extends React.Component {
   }
 }
 
-
-// // Not a real React component – just creates the entities as soon as it is rendered.
-// class TipSource extends React.Component {
-//     componentDidMount() {
-//         const { editorState, entityType, onComplete } = this.props;
-//
-//         const content = editorState.getCurrentContent();
-//         const selection = editorState.getSelection();
-//
-//         // Uses the Draft.js API to create a new entity with the right data.
-//         const contentWithEntity = content.createEntity(entityType.type, 'IMMUTABLE', {
-//             tip: "TIP CONTENT GOES HERE", // TODO
-//         });
-//         const entityKey = contentWithEntity.getLastCreatedEntityKey();
-//
-//         // We also add some text for the entity to be activated on.
-//         const text = 'ⓘ';
-//
-//         const newContent = Modifier.replaceText(content, selection, text, null, entityKey);
-//         const nextState = EditorState.push(editorState, newContent, 'insert-characters');
-//
-//         var modal = ModalWorkflow({
-//             url: window.chooserUrls.documentChooser,
-//             onload: DOCUMENT_CHOOSER_MODAL_ONLOAD_HANDLERS,
-//             responses: {
-//                 documentChosen: function(docData) {
-//                     console.log("tip modal: document was selected")
-//                     modal.close();
-//                     onComplete(nextState);
-//                 }
-//             }
-//         });
-//
-//     }
-//
-//     render() {
-//         return null;
-//     }
-// }
 
 const Tip = (props) => {
     const { entityKey, contentState } = props;
