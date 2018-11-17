@@ -52,7 +52,7 @@ function getChooserConfig(entityType, entity, selectedText) {
   if (entityType.type == 'TIP') {
     console.log("getChooserConfig: entityType.type == 'TIP'")
     return {
-      url: `${global.chooserUrls.imageChooser}?select_format=true`,  // TODO: use custom ModalWorkflow
+      url: "/admin/draftailmodal/chooser/",  // FIXME: don't hardcode this?
       urlParams: {},
       onload: global.IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
     };

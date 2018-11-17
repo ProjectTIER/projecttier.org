@@ -3,6 +3,15 @@ from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleE
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineEntityElementHandler
 from wagtail.core import hooks
 from draftjs_exporter.dom import DOM
+from django.urls import path, include
+from . import urls
+
+
+@hooks.register('register_admin_urls')
+def register_admin_urls():
+    return [
+        path('draftailmodal/', include(urls))
+    ]
 
 
 @hooks.register('register_rich_text_features')
