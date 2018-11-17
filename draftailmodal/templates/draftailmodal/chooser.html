@@ -1,5 +1,13 @@
-{% include "wagtailadmin/shared/header.html" with title=choose_str merged=1 tabbed=1 icon="image" %}
+{% load i18n wagtailadmin_tags %}
+{% trans "Write a tip" as add_str %}
+{% include "wagtailadmin/shared/header.html" with title=add_str icon="form" %}
 
-<div class="tab-content">
-  TIP CONTENT
+<div class="nice-padding">
+  <form class="draftailmodal" action="/admin/draftailmodal/chooser/" method="post" novalidate>
+    {% csrf_token %}
+    <ul class="fields">
+      <li><input name="tip-content" placeholder="Enter tip content" type="text"></li>
+      <li><input type="submit" value="{% trans 'Save' %}" class="button"></li>
+    </ul>
+  </form>
 </div>

@@ -3,6 +3,20 @@ const Modifier = window.DraftJS.Modifier;
 const EditorState = window.DraftJS.EditorState;
 
 
+const TIP_MODAL_ONLOAD_HANDLERS = {
+  "chooser": function(modal, jsonData) {
+    $('form.draftailmodal').on('submit', function() {
+      modal.postForm(this.action, $(this).serialize());
+      return false;
+    });
+  },
+  "tip_chosen": function(modal, jsonData) {
+    modal.respond('tipChosen', jsonData['result']);
+    modal.close();
+  }
+}
+
+
 /**
 * Returns collection of currently selected blocks.
 * See https://github.com/jpuri/draftjs-utils/blob/e81c0ae19c3b0fdef7e0c1b70d924398956be126/js/block.js#L19.
@@ -54,7 +68,7 @@ function getChooserConfig(entityType, entity, selectedText) {
     return {
       url: "/admin/draftailmodal/chooser/",  // FIXME: don't hardcode this?
       urlParams: {},
-      onload: global.IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS,
+      onload: TIP_MODAL_ONLOAD_HANDLERS,
     };
   }
 }
@@ -81,7 +95,7 @@ class TipSource extends React.Component {
       urlParams,
       onload,
       responses: {
-        imageChosen: this.onChosen,
+        tipChosen: this.onChosen,
       },
       onError: () => {
         // eslint-disable-next-line no-alert
@@ -103,9 +117,11 @@ class TipSource extends React.Component {
     const content = editorState.getCurrentContent();
     const selection = editorState.getSelection();
 
+    console.log(data);
+
     // Uses the Draft.js API to create a new entity with the right data.
     const contentWithEntity = content.createEntity(entityType.type, 'IMMUTABLE', {
-        tip: "TIP CONTENT GOES HERE", // TODO
+        tip: data, // TODO
     });
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
 
@@ -143,7 +159,7 @@ const Tip = (props) => {
     return React.createElement('a', {
         role: 'button',
         onMouseUp: () => {
-            console.log("tip modal: info icon clicked");
+            console.log(data);
         },
     }, props.children);
 };
