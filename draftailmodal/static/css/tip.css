@@ -1,0 +1,16 @@
+.Draftail-inline--TIP {
+  background-color: #007d7e;
+  padding: 1px 7px 1px 5px;
+  border-radius: 9999px;
+  color: white;
+}
+.Draftail-inline--TIP::before {
+  content: '\1F6C8';
+  margin-right: 3px;
+  transform: translateY(-1px);
+  display: inline-block;
+}
+.Draftail-inline--TIP:hover {
+  background-color: #00676a;
+  color: white;
+}

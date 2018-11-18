@@ -67,5 +67,19 @@
       <script src="{% static 'js/main.js' %}" type="text/javascript" charset="utf-8"></script>
     {% endcompress %}
     {% block extra_js %}{% endblock %}
+
+    <!-- Empty modal window used programatically -->
+    <div class="reveal" id="modal" data-reveal>
+      <div class="top">
+        <h2 class="modal-title">Tip</h2>
+      </div>
+      <div class="inner">
+        <div class="modal-content"></div>
+        <button class="close-button" data-close="" aria-label="Close modal" type="button">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
+
   </body>
 </html>

@@ -126,7 +126,7 @@ class TipSource extends React.Component {
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
 
     // We also add some text for the entity to be activated on.
-    const text = 'ⓘ';
+    const text = 'tip';
 
     const newContent = Modifier.replaceText(content, selection, text, null, entityKey);
     const nextState = EditorState.push(editorState, newContent, 'insert-characters');
@@ -158,6 +158,7 @@ const Tip = (props) => {
 
     return React.createElement('a', {
         role: 'button',
+        className: 'Draftail-inline--TIP',
         onMouseUp: () => {
             console.log(data);
         },
