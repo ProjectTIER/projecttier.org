@@ -2,6 +2,7 @@ const React = window.React;
 const Modifier = window.DraftJS.Modifier;
 const EditorState = window.DraftJS.EditorState;
 
+console.log("tip.js reached");
 
 const TIP_MODAL_ONLOAD_HANDLERS = {
   "chooser": function(modal, jsonData) {
