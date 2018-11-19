@@ -162,6 +162,11 @@ const Tip = (props) => {
         className: 'Draftail-inline--TIP',
         onMouseUp: () => {
             console.log(data);
+            ModalWorkflow({
+              url: "/admin/draftailmodal/chooser/",
+              urlParams: {data: JSON.stringify(data['tip'])}, // FIXME: better way than sending the full RTE content??
+              onload: TIP_MODAL_ONLOAD_HANDLERS,
+            });
         },
     }, props.children);
 };

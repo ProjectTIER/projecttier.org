@@ -3,7 +3,7 @@ from . import forms
 
 def chooser(request):
 
-    form = forms.TipForm()
+    form = forms.TipForm({'tip_content': request.GET.get("data")})
 
     context = {'form': form}
     json_data = {'step': 'chooser'}
