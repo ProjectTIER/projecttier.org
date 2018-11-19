@@ -1,6 +1,8 @@
+import json
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineEntityElementHandler
+from wagtail.admin.rich_text.converters.contentstate import ContentstateConverter
 from wagtail.core import hooks
 from draftjs_exporter.dom import DOM
 from django.urls import path, include
@@ -50,8 +52,9 @@ def tip_entity_decorator(props):
     Draft.js ContentState to database HTML.
     Converts the tip entities into a span tag.
     """
+    tip_html = ContentstateConverter(features=[]).to_database_format(props['tip'])
     return DOM.create_element('span', {
-        'data-tip': props['tip'],
+        'data-tip': tip_html,
     }, props['children'])
 
 
@@ -66,6 +69,7 @@ class TipEntityElementHandler(InlineEntityElementHandler):
         """
         Take the ``tip`` value from the ``data-tip`` HTML attribute.
         """
+        tip_json = ContentstateConverter(features=[]).from_database_format(attrs['data-tip'])
         return {
-            'tip': attrs['data-tip'],
+            'tip': json.loads(tip_json),
         }
