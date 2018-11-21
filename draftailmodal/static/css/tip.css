@@ -3,6 +3,7 @@
   padding: 1px 7px 1px 5px;
   border-radius: 9999px;
   color: white;
+  white-space: nowrap;
 }
 .Draftail-inline--TIP::before {
   content: '\1F6C8';
