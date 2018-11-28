@@ -52,7 +52,14 @@ def tip_entity_decorator(props):
     Draft.js ContentState to database HTML.
     Converts the tip entities into a span tag.
     """
-    tip_html = ContentstateConverter(features=[]).to_database_format(props['tip'])
+    tip = props['tip']
+
+    # Convert to JSON string if necessary
+    # Without this it's inconsistent for some reason
+    if type(tip) is dict:
+        tip = json.dumps(tip)
+
+    tip_html = ContentstateConverter(features=[]).to_database_format(tip)
     return DOM.create_element('span', {
         'data-tip': tip_html,
     }, props['children'])

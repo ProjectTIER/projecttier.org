@@ -2,7 +2,6 @@ const React = window.React;
 const Modifier = window.DraftJS.Modifier;
 const EditorState = window.DraftJS.EditorState;
 
-console.log("tip.js reached");
 
 const TIP_MODAL_ONLOAD_HANDLERS = {
   "chooser": function(modal, jsonData) {
@@ -65,10 +64,9 @@ const getSelectionText = (editorState) => {
 
 function getChooserConfig(entityType, entity, selectedText) {
   if (entityType.type == 'TIP') {
-    console.log("getChooserConfig: entityType.type == 'TIP'")
     return {
       url: "/admin/draftailmodal/chooser/",  // FIXME: don't hardcode this?
-      urlParams: {},
+      urlParams: undefined,
       onload: TIP_MODAL_ONLOAD_HANDLERS,
     };
   }
@@ -84,13 +82,21 @@ class TipSource extends React.Component {
   }
 
   componentDidMount() {
-    const { onClose, entityType, entity, editorState } = this.props;
+    const { onClose, entityType, entity, editorState, entityKey } = this.props;
     const selectedText = getSelectionText(editorState);
-    const { url, urlParams, onload } = getChooserConfig(entityType, entity, selectedText);
+    const { url, onload } = getChooserConfig(entityType, entity, selectedText);
+    const contentState = editorState.getCurrentContent();
+    var urlParams = {};
+
+    try {
+      const data = contentState.getEntity(entityKey).getData();
+      urlParams = {data: JSON.stringify(data['tip'])};
+    } catch(err) {
+      //
+    }
 
     $(document.body).on('hidden.bs.modal', this.onClose);
 
-    // eslint-disable-next-line new-cap
     this.workflow = global.ModalWorkflow({
       url,
       urlParams,
@@ -99,8 +105,7 @@ class TipSource extends React.Component {
         tipChosen: this.onChosen,
       },
       onError: () => {
-        // eslint-disable-next-line no-alert
-        window.alert(STRINGS.SERVER_ERROR);
+        console.log("modalworkflow error");
         onClose();
       },
     });
@@ -117,8 +122,6 @@ class TipSource extends React.Component {
 
     const content = editorState.getCurrentContent();
     const selection = editorState.getSelection();
-
-    console.log(data);
 
     // Uses the Draft.js API to create a new entity with the right data.
     const contentWithEntity = content.createEntity(entityType.type, 'IMMUTABLE', {
