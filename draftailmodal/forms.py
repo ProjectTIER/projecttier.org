@@ -7,6 +7,7 @@ class TipForm(forms.Form):
     ModalWorkflow popup form that lets you enter the tip text.
     """
     tip_content = forms.CharField()  # main text field
+    entity_key = forms.CharField(required=False, widget=forms.HiddenInput)  # pass the entityKey on edit
 
     def __init__(self, *args, **kwargs):
         super(TipForm, self).__init__(*args, **kwargs)

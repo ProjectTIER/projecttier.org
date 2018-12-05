@@ -19,7 +19,7 @@ const TIP_MODAL_ONLOAD_HANDLERS = {
     });
   },
   "tip_chosen": function(modal, jsonData) {
-    modal.respond('tipChosen', jsonData['result']);
+    modal.respond('tipChosen', jsonData); // ultimately passed to onChosen(data)
     modal.close();
   }
 }
@@ -132,13 +132,23 @@ class TipSource extends React.Component {
 
   // Called when tip content has been entered and saved
   onChosen(data) {
+    const tip_data = data['result'];
     const { editorState, entityType, onComplete } = this.props;
     const content = editorState.getCurrentContent();
     const selection = editorState.getSelection();
 
+    // Update an entity (if it exists). Happens when an entity is clicked.
+    if (data.entityKey) {
+      const newContent = content.replaceEntityData(data.entityKey, {tip: tip_data});
+      const nextState = EditorState.push(editorState, newContent, 'insert-characters');
+      this.workflow.close();
+      onComplete(nextState);
+      return; // stop here
+    }
+
     // Uses the Draft.js API to create a new entity with the right data.
     const contentWithEntity = content.createEntity(entityType.type, 'IMMUTABLE', {
-        tip: data, // TODO
+        tip: tip_data,
     });
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
 

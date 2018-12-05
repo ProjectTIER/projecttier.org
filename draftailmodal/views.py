@@ -15,7 +15,10 @@ def chooser(request):
 
     if request.GET.get("data"):
         # A tip is being edited, fill in the form
-        form = forms.TipForm({'tip_content': request.GET.get("data")})
+        form = forms.TipForm({
+            'tip_content': request.GET.get("data"),
+            'entity_key': request.GET.get("entityKey")
+        })
     else:
         # Create an empty form
         form = forms.TipForm()
@@ -23,7 +26,11 @@ def chooser(request):
     # Form has been submitted - same for editing and creating a new tip
     if request.method == "POST":
         tip = request.POST.get("tip_content")
-        json_data={'step': 'tip_chosen', 'result': json.loads(tip)}
+        json_data={
+            'step': 'tip_chosen',
+            'result': json.loads(tip),
+            'entityKey': request.POST.get("entity_key")
+        }
 
     # Render the JSON data!
     return render_modal_workflow(

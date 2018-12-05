@@ -20,3 +20,8 @@
   transform: translateY(-1px);
   display: inline-block;
 }
+
+/* HACK: Wagtail's default admin CSS doesn't hide hidden form fields */
+.field.hidden_input {
+  display: none;
+}

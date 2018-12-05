@@ -57,8 +57,8 @@ def tip_entity_decorator(props):
     """
     tip = props['tip']
 
-    # Convert to JSON string if necessary
-    # Without this it's inconsistent for some reason
+    # HACK: Convert to JSON string if necessary.
+    # Without this it's inconsistent for some reason.
     if type(tip) is dict:
         tip = json.dumps(tip)
 
