@@ -1,3 +1,5 @@
+/* Style the Draftail tip decorator on the admin screen.  */
+
 .Draftail-inline--TIP {
   background-color: #007d7e;
   padding: 1px 7px 1px 5px;
@@ -5,13 +7,16 @@
   color: white;
   white-space: nowrap;
 }
+
+.Draftail-inline--TIP:hover {
+  background-color: #00676a;
+  color: white;
+}
+
+ /* info icon */
 .Draftail-inline--TIP::before {
   content: '\1F6C8';
   margin-right: 3px;
   transform: translateY(-1px);
   display: inline-block;
-}
-.Draftail-inline--TIP:hover {
-  background-color: #00676a;
-  color: white;
 }

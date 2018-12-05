@@ -9,6 +9,8 @@ from django.urls import path, include
 from . import urls
 
 
+# Register the app URLs Wagtail's /admin/
+# https://docs.wagtail.io/en/latest/reference/hooks.html#register-admin-urls
 @hooks.register('register_admin_urls')
 def register_admin_urls():
     return [
@@ -16,6 +18,7 @@ def register_admin_urls():
     ]
 
 
+# https://docs.wagtail.io/en/latest/reference/hooks.html#register-rich-text-features
 @hooks.register('register_rich_text_features')
 def register_tip_feature(features):
     features.default_features.append('tip')

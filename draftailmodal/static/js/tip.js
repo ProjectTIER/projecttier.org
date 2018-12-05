@@ -98,10 +98,13 @@ class TipSource extends React.Component {
     const contentState = editorState.getCurrentContent();
     var urlParams = {};
 
-    // FIXME: try/catch because..?
+    // Try to edit an existing entity (if onEdit() was called)
     try {
       const data = contentState.getEntity(entityKey).getData();
-      urlParams = {data: JSON.stringify(data['tip'])};
+      urlParams = {
+        data: JSON.stringify(data['tip']),
+        entityKey: entityKey
+      };
     } catch(err) {}
 
     $(document.body).on('hidden.bs.modal', this.onClose); // FIXME: idk

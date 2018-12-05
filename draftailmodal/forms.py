@@ -4,11 +4,18 @@ from wagtail.admin.rich_text import get_rich_text_editor_widget
 
 class TipForm(forms.Form):
     """
-    Chooser form that appears in Draftail on the admin screen.
+    ModalWorkflow popup form that lets you enter the tip text.
     """
-    tip_content = forms.CharField()
+    tip_content = forms.CharField()  # main text field
+
     def __init__(self, *args, **kwargs):
         super(TipForm, self).__init__(*args, **kwargs)
+
+        # HACK: Set the widget when the form is initialized because otherwise
+        # it doesn't work (for unknown reasons) ??
         self.fields['tip_content'].widget=get_rich_text_editor_widget(
-            features=['h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link', 'image', 'embed']
+            # Use an editor with limited features to avoid modals within modals
+            # and other funny stuff.
+            features=['h2', 'h3', 'bold', 'italic', 'ol', 'ul',
+                      'link', 'image', 'embed']
         )
