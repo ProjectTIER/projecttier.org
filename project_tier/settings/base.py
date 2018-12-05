@@ -62,7 +62,7 @@ INSTALLED_APPS = (
     'storages',
     'wagtailfontawesome',
     'wagtailemoji',
-    # 'wagalytics',
+    'wagalytics',
     'wagtaillinkchecker',
     'draftailmodal',
 
