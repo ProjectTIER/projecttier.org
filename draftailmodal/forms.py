@@ -17,6 +17,8 @@ class TipForm(forms.Form):
         self.fields['tip_content'].widget=get_rich_text_editor_widget(
             # Use an editor with limited features to avoid modals within modals
             # and other funny stuff.
-            features=['h2', 'h3', 'bold', 'italic', 'ol', 'ul',
-                      'link', 'image', 'embed']
+            features=[
+                'h2', 'h3', 'bold', 'italic', 'ol', 'ul',
+                # 'link', 'image', 'embed'  # FIXME: These don't work
+            ]
         )

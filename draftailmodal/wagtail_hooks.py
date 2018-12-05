@@ -62,7 +62,9 @@ def tip_entity_decorator(props):
     if type(tip) is dict:
         tip = json.dumps(tip)
 
-    tip_html = ContentstateConverter(features=['h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link', 'image', 'embed']).to_database_format(tip)
+    tip_html = ContentstateConverter(features=[
+        'h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link', 'image', 'embed'
+    ]).to_database_format(tip)
     return DOM.create_element('span', {
         'data-tip': tip_html,
     }, props['children'])
@@ -79,7 +81,9 @@ class TipEntityElementHandler(InlineEntityElementHandler):
         """
         Take the ``tip`` value from the ``data-tip`` HTML attribute.
         """
-        tip_json = ContentstateConverter(features=['h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link', 'image', 'embed']).from_database_format(attrs['data-tip'])
+        tip_json = ContentstateConverter(features=[
+            'h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link', 'image', 'embed'
+        ]).from_database_format(attrs['data-tip'])
         return {
             'tip': json.loads(tip_json),
         }
