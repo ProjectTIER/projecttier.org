@@ -57,6 +57,17 @@ window.resizeProtocolSidebar = function(){
 
   });
 
+
+  $('[data-tip]').click(function() {
+    var modalEl = $('#modal');
+    var modal = new Foundation.Reveal(modalEl);
+    var tip = $(this).data('tip');
+    modalEl.find(".modal-title").html("&#x1F6C8; Tip")
+    modalEl.find(".modal-content").html(tip);
+    modal.open();
+  });
+
+
 })(jQuery);
 
 $('.row.has-sidebar').css('min-height', $('.sticky').outerHeight() + 'px');

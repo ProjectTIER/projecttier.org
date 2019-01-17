@@ -95,3 +95,17 @@
   border-color: #a32428;
   color: #a32428;
 }
+
+[data-tip] {
+    background-color: #1d7ac9;
+    padding: 1px 7px 1px 5px;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+}
+[data-tip]::before {
+    content: '\1F6C8';
+    margin-right: 3px;
+    transform: translateY(-1px);
+    display: inline-block;
+}

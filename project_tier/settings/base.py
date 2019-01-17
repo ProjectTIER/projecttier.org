@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'wagtailemoji',
     'wagalytics',
     'wagtaillinkchecker',
+    'draftailmodal',
 
     'django.contrib.admin',
     'django.contrib.auth',
