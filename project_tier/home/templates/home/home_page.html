@@ -23,22 +23,6 @@
       </div>
     </section>
 
-    {% if page.promo_headline and page.promo_text and page.promo_image and page.promo_cta_link and page.promo_cta_text %}
-      <section class="block-section promo">
-        <div class="row">
-          <div class="large-2 columns">
-            {% image page.promo_image width-200 %}
-          </div>
-          <div class="large-9 columns">
-            <h2 class="section-title">{{ page.promo_headline }}</h2>
-            <div class="section-description">{{ page.promo_text|richtext }}</div>
-            <a class="button" href="{{ page.promo_cta_link }}" target="_blank">{{ page.promo_cta_text }}</a>
-          </div>
-          <div class="large-1 columns"></div>
-        </div>
-      </section>
-    {% endif %}
-
     {% if page.featured_index_page %}
       <section class="block-section featured-index-page">
         <div class="row">
