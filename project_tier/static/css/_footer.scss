@@ -3,7 +3,7 @@
   color: $white;
   padding: $small-gutter 0 0;
   position: relative;
-  z-index: 3;
+  z-index: 2;
 
   #sponsor-logo {
     text-align: center;
@@ -136,32 +136,39 @@
 }
 
 /* Mailing list */
+#newsletter-section * {
+  max-width: 100%;
+}
 #newsletter-section > .row {
+  margin: 0;
   color: $light-grey;
-  > .footer-title {
-    h2 {
-      color: $off-white;
-      font-size: 1.3em;
-      &::before {
-        content: "\f003";
-        font-family: FontAwesome;
-        display: block;
-        float: left;
-        margin-right: 10px;
-        opacity: 0.7;
-      }
+  > .footer-title h2::before {
+    content: "\f003";
+  }
+}
+
+.footer-title {
+  h2 {
+    color: $off-white;
+    font-size: 1.3em;
+    &::before {
+      font-family: FontAwesome;
+      display: block;
+      float: left;
+      margin-right: 10px;
+      opacity: 0.7;
     }
   }
-  .footer-description p {
-    color: $light-grey;
-  }
-  .mailchimp-signup {
-    padding-left: 0;
-    .button {
-      padding: 10px 20px 9px 20px;
-      &:hover {
-        color: $dark-red;
-      }
+}
+.footer-description p {
+  color: $light-grey;
+}
+.mailchimp-signup {
+  padding-left: 0;
+  .button {
+    padding: 10px 20px 9px 20px;
+    &:hover {
+      color: $dark-red;
     }
   }
 }
@@ -200,3 +207,30 @@
     }
       }
     }
+
+.block-section.promo {
+  margin: 20px 0 40px 0;
+
+  .graphic {
+    margin-left: 30px;
+    margin-bottom: 30px;
+  }
+
+  .footer-title h2 {
+    margin-top: 0;
+  }
+
+  a.button {
+    background-color: white;
+    color: $red;
+    text-decoration: none;
+    font-weight: bold;
+    background-image: none;
+    border: 3px solid white;
+
+    &:hover {
+      background-color: transparent;
+      color: white;
+    }
+  }
+}
