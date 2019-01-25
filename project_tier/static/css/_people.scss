@@ -150,3 +150,31 @@ ul.accordion .accordion-content ul li.column::before {
         min-height: 280px;
     }
 }
+
+.people.cards.compact {
+  .cards {
+    display: block;
+  }
+  .card {
+    width: 100%;
+    font-size: 15px;
+  }
+  .card h2 {
+    font-size: 16px;
+  }
+  .card-divider,
+  .card-section {
+    padding: 3px;
+  }
+  .img-thumbnail {
+    min-width: auto;
+    min-height: auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    margin-right: 8px;
+  }
+  .job-title {
+    font-weight: normal;
+  }
+}
