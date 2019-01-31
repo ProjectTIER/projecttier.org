@@ -11,13 +11,14 @@
 </div>
 {% endif %}
 
-<div class="people network">
-  <h1>TIER Network</h1>
+<div class="people network row">
+  <hr>
+  <h1>The Community</h1>
 
   {% load wagtailcore_tags wagtailimages_tags %}
   <section class="block-section">
 
-    <ul class="item-list person-list row small-up-1 medium-up-2 large-up-3" data-equalizer>
+    <ul class="item-list person-list small-up-1 medium-up-2 large-up-3" data-equalizer>
 
       {% include "network/includes/person_list_compact.html" with list=self.people %}
 

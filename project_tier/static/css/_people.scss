@@ -127,7 +127,6 @@ ul.accordion .accordion-content ul li.column::before {
 }
 
 .network {
-  width: 75%;
   margin: 0 auto;
 }
 
@@ -158,6 +157,8 @@ ul.accordion .accordion-content ul li.column::before {
   .card {
     width: 100%;
     font-size: 15px;
+    margin-left: 0;
+    position: relative;
   }
   .card h2 {
     font-size: 16px;
@@ -165,15 +166,19 @@ ul.accordion .accordion-content ul li.column::before {
   .card-divider,
   .card-section {
     padding: 3px;
+    padding-left: 60px;
   }
   .img-thumbnail {
     background-color: white;
     min-width: auto;
     min-height: auto;
-    width: 24px;
-    height: 24px;
+    width: 48px;
+    height: 48px;
     border-radius: 100%;
     margin-right: 8px;
+    position: absolute;
+    left: 3px;
+    top: 5px;
   }
   .job-title {
     font-weight: normal;
