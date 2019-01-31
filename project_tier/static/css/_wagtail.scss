@@ -1,0 +1,12 @@
+// Wagtail-specific styling for the front-end
+
+.richtext-image {
+  &.left {
+    float: left;
+    margin-right: 20px;
+  }
+  &.right {
+    float: right;
+    margin-left: 20px;
+  }
+}
