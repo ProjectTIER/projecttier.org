@@ -1,9 +1,24 @@
-{% extends "standard_layout.html" %}
+{% extends "standard_sidebar_layout.html" %}
 {% load wagtailcore_tags wagtailimages_tags people_tags %}
+
+{% block sidebar %}
+  <div data-sticky-container>
+    <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
+      <nav class="sidebar-nav article-nav">
+        <h3 id="on-this-page">On this page</h3>
+        <ul class="vertical menu" data-magellan data-bar-offset="60">
+          <li><a href="#network">TIER Network</a></li>
+          <li><a href="#community">The Community</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+{% endblock %}
 
 {% block main_content %}
 
 {% if self.body %}
+<div id="network" data-magellan-target="network"></div>
 <div class="row">
   <div class="body-content">
     {{ self.body|richtext }}
@@ -13,7 +28,7 @@
 
 <div class="people network row">
   <hr>
-  <h1>The Community</h1>
+  <h1 id="community" data-magellan-target="community">The Community</h1>
 
   {% load wagtailcore_tags wagtailimages_tags %}
   <section class="block-section">
