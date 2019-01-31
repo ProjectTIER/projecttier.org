@@ -9,7 +9,8 @@ register = template.Library()
 def get_site_root(context):
     # NB this returns a wagtailcore.Page, not the implementation-specific model used
     # so object-comparison to self will return false as objects would differ
-    return context['request'].site.root_page
+    page = context.get('calling_page') or context.get('page')
+    return page.get_site().root_page
 
 
 def has_menu_children(page):
