@@ -179,4 +179,16 @@ ul.accordion .accordion-content ul li.column::before {
   .job-title {
     font-weight: normal;
   }
+  .new::before {
+    content: 'new';
+    text-transform: uppercase;
+    background: #1d7ac9;
+    color: white;
+    font-size: 12px;
+    padding: 0 3px;
+    display: inline-block;
+    transform: translateY(-3px);
+    margin-left: 6px;
+    border-radius: 2px;
+  }
 }

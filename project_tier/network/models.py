@@ -1,4 +1,6 @@
+from django.utils import timezone
 from django.db import models
+from django.db.models import F
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.search import index
@@ -43,6 +45,10 @@ class Person(models.Model):
     show_in_network = models.BooleanField(default=True, blank=False)
     show_in_people = models.BooleanField(default=False, blank=False)
 
+    joined_on = models.DateField(blank=True, null=True,
+        help_text="Date this member joined the TIER network. Not publicly "
+                  "visible - used to calculate NEW tags.")
+
     CATEGORIES = (
         ('fellow', 'Fellows'),
         ('advisory_board', 'Advisory Board'),
@@ -67,6 +73,12 @@ class Person(models.Model):
         blank=True,
         null=True
     )
+
+    def is_new(self):
+        """ The person became a member within the past 30 days. """
+        today = timezone.now().date()
+        joined = self.joined_on
+        return joined and (today - joined).days <= 30
 
     panels = [
         MultiFieldPanel(
@@ -103,6 +115,7 @@ class Person(models.Model):
                 FieldPanel('show_in_network'),
                 FieldPanel('show_in_people'),
                 FieldPanel('fellowship_year'),
+                FieldPanel('joined_on'),
             ],
             heading="Display Settings"
         ),
@@ -210,7 +223,8 @@ class NetworkIndexPage(Page):
     @property
     def people(self):
         people = Person.objects.filter(show_in_network=True).order_by('last_name')
-        return people
+        # Put new people at the top. Convert is_new to a string that can be ordered.
+        return sorted(people, key = lambda p: ('A' if p.is_new() else 'Z', p.last_name))
 
     class Meta:
         verbose_name = 'Network List Page'
