@@ -127,7 +127,6 @@ ul.accordion .accordion-content ul li.column::before {
 }
 
 .network {
-  width: 75%;
   margin: 0 auto;
 }
 
@@ -149,4 +148,47 @@ ul.accordion .accordion-content ul li.column::before {
         min-width: 280px;
         min-height: 280px;
     }
+}
+
+.people.cards.compact {
+  .cards {
+    display: block;
+  }
+  .card {
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+  }
+  .card-divider,
+  .card-section {
+    padding: 3px;
+    padding-left: 60px;
+  }
+  .img-thumbnail {
+    background-color: white;
+    min-width: auto;
+    min-height: auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    margin-right: 8px;
+    position: absolute;
+    left: 3px;
+    top: 5px;
+  }
+  .job-title {
+    font-weight: normal;
+  }
+  .new::before {
+    content: 'new';
+    text-transform: uppercase;
+    background: #1d7ac9;
+    color: white;
+    font-size: 12px;
+    padding: 0 3px;
+    display: inline-block;
+    transform: translateY(-3px);
+    margin-left: 6px;
+    border-radius: 2px;
+  }
 }

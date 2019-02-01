@@ -32,3 +32,7 @@ def pull_production_media():
     # `s3cmd --configure` to create it yourself.
     local('mkdir -p media')
     local('s3cmd --config=.s3cfg get s3://bucketeer-82911c16-8ccd-4854-b255-5b3ebba24d7c --recursive --skip-existing --delete-removed media')
+
+def sync_staging():
+    # Syncs the staging database with production
+    local('heroku pg:copy projecttier-production::DATABASE_URL DATABASE_URL -a projecttier-staging --confirm projecttier-staging')

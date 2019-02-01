@@ -1,0 +1,51 @@
+{% load wagtailcore_tags wagtailimages_tags people_tags %}
+
+<section class="block-section">
+   <div class="row">
+
+    <div class="section-intro small-12">
+      <h2 class="section-title">{{group}}</h2>
+    </div>
+
+
+    <div class="course-materials-list">
+      <div class="body-content">
+      <div class="materials people cards compact">
+
+        {% for person in list %}
+
+          <a class="card" href="/person/{{person.slug}}">
+            <div class="card-divider">
+              {% if person.image %}
+                {% image person.image fill-280x280-c100 as photo %}
+                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+              {% else %}
+                <img class="placeholder img-thumbnail" />
+              {% endif %}
+              <h2>{{ person.first_name }} {{ person.last_name }}{% if person.academic_title %},<span class="academic-title"> {{ person.academic_title }}</span>{% endif %}, <span class="job-title">{{ person.main_job_title }}</span>{% if person.is_new %} <span class="new"></span>{% endif %}</h2>
+            </div>
+            <div class="card-section">
+              {{ person.affiliation }}
+            </div>
+          </a>
+
+        {% endfor %}
+
+        {% if join_block == "true" %}
+        <div class="join card">
+          <div class="card-divider">
+            <a href="https://projecttier.forms-db.com/view.php?id=16971">
+              <img class="img-thumbnail" src="https://placehold.it/200x200/A32428/FFFFFF?text=YOU%3F"/>
+            </a>
+            <h2>Join the TIER Network!</h2>
+          </div>
+          <div class="card-section">
+            Tell us about yourself and your work in this form, and connect with TIER protocol users across the country!
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
