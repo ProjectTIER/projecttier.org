@@ -10,7 +10,10 @@ def get_site_root(context):
     # NB this returns a wagtailcore.Page, not the implementation-specific model used
     # so object-comparison to self will return false as objects would differ
     page = context.get('calling_page') or context.get('page')
-    return page.get_site().root_page
+    if page:
+        return page.get_site().root_page
+
+    return context['request'].site.root_page
 
 def has_menu_children(page):
     return page.get_children().live().in_menu().exists()
