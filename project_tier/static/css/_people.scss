@@ -179,6 +179,12 @@ ul.accordion .accordion-content ul li.column::before {
   .job-title {
     font-weight: normal;
   }
+  span.academic-title {
+    font-weight: normal;
+    font-size: 1em;
+    color: black;
+    opacity: 1;
+  }
   .new::before {
     content: 'new';
     text-transform: uppercase;
