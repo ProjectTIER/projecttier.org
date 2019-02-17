@@ -80,6 +80,9 @@ class Person(models.Model):
         joined = self.joined_on
         return joined and (today - joined).days <= 30
 
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
     panels = [
         MultiFieldPanel(
             [
