@@ -4,6 +4,7 @@ from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleE
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineEntityElementHandler
 from wagtail.admin.rich_text.converters.contentstate import ContentstateConverter
 from wagtail.core import hooks
+from wagtail.core.templatetags.wagtailcore_tags import richtext
 from draftjs_exporter.dom import DOM
 from django.urls import path, include
 from . import urls
@@ -65,6 +66,7 @@ def tip_entity_decorator(props):
     tip_html = ContentstateConverter(features=[
         'h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link', 'image', 'embed'
     ]).to_database_format(tip)
+    tip_html = richtext(tip_html)  # apply |richtext filter
     return DOM.create_element('span', {
         'data-tip': tip_html,
     }, props['children'])
