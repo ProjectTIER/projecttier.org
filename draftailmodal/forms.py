@@ -18,7 +18,7 @@ class TipForm(forms.Form):
             # Use an editor with limited features to avoid modals within modals
             # and other funny stuff.
             features=[
-                'h2', 'h3', 'bold', 'italic', 'ol', 'ul',
+                'h2', 'h3', 'bold', 'italic', 'ol', 'ul', 'link',
                 # 'link', 'image', 'embed'  # FIXME: These don't work
             ]
         )
