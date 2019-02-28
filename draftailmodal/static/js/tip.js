@@ -147,9 +147,10 @@ class TipSource extends React.Component {
     }
 
     // Uses the Draft.js API to create a new entity with the right data.
-    const contentWithEntity = content.createEntity(entityType.type, 'IMMUTABLE', {
+    const contentWithEntity = content.createEntity(entityType.type, 'MUTABLE', {
         tip: tip_data,
     });
+    console.log(contentWithEntity);
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
 
     // We also add some text for the entity to be activated on.
