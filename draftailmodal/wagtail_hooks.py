@@ -77,7 +77,7 @@ class TipEntityElementHandler(InlineEntityElementHandler):
     Database HTML to Draft.js ContentState.
     Converts the span tag into a tip entity, with the right data.
     """
-    mutability = 'IMMUTABLE'
+    mutability = 'MUTABLE'
 
     def get_attribute_data(self, attrs):
         """
