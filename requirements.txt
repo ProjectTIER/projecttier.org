@@ -12,7 +12,7 @@ wagtailatomicadmin==0.2.5
 wagalytics==1.0rc1
 psycopg2==2.7.7
 whitenoise==4.1.2
-git+https://github.com/ProjectTIER/wagtail-linkchecker.git@wagtail2-upgrade#egg=wagtail-linkchecker
+wagtail-linkchecker==0.4.0
 
 # Heroku webserver
 gunicorn==19.9.0
