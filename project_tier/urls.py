@@ -23,6 +23,7 @@ if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     from django.views.generic import TemplateView
+    import debug_toolbar
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
@@ -33,6 +34,10 @@ if settings.DEBUG:
         path('test404/', TemplateView.as_view(template_name='404.html')),
         path('test500/', TemplateView.as_view(template_name='500.html')),
     ]
+
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
 
 urlpatterns += [
     path('', include('wagtail.core.urls')),
