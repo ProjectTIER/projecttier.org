@@ -20,6 +20,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 CELERY_ALWAYS_EAGER = True
 
+INSTALLED_APPS = INSTALLED_APPS + (
+    'debug_toolbar',
+)
+
+MIDDLEWARE = MIDDLEWARE + (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
 
 try:
     from .local import *
