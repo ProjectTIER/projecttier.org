@@ -191,6 +191,7 @@ const Tip = (props) => {
     return React.createElement('a', {
         role: 'button',
         className: 'Draftail-inline--TIP',
+        'data-color': data['color'],
         onMouseUp: () => {
             // When a tip is clicked, edit it.
             props.onEdit(entityKey);
