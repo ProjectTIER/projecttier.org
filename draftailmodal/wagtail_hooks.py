@@ -90,4 +90,5 @@ class TipEntityElementHandler(InlineEntityElementHandler):
         ]).from_database_format(attrs['data-tip'])
         return {
             'tip': json.loads(tip_json),
+            'color': attrs['data-color'],
         }
