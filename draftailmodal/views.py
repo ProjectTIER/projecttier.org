@@ -17,6 +17,7 @@ def chooser(request):
         # A tip is being edited, fill in the form
         form = forms.TipForm({
             'tip_content': request.GET.get("data"),
+            'color': request.GET.get("color"),
             'entity_key': request.GET.get("entityKey")
         })
     else:
@@ -29,7 +30,8 @@ def chooser(request):
         json_data={
             'step': 'tip_chosen',
             'result': json.loads(tip),
-            'entityKey': request.POST.get("entity_key")
+            'entityKey': request.POST.get("entity_key"),
+            'color': request.POST.get("color"),
         }
 
     # Render the JSON data!

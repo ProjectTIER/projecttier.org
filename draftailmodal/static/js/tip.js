@@ -103,7 +103,8 @@ class TipSource extends React.Component {
       const data = contentState.getEntity(entityKey).getData();
       urlParams = {
         data: JSON.stringify(data['tip']),
-        entityKey: entityKey
+        entityKey: entityKey,
+        color: data['color']
       };
     } catch(err) {}
 
@@ -133,13 +134,14 @@ class TipSource extends React.Component {
   // Called when tip content has been entered and saved
   onChosen(data) {
     const tip_data = data['result'];
+    const color = data['color'];
     const { editorState, entityType, onComplete } = this.props;
     const content = editorState.getCurrentContent();
     const selection = editorState.getSelection();
 
     // Update an entity (if it exists). Happens when an entity is clicked.
     if (data.entityKey) {
-      const newContent = content.replaceEntityData(data.entityKey, {tip: tip_data});
+      const newContent = content.replaceEntityData(data.entityKey, {tip: tip_data, color: color});
       const nextState = EditorState.push(editorState, newContent, 'insert-characters');
       this.workflow.close();
       onComplete(nextState);
@@ -149,6 +151,7 @@ class TipSource extends React.Component {
     // Uses the Draft.js API to create a new entity with the right data.
     const contentWithEntity = content.createEntity(entityType.type, 'MUTABLE', {
         tip: tip_data,
+        color: color,
     });
     console.log(contentWithEntity);
     const entityKey = contentWithEntity.getLastCreatedEntityKey();
