@@ -103,10 +103,35 @@
     border-radius: 9999px;
     color: white;
     cursor: pointer;
+    white-space: nowrap;
 }
 [data-tip]::before {
     content: '\1F6C8';
     margin-right: 3px;
     transform: translateY(-1px);
     display: inline-block;
+}
+[data-tip][data-color="red"] {
+  background-color: #a32428;
+}
+[data-tip][data-color="blue"] {
+  background-color: #1d7ac9;
+}
+[data-tip][data-color="green"] {
+  background-color: #22851d;
+}
+[data-tip][data-color="yellow"] {
+  background-color: #a49924;
+}
+[data-tip][data-color="orange"] {
+  background-color: #a45d24;
+}
+[data-tip][data-color="purple"] {
+  background-color: #501d6e;
+}
+[data-tip][data-color="grey"] {
+  background-color: grey;
+}
+[data-tip][data-color="black"] {
+  background-color: black;
 }
