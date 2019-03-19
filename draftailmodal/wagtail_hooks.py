@@ -57,6 +57,7 @@ def tip_entity_decorator(props):
     Converts the tip entities into a span tag.
     """
     tip = props['tip']
+    color = props['color']
 
     # HACK: Convert to JSON string if necessary.
     # Without this it's inconsistent for some reason.
@@ -69,6 +70,7 @@ def tip_entity_decorator(props):
     tip_html = richtext(tip_html)  # apply |richtext filter
     return DOM.create_element('span', {
         'data-tip': tip_html,
+        'data-color': color,
     }, props['children'])
 
 
@@ -88,4 +90,5 @@ class TipEntityElementHandler(InlineEntityElementHandler):
         ]).from_database_format(attrs['data-tip'])
         return {
             'tip': json.loads(tip_json),
+            'color': attrs['data-color'],
         }

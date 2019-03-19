@@ -25,3 +25,29 @@
 .field.hidden_input {
   display: none;
 }
+
+/* Colors */
+.Draftail-inline--TIP[data-color="red"] {
+  background-color: #a32428;
+}
+.Draftail-inline--TIP[data-color="blue"] {
+  background-color: #1d7ac9;
+}
+.Draftail-inline--TIP[data-color="green"] {
+  background-color: #22851d;
+}
+.Draftail-inline--TIP[data-color="yellow"] {
+  background-color: #a49924;
+}
+.Draftail-inline--TIP[data-color="orange"] {
+  background-color: #a45d24;
+}
+.Draftail-inline--TIP[data-color="purple"] {
+  background-color: #501d6e;
+}
+.Draftail-inline--TIP[data-color="grey"] {
+  background-color: grey;
+}
+.Draftail-inline--TIP[data-color="black"] {
+  background-color: black;
+}
