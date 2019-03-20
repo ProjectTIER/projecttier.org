@@ -1,10 +1,14 @@
 from django.db import models
+from django.shortcuts import redirect
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import (
+    FieldPanel, StreamFieldPanel, PageChooserPanel
+)
 from wagtail.search.index import SearchField
-
-from project_tier.blocks import BodyBlock, LimitedStreamBlock, ContentStreamBlock
+from project_tier.blocks import (
+    BodyBlock, LimitedStreamBlock, ContentStreamBlock
+)
 
 
 class StandardIndexPage(Page):
@@ -33,7 +37,7 @@ class StandardIndexPage(Page):
         StreamFieldPanel('body')
     ]
 
-    parent_page_types = ['home.HomePage']
+    parent_page_types = ['home.HomePage', 'standard.RedirectPage']
 
 
 class StandardPage(Page):
@@ -112,3 +116,28 @@ class SectionPage(Page):
 
     class Meta:
         verbose_name = "Standard page with content sections"
+
+
+class RedirectPage(Page):
+    """Dummy page with overridden URL."""
+
+    related_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Choose the page to redirect to.'
+    )
+
+    def serve(self, request):
+        """Redirect to the related page."""
+        return redirect(self.related_page.get_url(), permanent=True)
+
+    def get_url_parts(self, request=None):
+        """Return the URL of the related page."""
+        return self.related_page.get_url_parts(request)
+
+    content_panels = Page.content_panels + [
+        PageChooserPanel('related_page'),
+    ]

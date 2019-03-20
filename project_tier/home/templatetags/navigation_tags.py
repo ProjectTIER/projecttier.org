@@ -37,17 +37,21 @@ def get_ancestor(page):
 # a dropdown class to be applied to a parent
 @register.inclusion_tag('tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
-    menuitems = parent.get_children().live().in_menu()
+    menuitems = parent.get_children().live().in_menu().specific()
+    result = []
     for menuitem in menuitems:
+        if hasattr(menuitem, 'related_page'):
+            menuitem = menuitem.related_page
         menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
         # engine can pass an empty string to calling_page
         # if the variable passed as calling_page does not exist.
         menuitem.active = (calling_page.url.startswith(menuitem.url)
                            if calling_page else False)
+        result.append(menuitem)
     return {
         'calling_page': calling_page,
-        'menuitems': menuitems,
+        'menuitems': result,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
