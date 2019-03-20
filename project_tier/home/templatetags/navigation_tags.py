@@ -126,8 +126,17 @@ def breadcrumbs(context):
     else:
         ancestors = Page.objects.ancestor_of(
             self, inclusive=True).filter(depth__gt=1)
+
+    # Exclude RedirectPages
+    result = []
+    for ancestor in ancestors:
+        if hasattr(ancestor.specific, 'related_page'):
+            continue
+        else:
+            result.append(ancestor.specific)
+
     return {
-        'ancestors': ancestors,
+        'ancestors': result,
         'request': context['request'],
     }
 
