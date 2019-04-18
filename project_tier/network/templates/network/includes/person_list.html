@@ -27,11 +27,12 @@
             </a>
 
             <div class="card-divider">
-                <h2>{{ person.first_name }} {{ person.last_name }}{% if person.academic_title %},<span class="academic-title"> {{ person.academic_title }}</span>{% endif %}</h2>
+                <h2>{{ person.first_name }} {{ person.last_name }}</h2>
             </div>
             <div class="card-section">
               <p><strong>{{ person.main_job_title }}</strong></p>
-              <p>{{ person.affiliation }}<p>
+              {% if person.secondary_job_title %}<p><strong>{{ person.secondary_job_title }}</strong></p>{% endif %}
+              <p><strong>{{ person.affiliation }}</strong><p>
             </div>
           </div>
 

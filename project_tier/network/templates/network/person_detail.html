@@ -9,13 +9,16 @@
       <div class="columns">
         {% breadcrumbs %}
         {% block page_title %}
-          <h1>{{object.first_name}} {{object.last_name}}{% if object.academic_title %}<span class="">, {{ object.academic_title }}</span>{% endif %}</h1>
+          <h1>{{object.first_name}} {{object.last_name}}</h1>
         {% endblock %}
-          {% if object.main_job_title %}
-            <div class="job-titles">{{ object.main_job_title }}</div>
-      {% endif %}
+        {% if object.main_job_title %}
+          <div class="job-titles">{{ object.main_job_title }}</div>
+        {% endif %}
+        {% if object.secondary_job_title %}
+          <div class="job-titles">{{ object.secondary_job_title }}</div>
+        {% endif %}
+      </div>
     </div>
-          </div>
   </header>
 {% endblock %}
 
