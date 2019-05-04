@@ -1,3 +1,4 @@
+from unidecode import unidecode
 from django.utils import timezone
 from django.db import models
 from django.db.models import F
@@ -227,9 +228,9 @@ class NetworkIndexPage(Page):
 
     @property
     def people(self):
-        people = Person.objects.filter(show_in_network=True).order_by('last_name')
+        people = Person.objects.filter(show_in_network=True)
         # Put new people at the top. Convert is_new to a string that can be ordered.
-        return sorted(people, key = lambda p: ('A' if p.is_new() else 'Z', p.last_name))
+        return sorted(people, key = lambda p: ('A' if p.is_new() else 'Z', unidecode(p.last_name).lower()))
 
     class Meta:
         verbose_name = 'Network List Page'
