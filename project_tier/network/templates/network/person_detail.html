@@ -32,7 +32,7 @@
           <p class="overview"><strong>TIER Fellow, {{ object.fellowship_year }}</strong></p>
         {% endif %}
         {% if object.category == 'project_director' %}
-          <p class="overview"><strong>TIER Project Director</strong></p>
+          <p class="overview"><strong>{% if object.tier_title %}{{ object.tier_title }}{% else %}Project TIER Director{% endif %}</strong></p>
         {% endif %}
         {% if object.category == 'advisory_board' %}
           <p class="overview"><strong>Member of the TIER Advisory Board</strong></p>

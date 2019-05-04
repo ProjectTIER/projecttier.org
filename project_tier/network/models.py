@@ -27,6 +27,7 @@ class Person(models.Model):
     )
     main_job_title = models.CharField(max_length=255, blank=True)
     secondary_job_title = models.CharField(max_length=255, blank=True)
+    tier_title = models.CharField(max_length=255, blank=True)
     affiliation = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
@@ -51,8 +52,8 @@ class Person(models.Model):
 
     CATEGORIES = (
         ('fellow', 'Fellows'),
+        ('project_director', 'Executive Committee'),
         ('advisory_board', 'Advisory Board'),
-        ('project_director', 'Project Directors'),
         ('network_other', 'Network Other')
     )
     category = models.CharField(
@@ -91,6 +92,7 @@ class Person(models.Model):
                 FieldPanel('affiliation'),
                 FieldPanel('main_job_title'),
                 FieldPanel('secondary_job_title'),
+                FieldPanel('tier_title'),
                 FieldPanel('slug'),
             ],
             heading="Basic Person Info"

@@ -21,6 +21,7 @@ class NetworkAdmin(ModelAdmin):
     exclude_from_explorer = False # or True to exclude pages of this type from Wagtail's explorer view
     list_display = ('first_name', 'last_name', 'affiliation', 'category')
     list_filter = ('category',)
-    search_fields = ('first_name', 'last_name', 'affiliation', 'main_job_title', 'academic_title')
+    search_fields = ('first_name', 'last_name', 'affiliation',
+                     'main_job_title', 'secondary_job_title', 'tier_title')
 
 modeladmin_register(NetworkAdmin)
