@@ -9,13 +9,21 @@
       <div class="columns">
         {% breadcrumbs %}
         {% block page_title %}
-          <h1>{{object.first_name}} {{object.last_name}}{% if object.academic_title %}<span class="">, {{ object.academic_title }}</span>{% endif %}</h1>
+          <h1>{{object.first_name}} {{object.last_name}}</h1>
         {% endblock %}
-          {% if object.main_job_title %}
-            <div class="job-titles">{{ object.main_job_title }}</div>
-      {% endif %}
+
+        <div class="job-titles">
+          {% if object.tier_title %}
+            {{ object.tier_title }}
+          {% else %}
+            {% if object.fellowship_year %}TIER Fellow, {{ object.fellowship_year }}{% endif %}
+            {% if object.category == 'project_director' %}Project TIER Director{% endif %}
+            {% if object.category == 'advisory_board' %}Member of the TIER Advisory Board{% endif %}
+          {% endif %}
+        </div>
+
+      </div>
     </div>
-          </div>
   </header>
 {% endblock %}
 
@@ -25,14 +33,11 @@
 
   <div class="row">
     <div class="body-content small-12 medium-7 columns">
-        {% if object.fellowship_year %}
-          <p class="overview"><strong>TIER Fellow, {{ object.fellowship_year }}</strong></p>
+        {% if object.main_job_title %}
+          <p class="overview"><strong>{{ object.main_job_title }}</strong></p>
         {% endif %}
-        {% if object.category == 'project_director' %}
-          <p class="overview"><strong>TIER Project Director</strong></p>
-        {% endif %}
-        {% if object.category == 'advisory_board' %}
-          <p class="overview"><strong>Member of the TIER Advisory Board</strong></p>
+        {% if object.secondary_job_title %}
+          <p class="overview"><strong>{{ object.secondary_job_title }}</strong></p>
         {% endif %}
         {% if object.affiliation %}
           <p class="overview"><strong>{{ object.affiliation }}</strong></p>

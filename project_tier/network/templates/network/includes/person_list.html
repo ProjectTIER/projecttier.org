@@ -14,26 +14,25 @@
 
         {% for person in list %}
 
-          <div class="card">
-            <a href="/person/{{person.slug}}">
-              {% if person.image %}
-                {% image person.image fill-280x280-c100 as photo %}
-                <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+          <a class="card" href="/person/{{person.slug}}">
+            {% if person.image %}
+              {% image person.image fill-280x280-c100 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
 
-              {% else %}
-                <img class="placeholder img-thumbnail" />
+            {% else %}
+              <img class="placeholder img-thumbnail" />
 
-              {% endif %}
-            </a>
+            {% endif %}
 
             <div class="card-divider">
-                <h2>{{ person.first_name }} {{ person.last_name }}{% if person.academic_title %},<span class="academic-title"> {{ person.academic_title }}</span>{% endif %}</h2>
+                <h2>{{ person.first_name }} {{ person.last_name }}</h2>
             </div>
             <div class="card-section">
               <p><strong>{{ person.main_job_title }}</strong></p>
-              <p>{{ person.affiliation }}<p>
+              {% if person.secondary_job_title %}<p><strong>{{ person.secondary_job_title }}</strong></p>{% endif %}
+              <p><strong>{{ person.affiliation }}</strong><p>
             </div>
-          </div>
+          </a>
 
         {% endfor %}
 

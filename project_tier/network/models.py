@@ -1,3 +1,4 @@
+from unidecode import unidecode
 from django.utils import timezone
 from django.db import models
 from django.db.models import F
@@ -20,13 +21,14 @@ class Person(models.Model):
     """
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    academic_title = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(
         help_text="All lowercase, hyphenated name that will appear in the URL."
                   " For example, entering norm-medeiros will result in the URL"
                   " projecttier.org/person/norm-medeiros"
     )
     main_job_title = models.CharField(max_length=255, blank=True)
+    secondary_job_title = models.CharField(max_length=255, blank=True)
+    tier_title = models.CharField(max_length=255, blank=True)
     affiliation = models.CharField(max_length=255, blank=True)
     email = models.EmailField(max_length=255, blank=True)
     phone = models.CharField(max_length=255, blank=True)
@@ -51,8 +53,8 @@ class Person(models.Model):
 
     CATEGORIES = (
         ('fellow', 'Fellows'),
+        ('project_director', 'Executive Committee'),
         ('advisory_board', 'Advisory Board'),
-        ('project_director', 'Project Directors'),
         ('network_other', 'Network Other')
     )
     category = models.CharField(
@@ -88,9 +90,10 @@ class Person(models.Model):
             [
                 FieldPanel('first_name'),
                 FieldPanel('last_name'),
-                FieldPanel('academic_title'),
                 FieldPanel('affiliation'),
                 FieldPanel('main_job_title'),
+                FieldPanel('secondary_job_title'),
+                FieldPanel('tier_title'),
                 FieldPanel('slug'),
             ],
             heading="Basic Person Info"
@@ -225,9 +228,9 @@ class NetworkIndexPage(Page):
 
     @property
     def people(self):
-        people = Person.objects.filter(show_in_network=True).order_by('last_name')
+        people = Person.objects.filter(show_in_network=True)
         # Put new people at the top. Convert is_new to a string that can be ordered.
-        return sorted(people, key = lambda p: ('A' if p.is_new() else 'Z', p.last_name))
+        return sorted(people, key = lambda p: ('A' if p.is_new() else 'Z', unidecode(p.last_name).lower()))
 
     class Meta:
         verbose_name = 'Network List Page'
