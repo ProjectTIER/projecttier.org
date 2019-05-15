@@ -14,6 +14,7 @@ pyvenv.cfg
 pip-selfcheck.json
 *.dump
 *.log
+wagalytics_key.json
 
 .coverage
 .s3cfg
