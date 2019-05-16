@@ -16,9 +16,8 @@
           {% if object.tier_title %}
             {{ object.tier_title }}
           {% else %}
-            {% if object.fellowship_year %}TIER Fellow, {{ object.fellowship_year }}{% endif %}
-            {% if object.category == 'project_director' %}Project TIER Director{% endif %}
-            {% if object.category == 'advisory_board' %}Member of the TIER Advisory Board{% endif %}
+            {{ object.categories.first.tier_title }}
+            {% if object.fellowship_year %}, {{ object.fellowship_year }}{% endif %}
           {% endif %}
         </div>
 

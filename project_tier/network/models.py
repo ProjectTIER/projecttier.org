@@ -132,7 +132,7 @@ class PersonListPage(Page):
     @property
     def fellowship_years(self):
         fellowship_years = {}
-        fellows = Person.objects.filter(category='fellow', show_in_people=True).order_by('last_name')
+        fellows = Person.objects.filter(categories__slug='fellow', show_in_people=True).order_by('last_name')
         for fellow in fellows:
             year = fellow.fellowship_year
             try:
@@ -168,14 +168,14 @@ class PersonListPage(Page):
     @property
     def sections(self):
         sections = []
-        categories = Person.CATEGORIES
+        categories = PersonCategory.objects.all()
         for category in categories:
 
-            if category[0] == 'network_other':
+            if category.slug == 'network_other':
                 continue
 
             # Get people for category
-            people = self.people.filter(category=category[0])
+            people = self.people.filter(categories__slug=category.slug)
             if people:
                 sections.append({
                     "category": category,
@@ -232,6 +232,7 @@ class NetworkIndexPage(Page):
 class PersonCategory(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
+    tier_title = models.CharField(max_length=255, blank=True)
     order = models.IntegerField(
         null=True, blank=True,
         help_text="Lower numbers are shown first. If left blank, it will "
