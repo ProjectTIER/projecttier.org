@@ -1,7 +1,9 @@
 from unidecode import unidecode
+from django import forms
 from django.utils import timezone
 from django.db import models
 from django.db.models import F
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.search import index
@@ -52,18 +54,7 @@ class Person(models.Model):
         help_text="Date this member joined the TIER network. Not publicly "
                   "visible - used to calculate NEW tags.")
 
-    CATEGORIES = (
-        ('fellow', 'Fellows'),
-        ('project_director', 'Executive Committee'),
-        ('advisory_board', 'Advisory Board'),
-        ('network_other', 'Network Other')
-    )
-    category = models.CharField(
-        max_length=255,
-        choices=CATEGORIES,
-        default='network_other',
-        blank=False,
-    )
+    categories = models.ManyToManyField('network.PersonCategory', blank=True)
 
     YEAR_CHOICES = []
     for r in range(2010, (datetime.datetime.now().year+1)):
@@ -118,7 +109,7 @@ class Person(models.Model):
         ),
         MultiFieldPanel(
             [
-                FieldPanel('category'),
+                FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
                 FieldPanel('show_in_network'),
                 FieldPanel('show_in_people'),
                 FieldPanel('fellowship_year'),
@@ -240,6 +231,7 @@ class NetworkIndexPage(Page):
 @register_snippet
 class PersonCategory(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
     order = models.IntegerField(
         null=True, blank=True,
         help_text="Lower numbers are shown first. If left blank, it will "

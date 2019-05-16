@@ -19,8 +19,8 @@ class NetworkAdmin(ModelAdmin):
     menu_order = 200  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = False  # or True to add your model to the Settings sub-menu
     exclude_from_explorer = False # or True to exclude pages of this type from Wagtail's explorer view
-    list_display = ('first_name', 'last_name', 'affiliation', 'category')
-    list_filter = ('category',)
+    list_display = ('first_name', 'last_name', 'affiliation', 'categories')
+    list_filter = ('categories',)
     search_fields = ('first_name', 'last_name', 'affiliation',
                      'main_job_title', 'secondary_job_title', 'tier_title')
 
