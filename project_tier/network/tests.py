@@ -9,8 +9,7 @@ class PersonDetailViewTestCase(TestCase):
         jane_doe = Person.objects.create(
             first_name="Jane",
             last_name="Doe",
-            slug="jane-doe",
-            category="fellow"
+            slug="jane-doe"
         )
 
     def test_get(self):

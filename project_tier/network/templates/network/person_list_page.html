@@ -10,7 +10,7 @@
 
           {% for section in self.sections %}
             <li class="{% if section.category.is_active %}is-active{% endif %}">
-              <a href="#{{section.category.1|slugify}}">{{ section.category.1 }}</a>
+              <a href="#{{section.category.slug}}">{{ section.category.title }}</a>
             </li>
           {% endfor %}
 
@@ -34,17 +34,17 @@
 
        {% for section in self.sections %}
 
-       {% with anchor=section.category.1|slugify %}
+       {% with anchor=section.category.slug %}
          <a id="{{anchor}}" data-magellan-target="{{anchor}}" name="{{anchor}}"></a>
        {% endwith %}
 
-        {% if section.category.0 == "fellow" %}
+        {% if section.category.slug == "fellow" %}
 
           {% include "network/includes/fellows_list.html" %}
 
         {% else %}
 
-          {% include "network/includes/person_list.html" with group=section.category.1 list=section.people %}
+          {% include "network/includes/person_list.html" with group=section.category.title list=section.people %}
 
         {% endif %}
 

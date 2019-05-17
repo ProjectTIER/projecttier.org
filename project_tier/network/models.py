@@ -1,7 +1,9 @@
 from unidecode import unidecode
+from django import forms
 from django.utils import timezone
 from django.db import models
 from django.db.models import F
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.search import index
@@ -13,6 +15,7 @@ from wagtail.admin.edit_handlers import (
     FieldPanel, MultiFieldPanel
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
 
 
 class Person(models.Model):
@@ -51,18 +54,7 @@ class Person(models.Model):
         help_text="Date this member joined the TIER network. Not publicly "
                   "visible - used to calculate NEW tags.")
 
-    CATEGORIES = (
-        ('fellow', 'Fellows'),
-        ('project_director', 'Executive Committee'),
-        ('advisory_board', 'Advisory Board'),
-        ('network_other', 'Network Other')
-    )
-    category = models.CharField(
-        max_length=255,
-        choices=CATEGORIES,
-        default='network_other',
-        blank=False,
-    )
+    categories = models.ManyToManyField('network.PersonCategory', blank=True)
 
     YEAR_CHOICES = []
     for r in range(2010, (datetime.datetime.now().year+1)):
@@ -117,7 +109,7 @@ class Person(models.Model):
         ),
         MultiFieldPanel(
             [
-                FieldPanel('category'),
+                FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
                 FieldPanel('show_in_network'),
                 FieldPanel('show_in_people'),
                 FieldPanel('fellowship_year'),
@@ -140,7 +132,7 @@ class PersonListPage(Page):
     @property
     def fellowship_years(self):
         fellowship_years = {}
-        fellows = Person.objects.filter(category='fellow', show_in_people=True).order_by('last_name')
+        fellows = Person.objects.filter(categories__slug='fellow', show_in_people=True).order_by('last_name')
         for fellow in fellows:
             year = fellow.fellowship_year
             try:
@@ -176,14 +168,14 @@ class PersonListPage(Page):
     @property
     def sections(self):
         sections = []
-        categories = Person.CATEGORIES
+        categories = PersonCategory.objects.all()
         for category in categories:
 
-            if category[0] == 'network_other':
+            if category.slug == 'network_other':
                 continue
 
             # Get people for category
-            people = self.people.filter(category=category[0])
+            people = self.people.filter(categories__slug=category.slug)
             if people:
                 sections.append({
                     "category": category,
@@ -234,3 +226,24 @@ class NetworkIndexPage(Page):
 
     class Meta:
         verbose_name = 'Network List Page'
+
+
+@register_snippet
+class PersonCategory(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    tier_title = models.CharField(max_length=255, blank=True)
+    order = models.IntegerField(
+        null=True, blank=True,
+        help_text="Lower numbers are shown first. If left blank, it will "
+                  "show up at the end."
+    )
+
+    def __str__(self):              # __unicode__ on Python 2
+        # We're returning the string that populates the snippets screen. Note it returns as plain-text
+        return self.title
+
+    class Meta:
+        ordering = ['order', 'title']
+        verbose_name = 'People category'
+        verbose_name_plural = 'People categories'
