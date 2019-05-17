@@ -16,8 +16,7 @@
           {% if object.tier_title %}
             {{ object.tier_title }}
           {% else %}
-            {{ object.categories.first.tier_title }}
-            {% if object.fellowship_year %}, {{ object.fellowship_year }}{% endif %}
+            {{ object.categories.first.tier_title }}{% if object.fellowship_year %}, {{ object.fellowship_year }}{% endif %}
           {% endif %}
         </div>
 
