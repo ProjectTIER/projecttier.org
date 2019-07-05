@@ -31,7 +31,6 @@ ADMINS = []
 
 INSTALLED_APPS = (
     'project_tier.core',
-    'project_tier.links',  # FIXME: unused?
     'project_tier.events',
     'project_tier.home',
     'project_tier.news',
