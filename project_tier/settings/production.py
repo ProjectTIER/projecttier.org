@@ -28,6 +28,7 @@ APP_NAME = env.get('APP_NAME', 'project_tier')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
+PREPEND_WWW = True
 
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
