@@ -166,6 +166,13 @@ class WebcastIndexPage(Page):
         FieldPanel('registration_link'),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+
+        # Add extra variables and return the updated context
+        context['events'] = WebcastPage.objects.child_of(self).live()
+        return context
+
 
 class WebcastPage(Page):
     date = models.DateField("Event date", help_text="The date of the event")

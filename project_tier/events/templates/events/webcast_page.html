@@ -1,0 +1,48 @@
+{% extends "standard_sidebar_layout.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block sidebar %}
+  <div data-sticky-container>
+    <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
+      <nav class="sidebar-nav article-nav">
+        <h3 id="on-this-page">On this page</h3>
+        <ul class="vertical menu" data-magellan data-bar-offset="60">
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#speaker_bio">Speaker Bio</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+{% endblock %}
+
+{% block main_content %}
+<div class="row">
+  <div class="row">
+
+    {% if self.image %}
+      {% image self.image fill-280x280-c100 as photo %}
+      <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+      {% if self.image_credit %}
+        Photo courtesy of: {{ self.image_credit }}
+      {% endif %}
+
+    {% else %}
+      <img class="placeholder img-thumbnail" />
+
+    {% endif %}
+
+    <h1>{{ self.title }}</h1>
+    <h2>{{ self.date }}</h2>
+    <div><a href="/">Register Link - needs logic</a></div>
+    <h2>{{ self.speaker_name }}</h2>
+    <h2 id="abstract">Abstract</h2>
+    {% if self.abstract %}
+      {{ self.abstract|richtext }}
+    {% endif %}
+    <h2 id="speaker_bio">Speaker Bio</h2>
+    {% if self.speaker_bio %}
+      {{ self.speaker_bio|richtext }}
+    {% endif %}
+</div>
+
+{% endblock %}
