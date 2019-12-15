@@ -56,6 +56,12 @@ class HomePage(Page):
     promo_cta_link = models.URLField(blank=True)
     promo_cta_text = models.CharField(max_length=20, blank=True)
 
+    big_cta_show = models.BooleanField(
+        default=True, verbose_name="Show big CTA?")
+    big_cta_text = models.CharField(
+        max_length=200, blank=True, verbose_name="Big CTA text")
+    big_cta_link = models.URLField(blank=True, verbose_name="Big CTA link")
+
     content_panels = Page.content_panels + [
         FieldPanel('headline'),
         PageChooserPanel('featured_index_page', 'standard.StandardIndexPage'),
@@ -70,7 +76,12 @@ class HomePage(Page):
             ImageChooserPanel('promo_image'),
             FieldPanel('promo_cta_link'),
             FieldPanel('promo_cta_text'),
-        ], heading="Promo")
+        ], heading="Promo"),
+        MultiFieldPanel([
+            FieldPanel('big_cta_show'),
+            FieldPanel('big_cta_text'),
+            FieldPanel('big_cta_link'),
+        ], heading="Big CTA"),
     ]
 
     # Only let the root page be a parent

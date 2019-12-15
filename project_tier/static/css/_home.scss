@@ -88,6 +88,28 @@
                 }
             }
         }
+
+        .big-cta {
+            display: block;
+            text-decoration: none;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin-top: 60px;
+            font-family: $header-font-family;
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.9);
+                transform: translateY(-3px);
+                box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+            }
+        }
     }
 
 
