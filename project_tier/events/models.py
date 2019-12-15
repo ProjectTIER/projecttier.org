@@ -8,6 +8,7 @@ from wagtail.admin.edit_handlers import (
     FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
 )
 from wagtail.search import index
+from wagtail.images.edit_handlers import ImageChooserPanel
 from modelcluster.fields import ParentalKey
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -146,3 +147,59 @@ class EventPage(Page):
 
     class Meta:
         verbose_name = "Event"
+
+
+class WebcastIndexPage(Page):
+    intro = RichTextField(blank=True, help_text='An introductory paragraph about the webcast series')
+    registration_link = models.URLField(blank=True, help_text='the Zoom registration url')
+
+    parent_page_types = ['home.HomePage']
+    subpage_types = ['events.WebcastPage']
+
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro')
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        FieldPanel('registration_link'),
+    ]
+
+
+class WebcastPage(Page):
+    date = models.DateField("Event date", help_text="The date of the event")
+    speaker_name = models.CharField(max_length=50, help_text="The name of the speaker")
+    abstract = RichTextField(blank=True, help_text="The abstract of the talk")
+    speaker_bio = RichTextField(blank=True, help_text="The bio of the event speaker")
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    image_credit = models.CharField(max_length=255, blank=True, help_text="Add credit for photo if necessary. Note: add only their name 'Photo courtesy of' is hardcoded")
+
+    parent_page_types = ['WebcastIndexPage']
+    subpage_types = []
+
+    search_fields = Page.search_fields + [
+        index.SearchField('abstract', 'talk_title', 'speaker_name')
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        FieldPanel('speaker_name'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('image'),
+                FieldPanel('image_credit'),
+            ],
+            heading="Person image"
+        ),
+        MultiFieldPanel([
+            FieldPanel('abstract'),
+            FieldPanel('speaker_bio'),
+        ], heading="Description of event"),
+    ]
