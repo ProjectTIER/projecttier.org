@@ -9,15 +9,17 @@
       <div class="row">
         <div class="intro-subtitle small-12 medium-7 columns">
           <h1>
-              Project TIER
-              <span id="intro-subtitle">{{self.headline}}</span>
+            Project TIER
+            <span id="intro-subtitle">{{self.headline}}</span>
           </h1>
+          {% if self.big_cta_show and self.big_cta_text and self.big_cta_link %}
+            <a class="big-cta" href="{{self.big_cta_link}}">{{self.big_cta_text}}</a>
+          {% endif %}
         </div>
-       <!-- <div class="news small-12 medium-4 medium-offset-1 columns"> -->
-       <div class="news columns">
+        <div class="news columns">
           {% block news %}
-          <h2>What's new</h2>
-          {% news_listing %}
+            <h2>What's new</h2>
+            {% news_listing %}
           {% endblock %}
         </div>
       </div>
@@ -29,15 +31,15 @@
           <h2 class="section-title">{{ page.featured_index_page.title }}</h2>
           <div class="section-intro">
             <div class="section-description">{{ page.featured_index_page.specific.listing_abstract }}</div>
-        <div class="section-children">
-          {% for childpage in page.featured_index_page.specific.children|slice:"4" %}
-                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
-        {% endfor %}
-        </div>
+              <div class="section-children">
+                {% for childpage in page.featured_index_page.specific.children|slice:"4" %}
+                  <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
+                {% endfor %}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    {% endif %}
+        </section>
+      {% endif %}
 
     <section class="block-section subfeatured-content">
       <div class="row">
