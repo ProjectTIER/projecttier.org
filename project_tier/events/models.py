@@ -153,7 +153,6 @@ class WebcastIndexPage(Page):
     intro = RichTextField(blank=True, help_text='An introductory paragraph about the webcast series')
     registration_link = models.URLField(blank=True, help_text='the Zoom registration url')
 
-    parent_page_types = ['home.HomePage']
     subpage_types = ['events.WebcastPage']
 
 
