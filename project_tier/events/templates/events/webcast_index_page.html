@@ -2,12 +2,14 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block sidebar %}
-  <div data-sticky-container>
-    <div class="sticky" data-sticky data-sticky-on="large" data-margin-top="3" data-top-anchor="on-this-page:top" data-btm-anchor="main-end:bottom">
+  <div>
+    <div>
       <nav class="sidebar-nav article-nav">
         <h3 id="on-this-page">Agenda</h3>
-        <ul class="vertical menu" data-magellan data-bar-offset="60">
-          <li>Need logic</li>
+        <ul class="vertical menu">
+          {% for event in events %}
+            <li><a href="{{event.url}}">{{event.date|date:"n/j/y"}}: {{event.speaker_name}}</a></li>
+          {% endfor %}
         </ul>
       </nav>
     </div>
@@ -16,21 +18,29 @@
 
 {% block main_content %}
   {% if self.intro %}
-  <div class="row">
+    <div class="row">
       <div class="body-content">
         {{ self.intro|richtext }}
       </div>
-  </div>
-  {% endif %}
-
-  {% if events %}
-    {% for event in events %}
-    <div>
-      <h2>{{event.title}}</h2>
-      <p>add rest of card here</p>
     </div>
-    {% endfor %}
   {% endif %}
 
+  <div class="people cards events materials">
+    {% if events %}
+      {% for event in events %}
+        <a class="card" href="{{event.url}}">
+          {% image event.image fill-280x280-c100 as photo %}
+          <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+          <div class="card-divider">
+            <h2>{{ event.speaker_name }}</h2>
+          </div>
+          <div class="card-section">
+            <p><strong>{{event.date|date:"M jS, Y"}}</strong></p>
+            <p><strong>{{ event.title }}</strong></p>
+          </div>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </div>
 
 {% endblock %}

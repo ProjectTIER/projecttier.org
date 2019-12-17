@@ -1,0 +1,17 @@
+.webcast-intro {
+  display: flex;
+  font-family: $header-font-family;
+  margin-bottom: 60px;
+  &__photo {
+    margin-right: 40px;
+    max-width: 200px;
+  }
+  &__date {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  &__title {
+    margin-bottom: 30px;
+  }
+}
