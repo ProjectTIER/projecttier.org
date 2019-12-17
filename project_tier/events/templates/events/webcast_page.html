@@ -41,12 +41,19 @@
     </div>
 
     <h2 id="abstract">Abstract</h2>
+    <br />
     {% if self.abstract %}
       {{ self.abstract|richtext }}
+    {% else %}
+      <p>No abstract for this talk is currently available. Check back soon!</p>
     {% endif %}
+    <br />
     <h2 id="speaker_bio">Speaker Bio</h2>
+    <br />
     {% if self.speaker_bio %}
       {{ self.speaker_bio|richtext }}
+    {% else %}
+      <p>No bio for this speaker is currently available. Check back soon!</p>
     {% endif %}
 </div>
 
