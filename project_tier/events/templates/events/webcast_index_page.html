@@ -32,10 +32,11 @@
           {% image event.image fill-280x280-c100 as photo %}
           <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
           <div class="card-divider">
-            <h2>{{ event.title }}</h2>
+            <h2>{{ event.speaker_name }}</h2>
           </div>
           <div class="card-section">
-            <p><strong>{{ event.speaker_name }}</strong></p>
+            <p><strong>{{event.date|date:"M jS, Y"}}</strong></p>
+            <p><strong>{{ event.title }}</strong></p>
           </div>
         </a>
       {% endfor %}
