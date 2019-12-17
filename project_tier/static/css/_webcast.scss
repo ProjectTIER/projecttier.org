@@ -6,6 +6,15 @@
     margin-right: 40px;
     max-width: 200px;
   }
+  .img-thumbnail.placeholder {
+    width: auto;
+    height: auto;
+  }
+  .credit {
+    font-family: "Lato", Arial, sans-serif;
+    color: gray;
+    font-size: 10px;
+  }
   &__date {
     font-size: 30px;
     font-weight: bold;
