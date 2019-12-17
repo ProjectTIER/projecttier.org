@@ -29,8 +29,14 @@
     {% if events %}
       {% for event in events %}
         <a class="card" href="{{event.url}}">
-          {% image event.image fill-280x280-c100 as photo %}
-          <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
+
+          {% if event.image %}
+            {% image event.image fill-280x280-c100 as photo %}
+            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="webcast img-thumbnail" />
+          {% else %}
+            <img class="webcast placeholder img-thumbnail" src="/static/img/placeholder-person.png" width="800px" height="800px" alt="placeholder image"/>
+          {% endif %}
+
           <div class="card-divider">
             <h2>{{ event.speaker_name }}</h2>
           </div>
