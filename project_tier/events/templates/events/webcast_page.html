@@ -25,10 +25,10 @@
           {% image self.image fill-280x280-c100 as photo %}
           <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="img-thumbnail" />
           {% if self.image_credit %}
-            Photo courtesy of: {{ self.image_credit }}
+            <span class="credit">Photo courtesy of: {{ self.image_credit }}</span>
           {% endif %}
         {% else %}
-          <img class="placeholder img-thumbnail" src="/static/img/placeholder-person.png" alt="placeholder image"/>
+          <img class="placeholder img-thumbnail" src="/static/img/placeholder-person.png" width="200px" height="200px" alt="placeholder image"/>
         {% endif %}
       </div>
       <div class="webcast-intro__meta">
