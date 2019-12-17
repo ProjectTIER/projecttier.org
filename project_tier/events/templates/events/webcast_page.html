@@ -42,7 +42,7 @@
 
     <h2 id="abstract">Abstract</h2>
     <br />
-    {% if self.abstract %}
+    {% if self.abstract.length %}
       {{ self.abstract|richtext }}
     {% else %}
       <p>No abstract for this talk is currently available. Check back soon!</p>
@@ -50,7 +50,7 @@
     <br />
     <h2 id="speaker_bio">Speaker Bio</h2>
     <br />
-    {% if self.speaker_bio %}
+    {% if self.speaker_bio.length %}
       {{ self.speaker_bio|richtext }}
     {% else %}
       <p>No bio for this speaker is currently available. Check back soon!</p>
