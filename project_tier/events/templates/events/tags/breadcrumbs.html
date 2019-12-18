@@ -1,0 +1,22 @@
+{% load wagtailcore_tags %}
+
+{% if ancestors %}
+  <nav class="breadcrumbs" aria-label="You are here:" role="navigation">
+    <ul>
+      {% for ancestor in ancestors %}
+        <li>
+          {% if forloop.last %}<span class="show-for-sr">Current: </span>{% endif %}
+          <a href="{% pageurl ancestor %}">
+            {% if ancestor.content_type|slugify == "webcast-index-page" %}
+              Webcasts
+            {% elif ancestor.content_type|slugify == "webcast-page" %}
+              {{ ancestor.specific.speaker_name }}
+            {% else %}
+              {{ ancestor }}
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

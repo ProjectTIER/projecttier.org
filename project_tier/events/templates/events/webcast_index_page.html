@@ -1,5 +1,18 @@
 {% extends "standard_sidebar_layout.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags navigation_tags %}
+
+{% block page_banner %}
+  <header class="page-header">
+    <div class="row">
+      <div class="columns">
+        {% webcast_breadcrumbs %}
+        {% block page_title %}
+          <h1>{{self.title}}</h1>
+        {% endblock %}
+      </div>
+    </div>
+  </header>
+{% endblock %}
 
 {% block sidebar %}
   <div>
