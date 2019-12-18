@@ -29,26 +29,27 @@
     <a class="webcast-page big-cta" href="{{ self.registration_link }}" target="_blank">Register Now <i class="fa fa-external-link" aria-hidden="true"></i></a>
   </p>
 
-  <div class="people cards events materials">
+  <div class="webcast people cards events materials">
     {% if events %}
       {% for event in events %}
-        <a class="card" href="{{event.url}}">
+        <div class="outer webcast card">
+          <div class="webcast date">{{event.date|date:"F jS"}}</div>
+          <a class="inner webcast card" href="{{event.url}}">
+            {% if event.image %}
+              {% image event.image fill-280x280-c100 as photo %}
+              <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="webcast img-thumbnail" />
+            {% else %}
+              <img class="webcast placeholder img-thumbnail" src="/static/img/placeholder-person.png" width="800px" height="800px" alt="placeholder image"/>
+            {% endif %}
 
-          {% if event.image %}
-            {% image event.image fill-280x280-c100 as photo %}
-            <img src="{{ photo.url }}" width="{{ photo.width }}" height="{{ photo.height }}" alt="{{ photo.alt }}" class="webcast img-thumbnail" />
-          {% else %}
-            <img class="webcast placeholder img-thumbnail" src="/static/img/placeholder-person.png" width="800px" height="800px" alt="placeholder image"/>
-          {% endif %}
-
-          <div class="card-divider">
-            <h2>{{ event.speaker_name }}</h2>
-          </div>
-          <div class="card-section">
-            <p><strong>{{event.date|date:"M jS, Y"}}</strong></p>
-            <p><strong>{{ event.title }}</strong></p>
-          </div>
-        </a>
+            <div class="card-divider">
+              <h2>{{ event.speaker_name }}</h2>
+            </div>
+            <div class="card-section">
+              <p><strong>{{ event.title }}</strong></p>
+            </div>
+          </a>
+        </div>
       {% endfor %}
     {% endif %}
   </div>
