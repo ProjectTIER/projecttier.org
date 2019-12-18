@@ -128,6 +128,11 @@ def breadcrumbs(context):
     }
 
 
+@register.inclusion_tag('events/tags/breadcrumbs.html', takes_context=True)
+def webcast_breadcrumbs(context):
+    return breadcrumbs(context)
+
+
 @register.inclusion_tag('tags/standard_index_listing.html', takes_context=True)
 def standard_index_listing(context, calling_page):
     pages = calling_page.get_children().live().specific()
