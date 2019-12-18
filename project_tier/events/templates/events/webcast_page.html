@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <h2 id="abstract">Abstract</h2>
+    <h2 id="abstract" data-magellan-target="abstract">Abstract</h2>
     <br />
     {% if self.abstract %}
       {{ self.abstract|richtext }}
@@ -60,7 +60,7 @@
       <p>No abstract for this talk is currently available. Check back soon!</p>
     {% endif %}
     <br />
-    <h2 id="speaker_bio">Speaker Bio</h2>
+    <h2 id="speaker_bio" data-magellan-target="speaker_bio">Speaker Bio</h2>
     <br />
     {% if self.speaker_bio %}
       {{ self.speaker_bio|richtext }}
