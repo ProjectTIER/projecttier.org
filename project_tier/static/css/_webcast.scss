@@ -42,8 +42,35 @@ img.webcast {
   text-align: center;
   transition: 0.2s;
 
+  &.webcast-page {
+    margin: 20px auto 60px;
+  }
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 3px 6px rgba(0,0,0,0.5);
   }
+}
+
+.outer.webcast.card {
+  overflow: visible;
+  border: none;
+  margin-bottom: 50px;
+}
+
+.outer.webcast.card:hover {
+  border: none;
+  box-shadow: none;
+}
+
+.inner.webcast.card {
+  width: 100%;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.webcast.date {
+  font-family: $header-font-family;
+  font-weight: bold;
+  font-size: 20px;
 }

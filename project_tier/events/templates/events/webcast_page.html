@@ -1,5 +1,18 @@
 {% extends "standard_sidebar_layout.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags navigation_tags %}
+
+{% block page_banner %}
+  <header class="page-header">
+    <div class="row">
+      <div class="columns">
+        {% webcast_breadcrumbs %}
+        {% block page_title %}
+          <h1>{{self.speaker_name}}</h1>
+        {% endblock %}
+      </div>
+    </div>
+  </header>
+{% endblock %}
 
 {% block sidebar %}
   <div data-sticky-container>
@@ -16,7 +29,6 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="row">
   <div class="row">
 
     <div class="webcast-intro">
@@ -40,7 +52,7 @@
       </div>
     </div>
 
-    <h2 id="abstract">Abstract</h2>
+    <h2 id="abstract" data-magellan-target="abstract">Abstract</h2>
     <br />
     {% if self.abstract %}
       {{ self.abstract|richtext }}
@@ -48,13 +60,13 @@
       <p>No abstract for this talk is currently available. Check back soon!</p>
     {% endif %}
     <br />
-    <h2 id="speaker_bio">Speaker Bio</h2>
+    <h2 id="speaker_bio" data-magellan-target="speaker_bio">Speaker Bio</h2>
     <br />
     {% if self.speaker_bio %}
       {{ self.speaker_bio|richtext }}
     {% else %}
       <p>No bio for this speaker is currently available. Check back soon!</p>
     {% endif %}
-</div>
 
+  </div>
 {% endblock %}
