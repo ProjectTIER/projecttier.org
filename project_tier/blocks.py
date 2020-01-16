@@ -105,3 +105,14 @@ class BodyBlock(StreamBlock):
     class Meta:
         template = 'blocks/streamfield.html'
         help_text = 'The main page body.'
+
+
+class FlowBlock(ListBlock):
+    # TODO: https://github.com/ProjectTIER/projecttier.org/issues/133
+    # TODO: https://github.com/ProjectTIER/projecttier.org/issues/134
+    pass
+
+
+class PeriodicBlock(ListBlock):
+    # TODO: https://github.com/ProjectTIER/projecttier.org/issues/129
+    pass
