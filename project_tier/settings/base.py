@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'project_tier.exercises',
     'project_tier.course_materials',
     'project_tier.network',
+    'project_tier.specs',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
