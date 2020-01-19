@@ -1,3 +1,9 @@
+@media(max-width: 700px) {
+  .webcast-intro {
+  flex-direction: column;
+  }
+}
+
 .webcast-intro {
   display: flex;
   font-family: $header-font-family;
@@ -21,7 +27,10 @@
     margin-bottom: 20px;
   }
   &__title {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+  }
+  &__mod {
+    color: gray;
   }
 }
 

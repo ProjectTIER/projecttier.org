@@ -176,6 +176,14 @@ class WebcastIndexPage(Page):
 class WebcastPage(Page):
     date = models.DateField("Event date", help_text="The date of the event")
     speaker_name = models.CharField(max_length=50, help_text="The name of the speaker")
+    moderator = models.ForeignKey(
+        'network.Person',
+        on_delete=models.SET_NULL,
+        related_name='+',
+        null=True,
+        blank=True,
+        help_text="The moderator of the talk - TIER network person"
+    )
     abstract = RichTextField(blank=True, help_text="The abstract of the talk")
     speaker_bio = RichTextField(blank=True, help_text="The bio of the event speaker")
     image = models.ForeignKey(
@@ -197,6 +205,7 @@ class WebcastPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('speaker_name'),
+        FieldPanel('moderator'),
         MultiFieldPanel(
             [
                 ImageChooserPanel('image'),
