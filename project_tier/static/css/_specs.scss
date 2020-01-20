@@ -1,0 +1,26 @@
+.filetree {
+  .filetree__level {
+    margin-left: 1em;
+    padding-left: 1em;
+    position: relative;
+    border-left: 1px dotted black;
+    position: relative;
+  }
+  .filetree__item {
+    display: block;
+
+    &--root {}
+    &--folder {}
+    &--file {}
+
+    &::before {
+      content: '';
+      width: 1em;
+      height: 1em;
+      display: block;
+      position: absolute;
+      left: 0;
+      border-bottom: 1px dotted black;
+    }
+  }
+}

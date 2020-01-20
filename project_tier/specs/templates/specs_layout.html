@@ -1,1 +1,41 @@
-{% extends "standard_layout.html" %}
+{% extends "standard_sidebar_layout.html" %}
+
+{% block sidebar %}
+<nav class="filetree">
+  <a class="filetree__item filetree__item--root">(MyProject)</a>
+  <div class="filetree__level">
+    <a class="filetree__item filetree__item--file">ReadMe</a>
+    <a class="filetree__item filetree__item--file">(MyPaper)</a>
+    <a class="filetree__item filetree__item--folder">Data</a>
+    <div class="filetree__level">
+      <a class="filetree__item filetree__item--folder">OriginalData</a>
+      <div class="filetree__level">
+        <a class="filetree__item filetree__item--folder">MetaData</a>
+        <div class="filetree__level">
+          <a class="filetree__item filetree__item--file">MetaDataGuide</a>
+        </div>
+      </div>
+      <a class="filetree__item filetree__item--folder">IntermediateData</a>
+      <a class="filetree__item filetree__item--folder">AnalysisData</a>
+      <div class="filetree__level">
+        <a class="filetree__item filetree__item--file">DataAppendix</a>
+      </div>
+    </div>
+    <a class="filetree__item filetree__item--folder">Scripts</a>
+    <div class="filetree__level">
+      <a class="filetree__item filetree__item--folder">Processing</a>
+      <a class="filetree__item filetree__item--folder">Analysis</a>
+      <a class="filetree__item filetree__item--folder">DataAppendixScripts</a>
+    </div>
+    <a class="filetree__item filetree__item--folder">Output</a>
+    <div class="filetree__level">
+      <a class="filetree__item filetree__item--folder">Results</a>
+      <a class="filetree__item filetree__item--folder">DataAppendixOutput</a>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block main_content %}
+hello
+{% endblock %}
