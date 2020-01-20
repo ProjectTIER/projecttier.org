@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load navigation_tags compress static wagtailuserbar projecttier_tags %}
+{% load navigation_tags compress static wagtailuserbar projecttier_tags wagtailfontawesome %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -34,7 +34,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400,300,400italic,700,700italic,900,900italic,300italic|Roboto+Mono:400,700italic,400italic,700|Playfair+Display:400,700">
     {% compress css %}
-      <link rel="stylesheet" type="text/css" href="{% static 'bower_components/components-font-awesome/css/font-awesome.css' %}">
+      {% fontawesome_css %}
       <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
     {% endcompress %}
     {% block extra_css %}

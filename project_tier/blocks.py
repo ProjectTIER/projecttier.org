@@ -11,6 +11,7 @@ from wagtail.core.blocks import (
     PageChooserBlock,
     CharBlock
 )
+from wagtailfontawesome.blocks import IconBlock
 
 
 class AccordionBlock(StructBlock):
@@ -61,6 +62,35 @@ class CaptionedImageBlock(StructBlock):
         help_text = 'Select an image and add a caption (optional).'
 
 
+class FlowBlock(StructBlock):
+    origin_icon = IconBlock(required=False)
+    origin_title = CharBlock(required=False)
+    icon = IconBlock(required=False)
+    title = CharBlock()
+
+
+class PeriodicBlock(StructBlock):
+    icon = IconBlock(required=False)
+    title = CharBlock()
+    link = CharBlock()
+
+
+class FlowBlockList(ListBlock):
+    def __init__(self, **kwargs):
+        super().__init__(FlowBlock, **kwargs)
+
+    class Meta:
+        icon = 'fa-long-arrow-right'
+
+
+class PeriodicBlockList(ListBlock):
+    def __init__(self, **kwargs):
+        super().__init__(PeriodicBlock, **kwargs)
+
+    class Meta:
+        icon = 'fa-th'
+
+
 class LimitedStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     smaller_heading = TextBlock(
@@ -83,6 +113,8 @@ class ContentStreamBlock(StreamBlock):
     notice = NoticeBlock()
     embed = EmbedBlock(icon="media")
     button = CallToActionButtonBlock()
+    flow_boxes = FlowBlockList()
+    periodic_boxes = PeriodicBlockList()
 
     class Meta:
         template = 'blocks/streamfield.html'
@@ -105,14 +137,3 @@ class BodyBlock(StreamBlock):
     class Meta:
         template = 'blocks/streamfield.html'
         help_text = 'The main page body.'
-
-
-class FlowBlock(ListBlock):
-    # TODO: https://github.com/ProjectTIER/projecttier.org/issues/133
-    # TODO: https://github.com/ProjectTIER/projecttier.org/issues/134
-    pass
-
-
-class PeriodicBlock(ListBlock):
-    # TODO: https://github.com/ProjectTIER/projecttier.org/issues/129
-    pass
