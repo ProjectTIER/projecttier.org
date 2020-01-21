@@ -81,6 +81,7 @@ class FlowBlockList(ListBlock):
 
     class Meta:
         icon = 'fa-long-arrow-right'
+        template = 'blocks/flow_boxes.html'
 
 
 class PeriodicBlockList(ListBlock):
