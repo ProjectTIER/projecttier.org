@@ -62,7 +62,11 @@ class CaptionedImageBlock(StructBlock):
         help_text = 'Select an image and add a caption (optional).'
 
 
-class FlowBlock(StructBlock):
+class SimpleFlowBlock(StructBlock):
+    title = CharBlock()
+
+
+class DetailedFlowBlock(StructBlock):
     origin_icon = IconBlock(required=False)
     origin_title = CharBlock(required=False)
     icon = IconBlock(required=False)
@@ -75,13 +79,22 @@ class PeriodicBlock(StructBlock):
     link = CharBlock()
 
 
-class FlowBlockList(ListBlock):
+class SimpleFlowBlockList(ListBlock):
     def __init__(self, **kwargs):
-        super().__init__(FlowBlock, **kwargs)
+        super().__init__(SimpleFlowBlock, **kwargs)
 
     class Meta:
         icon = 'fa-long-arrow-right'
-        template = 'blocks/flow_boxes.html'
+        template = 'blocks/simple_flow_boxes.html'
+
+
+class DetailedFlowBlockList(ListBlock):
+    def __init__(self, **kwargs):
+        super().__init__(DetailedFlowBlock, **kwargs)
+
+    class Meta:
+        icon = 'fa-long-arrow-right'
+        template = 'blocks/detailed_flow_boxes.html'
 
 
 class PeriodicBlockList(ListBlock):
@@ -114,7 +127,8 @@ class ContentStreamBlock(StreamBlock):
     notice = NoticeBlock()
     embed = EmbedBlock(icon="media")
     button = CallToActionButtonBlock()
-    flow_boxes = FlowBlockList()
+    simple_flow_boxes = SimpleFlowBlockList()
+    detailed_flow_boxes = DetailedFlowBlockList()
     periodic_boxes = PeriodicBlockList()
 
     class Meta:

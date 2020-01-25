@@ -1,0 +1,26 @@
+<div class="flowboxes flowboxes--detailed">
+  {% for item in self %}
+    <div class="flowbox flowbox--detailed">
+      {% if item.origin_icon or item.origin_title %}
+        <div class="flowbox__header">
+          {% if item.origin_icon %}
+            <div class="flowbox__header-icon">
+              <i class="fa {{ item.origin_icon }}" aria-hidden="true"></i>
+            </div>
+          {% endif %}
+          {% if item.origin_title %}
+            <div class="flowbox__header-text">{{ item.origin_title }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="flowbox__body">
+        {% if item.icon %}
+          <div class="flowbox__icon">
+            <i class="fa {{ item.icon }}" aria-hidden="true"></i>
+          </div>
+        {% endif %}
+        <div class="flowbox__text">{{ item.title }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

@@ -27,22 +27,47 @@
 
 .flowboxes {
   display: flex;
-  overflow-x: scroll;
+  // overflow-x: scroll;
   margin: 20px 0;
 }
 
 .flowbox {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-width: 150px;
-  max-width: 250px;
+  max-width: 200px;
   padding: 8px 30px 12px;
   border: 1px solid black;
-  margin-right: 20px;
   position: relative;
+
+  &__header {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    background: white;
+    top: -19px;
+    padding: 0 10px;
+  }
+
+  &__header-icon {
+    padding-right: 6px;
+    font-size: 21px;
+  }
+
+  &__body {
+    display: flex;
+  }
+
+  &__icon {
+    font-size: 40px;
+    padding-right: 20px;
+  }
 }
 
 .flowboxes .flowbox {
+  margin-right: 20px;
+
   &::after {
     content: '';
     font: normal normal normal 14px/1 FontAwesome;
@@ -51,6 +76,7 @@
     font-size: 21px;
     right: -22px;
     transform: translateY(1px);
+    z-index: 1;
   }
 
   &:last-of-type {
@@ -61,21 +87,49 @@
   }
 }
 
+.flowbox--detailed {
+  padding: 25px 20px;
+  border: 2px solid black;
+
+  .flowbox__body {
+    align-items: center;
+  }
+
+  .flowbox__text {
+    font-size: 15px;
+  }
+}
+
+.flowboxes .flowbox--detailed {
+  margin-right: 30px;
+
+  &::after {
+    font-size: 33px;
+    right: -34px;
+  }
+}
+
+
 @media(max-width: 500px) {
   .flowboxes {
     flex-direction: column;
   }
-  .flowbox {
+  .flowboxes .flowbox {
     margin-bottom: 20px;
     margin-right: 0;
-    justify-content: center;
     max-width: none;
     min-width: auto;
+  }
+  .flowboxes .flowbox--detailed {
+    margin-bottom: 42px;
   }
   .flowboxes .flowbox::after {
       content: '';
       left: auto;
       right: auto;
       bottom: -21px;
+  }
+  .flowboxes .flowbox--detailed::after {
+    bottom: -31px;
   }
 }
