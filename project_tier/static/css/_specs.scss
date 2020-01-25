@@ -28,12 +28,14 @@
 .flowboxes {
   display: flex;
   overflow-x: scroll;
+  margin: 20px 0;
 }
 
 .flowbox {
   display: flex;
   align-items: center;
   min-width: 150px;
+  max-width: 250px;
   padding: 8px 30px 12px;
   border: 1px solid black;
   margin-right: 20px;
@@ -66,8 +68,14 @@
   .flowbox {
     margin-bottom: 20px;
     margin-right: 0;
-    &::after {
+    justify-content: center;
+    max-width: none;
+    min-width: auto;
+  }
+  .flowboxes .flowbox::after {
       content: '';
-    }
+      left: auto;
+      right: auto;
+      bottom: -21px;
   }
 }
