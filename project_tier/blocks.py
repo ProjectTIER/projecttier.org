@@ -86,6 +86,11 @@ class SimpleFlowBlockList(ListBlock):
     class Meta:
         icon = 'fa-long-arrow-right'
         template = 'blocks/simple_flow_boxes.html'
+        help_text = """
+                    Displays a flowchart of simple text boxes.
+                    It flows left-to-right and uses 2-4 entries to
+                    show how one idea can lead to the next.
+                    """
 
 
 class DetailedFlowBlockList(ListBlock):
@@ -95,6 +100,11 @@ class DetailedFlowBlockList(ListBlock):
     class Meta:
         icon = 'fa-long-arrow-right'
         template = 'blocks/detailed_flow_boxes.html'
+        help_text = """
+                    Displays a zoomed-in fragment of a flowchart.
+                    It flows left-to-right, and uses 2-3 entries to show a
+                    cause-and-effect within a broader context.
+                    """
 
 
 class PeriodicBlockList(ListBlock):
