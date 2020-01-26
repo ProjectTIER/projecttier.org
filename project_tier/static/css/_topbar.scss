@@ -8,6 +8,7 @@
   svg {
     height: rem-calc(52);
     width: auto;
+    transition: 0.2s;
 
     // * {
     //   filter: drop-shadow( 1px 1px 0px #FFF );
@@ -34,6 +35,11 @@
 }
 body.scrolled .top-bar {
     height: 4.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    #topbar-logo svg {
+      height: rem-calc(40);
+    }
 }
 .top-bar {
   @include breakpoint(large up) {
@@ -44,12 +50,12 @@ body.scrolled .top-bar {
     right: 0;
     background-color: $white;
     padding: 20px 40px;
-    transition: height 0.2s;
+    transition: 0.2s;
     display: flex;
     align-items: center;
     top: 0;
     height: $expanded-topbar-height;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 0px 1px black;
 
       body.scrolled & {
         height: $topbar-height;
@@ -78,7 +84,7 @@ body.scrolled .top-bar {
   > li {
     box-shadow: none;
   @include breakpoint(735){
-    padding: $small-gutter/2 $medium-gutter/8 0;
+    padding: $small-gutter/2 $medium-gutter/8;
   }
   &::before {
     display: none;
@@ -229,4 +235,8 @@ body.scrolled .top-bar {
       display: none;
     }
   }
+}
+
+.is-drilldown {
+  width: 100% !important;
 }

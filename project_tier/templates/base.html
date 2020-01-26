@@ -58,7 +58,7 @@
     {% top_menu parent=site_root calling_page=self %}
     <div id="main-container">
       {% block page_banner %}{% endblock %}
-      {% block content %}{% endblock %}
+      <div class="main-wrap">{% block content %}{% endblock %}</div>
     </div>
     {% include 'includes/main_footer.html' %}
     {% compress js %}

@@ -2,29 +2,31 @@
 {% load wagtailcore_tags homepage_tags news_tags wagtailimages_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block page_banner %}
+  <header class="page-header" id="intro-section">
+    <div class="row">
+      <div class="intro-subtitle small-12 medium-7 columns">
+        <h1>
+          Project TIER
+          <span id="intro-subtitle">{{self.headline}}</span>
+        </h1>
+        {% if self.big_cta_show and self.big_cta_text and self.big_cta_link %}
+          <a class="big-cta" href="{{self.big_cta_link}}">{{self.big_cta_text}}</a>
+        {% endif %}
+      </div>
+      <div class="news columns">
+        {% block news %}
+          <h2>What's new</h2>
+          {% news_listing %}
+        {% endblock %}
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
 {% block content %}
   <div id="home-page">
-
-    <section id="intro-section">
-      <div class="row">
-        <div class="intro-subtitle small-12 medium-7 columns">
-          <h1>
-            Project TIER
-            <span id="intro-subtitle">{{self.headline}}</span>
-          </h1>
-          {% if self.big_cta_show and self.big_cta_text and self.big_cta_link %}
-            <a class="big-cta" href="{{self.big_cta_link}}">{{self.big_cta_text}}</a>
-          {% endif %}
-        </div>
-        <div class="news columns">
-          {% block news %}
-            <h2>What's new</h2>
-            {% news_listing %}
-          {% endblock %}
-        </div>
-      </div>
-    </section>
-
     {% if page.featured_index_page %}
       <section class="block-section featured-index-page">
         <div class="row">
