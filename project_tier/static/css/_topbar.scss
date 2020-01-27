@@ -55,7 +55,11 @@ body.scrolled .top-bar {
     align-items: center;
     top: 0;
     height: $expanded-topbar-height;
-    box-shadow: 0px 10px 0px 1px black;
+    box-shadow: 0px 8px 0px 1px black;
+
+    .template-homepage & {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
 
       body.scrolled & {
         height: $topbar-height;
