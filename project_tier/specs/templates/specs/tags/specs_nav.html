@@ -1,0 +1,14 @@
+{% load projecttier_tags %}
+
+<li>
+  <a class="filetree__item{% if parent == page %} filetree__item--active{% endif %}" href="{{parent.url}}">
+    <i class="fa {{parent.nav_icon}}" aria-hidden="true"></i> {{parent}}
+  </a>
+  {% if children %}
+    <ul>
+      {% for child in children %}
+        {% specs_nav child %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>

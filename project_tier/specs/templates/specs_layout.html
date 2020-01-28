@@ -1,55 +1,12 @@
 {% extends "standard_sidebar_layout.html" %}
+{% load projecttier_tags %}
 
 {% block sidebar %}
-<nav class="filetree">
-  <ul>
-    <li>
-      <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> (MyProject)</a>
-      <ul>
-        <li><a class="filetree__item"><i class="fa fa-file-text" aria-hidden="true"></i> ReadMe</a></li>
-        <li><a class="filetree__item"><i class="fa fa-file-text" aria-hidden="true"></i> (MyPaper)</a></li>
-        <li>
-          <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> Data</a>
-          <ul>
-            <li>
-              <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> OriginalData</a>
-              <ul>
-                <li>
-                  <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> MetaData</a>
-                  <ul>
-                    <li><a class="filetree__item"><i class="fa fa-file-text" aria-hidden="true"></i> MetaDataGuide</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> IntermediateData</a></li>
-            <li>
-              <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> AnalysisData</a>
-              <ul>
-                <li><a class="filetree__item"><i class="fa fa-file-text" aria-hidden="true"></i> DataAppendix</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> Scripts</a>
-          <ul>
-            <li><a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> Processing</a></li>
-            <li><a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> Analysis</a></li>
-            <li><a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> DataAppendixScripts</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> Output</a>
-          <ul>
-            <li><a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> Results</a></li>
-            <li><a class="filetree__item"><i class="fa fa-folder-open" aria-hidden="true"></i> DataAppendixOutput</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <nav class="filetree">
+    <ul>
+      {% specs_nav spec_root_page %}
+    </ul>
+  </nav>
 {% endblock %}
 
 {% block main_content %}
