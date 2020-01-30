@@ -60,7 +60,7 @@
       {% block page_banner %}{% endblock %}
       <div class="main-wrap">{% block content %}{% endblock %}</div>
     </div>
-    {% include 'includes/main_footer.html' %}
+    {% block site_footer %}{% include 'includes/main_footer.html' %}{% endblock%}
     {% compress js %}
       <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
       <script src="{% static 'bower_components/foundation-sites/dist/foundation.js' %}" type="text/javascript" charset="utf-8"></script>

@@ -1,6 +1,9 @@
 {% extends "standard_sidebar_layout.html" %}
 {% load projecttier_tags %}
 
+{% block body_class %}specs-section{% endblock %}
+{% block page_banner %}{% endblock %}
+
 {% block sidebar %}
   <nav class="filetree">
     <ul>
@@ -10,5 +13,20 @@
 {% endblock %}
 
 {% block main_content %}
+  {% if page.get_children %}
+    <div class="specs-header">
+      <h1><i class="fa {{page.nav_icon}}" aria-hidden="true"></i> {{page.title}}</h1>
+      <div class="specs-header__subfiles">
+        {% for child in page.get_children.specific %}
+          <div class="specs-header__subfile">
+            <i class="fa {{child.nav_icon}}" aria-hidden="true"></i>
+            <a href="{{child.url}}">{{child.title}}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <h1><i class="fa {{page.nav_icon}}" aria-hidden="true"></i> {{page.title}}</h1>
+  {% endif %}
   {{page.body}}
 {% endblock %}

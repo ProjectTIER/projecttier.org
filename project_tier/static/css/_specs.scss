@@ -1,3 +1,11 @@
+body.specs-section {
+  background: #fefefe;
+}
+
+body.specs-section .main-wrap {
+  padding-top: 30px;
+}
+
 .filetree {
   padding: 30px 20px;
 
@@ -170,4 +178,36 @@
   .flowboxes .flowbox--detailed::after {
     bottom: -31px;
   }
+}
+
+.specs-header {
+  border: 2px solid black;
+  margin-top: 40px;
+}
+
+.specs-header h1 {
+  background: white;
+  display: inline-block;
+  padding: 0 20px;
+  margin-top: -40px;
+  margin-left: 20px;
+}
+
+.specs-header__subfiles {
+  display: flex;
+  flex-wrap: flex;
+  padding: 20px;
+}
+
+.specs-header__subfile {
+  padding: 20px;
+  font-size: 19px;
+}
+
+.specs-header__subfile i.fa {
+  margin-right: 5px;
+}
+
+.specs-header__subfile a {
+  color: #a32428;
 }
