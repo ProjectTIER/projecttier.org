@@ -37,6 +37,10 @@
     <h1><i class="fa {{page.nav_icon}}" aria-hidden="true"></i> {{page.title}}</h1>
   {% endif %}
   <div class="specs-body">{{page.body}}</div>
-  {% if prev %}<div>Previous: <a href="{{prev.url}}">{{prev}}</a></div>{% endif %}
-  {% if next %}<div>Next: <a href="{{next.url}}">{{next}}</a></div>{% endif %}
+  {% if prev or next %}
+    <div class="specs-pagination">
+      {% if prev %}<a href="{{prev.url}}"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous <div class="specs-pagination__page"><i class="fa {{prev.nav_icon}}" aria-hidden="true"></i> {{prev}}</div></a>{% endif %}
+      {% if next %}<a href="{{next.url}}">Next <i class="fa fa-angle-right" aria-hidden="true"></i> <div class="specs-pagination__page"><i class="fa {{next.nav_icon}}" aria-hidden="true"></i> {{next}}</div></a>{% endif %}
+    </div>
+  {% endif %}
 {% endblock %}

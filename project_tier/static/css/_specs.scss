@@ -226,3 +226,19 @@ body.specs-section .main-wrap {
     max-width: 575px;
   }
 }
+
+.specs-pagination {
+  display: flex;
+  margin-top: 60px;
+}
+
+.specs-pagination > a {
+  border: 1px solid rgba(0,0,0,0.7);
+  padding: 20px;
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-right: 20px;
+}
+
+.specs-pagination__page {}

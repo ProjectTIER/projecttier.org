@@ -17,8 +17,8 @@ class SpecsPage(Page):
         context['spec_root_page'] = FolderPage.objects.filter(page_ptr__in=self.get_ancestors(inclusive=True)).order_by('page_ptr__depth').first()
 
         # FIXME: These don't work right yet
-        context['next'] = self.get_children().first() or self.get_siblings().first()
-        context['prev'] = self.get_siblings().first() or self.get_parent()
+        context['next'] = self.get_children().specific().first() or self.get_siblings().specific().first()
+        context['prev'] = self.get_siblings().specific().first() or self.get_parent().specific()
         return context
 
     class Meta:
