@@ -1,4 +1,4 @@
-#home-page {
+.template-homepage {
     .block-section {
         h2 {
             display: inline-block;
@@ -18,12 +18,7 @@
     INTRO
     ========================================================================== */
     #intro-section {
-        background-color: $red;
         color: $white;
-        //background-color: #EAEAEA;
-        background-image: url('../img/bg-image-15.png');
-        //padding: $large-gutter 0;
-        background-size: 60px;
         @include breakpoint(medium up){
             padding: $large-gutter*2 0;
         }
@@ -238,6 +233,7 @@
         background: $dark-grey;
         border-top: 12px solid $grey;
         color: $white;
+        padding-bottom: 50px;
         * {
             color: $white;
         }
@@ -250,6 +246,7 @@
             display: block;
         }
         background: white;
+        padding-bottom: 50px;
         h2 {
             font-size: 1.25rem;
             border-bottom: 3px solid #ddd;

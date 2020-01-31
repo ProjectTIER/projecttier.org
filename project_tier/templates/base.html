@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load navigation_tags compress static wagtailuserbar projecttier_tags %}
+{% load navigation_tags compress static wagtailuserbar projecttier_tags wagtailfontawesome %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -32,9 +32,9 @@
     <meta name="msapplication-config" content="{% static 'icons/browserconfig.xml' %}">
     <meta name="theme-color" content="#a32428">
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400,300,400italic,700,700italic,900,900italic,300italic|Roboto+Mono:400,700italic,400italic,700|Playfair+Display:400,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Titillium+Web:400,300,400italic,700,700italic,900,900italic,300italic|Roboto+Mono:400,700italic,400italic,700|Playfair+Display:400,700">
     {% compress css %}
-      <link rel="stylesheet" type="text/css" href="{% static 'bower_components/components-font-awesome/css/font-awesome.css' %}">
+      {% fontawesome_css %}
       <link rel="stylesheet" type="text/x-scss" href="{% static 'css/main.scss' %}">
     {% endcompress %}
     {% block extra_css %}
@@ -58,9 +58,9 @@
     {% top_menu parent=site_root calling_page=self %}
     <div id="main-container">
       {% block page_banner %}{% endblock %}
-      {% block content %}{% endblock %}
+      <div class="main-wrap">{% block content %}{% endblock %}</div>
     </div>
-    {% include 'includes/main_footer.html' %}
+    {% block site_footer %}{% include 'includes/main_footer.html' %}{% endblock%}
     {% compress js %}
       <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}" type="text/javascript" charset="utf-8"></script>
       <script src="{% static 'bower_components/foundation-sites/dist/foundation.js' %}" type="text/javascript" charset="utf-8"></script>

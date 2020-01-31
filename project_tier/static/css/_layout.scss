@@ -1,7 +1,6 @@
 #main-container {
-  background: white;
   @include breakpoint(large up) {
-    padding-top: $expanded-topbar-height;
+    margin-top: $expanded-topbar-height;
   }
 }
 
@@ -11,14 +10,18 @@ main {
   }
 }
 
+.main-wrap {
+  background: white;
+}
+
 body {
   background: $white;
-}
-.page-header {
-    border-top: 10px solid #222;
   background-color: $red;
   background-image: url('../img/bg-image-15.png');
   background-size: 60px;
+}
+.page-header {
+  border-top: 10px solid transparent;
   color: $white;
   padding: $small-gutter/2 0;
   @include breakpoint(medium up){

@@ -11,6 +11,7 @@ from wagtail.core.blocks import (
     PageChooserBlock,
     CharBlock
 )
+from wagtailfontawesome.blocks import IconBlock
 
 
 class AccordionBlock(StructBlock):
@@ -61,6 +62,59 @@ class CaptionedImageBlock(StructBlock):
         help_text = 'Select an image and add a caption (optional).'
 
 
+class SimpleFlowBlock(StructBlock):
+    title = CharBlock()
+
+
+class DetailedFlowBlock(StructBlock):
+    origin_icon = IconBlock(required=False)
+    origin_title = CharBlock(required=False)
+    icon = IconBlock(required=False)
+    title = CharBlock()
+
+
+class PeriodicBlock(StructBlock):
+    icon = IconBlock(required=False)
+    title = CharBlock()
+    link = CharBlock()
+
+
+class SimpleFlowBlockList(ListBlock):
+    def __init__(self, **kwargs):
+        super().__init__(SimpleFlowBlock, **kwargs)
+
+    class Meta:
+        icon = 'fa-long-arrow-right'
+        template = 'blocks/simple_flow_boxes.html'
+        help_text = """
+                    Displays a flowchart of simple text boxes.
+                    It flows left-to-right and uses 2-4 entries to
+                    show how one idea can lead to the next.
+                    """
+
+
+class DetailedFlowBlockList(ListBlock):
+    def __init__(self, **kwargs):
+        super().__init__(DetailedFlowBlock, **kwargs)
+
+    class Meta:
+        icon = 'fa-long-arrow-right'
+        template = 'blocks/detailed_flow_boxes.html'
+        help_text = """
+                    Displays a zoomed-in fragment of a flowchart.
+                    It flows left-to-right, and uses 2-3 entries to show a
+                    cause-and-effect within a broader context.
+                    """
+
+
+class PeriodicBlockList(ListBlock):
+    def __init__(self, **kwargs):
+        super().__init__(PeriodicBlock, **kwargs)
+
+    class Meta:
+        icon = 'fa-th'
+
+
 class LimitedStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     smaller_heading = TextBlock(
@@ -83,6 +137,9 @@ class ContentStreamBlock(StreamBlock):
     notice = NoticeBlock()
     embed = EmbedBlock(icon="media")
     button = CallToActionButtonBlock()
+    simple_flow_boxes = SimpleFlowBlockList()
+    detailed_flow_boxes = DetailedFlowBlockList()
+    periodic_boxes = PeriodicBlockList()
 
     class Meta:
         template = 'blocks/streamfield.html'

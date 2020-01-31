@@ -1,0 +1,46 @@
+{% extends "standard_sidebar_layout.html" %}
+{% load projecttier_tags %}
+
+{% block body_class %}specs-section{% endblock %}
+{% block page_banner %}{% endblock %}
+
+{% block sidebar %}
+  {% with landing=spec_root_page.get_parent %}
+    <nav class="sidebar-nav section-nav">
+      <!-- <h3>In this section</h3> -->
+      <ul class="vertical menu">
+        <li><a href="{{landing.url}}">{{landing.title}}</a></li>
+      </ul>
+    </nav>
+  {% endwith %}
+  <nav class="filetree">
+    <ul>
+      {% specs_nav spec_root_page %}
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block main_content %}
+  {% if page.get_children %}
+    <div class="specs-header">
+      <h1><i class="fa {{page.nav_icon}}" aria-hidden="true"></i> {{page.title}}</h1>
+      <div class="specs-header__subfiles">
+        {% for child in page.get_children.specific %}
+          <div class="specs-header__subfile">
+            <i class="fa {{child.nav_icon}}" aria-hidden="true"></i>
+            <a href="{{child.url}}">{{child.title}}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <h1><i class="fa {{page.nav_icon}}" aria-hidden="true"></i> {{page.title}}</h1>
+  {% endif %}
+  <div class="specs-body">{{page.body}}</div>
+  {% if prev or next %}
+    <div class="specs-pagination">
+      {% if prev %}<a href="{{prev.url}}"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous <div class="specs-pagination__page"><i class="fa {{prev.nav_icon}}" aria-hidden="true"></i> {{prev}}</div></a>{% endif %}
+      {% if next %}<a href="{{next.url}}">Next <i class="fa fa-angle-right" aria-hidden="true"></i> <div class="specs-pagination__page"><i class="fa {{next.nav_icon}}" aria-hidden="true"></i> {{next}}</div></a>{% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
