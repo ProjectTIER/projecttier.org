@@ -15,6 +15,10 @@ class SpecsPage(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['spec_root_page'] = FolderPage.objects.filter(page_ptr__in=self.get_ancestors(inclusive=True)).order_by('page_ptr__depth').first()
+
+        # FIXME: These don't work right yet
+        context['next'] = self.get_children().first() or self.get_siblings().first()
+        context['prev'] = self.get_siblings().first() or self.get_parent()
         return context
 
     class Meta:
@@ -46,3 +50,8 @@ class OptionalFilePage(SpecsPage):
 class SpecsLandingPage(SpecsPage):
     """Landing page for specifications"""
     body = StreamField(ContentStreamBlock())
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['spec_root_page'] = self.get_children().specific().first()
+        return context

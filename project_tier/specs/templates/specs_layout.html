@@ -5,6 +5,14 @@
 {% block page_banner %}{% endblock %}
 
 {% block sidebar %}
+  {% with landing=spec_root_page.get_parent %}
+    <nav class="sidebar-nav section-nav">
+      <!-- <h3>In this section</h3> -->
+      <ul class="vertical menu">
+        <li><a href="{{landing.url}}">{{landing.title}}</a></li>
+      </ul>
+    </nav>
+  {% endwith %}
   <nav class="filetree">
     <ul>
       {% specs_nav spec_root_page %}
@@ -28,5 +36,7 @@
   {% else %}
     <h1><i class="fa {{page.nav_icon}}" aria-hidden="true"></i> {{page.title}}</h1>
   {% endif %}
-  {{page.body}}
+  <div class="specs-body">{{page.body}}</div>
+  {% if prev %}<div>Previous: <a href="{{prev.url}}">{{prev}}</a></div>{% endif %}
+  {% if next %}<div>Next: <a href="{{next.url}}">{{next}}</a></div>{% endif %}
 {% endblock %}
