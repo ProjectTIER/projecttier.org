@@ -46,6 +46,7 @@
       <div class="webcast-intro__meta">
         <div class="webcast-intro__date">{{ self.date|date:"M jS, Y" }}: {{ self.speaker_name }}</div>
         <h4><div class="webcast-intro__title">{{ self.title }}</div></h4>
+        <p><div class="webcast-intro__mod">Moderated by: <a href="/person/{{self.moderator.slug}}">{{ self.moderator }}</a></div></p>
         <div class="webcast-intro__register">
           <a class="button" href="{{self.get_parent.specific.registration_link}}" target="_blank">Register Now <i class="fa fa-external-link" aria-hidden="true"></i></a>
         </div>
