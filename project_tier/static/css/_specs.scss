@@ -66,8 +66,11 @@ body.specs-section .main-wrap {
   }
 
   a {
-    color: black;
     text-decoration: none;
+
+    i.fa {
+      color: black;
+    }
   }
 }
 
@@ -196,7 +199,7 @@ body.specs-section .main-wrap {
 .specs-header__subfiles {
   display: flex;
   flex-wrap: flex;
-  padding: 20px;
+  padding: 10px 20px 20px 20px
 }
 
 .specs-header__subfile {
@@ -210,4 +213,16 @@ body.specs-section .main-wrap {
 
 .specs-header__subfile a {
   color: #a32428;
+}
+
+.specs-body {
+  margin: 60px 0 0 20px;
+  font-size: 19px;
+
+  p {
+    margin: 20px 0;
+    font-size: 19px;
+    line-height: 1.75;
+    max-width: 575px;
+  }
 }
