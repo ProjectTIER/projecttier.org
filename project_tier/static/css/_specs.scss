@@ -216,20 +216,48 @@ body.specs-section .main-wrap {
 }
 
 .specs-body {
-  margin: 60px 0 0 20px;
+  margin-top: 60px;
   font-size: 19px;
 
   p {
     margin: 20px 0;
     font-size: 19px;
     line-height: 1.75;
+  }
+
+  p, ul {
     max-width: 575px;
   }
+
+  h3, h4, h5, h6 {
+    font-family: 'Titillium Web', sans-serif;
+  }
+
+  h3 {
+    margin: 100px 0 20px 0;
+    font-size: 32px;
+  }
+
+  h3:first-child {
+    margin-top: 40px;
+  }
+
+  ul > li {
+    list-style-type: square;
+    margin: 20px 0 20px 20px;
+    &::before { display: none; }
+    &::marker { color: #1d7ac9; }
+  }
+}
+
+.specs-header + .specs-body {
+  margin-left: 20px;
 }
 
 .specs-pagination {
   display: flex;
   margin-top: 60px;
+  margin-bottom: 40px;
 }
 
 .specs-pagination > a {
@@ -239,6 +267,19 @@ body.specs-section .main-wrap {
   text-decoration: none;
   color: black;
   margin-right: 20px;
+  min-width: 200px;
 }
 
 .specs-pagination__page {}
+
+body.specs-section {
+  #main-container {
+    margin: 0;
+  }
+  #work {
+    display: none !important;
+  }
+  .title-bar {
+    display: block !important;
+  }
+}
