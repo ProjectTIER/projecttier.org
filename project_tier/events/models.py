@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from datetime import date
 from django.db import models
 from django.http import HttpResponse
+from django.utils.timezone import now
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import (
@@ -174,7 +175,7 @@ class WebcastIndexPage(Page):
 
 
 class WebcastPage(Page):
-    date = models.DateField("Event date", help_text="The date of the event")
+    date = models.DateTimeField("Event time", help_text="The time of the event")
     speaker_name = models.CharField(max_length=50, help_text="The name of the speaker")
     moderator = models.ForeignKey(
         'network.Person',
@@ -194,6 +195,10 @@ class WebcastPage(Page):
         related_name='+'
     )
     image_credit = models.CharField(max_length=255, blank=True, help_text="Add credit for photo if necessary. Note: add only their name 'Photo courtesy of' is hardcoded")
+    video_url = models.CharField(max_length=255, blank=True)
+
+    def status(self):
+        return 'upcoming' if self.date > now() else 'ended'
 
     parent_page_types = ['WebcastIndexPage']
     subpage_types = []
@@ -216,5 +221,6 @@ class WebcastPage(Page):
         MultiFieldPanel([
             FieldPanel('abstract'),
             FieldPanel('speaker_bio'),
+            FieldPanel('video_url'),
         ], heading="Description of event"),
     ]

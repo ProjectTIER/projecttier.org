@@ -1,5 +1,5 @@
 {% extends "standard_sidebar_layout.html" %}
-{% load wagtailcore_tags wagtailimages_tags navigation_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags navigation_tags %}
 
 {% block page_banner %}
   <header class="page-header">
@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block main_content %}
-  <div class="row">
+  <div class="row webcast--{{ self.status }}">
 
     <div class="webcast-intro">
       <div class="webcast-intro__photo">
@@ -47,11 +47,19 @@
         <div class="webcast-intro__date">{{ self.date|date:"M jS, Y" }}: {{ self.speaker_name }}</div>
         <h4><div class="webcast-intro__title">{{ self.title }}</div></h4>
         <p><div class="webcast-intro__mod">Moderated by: <a href="/person/{{self.moderator.slug}}">{{ self.moderator }}</a></div></p>
-        <div class="webcast-intro__register">
-          <a class="button" href="{{self.get_parent.specific.registration_link}}" target="_blank">Register Now <i class="fa fa-external-link" aria-hidden="true"></i></a>
-        </div>
+        {% if self.status == 'upcoming' %}
+          <div class="webcast-intro__register">
+            <a class="button" href="{{self.get_parent.specific.registration_link}}" target="_blank">Register Now <i class="fa fa-external-link" aria-hidden="true"></i></a>
+          </div>
+        {% endif %}
       </div>
     </div>
+
+    {% if self.video_url %}
+      <div class="webcast-intro__video">
+        {% embed self.video_url %}
+      </div>
+    {% endif %}
 
     <h2 id="abstract" data-magellan-target="abstract">Abstract</h2>
     <br />
