@@ -1,0 +1,15 @@
+<div class="periodic_boxes">
+  {% for item in self %}
+    {% if item.link %}<a href="item.link.url">{% endif %}
+      <div class="periodic_box">
+        <div class="periodic_box__number">1</div>
+        {% if item.icon %}
+          <div class="periodic_box__icon">
+            <i class="fa {{ item.icon }}" aria-hidden="true"></i>
+          </div>
+        {% endif %}
+        <div class="periodic_box__title">{{ item.title }}</div>
+      </div>
+    {% if item.link %}</a>{% endif %}
+  {% endfor %}
+</div>

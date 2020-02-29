@@ -76,7 +76,11 @@ class DetailedFlowBlock(StructBlock):
 class PeriodicBlock(StructBlock):
     icon = IconBlock(required=False)
     title = CharBlock()
-    link = CharBlock()
+    link = CharBlock(required=False)
+
+    # class Meta:
+        # icon = 'fa-image'
+        # template = 'blocks/periodic_boxes.html'
 
 
 class SimpleFlowBlockList(ListBlock):
@@ -113,6 +117,7 @@ class PeriodicBlockList(ListBlock):
 
     class Meta:
         icon = 'fa-th'
+        template = 'blocks/periodic_boxes.html'
 
 
 class LimitedStreamBlock(StreamBlock):
