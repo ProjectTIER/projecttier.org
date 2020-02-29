@@ -47,3 +47,15 @@
     </div>
   {% endif %}
 {% endblock %}
+
+
+{% block extra_js %}
+  <script>
+    $("#work").hide();
+    $(".mobile-menu").click(function() {
+      if (Foundation.MediaQuery.atLeast("large")) {
+        $("#work").toggle();
+      }
+    });
+  </script>
+{% endblock %}

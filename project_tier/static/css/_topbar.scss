@@ -34,14 +34,16 @@
     }
 }
 body.scrolled .top-bar {
+  @include breakpoint(large up) {
     height: 4.75rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
     #topbar-logo svg {
       height: rem-calc(40);
     }
+  }
 }
-.top-bar {
+body:not(.specs-section) .top-bar {
   @include breakpoint(large up) {
     position: fixed;
     z-index: 3;
