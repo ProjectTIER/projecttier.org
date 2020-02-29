@@ -76,7 +76,7 @@ class DetailedFlowBlock(StructBlock):
 class PeriodicBlock(StructBlock):
     icon = IconBlock(required=False)
     title = CharBlock()
-    link = CharBlock()
+    link = CharBlock(required=False)
 
 
 class SimpleFlowBlockList(ListBlock):
@@ -113,6 +113,12 @@ class PeriodicBlockList(ListBlock):
 
     class Meta:
         icon = 'fa-th'
+        template = 'blocks/periodic_boxes.html'
+        help_text = """
+                    Displays a series of numbered boxes, flowing left to right.
+                    If you include an icon, only one short line of text fits.
+                    Fit more text with no icon.
+                    """
 
 
 class LimitedStreamBlock(StreamBlock):
