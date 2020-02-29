@@ -78,10 +78,6 @@ class PeriodicBlock(StructBlock):
     title = CharBlock()
     link = CharBlock(required=False)
 
-    # class Meta:
-        # icon = 'fa-image'
-        # template = 'blocks/periodic_boxes.html'
-
 
 class SimpleFlowBlockList(ListBlock):
     def __init__(self, **kwargs):
@@ -118,6 +114,11 @@ class PeriodicBlockList(ListBlock):
     class Meta:
         icon = 'fa-th'
         template = 'blocks/periodic_boxes.html'
+        help_text = """
+                    Displays a series of numbered boxes, flowing left to right.
+                    If you include an icon, only one short line of text fits.
+                    Fit more text with no icon.
+                    """
 
 
 class LimitedStreamBlock(StreamBlock):
