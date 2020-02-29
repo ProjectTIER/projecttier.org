@@ -138,7 +138,6 @@ ul.accordion {
 .periodic_boxes {
   display: flex;
   max-width: 800px;
-  // justify-content: space-between;
   flex-wrap: wrap;
   a {
     color: black;
@@ -167,7 +166,5 @@ ul.accordion {
     }
     &__title {
     }
-
   }
-
 }
