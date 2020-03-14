@@ -13,7 +13,7 @@
       <!-- <h3>In this section</h3> -->
       <ul class="vertical menu">
         <li><a href="{{landing.url}}">{{landing.title}}</a></li>
-      </ul>
+        </ul>
     </nav>
   {% endwith %}
   <nav class="filetree">
@@ -21,6 +21,22 @@
       {% specs_nav spec_root_page %}
     </ul>
   </nav>
+  {% if self.protocol_3 or  self.protocol_2 or self.protocol_1 %}
+  <nav class="sidebar-nav section-nav protocol-links">
+    <!-- <h3>In this section</h3> -->
+    <ul class="vertical menu">
+      {% if self.protocol_2 %}
+        <li><a href="{{self.protocol_2}}">TIER Protocol V 3.0</a></li>
+      {% endif %}
+      {% if self.protocol_2 %}
+        <li><a href="{{self.protocol_2}}">TIER Protocol V 2.0</a></li>
+      {% endif %}
+      {% if self.protocol_1 %}
+        <li><a href="{{self.protocol_1}}">TIER Protocol V 1.0</a></li>
+      {% endif %}
+      </ul>
+  </nav>
+  {% endif %}
 {% endblock %}
 
 {% block main_content %}

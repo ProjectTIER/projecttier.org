@@ -1,7 +1,7 @@
 from django.db import models
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
-from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 
 from project_tier.blocks import ContentStreamBlock
 
@@ -50,6 +50,16 @@ class OptionalFilePage(SpecsPage):
 class SpecsLandingPage(SpecsPage):
     """Landing page for specifications"""
     body = StreamField(ContentStreamBlock())
+    protocol_3 = models.URLField(blank=True, help_text='The link to TIER Protocol Specs v 1')
+    protocol_2 = models.URLField(blank=True, help_text='The link to TIER Protocol Specs v 1')
+    protocol_1 = models.URLField(blank=True, help_text='The link to TIER Protocol Specs v 1')
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+        FieldPanel('protocol_3'),
+        FieldPanel('protocol_2'),
+        FieldPanel('protocol_1'),
+    ]
 
     def get_context(self, request):
         context = super().get_context(request)
