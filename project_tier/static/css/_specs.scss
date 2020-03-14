@@ -277,10 +277,10 @@ body.specs-section {
   #main-container {
     margin: 0;
   }
-  #work {
-    display: none !important;
-  }
   .title-bar {
     display: block !important;
+  }
+  #work #topbar-logo {
+    display: none;
   }
 }
