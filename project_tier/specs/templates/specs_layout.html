@@ -21,21 +21,15 @@
       {% specs_nav spec_root_page %}
     </ul>
   </nav>
-  {% if self.protocol_3 or  self.protocol_2 or self.protocol_1 %}
-  <nav class="sidebar-nav section-nav protocol-links">
-    <!-- <h3>In this section</h3> -->
-    <ul class="vertical menu">
-      {% if self.protocol_2 %}
-        <li><a href="{{self.protocol_2}}">TIER Protocol V 3.0</a></li>
-      {% endif %}
-      {% if self.protocol_2 %}
-        <li><a href="{{self.protocol_2}}">TIER Protocol V 2.0</a></li>
-      {% endif %}
-      {% if self.protocol_1 %}
-        <li><a href="{{self.protocol_1}}">TIER Protocol V 1.0</a></li>
-      {% endif %}
+  {% if specs_landing_page.protocols %}
+    <nav class="sidebar-nav section-nav protocol-links">
+      <h3>Past versions</h3>
+      <ul class="vertical menu">
+        {% for protocol in specs_landing_page.protocols %}
+          <li><a href="{{protocol.value.link}}">{{protocol.value.version}}</a></li>
+        {% endfor %}
       </ul>
-  </nav>
+    </nav>
   {% endif %}
 {% endblock %}
 

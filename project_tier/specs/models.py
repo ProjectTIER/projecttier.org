@@ -2,6 +2,7 @@ from django.db import models
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail.core.blocks import StructBlock, URLBlock, CharBlock
 
 from project_tier.blocks import ContentStreamBlock
 
@@ -14,7 +15,8 @@ class SpecsPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['spec_root_page'] = FolderPage.objects.filter(page_ptr__in=self.get_ancestors(inclusive=True)).order_by('page_ptr__depth').first()
+        context['specs_landing_page'] = SpecsLandingPage.objects.filter(page_ptr__in=self.get_ancestors(inclusive=True)).order_by('page_ptr__depth').specific().first()
+        context['spec_root_page'] = context['specs_landing_page'].get_children().specific().first()
 
         # FIXME: These don't work right yet
         context['next'] = self.get_children().specific().first() or self.get_siblings().specific().first()
@@ -50,15 +52,17 @@ class OptionalFilePage(SpecsPage):
 class SpecsLandingPage(SpecsPage):
     """Landing page for specifications"""
     body = StreamField(ContentStreamBlock())
-    protocol_3 = models.URLField(blank=True, help_text='The link to TIER Protocol Specs v 1')
-    protocol_2 = models.URLField(blank=True, help_text='The link to TIER Protocol Specs v 1')
-    protocol_1 = models.URLField(blank=True, help_text='The link to TIER Protocol Specs v 1')
+
+    protocols = StreamField([
+        ('protocol', StructBlock([
+            ('version', CharBlock(help_text='The protocol version, such as v4.0')),
+            ('link', URLBlock(help_text='Link to that version.')),
+        ]))
+    ], blank=True)
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
-        FieldPanel('protocol_3'),
-        FieldPanel('protocol_2'),
-        FieldPanel('protocol_1'),
+        StreamFieldPanel('protocols'),
     ]
 
     def get_context(self, request):
