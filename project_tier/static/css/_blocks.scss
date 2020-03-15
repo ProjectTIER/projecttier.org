@@ -164,7 +164,32 @@ ul.accordion {
         margin-bottom: 10px;
       }
     }
-    &__title {
+  }
+}
+
+@media(max-width: 400px) {
+  .periodic_boxes {
+    .periodic_box {
+      padding: 5px;
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      &__content {
+        margin: 0 auto;
+        padding: 0 2px;
+        display: flex;
+        font-size: 16px;
+      }
+      &__icon {
+        i.fa {
+          font-size: 36px;
+          margin: 3px;
+          margin-bottom: 10px;
+        }
+      }
+      &__number {
+        font-size: 12px;
+      }
     }
   }
 }
