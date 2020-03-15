@@ -13,7 +13,7 @@
       <!-- <h3>In this section</h3> -->
       <ul class="vertical menu">
         <li><a href="{{landing.url}}">{{landing.title}}</a></li>
-      </ul>
+        </ul>
     </nav>
   {% endwith %}
   <nav class="filetree">
@@ -21,6 +21,16 @@
       {% specs_nav spec_root_page %}
     </ul>
   </nav>
+  {% if specs_landing_page.protocols %}
+    <nav class="sidebar-nav section-nav protocol-links">
+      <h3>Past versions</h3>
+      <ul class="vertical menu">
+        {% for protocol in specs_landing_page.protocols %}
+          <li><a href="{{protocol.value.link}}">{{protocol.value.version}}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
 {% endblock %}
 
 {% block main_content %}
