@@ -199,8 +199,14 @@ body.specs-section .main-wrap {
 
 .specs-header__subfiles {
   display: flex;
-  flex-wrap: flex;
+  flex-wrap: wrap;
   padding: 10px 20px 20px 20px
+}
+
+@media(max-width: 375px) {
+  .specs-header__subfiles {
+    padding: 5px 5px 10px 10px;
+  }
 }
 
 .specs-header__subfile {
@@ -257,6 +263,7 @@ body.specs-section .main-wrap {
 
 .specs-pagination {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 60px;
   margin-bottom: 40px;
 }
@@ -269,6 +276,7 @@ body.specs-section .main-wrap {
   color: black;
   margin-right: 20px;
   min-width: 200px;
+  margin-bottom: 10px;
 }
 
 .specs-pagination__page {}
