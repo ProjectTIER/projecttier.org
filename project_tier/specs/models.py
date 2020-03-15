@@ -52,6 +52,7 @@ class FilePage(SpecsPage):
 
 class OptionalFilePage(SpecsPage):
     """Optional files are ones like: 0+ existing metadata documents."""
+    nav_icon = 'fa-file-text-o'
     parent_page_types = ['specs.FolderPage']
     subpage_types = []
 
