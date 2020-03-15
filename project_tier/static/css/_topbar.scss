@@ -33,7 +33,7 @@
       display: flex;
     }
 }
-body.scrolled .top-bar {
+body:not(.specs-section).scrolled .top-bar {
   @include breakpoint(large up) {
     height: 4.75rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
