@@ -18,9 +18,16 @@ class SpecsPage(Page):
         context['specs_landing_page'] = SpecsLandingPage.objects.filter(page_ptr__in=self.get_ancestors(inclusive=True)).order_by('page_ptr__depth').specific().first()
         context['spec_root_page'] = context['specs_landing_page'].get_children().specific().first()
 
-        # FIXME: These don't work right yet
-        context['next'] = self.get_children().specific().first() or self.get_siblings().specific().first()
-        context['prev'] = self.get_siblings().specific().first() or self.get_parent().specific()
+        # Prev/Next buttons
+        filetree = context['specs_landing_page'].get_descendants(inclusive=True).live().specific()
+        filetree_ids = [x.id for x in filetree]
+        if self.id in filetree_ids:
+            index = filetree_ids.index(self.id)
+            try: context['next'] = filetree[index + 1]
+            except Exception: pass
+            try: context['prev'] = filetree[index - 1]
+            except Exception: pass
+
         return context
 
     class Meta:
