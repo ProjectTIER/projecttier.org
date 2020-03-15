@@ -121,6 +121,15 @@ class PeriodicBlockList(ListBlock):
                     """
 
 
+class HightlightBlock(StructBlock):
+    body = RichTextBlock(icon='fa-paragraph')
+
+    class Meta:
+        icon = 'fa-square'
+        template = 'blocks/highlightblock.html'
+        help_text = 'A rich text block with a tan background.'
+
+
 class LimitedStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     smaller_heading = TextBlock(
@@ -146,6 +155,7 @@ class ContentStreamBlock(StreamBlock):
     simple_flow_boxes = SimpleFlowBlockList()
     detailed_flow_boxes = DetailedFlowBlockList()
     periodic_boxes = PeriodicBlockList()
+    highlight_block = HightlightBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
