@@ -55,14 +55,24 @@ body.specs-section .main-wrap {
   &__item {
     display: block;
     padding: 2px 0;
+    position: relative;
+    z-index: 1;
 
     i.fa {
       font-size: 19px;
       margin-right: 2px;
     }
 
-    &--active {
+    &--active::before {
+      content: '';
       background-color: yellow;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -10px;
+      width: calc(100% + 10px);
+      height: 100%;
+      z-index: -1;
     }
   }
 
