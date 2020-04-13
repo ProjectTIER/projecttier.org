@@ -288,6 +288,7 @@ body.specs-section {
   flex-wrap: wrap;
   margin-top: 60px;
   margin-bottom: 40px;
+  max-width: 500px;
 }
 
 .specs-pagination > a {
@@ -299,6 +300,7 @@ body.specs-section {
   margin-right: 20px;
   min-width: 200px;
   margin-bottom: 10px;
+  flex: 1;
 }
 
 .specs-pagination__page {}
