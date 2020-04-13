@@ -1,10 +1,22 @@
 body.specs-section {
   background: #fefefe;
   font-family: "Titillium Web", "Lato", Arial, sans-serif;
-}
 
-body.specs-section .main-wrap {
-  padding-top: 30px;
+  .main-wrap {
+    padding-top: 30px;
+  }
+
+  #main-container {
+    margin: 0;
+  }
+
+  .title-bar {
+    display: block !important;
+  }
+
+  #work #topbar-logo {
+    display: none;
+  }
 }
 
 .filetree {
@@ -290,15 +302,3 @@ body.specs-section .main-wrap {
 }
 
 .specs-pagination__page {}
-
-body.specs-section {
-  #main-container {
-    margin: 0;
-  }
-  .title-bar {
-    display: block !important;
-  }
-  #work #topbar-logo {
-    display: none;
-  }
-}
