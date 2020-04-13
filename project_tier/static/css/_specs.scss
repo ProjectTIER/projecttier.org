@@ -7,11 +7,18 @@ body.specs-section {
   }
 
   #main-container {
+    padding: 0 20px;
     margin: 0;
   }
 
   .title-bar {
     display: block !important;
+    box-shadow: none;
+    padding: 20px;
+  }
+
+  #work {
+    padding: 10px 20px;
   }
 
   #work #topbar-logo {
