@@ -1,10 +1,29 @@
 body.specs-section {
   background: #fefefe;
   font-family: "Titillium Web", "Lato", Arial, sans-serif;
-}
 
-body.specs-section .main-wrap {
-  padding-top: 30px;
+  .main-wrap {
+    padding-top: 30px;
+  }
+
+  #main-container {
+    padding: 0 20px;
+    margin: 0;
+  }
+
+  .title-bar {
+    display: block !important;
+    box-shadow: none;
+    padding: 20px;
+  }
+
+  #work {
+    padding: 10px 20px;
+  }
+
+  #work #topbar-logo {
+    display: none;
+  }
 }
 
 .filetree {
@@ -55,14 +74,24 @@ body.specs-section .main-wrap {
   &__item {
     display: block;
     padding: 2px 0;
+    position: relative;
+    z-index: 1;
 
     i.fa {
       font-size: 19px;
       margin-right: 2px;
     }
 
-    &--active {
+    &--active::before {
+      content: '';
       background-color: yellow;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -10px;
+      width: calc(100% + 10px);
+      height: 100%;
+      z-index: -1;
     }
   }
 
@@ -266,6 +295,7 @@ body.specs-section .main-wrap {
   flex-wrap: wrap;
   margin-top: 60px;
   margin-bottom: 40px;
+  max-width: 500px;
 }
 
 .specs-pagination > a {
@@ -277,18 +307,7 @@ body.specs-section .main-wrap {
   margin-right: 20px;
   min-width: 200px;
   margin-bottom: 10px;
+  flex: 1;
 }
 
 .specs-pagination__page {}
-
-body.specs-section {
-  #main-container {
-    margin: 0;
-  }
-  .title-bar {
-    display: block !important;
-  }
-  #work #topbar-logo {
-    display: none;
-  }
-}
