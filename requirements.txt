@@ -1,5 +1,5 @@
 wagtail==2.9
-boto==2.49.0
+boto3==1.13.12
 celery==4.4.2
 django_compressor==2.4
 django-storages==1.9.1
