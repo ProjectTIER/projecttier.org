@@ -75,22 +75,22 @@ class CourseMaterialsPage(Page):
     )
     discipline_tags = ClusterTaggableManager(
         through=DisciplineTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_d3e86784_844d_426a_ad8b_df78d89fdd3d",
         blank=True,
         verbose_name="discipline tags"
     )
     course_level_tags = ClusterTaggableManager(
         through=CourseLevelTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_e4b20ecd_f0d6_488d_a1f3_ad9e47f28a35",
         blank=True,
         verbose_name="course level tags"
     )
     protocol_tags = ClusterTaggableManager(
         through=ProtocolTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_f8d1b914_e5e2_4a84_a059_36c26ab23e54",
         blank=True,
         verbose_name="protocol tags"
     )

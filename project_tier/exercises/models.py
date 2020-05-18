@@ -111,29 +111,29 @@ class ExercisePage(Page):
 
     discipline_tags = ClusterTaggableManager(
         through=DisciplineTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_faf9c6b3_0e2e_4842_924a_2c3eba5c011b",
         blank=True,
         verbose_name="discipline tags"
     )
     course_level_tags = ClusterTaggableManager(
         through=CourseLevelTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_21ed8698_c4be_4f03_9e26_d7890d9dbb02",
         blank=True,
         verbose_name="course level tags"
     )
     protocol_tags = ClusterTaggableManager(
         through=ProtocolTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_546dfc75_c901_4551_a441_1a8ddb11886a",
         blank=True,
         verbose_name="protocol tags"
     )
     software_tags = ClusterTaggableManager(
         through=SoftwareTag,
-        # disabling reverse accessors solves a naming clash
-        related_name="+",
+        # yes, we are really using a UUID as the related name
+        related_name="uuid_46add48e_c253_4ff8_937a_06719f43e003",
         blank=True,
         verbose_name="software tags"
     )
