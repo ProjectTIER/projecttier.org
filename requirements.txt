@@ -9,10 +9,12 @@ dj-database-url==0.5.0
 wagtailfontawesome==1.2.1
 wagtailemoji==1.0.2
 wagtailatomicadmin==0.2.5
-wagalytics-tier==1.0rc1
 psycopg2==2.8.5
 whitenoise==5.0.1
 wagtail-linkchecker==0.5.1
+
+# Custom libraries
+-e git://github.com/ProjectTIER/wagalytics.git#egg=wagalytics
 
 # Debug
 django-debug-toolbar==2.2
