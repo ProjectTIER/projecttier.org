@@ -1,4 +1,4 @@
-wagtail==2.9
+wagtail==2.9.3
 boto==2.49.0
 celery==4.4.2
 django_compressor==2.4
