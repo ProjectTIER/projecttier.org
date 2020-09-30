@@ -28,7 +28,7 @@ You can copy the production database and files to your local version.
 * To pull the database: `fab pull_production_data`
 * To pull file uploads: `fab pull_production_media`
 
-See `fabfile.py` for more information.
+Please see `fabfile.py` for more information.
 You'll need authentication to run these commands.
 
 ## License and credits
