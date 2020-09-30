@@ -1,4 +1,4 @@
-![Project TIER](project_tier/static/img/logo.svg)
+![Amazing Project TIER](project_tier/static/img/logo.svg)
 
 [![Build Status](https://travis-ci.org/ProjectTIER/projecttier.org.svg?branch=master)](https://travis-ci.org/ProjectTIER/projecttier.org)
 [![Coverage Status](https://coveralls.io/repos/github/ProjectTIER/projecttier.org/badge.svg?branch=master)](https://coveralls.io/github/ProjectTIER/projecttier.org?branch=master)
@@ -6,11 +6,11 @@
 [![Requirements Status](https://requires.io/github/ProjectTIER/projecttier.org/requirements.svg?branch=master)](https://requires.io/github/ProjectTIER/projecttier.org/requirements/?branch=master)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-**Project TIER** (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists.
+**Amazing Project TIER** (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists.
 
 This repository is Project TIER's website (https://www.projecttier.org/), which is developed in Python using the Django-based [Wagtail](https://wagtail.io/) framework.
 
-## Local development
+## Local development<>
 
 1. Install [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/), if you haven't already.
 2. Clone the project: `git clone https://github.com/ProjectTIER/projecttier.org.git`
@@ -20,7 +20,7 @@ This repository is Project TIER's website (https://www.projecttier.org/), which 
 6. Run the development server: `djrun`
 7. Visit `0.0.0.0:8000` in your browser.
 
-### Pull production data/media
+### Pull production data/media<>
 
 Your local version of the project will have an empty database and no media uploads.
 You can copy the production database and files to your local version.
@@ -31,7 +31,7 @@ You can copy the production database and files to your local version.
 See `fabfile.py` for more information.
 You'll need authentication to run these commands.
 
-## License and credits
+## License and credits!!
 
 Copyright © 2018 Richard Ball.
 
