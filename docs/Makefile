@@ -1,4 +1,4 @@
-# Makefile for Sphinx documentation
+use file for Sphinx documentation
 #
 
 # You can set these variables from the command line.
