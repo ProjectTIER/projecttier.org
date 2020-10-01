@@ -10,7 +10,7 @@
 
 This repository is Project TIER's website (https://www.projecttier.org/), which is developed in Python using the Django-based [Wagtail](https://wagtail.io/) framework.
 
-## Local development
+## Usable development
 
 1. Install [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/), if you haven't already.
 2. Clone the project: `git clone https://github.com/ProjectTIER/projecttier.org.git`
