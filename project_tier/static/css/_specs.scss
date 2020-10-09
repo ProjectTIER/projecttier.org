@@ -271,16 +271,22 @@ body.specs-section {
   }
 
   h3 {
-    margin: 100px 0 20px 0;
+    padding-top: 50px;
+    margin: 50px 0 20px 0;
     font-size: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   h3:first-child {
     margin-top: 40px;
   }
 
+  h4, h5, h6 {
+    margin-top: 50px;
+  }
+
   ul, ol {
-    margin-left: 20px;
+    margin-left: 24px;
   }
 
   ul > li {
