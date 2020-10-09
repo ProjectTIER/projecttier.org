@@ -135,18 +135,6 @@
   }
 }
 
-/* Mailing list */
-#newsletter-section * {
-  max-width: 100%;
-}
-#newsletter-section > .row {
-  margin: 0;
-  color: $light-grey;
-  > .footer-title h2::before {
-    content: "\f003";
-  }
-}
-
 .footer-title {
   h2 {
     color: $off-white;
@@ -162,15 +150,6 @@
 }
 .footer-description p {
   color: $light-grey;
-}
-.mailchimp-signup {
-  padding-left: 0;
-  .button {
-    padding: 10px 20px 9px 20px;
-    &:hover {
-      color: $dark-red;
-    }
-  }
 }
 
 #twitter-section {
@@ -211,13 +190,22 @@
 .block-section.promo {
   margin: 20px 0 40px 0;
 
+  .row {
+    margin-bottom: 40px;
+  }
+
   .graphic {
     margin-left: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .footer-title h2 {
     margin-top: 0;
+
+    .fa.email-icon {
+      font-size: 24px;
+      padding: 5px;
+    }
   }
 
   a.button {
