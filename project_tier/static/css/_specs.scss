@@ -104,6 +104,23 @@ body.specs-section {
   }
 }
 
+@media(max-width: 1000px) {
+  nav.filetree {
+    padding: 30px 0;
+    margin-left: -10px;
+
+    .filetree__item {
+      font-size: 14px;
+    }
+
+    i.fa {
+      font-size: 14px;
+      margin-right: 2px;
+    }
+
+  }
+}
+
 .flowboxes {
   display: flex;
   // overflow-x: scroll;
