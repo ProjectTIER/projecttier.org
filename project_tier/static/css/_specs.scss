@@ -349,10 +349,12 @@ body.specs-section {
       font-weight: 700;
       border-bottom: none;
       padding: 0;
+      width: 95%;
     }
 
     a:before {
       color: #222222;
+      right: -1em;
     }
   }
 }
