@@ -104,6 +104,23 @@ body.specs-section {
   }
 }
 
+@media(max-width: 1000px) {
+  nav.filetree {
+    padding: 30px 0;
+    margin-left: -10px;
+
+    .filetree__item {
+      font-size: 14px;
+    }
+
+    i.fa {
+      font-size: 14px;
+      margin-right: 2px;
+    }
+
+  }
+}
+
 .flowboxes {
   display: flex;
   // overflow-x: scroll;
@@ -329,13 +346,13 @@ body.specs-section {
   color: #222222;
   background-color: white;
   border: none;
-  margin-bottom: 44px;
+  margin-bottom: 0;
 
   li {
     list-style: none;
     margin: 0;
     border-bottom: 1px solid #e6e6e6;
-    padding: 20px 20px 20px 0;
+    padding: 40px 20px 40px 0;
 
     .accordion-content {
       border-bottom: none;
@@ -349,10 +366,12 @@ body.specs-section {
       font-weight: 700;
       border-bottom: none;
       padding: 0;
+      width: 95%;
     }
 
     a:before {
       color: #222222;
+      right: -1em;
     }
   }
 }
