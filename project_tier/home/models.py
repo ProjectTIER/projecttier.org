@@ -12,10 +12,18 @@ from project_tier.blocks import ContentStreamBlock
 
 class HomePage(Page):
     headline = models.CharField(max_length=255, help_text='Write a short introductory sentence about Project TIER.')
+    banner = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     body = StreamField(ContentStreamBlock())
 
     content_panels = Page.content_panels + [
         FieldPanel('headline'),
+        ImageChooserPanel('banner'),
         StreamFieldPanel('body'),
     ]
 

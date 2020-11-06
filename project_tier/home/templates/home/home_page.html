@@ -4,14 +4,13 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block page_banner %}
-  <header class="page-header" id="intro-section">
-    <div class="row">
-      <div class="intro-subtitle small-12 medium-7 columns">
-        <h1>
-          Project TIER
-          <span id="intro-subtitle">{{self.headline}}</span>
-        </h1>
-      </div>
+  <header id="site-banner">
+    <div id="banner-photo">
+      {% image page.banner original %}
+    </div>
+    <div id="banner-text">
+      <h1 id="site-title">Project TIER</h1>
+      <span id="intro-subtitle">{{self.headline}}</span>
     </div>
   </header>
 {% endblock %}
