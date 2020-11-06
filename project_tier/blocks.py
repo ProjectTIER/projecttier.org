@@ -9,7 +9,9 @@ from wagtail.core.blocks import (
     ChoiceBlock,
     ListBlock,
     PageChooserBlock,
-    CharBlock
+    CharBlock,
+    URLBlock,
+    BooleanBlock
 )
 from wagtailfontawesome.blocks import IconBlock
 
@@ -34,7 +36,6 @@ class CallToActionButtonBlock(StructBlock):
         icon = 'fa-arrow-right'
         template = 'blocks/button.html'
         help_text = 'Create a cll to action button to help guide users to the next step.'
-
 
 
 class NoticeBlock(StructBlock):
@@ -178,3 +179,62 @@ class BodyBlock(StreamBlock):
     class Meta:
         template = 'blocks/streamfield.html'
         help_text = 'The main page body.'
+
+
+class IconHeaderBlock(StructBlock):
+    headline = TextBlock(help_text='Write a title for this section.')
+    icon = IconBlock(help_text='Optional icon', required=False)
+    visible = BooleanBlock(default=True, blank=False)
+
+    class Meta:
+        icon = 'fa-header'
+        template = 'blocks/icon_banner_header.html'
+        help_text = 'A red banner headline with optional icon'
+
+
+class FeaturedEventsBlock(StructBlock):
+    event_1 = PageChooserBlock(page_type='events.EventPage', required=True, help_text='The first event you want to feature')
+    event_2 = PageChooserBlock(page_type='events.EventPage', required=True, help_text='The second event you want to feature')
+    event_3 = PageChooserBlock(page_type='events.EventPage', required=True, help_text='The third event you want to feature')
+    visible = BooleanBlock(default=True, blank=False)
+
+    class Meta:
+        icon = 'fa-calendar'
+        template = 'blocks/featured_events.html'
+        help_text = 'You will need to complete an event page with all fields before selecting it here'
+
+
+class SplitBannerSectionBlock(StructBlock):
+    orientation = ChoiceBlock(choices=[
+        ('left', 'Left'),
+        ('right', 'Right'),
+    ], required=True, default='left', help_text='Choose which side of the image the text will appear on.')
+
+    headline = TextBlock(help_text='Write a title for this section.', required=False)
+    paragraph = RichTextBlock(icon='fa-paragraph', required=False)
+
+    CTA = StructBlock([
+        ('text', CharBlock(help_text='What should the button say?', required=False)),
+        ('link', URLBlock(help_text='Where should the button link to?', required=False)),
+    ], help_text= 'An optional Call to Action button', blank=True)
+
+    image_or_video = StructBlock([
+        ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
+        ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+    ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)
+
+    visible = BooleanBlock(default=True, blank=False)
+
+    class Meta:
+        icon = 'fa-map-o'
+        template = 'blocks/split_banner_section.html'
+        help_text = 'A dynamic block with a split red banner background and image'
+
+
+class HomeStreamBlock(StreamBlock):
+    header = IconHeaderBlock()
+    events = FeaturedEventsBlock()
+    section = SplitBannerSectionBlock()
+
+    class Meta:
+        template = 'blocks/streamfield.html'
