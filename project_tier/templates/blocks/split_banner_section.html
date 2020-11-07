@@ -1,11 +1,45 @@
-<h3 id="{{self.headline|slugify}}" data-magellan-target="{{self|slugify}}">
-  {{self.headline}}
-</h3>
+{% load wagtailimages_tags %}
 
-<div>
-  {{self.paragraph}}
+<div class="split_banner_section {% if self.orientation == 'right' %}right{% endif %}">
+
+  <div class="split_banner_section__banner">
+    <div class="split_banner_section__text">
+      {% if self.headline %}
+        <h3 id="{{self.headline|slugify}}" data-magellan-target="{{self|slugify}}">
+          {{self.headline}}
+        </h3>
+      {% endif %}
+
+      {% if self.paragraph %}
+        <div>
+          {{self.paragraph}}
+        </div>
+      {% endif %}
+
+      {% if self.paragraph %}
+        <button>
+          {{self.CTA.text}}
+        </button>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="split_banner_section__image-container">
+  {% if self.image_or_video %}
+
+    {% if self.image_or_video.video %}
+      Figure out how to embed video
+
+    {% elif self.image_or_video.image %}
+
+      {% image self.image_or_video.image fill-600x350 %}
+
+    {% endif %}
+
+  {% else %}
+    <img src="https://via.placeholder.com/2000x1333">
+  {% endif %}
+
+  </div>
+
 </div>
-
-<button>
-  {{self.CTA.text}}
-</button>

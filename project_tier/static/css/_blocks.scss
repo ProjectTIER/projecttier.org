@@ -219,3 +219,37 @@ ul.accordion {
     }
   }
 }
+
+.split_banner_section {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__banner {
+    background-image: linear-gradient(90deg, $dark-red, $red);
+    overflow: hidden;
+    margin: 40px auto 40px 0;
+    width: 750px;
+    height: 480px;
+    clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+  }
+
+  &__text {
+    padding: 60px;
+    margin-right: 100px;
+    h3, p, .richtext {
+      font-family: "Lato", Arial, sans-serif;
+      font-weight: 400;
+      color: $white;
+    }
+
+    h3 {
+      border-bottom: 2px solid $white;
+    }
+  }
+
+  &__image-container {
+    position: absolute;
+    left: 630px;
+  }
+}
