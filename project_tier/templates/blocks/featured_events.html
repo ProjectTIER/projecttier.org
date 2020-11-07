@@ -4,15 +4,16 @@
     <div class="featured-event">
       <a href="{{ event.value.url }}">
         <div class="featured-event__meta-data">
+          <div class="featured-event__overlay"></div>
           <div class="featured-event__image">
             {% if event.value.thumbnail %}
-              {% image event.value.thumbnail fill-300x150 %}
+              {% image event.value.thumbnail max-300x200 %}
             {% else %}
-              <img src="https://via.placeholder.com/300x150">
+              <img src="https://via.placeholder.com/300x200">
             {% endif %}
           </div>
           <div class="featured-event__date">
-            {{ event.value.date_from }}{% if event.value.date_to %} to {{ event.value.date_to }}{% endif %}
+            {{ event.value.date_from }}{% if event.value.date_to %} - {{ event.value.date_to }}{% endif %}
           </div>
         </div>
       </a>

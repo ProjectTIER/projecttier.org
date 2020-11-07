@@ -306,4 +306,41 @@ ul.accordion {
 
 .feature-events-list {
   display: flex;
+
+  .featured-event {
+    border: 2px solid lightgray;
+    max-width: 304px;
+    margin: 0 40px;
+
+    &__meta-data {
+      position: relative;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background-image: linear-gradient(360deg, #000, #0000);
+      z-index: 1;
+    }
+
+    &__image {
+    }
+
+    &__date {
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      font-size: 20px;
+      padding: 4px 8px;
+      font-weight: 800;
+    }
+  }
 }
