@@ -2,8 +2,8 @@
 
 <div class="split_banner_section {% if self.orientation == 'right' %}right{% endif %}">
 
-  <div class="split_banner_section__banner">
-    <div class="split_banner_section__text">
+  <div class="split_banner_section__banner {% if self.orientation == 'right' %}right{% endif %}">
+    <div class="split_banner_section__text {% if self.orientation == 'right' %}right{% endif %}">
       {% if self.headline %}
         <h3 id="{{self.headline|slugify}}" data-magellan-target="{{self|slugify}}">
           {{self.headline}}
@@ -17,14 +17,14 @@
       {% endif %}
 
       {% if self.paragraph %}
-        <button>
+        <button class="split_banner_section__button">
           {{self.CTA.text}}
         </button>
       {% endif %}
     </div>
   </div>
 
-  <div class="split_banner_section__image-container">
+  <div class="split_banner_section__image-container {% if self.orientation == 'right' %}right{% endif %}">
   {% if self.image_or_video %}
 
     {% if self.image_or_video.video %}
