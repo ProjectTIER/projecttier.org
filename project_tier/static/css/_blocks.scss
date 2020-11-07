@@ -198,3 +198,24 @@ ul.accordion {
   padding: 20px;
   background-color: #F4E3D7;
 }
+
+.icon_banner_header {
+  background-image: linear-gradient(90deg, $dark-red, $red);
+  overflow: hidden;
+  margin: 40px auto 40px 0;
+  width: min-content;
+  clip-path: polygon(0 0, 100% 0%, 92.5% 100%, 0% 100%);
+
+  h3 {
+    font-family: "Lato", Arial, sans-serif;
+    font-weight: 400;
+    color: $white;
+    margin: .84rem 0 .84rem;
+    padding: 0 88px 0 64px;
+    width: max-content;
+
+    i.fa {
+      padding-right: 8px;
+    }
+  }
+}
