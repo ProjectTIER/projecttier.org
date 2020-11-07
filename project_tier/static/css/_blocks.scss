@@ -202,7 +202,7 @@ ul.accordion {
 .icon_banner_header {
   background-image: linear-gradient(90deg, $dark-red, $red);
   overflow: hidden;
-  margin: 40px auto 40px 0;
+  margin: 20px auto 20px 0;
   width: min-content;
   clip-path: polygon(0 0, 100% 0%, 92.5% 100%, 0% 100%);
 
@@ -224,6 +224,7 @@ ul.accordion {
   display: flex;
   align-items: center;
   position: relative;
+  margin: 20px 0;
 
   &__banner {
     background-image: linear-gradient(90deg, $dark-red, $red);
@@ -306,11 +307,12 @@ ul.accordion {
 
 .feature-events-list {
   display: flex;
+  flex-wrap: wrap;
 
   .featured-event {
     border: 2px solid lightgray;
-    max-width: 304px;
-    margin: 0 40px;
+    width: 304px;
+    margin: 20px 40px;
 
     &__meta-data {
       position: relative;
@@ -329,9 +331,6 @@ ul.accordion {
       z-index: 1;
     }
 
-    &__image {
-    }
-
     &__date {
       color: white;
       text-decoration: none;
@@ -341,6 +340,31 @@ ul.accordion {
       font-size: 20px;
       padding: 4px 8px;
       font-weight: 800;
+    }
+
+    &__text {
+      padding: 16px;
+    }
+
+    &__title {
+
+      a {
+        color: $red;
+        text-decoration: none;
+        font-size: 20px;
+        line-height: 24px;
+        font-family: $header-font-family;
+        font-weight: 800;
+      }
+    }
+
+    &__subtitle .rich-text {
+      margin: 16px 0;
+
+      p {
+        color: gray;
+        margin-bottom: 0;
+      }
     }
   }
 }
