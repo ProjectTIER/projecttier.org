@@ -192,11 +192,8 @@ class IconHeaderBlock(StructBlock):
         help_text = 'A red banner headline with optional icon'
 
 
-class FeaturedEventsBlock(StructBlock):
-    event_1 = PageChooserBlock(page_type='events.EventPage', required=True, help_text='The first event you want to feature')
-    event_2 = PageChooserBlock(page_type='events.EventPage', required=True, help_text='The second event you want to feature')
-    event_3 = PageChooserBlock(page_type='events.EventPage', required=True, help_text='The third event you want to feature')
-    visible = BooleanBlock(default=True, blank=False)
+class FeaturedEventsBlock(StreamBlock):
+    event = PageChooserBlock(page_type='events.EventPage', required=True, help_text='Select an event from your Event Pages')
 
     class Meta:
         icon = 'fa-calendar'
