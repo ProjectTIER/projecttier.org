@@ -1,4 +1,30 @@
-<div>
-Events! Yay!
+{% load wagtailcore_tags wagtailimages_tags navigation_tags %}
+<div class="feature-events-list">
+  {% for event in self %}
+    <div class="featured-event">
+      <a href="{{ event.value.url }}">
+        <div class="featured-event__meta-data">
+          <div class="featured-event__image">
+            {% if event.value.thumbnail %}
+              {% image event.value.thumbnail fill-300x150 %}
+            {% else %}
+              <img src="https://via.placeholder.com/300x150">
+            {% endif %}
+          </div>
+          <div class="featured-event__date">
+            {{ event.value.date_from }}{% if event.value.date_to %} to {{ event.value.date_to }}{% endif %}
+          </div>
+        </div>
+      </a>
 
+      <div class="featured-event__text">
+        <div class="featured-event__title">
+          {{ event }}
+        </div>
+        <div class="featured-event__subtitle">
+          {{ event.value.meta_information|richtext }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 </div>
