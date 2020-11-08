@@ -431,3 +431,13 @@ ul.accordion {
     }
   }
 }
+
+@media(max-width: 1250px) {
+  .feature-events-list {
+    margin: 0 auto;
+
+    .featured-event {
+      margin: 20px auto;
+    }
+  }
+}
