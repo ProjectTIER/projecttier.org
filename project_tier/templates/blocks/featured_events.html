@@ -1,8 +1,9 @@
 {% load wagtailcore_tags wagtailimages_tags navigation_tags %}
 <div class="feature-events-list">
   {% for event in self %}
+  <a href="{{ event.value.url }}">
+
     <div class="featured-event">
-      <a href="{{ event.value.url }}">
         <div class="featured-event__meta-data">
           <div class="featured-event__overlay"></div>
           <div class="featured-event__image">
@@ -16,16 +17,17 @@
             {{ event.value.date_from }}{% if event.value.date_to %} - {{ event.value.date_to }}{% endif %}
           </div>
         </div>
-      </a>
 
       <div class="featured-event__text">
         <div class="featured-event__title">
-          {{ event }}
+          {{ event.value.title }}
         </div>
         <div class="featured-event__subtitle">
           {{ event.value.meta_information|richtext }}
         </div>
       </div>
     </div>
+  </a>
+
   {% endfor %}
 </div>

@@ -289,6 +289,7 @@ ul.accordion {
     left: 630px;
     height: 350px;
     width: 600px;
+    box-shadow: 2px 2px 5px #00000020;
 
     iframe {
       height: 350px;
@@ -301,6 +302,7 @@ ul.accordion {
   flex-direction: row-reverse;
 
   .split_banner_section__banner.right {
+    background-image: linear-gradient(90deg, $red, $dark-red);
     margin: 40px 0 40px auto;
     clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
   }
@@ -368,10 +370,20 @@ ul.accordion {
   display: flex;
   flex-wrap: wrap;
 
+  a {
+    text-decoration: none;
+  }
+
+  .featured-event:hover {
+    transition: transform .3s ease .1s;
+    transform: translate(-2px, -2px)
+  }
+
   .featured-event {
     border: 2px solid lightgray;
     width: 304px;
-    margin: 20px 40px;
+    margin: 20px 0 20px 40px;
+    box-shadow: 2px 2px 5px #00000020;
 
     &__meta-data {
       position: relative;
@@ -403,17 +415,15 @@ ul.accordion {
 
     &__text {
       padding: 16px;
+      min-height: 208px;
     }
 
     &__title {
-      a {
-        color: $red;
-        text-decoration: none;
-        font-size: 20px;
-        line-height: 24px;
-        font-family: $header-font-family;
-        font-weight: 800;
-      }
+      color: $red;
+      font-size: 20px;
+      line-height: 24px;
+      // font-family: $header-font-family;
+      font-weight: 600;
     }
 
     &__subtitle .rich-text {
@@ -423,10 +433,6 @@ ul.accordion {
       p {
         color: gray;
         margin-bottom: 0;
-      }
-
-      a {
-        color: $white !important;
       }
     }
   }
