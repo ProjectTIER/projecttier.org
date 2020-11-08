@@ -184,7 +184,7 @@ class BodyBlock(StreamBlock):
 class IconHeaderBlock(StructBlock):
     headline = TextBlock(help_text='Write a title for this section.')
     icon = IconBlock(help_text='Optional icon', required=False)
-    visible = BooleanBlock(default=True, blank=False)
+    visible = BooleanBlock(default=True, required=False)
 
     class Meta:
         icon = 'fa-header'
@@ -220,7 +220,7 @@ class SplitBannerSectionBlock(StructBlock):
         ('link', URLBlock(help_text='A youtube link to a video', required=False)),
     ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)
 
-    visible = BooleanBlock(default=True, blank=False)
+    visible = BooleanBlock(default=True, required=False)
 
     class Meta:
         icon = 'fa-map-o'

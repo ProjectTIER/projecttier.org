@@ -1,6 +1,8 @@
+{% if self.visible %}
 <div class="icon_banner_header">
   <h3 id="{{self.headline|slugify}}" data-magellan-target="{{self|slugify}}">
     <i class="fa {{ self.icon }}" aria-hidden="true"></i>
     {{self.headline}}
   </h3>
 </div>
+{% endif %}

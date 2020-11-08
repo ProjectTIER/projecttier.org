@@ -279,6 +279,13 @@ ul.accordion {
   &__image-container {
     position: absolute;
     left: 630px;
+    height: 350px;
+    width: 600px;
+
+    iframe {
+      height: 350px;
+      width: 600px;
+    }
   }
 }
 
@@ -347,7 +354,6 @@ ul.accordion {
     }
 
     &__title {
-
       a {
         color: $red;
         text-decoration: none;
