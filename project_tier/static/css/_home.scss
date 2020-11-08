@@ -108,4 +108,17 @@
       }
     }
 
+  #home-page {
+    .rich-text {
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 200;
+      margin-left: 60px;
+
+      a {
+        color: $red;
+      }
+    }
+  }
+
 }

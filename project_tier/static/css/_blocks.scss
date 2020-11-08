@@ -247,6 +247,14 @@ ul.accordion {
       color: $white;
     }
 
+    .rich-text {
+      margin-left: 0 !important;
+
+      a {
+        color: $white !important;
+      }
+    }
+
     h3 {
       border-bottom: 2px solid $white;
       width: 380px;
@@ -366,10 +374,15 @@ ul.accordion {
 
     &__subtitle .rich-text {
       margin: 16px 0;
+      margin-left: 0 !important;
 
       p {
         color: gray;
         margin-bottom: 0;
+      }
+
+      a {
+        color: $white !important;
       }
     }
   }

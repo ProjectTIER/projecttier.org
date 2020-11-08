@@ -137,6 +137,7 @@ class LimitedStreamBlock(StreamBlock):
         icon='fa-header', template='blocks/smaller_heading.html')
 
     class Meta:
+        icon = 'fa-paragraph'
         template = 'blocks/streamfield.html'
 
 
@@ -232,6 +233,7 @@ class HomeStreamBlock(StreamBlock):
     header = IconHeaderBlock()
     events = FeaturedEventsBlock()
     section = SplitBannerSectionBlock()
+    text = RichTextBlock(icon='fa-paragraph', required=False)
 
     class Meta:
         template = 'blocks/streamfield.html'
