@@ -290,6 +290,7 @@ ul.accordion {
     height: 350px;
     width: 600px;
     box-shadow: 2px 2px 5px #00000020;
+    overflow: hidden;
 
     iframe {
       height: 350px;
@@ -395,6 +396,10 @@ ul.accordion {
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      .logo {
+        padding: 0 20px;
+      }
     }
 
     &__overlay {

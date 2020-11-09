@@ -1,4 +1,4 @@
-{% load wagtailimages_tags wagtailembeds_tags %}
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags static %}
 
 {% if self.visible %}
 <div class="split_banner_section {% if self.orientation == 'right' %}right{% endif %}">
@@ -27,13 +27,15 @@
 
   <div class="split_banner_section__image-container {% if self.orientation == 'right' %}right{% endif %}">
   {% if self.image_or_video %}
-    {% if self.image_or_video.link %}
+    {% if self.image_or_video.link != '' %}
       {% embed self.image_or_video.link %}
-    {% elif self.image_or_video.image %}
+    {% elif self.image_or_video.image != None %}
       {% image self.image_or_video.image fill-600x350 %}
+    {% else %}
+      <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
     {% endif %}
   {% else %}
-    <img src="https://via.placeholder.com/2000x1333">
+    <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
   {% endif %}
 
   </div>

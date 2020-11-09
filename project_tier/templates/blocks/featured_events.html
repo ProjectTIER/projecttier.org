@@ -2,7 +2,6 @@
 <div class="feature-events-list">
   {% for event in self %}
   <a href="{{ event.value.url }}">
-
     <div class="featured-event">
         <div class="featured-event__meta-data">
           <div class="featured-event__overlay"></div>
@@ -10,7 +9,7 @@
             {% if event.value.thumbnail %}
               {% image event.value.thumbnail max-300x200 %}
             {% else %}
-              <img src="https://via.placeholder.com/300x200">
+              <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
             {% endif %}
           </div>
           <div class="featured-event__date">
