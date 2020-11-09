@@ -27,13 +27,47 @@
 
   <div class="split_banner_section__image-container {% if self.orientation == 'right' %}right{% endif %}">
   {% if self.image_or_video %}
-    {% if self.image_or_video.link != '' %}
-      {% embed self.image_or_video.link %}
-    {% elif self.image_or_video.image != None %}
-      {% image self.image_or_video.image fill-600x350 %}
+
+    <div class="orbit" role="region" aria-label="" data-orbit>
+      <div class="orbit-wrapper">
+        <div class="orbit-controls">
+          <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+          <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+        </div>
+        <ul class="orbit-container">
+
+          {% for item in self.image_or_video %}
+            <li class="is-active orbit-slide">
+              <figure class="orbit-figure">
+                {% image item.value fill-600x350 %}
+              </figure>
+            </li>
+          {% endfor %}
+
+        </ul>
+      </div>
+
+      <nav class="orbit-bullets">
+        <button class="is-active" data-slide="0">
+          <span class="show-for-sr">First slide details.</span>
+          <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+        </button>
+        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+        <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+        <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+      </nav>
+
+    </div>
+
+
+
+    <!-- {% if self.image_or_video.items.video != '' %}
+      {% embed self.image_or_video.items.video %}
+    {% elif self.image_or_video.items.image != None %}
+      {% image self.image_or_video.items.image fill-600x350 %}
     {% else %}
       <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
-    {% endif %}
+    {% endif %} -->
   {% else %}
     <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
   {% endif %}

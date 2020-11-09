@@ -216,9 +216,9 @@ class SplitBannerSectionBlock(StructBlock):
         ('link', URLBlock(help_text='Where should the button link to?', required=False)),
     ], help_text= 'An optional Call to Action button', blank=True)
 
-    image_or_video = StructBlock([
+    image_or_video = StreamBlock([
         ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
-        ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+        ('video', URLBlock(help_text='A youtube link to a video', required=False)),
     ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)
 
     visible = BooleanBlock(default=True, required=False)
