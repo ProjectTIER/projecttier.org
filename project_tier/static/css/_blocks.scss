@@ -375,15 +375,19 @@ ul.accordion {
   }
 
   .featured-event:hover {
-    transition: transform .3s ease .1s;
-    transform: translate(-2px, -2px)
+    transition-property: transform, box-shadow;
+    transition-duration: .3s;
+    transition-delay: .1s;
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 5px #00000020;
   }
 
   .featured-event {
-    border: 2px solid lightgray;
-    width: 304px;
+    border: 1px solid lightgray;
+    width: 302px;
     margin: 20px 0 20px 40px;
-    box-shadow: 2px 2px 5px #00000020;
+    box-shadow: 1px 1px 3px #00000020;
+    overflow: hidden;
 
     &__meta-data {
       position: relative;
@@ -424,6 +428,8 @@ ul.accordion {
       line-height: 24px;
       // font-family: $header-font-family;
       font-weight: 600;
+      padding-bottom: 4px;
+      border-bottom: 2px solid $red;
     }
 
     &__subtitle .rich-text {
@@ -440,7 +446,7 @@ ul.accordion {
 
 @media(max-width: 1250px) {
   .feature-events-list {
-    margin: 0 auto;
+    justify-content: space-around;
 
     .featured-event {
       margin: 20px auto;
