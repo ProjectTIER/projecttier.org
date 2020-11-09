@@ -28,7 +28,7 @@
   <div class="split_banner_section__image-container {% if self.orientation == 'right' %}right{% endif %}">
   {% if self.image_or_video %}
 
-    <div class="orbit" role="region" aria-label="" data-orbit>
+    <div class="orbit" role="region" aria-label="TIER slide photos" data-orbit>
       <div class="orbit-wrapper">
         <div class="orbit-controls">
           <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
@@ -37,9 +37,11 @@
         <ul class="orbit-container">
 
           {% for item in self.image_or_video %}
-            <li class="is-active orbit-slide">
+            <li class="orbit-slide {% if item == self.image_or_video.first %}is-active{% endif %}">
               <figure class="orbit-figure">
-                {% image item.value fill-600x350 %}
+                {% image item.value fill-600x350 as slide_photo %}
+                <img class="orbit-image" src="{{ slide_photo.url }}" alt="{{ slide_photo.alt }}">
+                <figcaption class="orbit-caption">{{ slide_photo.alt }}</figcaption>
               </figure>
             </li>
           {% endfor %}
@@ -48,18 +50,19 @@
       </div>
 
       <nav class="orbit-bullets">
-        <button class="is-active" data-slide="0">
-          <span class="show-for-sr">First slide details.</span>
-          <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-        </button>
-        <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-        <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-        <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+        {% for item in self.image_or_video %}
+          {% if forloop.counter == 0 %}
+            <button class="is-active" data-slide="0">
+              <span class="show-for-sr">First slide details.</span>
+              <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+            </button>
+          {% else %}
+            <button data-slide="{{ forloop.counter0 }}"><span class="show-for-sr">Slide details.</span></button>
+          {% endif %}
+        {% endfor %}
       </nav>
 
     </div>
-
-
 
     <!-- {% if self.image_or_video.items.video != '' %}
       {% embed self.image_or_video.items.video %}

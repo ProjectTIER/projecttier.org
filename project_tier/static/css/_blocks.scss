@@ -292,6 +292,14 @@ ul.accordion {
     box-shadow: 2px 2px 5px #00000020;
     // overflow: hidden;
 
+    li {
+      list-style: none;
+    }
+
+    li::before {
+      display: none;
+    }
+
     iframe {
       height: 350px;
       width: 600px;
