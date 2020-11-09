@@ -106,7 +106,8 @@ class EventPage(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name='+',
+        help_text="This image will be used on the Featured Event Block. Ideal dimmensions are 270x180."
     )
     description = RichTextField(blank=True, help_text="The description written as though in the future")
     description_past = RichTextField(blank=True, help_text="The description written as though in the past")

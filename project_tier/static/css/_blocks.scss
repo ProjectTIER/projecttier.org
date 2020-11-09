@@ -385,20 +385,21 @@ ul.accordion {
 
   .featured-event {
     border: 1px solid lightgray;
-    width: 302px;
-    margin: 20px 0 20px 40px;
+    width: 272px;
+    height: 386px;
+    margin: 18px 0 18px 36px;
     box-shadow: 1px 1px 3px #00000020;
     overflow: hidden;
 
     &__meta-data {
       position: relative;
-      height: 200px;
+      height: 180px;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       .logo {
-        padding: 0 20px;
+        padding: 0 18px;
       }
     }
 
@@ -417,20 +418,20 @@ ul.accordion {
       position: absolute;
       bottom: 0;
       z-index: 2;
-      font-size: 20px;
+      font-size: 18px;
       padding: 4px 8px;
       font-weight: 800;
     }
 
     &__text {
-      padding: 16px;
-      min-height: 208px;
+      padding: 14px;
+      min-height: 188px;
     }
 
     &__title {
       color: $red;
-      font-size: 20px;
-      line-height: 24px;
+      font-size: 18px;
+      line-height: 22px;
       // font-family: $header-font-family;
       font-weight: 600;
       padding-bottom: 4px;
@@ -454,7 +455,26 @@ ul.accordion {
     justify-content: space-around;
 
     .featured-event {
-      margin: 20px auto;
+      margin: 18px auto;
     }
   }
+}
+
+@media(max-width: 1160px) {
+  .featured-event.tier-workshops.three {
+    display:none;
+  }
+}
+
+@media(max-width: 830px) {
+  .featured-event.tier-workshops.three {
+    display:block;
+  }
+  .featured-event.tier-workshops.two {
+    display:none;
+  }
+}
+
+.featured-event.tier-workshops.too-many {
+  display:none;
 }

@@ -7,7 +7,7 @@
           <div class="featured-event__overlay"></div>
           <div class="featured-event__image">
             {% if event.value.thumbnail %}
-              {% image event.value.thumbnail max-300x200 %}
+              {% image event.value.thumbnail max-270x180 %}
             {% else %}
               <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
             {% endif %}
@@ -29,4 +29,33 @@
   </a>
 
   {% endfor %}
+
+  <a href="/fellowships-and-workshops/">
+    <div class="featured-event tier-workshops
+    {% if self|length == 3 %}three
+    {% elif self|length == 2 %}two
+    {% elif self|length > 2 %}too-many
+    {% endif %}">
+        <div class="featured-event__meta-data">
+          <div class="featured-event__overlay"></div>
+          <div class="featured-event__image">
+              <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
+          </div>
+          <div class="featured-event__date">
+
+          </div>
+        </div>
+
+      <div class="featured-event__text">
+        <div class="featured-event__title">
+          TIER Fellowships, Workshops, and Webcasts
+        </div>
+        <div class="featured-event__subtitle">
+          <div class="rich-text">
+          <p>TIER offers a variety of online programming thorughout the year for faculty and graduate students.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
 </div>
