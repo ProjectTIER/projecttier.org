@@ -24,3 +24,9 @@ def admin_css():
     return format_html(
         '<link rel="stylesheet" href="' + settings.STATIC_URL + 'css/admin.css">'
     )
+
+
+@hooks.register("construct_page_chooser_queryset")
+def fix_page_sorting(pages, request):
+    pages = pages.order_by("-latest_revision_created_at")
+    return pages
