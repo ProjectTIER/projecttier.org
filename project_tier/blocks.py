@@ -202,6 +202,34 @@ class FeaturedEventsBlock(StreamBlock):
         help_text = 'You will need to complete an event page with all fields before selecting it here'
 
 
+class MultiSliderBlock(StructBlock):
+    orientation = ChoiceBlock(choices=[
+        ('left', 'Left'),
+        ('right', 'Right'),
+    ], required=True, default='left', help_text='Choose which side of the image the text will appear on.')
+
+    slides = StreamBlock([
+        ('slide', StructBlock([
+            ('headline', TextBlock(help_text='Write a title for this section.', required=False)),
+            ('paragraph', RichTextBlock(icon='fa-paragraph', required=False)),
+            ('visible', BooleanBlock(default=True, required=False)),
+            ('CTA', StructBlock([
+                ('text', CharBlock(help_text='What should the button say?', required=False)),
+                ('link', URLBlock(help_text='Where should the button link to?', required=False)),
+            ], help_text= 'An optional Call to Action button', blank=True)),
+            ('image_or_video', StructBlock([
+                ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
+                ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+            ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)),
+        ], help_text= 'A single slide', blank=False)),
+    ], help_text= 'Add a slide to the slider', blank=True)
+
+    class Meta:
+        icon = 'fa-object-group'
+        template = 'blocks/multi_slider_section.html'
+        help_text = 'A dynamic block with a split red banner background and image. Add multiple slides to seemlessly move between content.'
+
+
 class SplitBannerSectionBlock(StructBlock):
     orientation = ChoiceBlock(choices=[
         ('left', 'Left'),
@@ -224,7 +252,7 @@ class SplitBannerSectionBlock(StructBlock):
     visible = BooleanBlock(default=True, required=False)
 
     class Meta:
-        icon = 'fa-map-o'
+        icon = 'fa-object-ungroup'
         template = 'blocks/split_banner_section.html'
         help_text = 'A dynamic block with a split red banner background and image'
 
@@ -233,6 +261,7 @@ class HomeStreamBlock(StreamBlock):
     header = IconHeaderBlock()
     events = FeaturedEventsBlock()
     section = SplitBannerSectionBlock()
+    slider = MultiSliderBlock()
     text = RichTextBlock(icon='fa-paragraph', required=False)
 
     class Meta:
