@@ -254,15 +254,14 @@ code, %monospace-text {
         display: none;
       }
       a {
-        background-color: $blue;
-        border-radius: 4px;
         color: $white;
+        border-radius: 4px;
+        opacity: .7;
         padding: 3px 5px;
         text-decoration: none;
-        transition: background-color 0.2s;
+        transition: opacity .2s;
         &:hover {
-          background-color: $white;
-          color: $blue;
+          opacity: 1;
           text-decoration: none;
         }
       }

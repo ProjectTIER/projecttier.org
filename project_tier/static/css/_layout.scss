@@ -16,9 +16,8 @@ main {
 
 body {
   background: $white;
-  background-color: $red;
-  background-image: url('../img/bg-image-15.png');
-  background-size: 60px;
+  background-image: linear-gradient(90deg, $red, $dark-red);
+  background-size: cover;
 }
 .page-header {
   border-top: 10px solid transparent;

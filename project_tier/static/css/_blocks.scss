@@ -421,6 +421,9 @@ ul.accordion {
     padding: 10px 20px;
     text-align: center;
     align-self: center;
+    transition-property: background-color, color;
+    transition-duration: .3s;
+    transition-delay: .1s;
   }
 
   &__image-container {
