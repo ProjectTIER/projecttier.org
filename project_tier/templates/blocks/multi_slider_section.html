@@ -1,47 +1,81 @@
 {% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags static %}
 
-{% for slide in self.slides %}
+<div class="slider slideshow-container">
+  {% for slide in self.slides %}
+  {% if slide.value.visible %}
+  <div class="split_banner_section mySlides {% if self.orientation == 'right' %}right{% endif %}">
 
-{% if slide.value.visible %}
-<div class="split_banner_section {% if self.orientation == 'right' %}right{% endif %}">
+    <div class="split_banner_section__banner {% if self.orientation == 'right' %}right{% endif %}">
+      <div class="split_banner_section__text fade {% if self.orientation == 'right' %}right{% endif %}">
+        {% if slide.value.headline %}
+          <h3 id="{{slide.value.headline|slugify}}" data-magellan-target="{{slide|slugify}}">
+            {{slide.value.headline}}
+          </h3>
+        {% endif %}
 
-  <div class="split_banner_section__banner {% if self.orientation == 'right' %}right{% endif %}">
-    <div class="split_banner_section__text {% if self.orientation == 'right' %}right{% endif %}">
-      {% if slide.value.headline %}
-        <h3 id="{{slide.value.headline|slugify}}" data-magellan-target="{{slide|slugify}}">
-          {{slide.value.headline}}
-        </h3>
-      {% endif %}
+        {% if slide.value.paragraph %}
+          <div>
+            {{slide.value.paragraph}}
+          </div>
+        {% endif %}
 
-      {% if slide.value.paragraph %}
-        <div>
-          {{slide.value.paragraph}}
-        </div>
-      {% endif %}
-
-      {% if slide.value.paragraph %}
-        <button class="split_banner_section__button">
-          {{slide.value.CTA.text}}
-        </button>
-      {% endif %}
+        {% if slide.value.paragraph %}
+          <button class="split_banner_section__button fade">
+            {{slide.value.CTA.text}}
+          </button>
+        {% endif %}
+      </div>
     </div>
-  </div>
 
-  <div class="split_banner_section__image-container {% if self.orientation == 'right' %}right{% endif %}">
-  {% if slide.value.image_or_video %}
-    {% if slide.value.image_or_video.link != '' %}
-      {% embed slide.value.image_or_video.link %}
-    {% elif slide.value.image_or_video.image != None %}
-      {% image slide.value.image_or_video.image fill-600x350 %}
+    <div class="split_banner_section__image-container fade {% if self.orientation == 'right' %}right{% endif %}">
+    {% if slide.value.image_or_video %}
+      {% if slide.value.image_or_video.link != '' %}
+        {% embed slide.value.image_or_video.link %}
+      {% elif slide.value.image_or_video.image != None %}
+        {% image slide.value.image_or_video.image fill-600x350 %}
+      {% else %}
+        <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+      {% endif %}
     {% else %}
       <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
     {% endif %}
-  {% else %}
-    <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
-  {% endif %}
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
   </div>
-</div>
-{% endif %}
+  {% endif %}
+  {% endfor %}
 
-{% endfor %}
+</div>
+
+<script type="text/javascript">
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "flex";
+    dots[slideIndex-1].className += " active";
+  }
+</script>
