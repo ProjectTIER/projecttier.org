@@ -224,6 +224,20 @@ class MultiSliderBlock(StructBlock):
         ], help_text= 'A single slide', blank=False)),
     ], help_text= 'Add a slide to the slider', blank=True)
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        def count_visible_slides():
+            count = 0
+            for slide in (value['slides']):
+                print(slide.value)
+                if slide.value['visible'] == True:
+                    count = count + 1
+            return count
+
+        context['visible_slides'] = count_visible_slides()
+        return context
+
     class Meta:
         icon = 'fa-object-group'
         template = 'blocks/multi_slider_section.html'
