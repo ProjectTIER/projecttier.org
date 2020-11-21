@@ -1,6 +1,6 @@
 {% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags static %}
 
-<div class="slider slideshow-container">
+<div class="slider slideshow-container {% if self.orientation == 'right' %}right{% endif %}">
   {% for slide in self.slides %}
   {% if slide.value.visible %}
   <div class="split_banner_section mySlides {% if self.orientation == 'right' %}right{% endif %}">
