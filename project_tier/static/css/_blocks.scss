@@ -261,19 +261,65 @@ ul.accordion {
   /* Fading animation */
   .fade {
     -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
+    -webkit-animation-duration: 3s;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 2.5s;
   }
 
   @-webkit-keyframes fade {
-    from {opacity: .4}
+    from {opacity: .2}
     to {opacity: 1}
   }
 
   @keyframes fade {
     from {opacity: .4}
     to {opacity: 1}
+  }
+
+  .slide_in {
+    animation: slideIn .6s ease-in;
+  }
+
+  .slide_out {
+    animation: slideOut .6s ease-in;
+  }
+
+  @keyframes slideIn {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(0px);
+    }
+    62% {
+        transform: translateX(30px);
+    }
+    70% {
+        opacity: 1;
+    }
+    80% {
+        transform: translate(0);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(0px);
+    }
+    62% {
+        transform: translateX(-30px);
+    }
+    70% {
+        opacity: 1;
+    }
+    80% {
+        transform: translate(0);
+    }
   }
 }
 
@@ -282,6 +328,7 @@ ul.accordion {
   align-items: center;
   position: relative;
   margin: 20px 0;
+  overflow: hidden;
 
   &__banner {
     background-image: linear-gradient(90deg, $dark-red, $red);
@@ -297,7 +344,9 @@ ul.accordion {
     margin-right: 100px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 
     h3, p, .rich-text, a {
       font-family: "Lato", Arial, sans-serif;
@@ -316,6 +365,7 @@ ul.accordion {
       border-bottom: 2px solid $white;
       width: 380px;
       padding-bottom: 12px;
+      align-self: flex-start;
     }
 
     p {
