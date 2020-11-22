@@ -17,6 +17,8 @@
 
 {% block content %}
   <div id="home-page">
-    {{page.body}}
+    {% for block in page.body %}
+      {% include_block block with index=forloop.counter %}
+    {% endfor %}
   </div>
 {% endblock %}

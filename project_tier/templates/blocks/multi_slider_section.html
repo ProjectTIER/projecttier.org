@@ -3,7 +3,7 @@
 <div class="slider slideshow-container {% if self.orientation == 'right' %}right{% endif %}">
   {% for slide in self.slides %}
   {% if slide.value.visible %}
-  <div class="split_banner_section mySlides {% if self.orientation == 'right' %}right{% endif %}">
+  <div class="split_banner_section mySlides-{{index}} {% if self.orientation == 'right' %}right{% endif %}">
 
     <div class="split_banner_section__banner {% if self.orientation == 'right' %}right{% endif %}">
       <div class="split_banner_section__text fade {% if self.orientation == 'right' %}right{% endif %}">
@@ -81,7 +81,7 @@
 
   function showSlides(n) {
     var i;
-    var slides = document.getElementsByClassName("mySlides");
+    var slides = document.getElementsByClassName("mySlides-{{index}}");
     var dots = document.getElementsByClassName("dot");
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}

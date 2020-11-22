@@ -274,7 +274,6 @@ class SplitBannerSectionBlock(StructBlock):
 class HomeStreamBlock(StreamBlock):
     header = IconHeaderBlock()
     events = FeaturedEventsBlock()
-    section = SplitBannerSectionBlock()
     slider = MultiSliderBlock()
     text = RichTextBlock(icon='fa-paragraph', required=False)
 
