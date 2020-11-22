@@ -58,3 +58,14 @@
 }
 
 .events-index > li::after { display: none; }
+
+.event-page-metadata {
+  margin: 30px 10px 30px 60px;
+
+  .event-image {
+    margin-bottom: 20px;
+  }
+
+  .event-meta-label {
+  }
+}
