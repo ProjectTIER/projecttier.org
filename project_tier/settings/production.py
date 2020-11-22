@@ -27,8 +27,8 @@ for key, value in os.environ.items():
 APP_NAME = env.get('APP_NAME', 'project_tier')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-PREPEND_WWW = True
+SECURE_SSL_REDIRECT = env.get('SECURE_SSL_REDIRECT', 'true').lower() == 'true'
+PREPEND_WWW = env.get('PREPEND_WWW', 'true').lower() == 'true'
 
 if 'SECRET_KEY' in env:
     SECRET_KEY = env['SECRET_KEY']
