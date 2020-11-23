@@ -601,29 +601,13 @@ ul.accordion {
 
 @media(max-width: 1250px) {
   .feature-events-list {
-    justify-content: space-around;
-
-    .featured-event {
-      margin: 18px auto;
-    }
+    justify-content: flex-start;
   }
 }
 
-@media(max-width: 1160px) {
-  .featured-event.tier-workshops.three {
-    display:none;
-  }
-}
 
-@media(max-width: 830px) {
-  .featured-event.tier-workshops.three {
-    display:block;
+@media(max-width: 640px) {
+  .feature-events-list {
+    margin: 0 auto;
   }
-  .featured-event.tier-workshops.two {
-    display:none;
-  }
-}
-
-.featured-event.tier-workshops.too-many {
-  display:none;
 }
