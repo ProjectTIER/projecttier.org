@@ -223,6 +223,10 @@ ul.accordion {
 @media(max-width: 600px) {
   .icon_banner_header {
     width: auto;
+
+    h3 {
+      padding-left: 20px;
+    }
   }
 }
 
@@ -510,8 +514,9 @@ ul.accordion {
     .split_banner_section__text, .split_banner_section__text.right {
       margin-right: 0;
       margin-left: 0 !important;
-      margin-top: 70px;
-      margin-bottom: 50px;
+      margin-top: 60px;
+      padding: 40px 20px 100px 20px !important;
+      justify-content: center;
 
       h3 {
         width: auto;
