@@ -38,9 +38,13 @@
     </div>
   {% endif %}
 
+  {% if self.registration_link %}
   <p style="text-align: right;">
     <a class="webcast-page big-cta" href="{{ self.registration_link }}" target="_blank">Register Now <i class="fa fa-external-link" aria-hidden="true"></i></a>
   </p>
+  {% else %}
+  </br></br>
+  {% endif %}
 
   <div class="webcast people cards events materials">
     {% if events %}
