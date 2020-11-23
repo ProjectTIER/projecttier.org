@@ -391,6 +391,13 @@ ul.accordion {
 
       a {
         color: $white !important;
+        transition-property: opacity;
+        transition-duration: .2s;
+        transition-delay: .1s;
+      }
+
+      a:hover {
+        opacity: .8;
       }
     }
 
@@ -550,7 +557,7 @@ ul.accordion {
       bottom: 0;
       width: 100%;
       height: 60px;
-      background-image: linear-gradient(360deg, #000, #0000);
+      background-image: linear-gradient(360deg, #000000, #0000);
       z-index: 1;
     }
 
