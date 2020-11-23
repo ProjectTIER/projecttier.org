@@ -19,10 +19,12 @@
           </div>
         {% endif %}
 
-        {% if slide.value.paragraph %}
-          <button class="split_banner_section__button fade">
-            {{slide.value.CTA.text}}
-          </button>
+        {% if slide.value.CTA.link %}
+          <a href="{{slide.value.CTA.link}}">
+            <button class="split_banner_section__button fade">
+              {{slide.value.CTA.text}}
+            </button>
+          </a>
         {% endif %}
       </div>
     </div>
