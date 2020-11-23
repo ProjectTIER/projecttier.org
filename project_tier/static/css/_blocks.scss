@@ -484,6 +484,10 @@ ul.accordion {
 }
 
 @media(max-width: 1285px) {
+  .split_banner_section:first-of-type {
+    margin-top: -40px;
+  }
+
   .split_banner_section {
     display: flex;
     flex-direction: column-reverse !important;
@@ -620,5 +624,9 @@ ul.accordion {
 @media(max-width: 630px) {
   .feature-events-list {
     justify-content: center;
+
+    .featured-event {
+      margin-left: 0px;
+    }
   }
 }
