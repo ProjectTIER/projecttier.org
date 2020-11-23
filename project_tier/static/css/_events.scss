@@ -69,3 +69,25 @@
   .event-meta-label {
   }
 }
+
+.event-main-metadata {
+  display: none;
+}
+
+.event-sidebar-metadata h4 {
+  font-size: 1.2rem;
+}
+
+@media(max-width: 1000px) {
+ .event-sidebar-metadata {
+   display: none;
+ }
+
+ .event-main-metadata {
+   display: block;
+
+   .event-page-metadata {
+     margin: 0 0 0 0;
+   }
+ }
+}

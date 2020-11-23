@@ -2,44 +2,17 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block sidebar %}
-
-<div class="event-page-metadata">
-
-  <div class="event-image">
-    {% if self.thumbnail %}
-      {% image self.thumbnail max-1000x800 %}
-    {% else %}
-      <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
-    {% endif %}
-  </div>
-
-  <h5 class="event-meta-label">Date</h5>
-  <time class="event-meta-item">
-    <p>{{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}</p>
-    {% if self.time_from %}<p>{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
-  </time>
-
-  <h5 class="event-meta-label">Details</h5>
-  <div class="event-meta-item">
-    {% if self.university %}{{ self.university }}{% endif %}
-    {% if self.university and self.department %}<br>{% endif %}
-    {% if self.department %}{{ self.department }}{% endif %}
-  </div>
-  <div class="event-meta-item">
-    {{ self.meta_information|richtext }}
-  </div>
-</div>
-
+  <div class="event-sidebar-metadata">{% include "./event_metadata.html" %}</div>
 {% endblock %}
 
 {% block main_content %}
 <div class="row">
-  <div class="body-content small-12 medium-8 columns">
+  <div class="body-content small-12 medium-8 columns event-page">
+    <div class="event-main-metadata">{% include "./event_metadata.html" %}</div>
     {% if self.description %}
       <h4>Event Description</h4>
       {{ self.description|richtext }}
     {% endif %}
   </div>
 </div>
-
 {% endblock %}

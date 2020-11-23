@@ -36,6 +36,13 @@ h1 {
   }
 }
 
+@media(max-width: 600px) {
+  .page-header h1 {
+    font-size: 6vw;
+    line-height: 1.25;
+  }
+}
+
 h2 {
   color: $off-black;
   font-size: rem-calc(36);

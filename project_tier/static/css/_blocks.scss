@@ -516,11 +516,10 @@ ul.accordion {
     }
 
     .split_banner_section__text, .split_banner_section__text.right {
-      margin-right: 0;
-      margin-left: 0 !important;
-      margin-top: 60px;
       padding: 40px 20px 100px 20px !important;
       justify-content: center;
+      max-width: 600px;
+      margin: 60px auto 0 !important;
 
       h3 {
         width: auto;
