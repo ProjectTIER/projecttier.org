@@ -365,6 +365,33 @@ ul.accordion {
   }
 }
 
+.slider .simple_slider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  max-width: 560px;
+
+  a.prev, .next {
+    position: relative;
+    margin: 0 auto;
+    top: 122px;
+    left: 0;
+  }
+}
+
+@media(max-width: 600px) {
+  .slider .simple_slider {
+    iframe {
+      width: 90%;
+      margin-right: 0;
+    }
+    a.prev, .next {
+      padding: 4px;
+    }
+  }
+}
+
 .split_banner_section {
   display: flex;
   align-items: center;

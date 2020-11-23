@@ -53,6 +53,35 @@ class NoticeBlock(StructBlock):
         help_text = "Get the reader's attention using this callout. This is useful for warnings, indications of success, etc."
 
 
+class SimpleSliderBlock(StructBlock):
+    slides = StreamBlock([
+        ('slide', StructBlock([
+            ('caption', RichTextBlock(icon='fa-paragraph', required=False)),
+            ('image_or_video', StructBlock([
+                ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
+                ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+            ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)),
+        ], help_text= 'A single slide', blank=False)),
+    ], help_text= 'Add a slide to the slider', blank=True)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        def count_visible_slides():
+            count = 0
+            for slide in (value['slides']):
+                count = count + 1
+            return count
+
+        context['visible_slides'] = count_visible_slides()
+        return context
+
+    class Meta:
+        icon = 'fa-object-group'
+        template = 'blocks/simple_slider.html'
+        help_text = 'A dynamic slideslow of multiple images or videos.'
+
+
 class CaptionedImageBlock(StructBlock):
     image = ImageChooserBlock()
     caption = TextBlock(required=False)
@@ -158,6 +187,7 @@ class ContentStreamBlock(StreamBlock):
     detailed_flow_boxes = DetailedFlowBlockList()
     periodic_boxes = PeriodicBlockList()
     highlight_block = HightlightBlock()
+    slider_block = SimpleSliderBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
