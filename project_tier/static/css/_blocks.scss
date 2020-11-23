@@ -220,6 +220,12 @@ ul.accordion {
   }
 }
 
+@media(max-width: 600px) {
+  .icon_banner_header {
+    width: auto;
+  }
+}
+
 .slider {
   /* Hide the images by default */
   .mySlides {
