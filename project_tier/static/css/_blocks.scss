@@ -606,8 +606,8 @@ ul.accordion {
 }
 
 
-@media(max-width: 640px) {
+@media(max-width: 630px) {
   .feature-events-list {
-    margin: 0 auto;
+    justify-content: center;
   }
 }
