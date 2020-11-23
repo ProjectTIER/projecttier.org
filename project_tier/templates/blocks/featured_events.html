@@ -62,7 +62,6 @@
   function getWindowSize(){
     var width = window.innerWidth || document.documentElement.clientWidth ||
     document.body.clientWidth;
-    console.log('width: ' + width);
 
     return showOrHideExtraEvent(width);
   }
@@ -81,11 +80,8 @@
 
     cardsOnLastRow < cardsPerRow ? showExtra = true : showExtra = false;
 
-    if (!showExtra) {
-      featuredEvent.style.display = "none";
-    } else {
-      featuredEvent.style.display = "block";
-    }
+    !showExtra ? featuredEvent.style.display = "none" : featuredEvent.style.display = "block";
+
   }
 
 </script>
