@@ -9,7 +9,9 @@ from wagtail.core.blocks import (
     ChoiceBlock,
     ListBlock,
     PageChooserBlock,
-    CharBlock
+    CharBlock,
+    URLBlock,
+    BooleanBlock
 )
 from wagtailfontawesome.blocks import IconBlock
 
@@ -36,7 +38,6 @@ class CallToActionButtonBlock(StructBlock):
         help_text = 'Create a cll to action button to help guide users to the next step.'
 
 
-
 class NoticeBlock(StructBlock):
     message = RichTextBlock(help_text='Write the message text.')
     indicator = ChoiceBlock(choices=[
@@ -50,6 +51,35 @@ class NoticeBlock(StructBlock):
         icon = 'fa-exclamation-triangle'
         template = 'blocks/notice.html'
         help_text = "Get the reader's attention using this callout. This is useful for warnings, indications of success, etc."
+
+
+class SimpleSliderBlock(StructBlock):
+    slides = StreamBlock([
+        ('slide', StructBlock([
+            ('caption', RichTextBlock(icon='fa-paragraph', required=False)),
+            ('image_or_video', StructBlock([
+                ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
+                ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+            ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)),
+        ], help_text= 'A single slide', blank=False)),
+    ], help_text= 'Add a slide to the slider', blank=True)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        def count_visible_slides():
+            count = 0
+            for slide in (value['slides']):
+                count = count + 1
+            return count
+
+        context['visible_slides'] = count_visible_slides()
+        return context
+
+    class Meta:
+        icon = 'fa-object-group'
+        template = 'blocks/simple_slider.html'
+        help_text = 'A dynamic slideslow of multiple images or videos.'
 
 
 class CaptionedImageBlock(StructBlock):
@@ -136,6 +166,7 @@ class LimitedStreamBlock(StreamBlock):
         icon='fa-header', template='blocks/smaller_heading.html')
 
     class Meta:
+        icon = 'fa-paragraph'
         template = 'blocks/streamfield.html'
 
 
@@ -156,6 +187,7 @@ class ContentStreamBlock(StreamBlock):
     detailed_flow_boxes = DetailedFlowBlockList()
     periodic_boxes = PeriodicBlockList()
     highlight_block = HightlightBlock()
+    slider_block = SimpleSliderBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
@@ -178,3 +210,102 @@ class BodyBlock(StreamBlock):
     class Meta:
         template = 'blocks/streamfield.html'
         help_text = 'The main page body.'
+
+
+class IconHeaderBlock(StructBlock):
+    headline = TextBlock(help_text='Write a title for this section.')
+    icon = IconBlock(help_text='Optional icon', required=False)
+    visible = BooleanBlock(default=True, required=False)
+
+    class Meta:
+        icon = 'fa-header'
+        template = 'blocks/icon_banner_header.html'
+        help_text = 'A red banner headline with optional icon'
+
+
+class FeaturedEventsBlock(StreamBlock):
+    event = PageChooserBlock(page_type='events.EventPage', required=True, help_text='Select an event from your Event Pages')
+
+    class Meta:
+        icon = 'fa-calendar'
+        template = 'blocks/featured_events.html'
+        help_text = 'You will need to complete an event page with all fields before selecting it here'
+
+
+class MultiSliderBlock(StructBlock):
+    orientation = ChoiceBlock(choices=[
+        ('left', 'Left'),
+        ('right', 'Right'),
+    ], required=True, default='left', help_text='Choose which side of the image the text will appear on.')
+
+    slides = StreamBlock([
+        ('slide', StructBlock([
+            ('headline', TextBlock(help_text='Write a title for this section.', required=False)),
+            ('paragraph', RichTextBlock(icon='fa-paragraph', required=False)),
+            ('visible', BooleanBlock(default=True, required=False)),
+            ('CTA', StructBlock([
+                ('text', CharBlock(help_text='What should the button say?', required=False)),
+                ('link', URLBlock(help_text='Where should the button link to?', required=False)),
+            ], help_text= 'An optional Call to Action button', blank=True)),
+            ('image_or_video', StructBlock([
+                ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
+                ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+            ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)),
+        ], help_text= 'A single slide', blank=False)),
+    ], help_text= 'Add a slide to the slider', blank=True)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        def count_visible_slides():
+            count = 0
+            for slide in (value['slides']):
+                print(slide.value)
+                if slide.value['visible'] == True:
+                    count = count + 1
+            return count
+
+        context['visible_slides'] = count_visible_slides()
+        return context
+
+    class Meta:
+        icon = 'fa-object-group'
+        template = 'blocks/multi_slider_section.html'
+        help_text = 'A dynamic block with a split red banner background and image. Add multiple slides to seemlessly move between content.'
+
+
+class SplitBannerSectionBlock(StructBlock):
+    orientation = ChoiceBlock(choices=[
+        ('left', 'Left'),
+        ('right', 'Right'),
+    ], required=True, default='left', help_text='Choose which side of the image the text will appear on.')
+
+    headline = TextBlock(help_text='Write a title for this section.', required=False)
+    paragraph = RichTextBlock(icon='fa-paragraph', required=False)
+
+    CTA = StructBlock([
+        ('text', CharBlock(help_text='What should the button say?', required=False)),
+        ('link', URLBlock(help_text='Where should the button link to?', required=False)),
+    ], help_text= 'An optional Call to Action button', blank=True)
+
+    image_or_video = StructBlock([
+        ('image', ImageChooserBlock(help_text='Choose a horizontal photo', required=False)),
+        ('link', URLBlock(help_text='A youtube link to a video', required=False)),
+    ], help_text= 'Either upload an image, or link to a video. If both fields are present, the video will take precident', blank=False, required=True)
+
+    visible = BooleanBlock(default=True, required=False)
+
+    class Meta:
+        icon = 'fa-object-ungroup'
+        template = 'blocks/split_banner_section.html'
+        help_text = 'A dynamic block with a split red banner background and image'
+
+
+class HomeStreamBlock(StreamBlock):
+    header = IconHeaderBlock()
+    events = FeaturedEventsBlock()
+    slider = MultiSliderBlock()
+    text = RichTextBlock(icon='fa-paragraph', required=False)
+
+    class Meta:
+        template = 'blocks/streamfield.html'

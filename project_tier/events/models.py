@@ -101,6 +101,14 @@ class EventPage(Page):
     time_to = models.TimeField("End time", null=True, blank=True)
 
     meta_information = RichTextField(blank=True, help_text="Meta information about the event e.g. Haverford College, Department of economics")
+    thumbnail = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="This image will be used on the Featured Event Block. Ideal dimmensions are 270x180."
+    )
     description = RichTextField(blank=True, help_text="The description written as though in the future")
     description_past = RichTextField(blank=True, help_text="The description written as though in the past")
     parent_page_types = ['EventIndexPage']
@@ -116,6 +124,7 @@ class EventPage(Page):
             FieldPanel('date_to'),
         ],),
         FieldPanel('meta_information'),
+        ImageChooserPanel('thumbnail'),
         MultiFieldPanel([
             FieldPanel('description'),
             FieldPanel('description_past'),

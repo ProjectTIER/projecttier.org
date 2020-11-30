@@ -4,77 +4,21 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block page_banner %}
-  <header class="page-header" id="intro-section">
-    <div class="row">
-      <div class="intro-subtitle small-12 medium-7 columns">
-        <h1>
-          Project TIER
-          <span id="intro-subtitle">{{self.headline}}</span>
-        </h1>
-        {% if self.big_cta_show and self.big_cta_text and self.big_cta_link %}
-          <a class="big-cta" href="{{self.big_cta_link}}">{{self.big_cta_text}}</a>
-        {% endif %}
-      </div>
-      <div class="news columns">
-        {% block news %}
-          <h2>What's new</h2>
-          {% news_listing %}
-        {% endblock %}
-      </div>
+  <header id="site-banner">
+    <div id="banner-photo">
+      {% image page.banner original %}
+    </div>
+    <div id="banner-text">
+      <h1 id="site-title">Project TIER</h1>
+      <span id="intro-subtitle">{{self.headline}}</span>
     </div>
   </header>
 {% endblock %}
 
 {% block content %}
   <div id="home-page">
-    {% if page.featured_index_page %}
-      <section class="block-section featured-index-page">
-        <div class="row">
-          <h2 class="section-title">{{ page.featured_index_page.title }}</h2>
-          <div class="section-intro">
-            <div class="section-description">{{ page.featured_index_page.specific.listing_abstract }}</div>
-              <div class="section-children">
-                {% for childpage in page.featured_index_page.specific.children|slice:"4" %}
-                  <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </section>
-      {% endif %}
-
-    <section class="block-section subfeatured-content">
-      <div class="row">
-        {% if page.featured_index_page_2 %}
-          <div class="subfeature-section-intro large-4 columns">
-            <h2 class="subfeature-section-title">{{ page.featured_index_page_2.title }}</h2>
-            <ul>
-              {% for childpage in page.featured_index_page_2.specific.children|slice:"3" %}
-                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-        {% if page.featured_index_page_3 %}
-          <div class="subfeature-section-intro large-4 columns">
-            <h2 class="subfeature-section-title">{{ page.featured_index_page_3.title }}</h2>
-            <ul>
-              {% for childpage in page.featured_index_page_3.specific.children|slice:"3" %}
-                <li><a href="{{childpage.url}}">{{childpage.title}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-        {% if page.featured_events_page %}
-          <div class="subfeature-section-intro large-4 columns">
-            <h2 class="subfeature-section-title">{{ page.featured_events_page.title }}</h2>
-            <ul>{{ page.featured_events_page.specific.intro_homepage }}
-            </ul>
-            <p>See all <a href="{{page.featured_events_page.url}}">{{ page.featured_events_page.title|lower }}</a></p>
-          </div>
-        {% endif %}
-      </div>
-    </section>
-
+    {% for block in page.body %}
+      {% include_block block with index=forloop.counter %}
+    {% endfor %}
   </div>
 {% endblock %}

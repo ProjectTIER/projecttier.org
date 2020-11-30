@@ -1,4 +1,7 @@
 .template-homepage {
+  background-color: #fefefe;
+  background-image: none;
+
     .block-section {
         h2 {
             display: inline-block;
@@ -15,298 +18,142 @@
 
 
     /* ==========================================================================
-    INTRO
+    BANNER
     ========================================================================== */
-    #intro-section {
-        color: $white;
-        @include breakpoint(medium up){
-            padding: $large-gutter*2 0;
+
+    #site-banner {
+      display: flex;
+      background-image: linear-gradient(90deg, $red, $dark-red);
+      color: $white;
+      overflow: hidden;
+      max-height: 300px;
+      margin-bottom: 40px;
+
+      #banner-photo {
+        clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+        align-self: flex-end;
+
+        img {
+          filter: brightness(1.2);
         }
+      }
 
-        .row {
-            @include breakpoint(medium up){
-                display: flex;
-                align-items: center;
-            }
-        }
-
-        #logo {
-            display: block;
-            width: 75%;
-            max-width: rem-calc(500);
-            margin: 0 auto;
-            @include breakpoint(medium up){
-                width: 100%;
-                margin: 0 0 0 auto;
-            }
-            svg {
-                #project {
-                    fill: $white;
-                }
-                #tier {
-                    fill: $red;
-                }
-            }
-        }
-
-        h1 {
-            text-transform: none;
-            font-size: 2rem;
-            line-height: 1.2;
-            @include breakpoint(medium up){
-                font-size: 4.5rem;
-            }
-
-            span {
-                display: block;
-                font-size: 0.7em;
-                color: rgba(255,255,255, 0.8);
-            }
-        }
-        #intro-text {
-            p {
-                font-size: rem-calc(16);
-                max-width: 25em;
-                margin: 0 auto $small-gutter;
-                @include breakpoint(medium up){
-                    font-size: rem-calc(18);
-                }
-                @include breakpoint(large up){
-                    font-size: rem-calc(20);
-                }
-            }
-
-            #intro-button {
-                width: 100%;
-                @include breakpoint(medium up){
-                    width: auto;
-                }
-            }
-        }
-
-        .big-cta {
-            max-width: 500px;
-            margin-top: 60px;
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.9);
-            }
-        }
-    }
-
-
-    .featured-index-page {
-        padding-left: 20px;
-        @include breakpoint(small only) {
-            padding-left: 0;
-        }
-    }
-    .featured-index-page h2.section-title {
-        font-size: 1.25rem;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-    }
-    .section-intro {
+      #banner-text {
         display: flex;
-        margin-bottom: 20px;
-        @include breakpoint(small only) {
-            display: block;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 20px;
+        max-width: 420px;
+        margin-top: -50px;
+        margin-left: -120px;
+        h1, span {
+          font-family: "Lato", Arial, sans-serif;
         }
-        .section-description {
-            background-color: $grey;
-            border-radius: 6px;
-            color: $pale-grey;
-            font-size: 1.3em;
-            padding: 20px;
-            max-width: 42rem;
-            float: left;
-            @include breakpoint(small only) {
-                font-size: 1em;
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-            @include breakpoint(medium only) {
-                font-size: 1.1rem;
-            }
+
+        #site-title {
+          text-transform: uppercase;
+          font-weight: 400;
+          opacity: .7;
+          font-size: 1.5rem;
+          border-bottom: 2px solid #ffffffb4;
+          line-height: 40px;
+          width: 75%;
+          text-align: right;
+          align-self: flex-end;
         }
-        .section-children {
-            border-radius: 6px;
-            float: left;
-            background-color: $grey;
-            padding: 20px;
-            margin-left: 40px;
-            overflow: hidden;
-            @include breakpoint(small only) {
-                float: none;
-                margin-left: 0;
-                max-width: 100%;
-            }
-            @include breakpoint(medium up) {
-                min-width: 22rem;
-            }
-            li {
-                list-style: none;
-                padding: 3px 12px;
-                &:before {
-                    content: "\f054";
-                    color: $blue;
-                    font-family: FontAwesome;
-                    margin: 0 5px 0 -15px;
-                }
-                &::after {
-                    content: "";
-                    display: block;
-                    height: 1px;
-                    width: 150%;
-                    margin: 10px 0 0px -20%;
-                    background-color: $light-grey;
-                    opacity: 0.3;
-                }
-                a {
-                    text-decoration: none;
-                    transition: opacity 0.2s;
-                    &:hover {
-                        opacity: 0.7;
-                    }
-                }
-            }
+
+        #intro-subtitle {
+          margin-right: 0;
+          font-size: 2.5rem;
+          line-height: 40px;
+          padding-left: 40px;
         }
+      }
     }
 
-    section.subfeatured-content h2.subfeature-section-title {
-        font-size: 1.15rem;
-        border-bottom: 3px solid #ddd;
-        padding-bottom: 0px;
-        display: block;
-        text-transform: uppercase;
-        margin-bottom: 0;
-    }
-    .subfeature-section-intro:last-child {
-        h2 {
-            margin-bottom: 12px;
+    @media(max-width: 1000px){
+      #site-banner {
+
+        #banner-photo {
+          width: 65%;
         }
+
+        #banner-text {
+          margin-left: -6vw;
+
+          #intro-subtitle {
+            font-size: 4vw;
+            line-height: 4vw;
+          }
+        }
+      }
     }
-    .subfeature-section-intro ul {
-        margin-bottom: 40px;
+
+    @media(min-width: 1000px){
+      #site-banner {
+
+        #banner-photo {
+          width: 70%;
+
+          img {
+            margin-left: -60px;
+          }
+        }
+      }
     }
-    .subfeature-section-intro ul li {
-        padding: 0;
+
+    @media(min-width: 1200px){
+      #site-banner {
+        max-height: 400px;
+      }
+    }
+
+    @media(max-width: 600px){
+      #site-banner {
+        flex-direction: column;
+      }
+
+      #banner-photo {
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
+        align-self: center;
+        width: 100% !important;
+        height: 200px;
         position: relative;
+        overflow: hidden;
 
-        &::before {
-            position: absolute;
-            top: 12px;
-            left: 0;
-            content: "\f054";
-            color: $red;
-            font-family: FontAwesome;
-            margin: 0 5px 0 0px;
+        img {
+          width: 100%;
+          position: absolute;
+          bottom: -50px;
         }
+      }
 
-        //   &::after {
-        //       content: "";
-        //       display: block;
-        //       height: 1px;
-        //       width: 100%;
-        //       margin: 10px 0 0 0;
-        //       background-color: $light-grey;
-        //       opacity: 0.9;
-        //   }
-
-        a {
-            text-decoration: none;
-            transition: color 0.2s;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: block;
-            padding: 10px 0 10px 30px;
-            border-bottom: 1px solid $light-grey;
-
-            &:hover {
-                color: $red;
-            }
-
-        }
-    }
-
-    /* TODO This appears to be styling most of the homepage. Odd semantics */
-    .featured-index-page {
-        background: $dark-grey;
-        border-top: 12px solid $grey;
-        color: $white;
-        padding-bottom: 50px;
-        * {
-            color: $white;
-        }
-        h2 {
-            font-size: 1.25rem;
-        }
-    }
-    .subfeatured-content {
-        .row {
-            display: block;
-        }
-        background: white;
-        padding-bottom: 50px;
-        h2 {
-            font-size: 1.25rem;
-            border-bottom: 3px solid #ddd;
-            padding-bottom: 20px;
-            display: block;
-        }
-    }
-}
-
-/* NEWS */
-.news {
-    background-color: rgba(255,255,255, 0.8);
-    border: 1px solid $off-white;
-    min-width: 18rem;
-    padding: 0 1rem;
-    @include breakpoint(small up) {
-        margin-bottom: 20px;
-        margin-top: 20px;
-        max-width: 100%;
-    }
-    @include breakpoint(medium up) {
-        max-width: 22rem;
-    }
-    @include breakpoint(large up) {
-        max-width: 26rem;
-    }
-    margin-left: 2rem;
-    overflow: hidden;
-
-    &:hover {
-        background-color: rgba(255,255,255, 0.9);
-    }
-    h2 {
-        font-size: 1.25rem;
-        margin-bottom: 5px;
-        margin-top: 12px;
-        text-transform: uppercase;
-    }
-    p {
-        font-size: 100%;
-    }
-    ul.news-items {
-
-        li {
-            border-top: 1px solid #fff;
-            padding: 10px 0;
-
-            &:before {
-                display: none;
-            }
-
-            p {
-                margin: 0;
-            }
-
-        }
-
-        &::before {
-            display: none;
-        }
+      #banner-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-right: 40px !important;
+        max-width: none !important;
+        height: 200px !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+      }
 
     }
+
+
+  #home-page {
+    .rich-text {
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 200;
+      margin-left: 60px;
+      margin-bottom: 80px;
+
+      a {
+        color: $red;
+      }
+    }
+  }
+
 }

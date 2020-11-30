@@ -1,0 +1,43 @@
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags static %}
+
+{% if self.visible %}
+<div class="split_banner_section {% if self.orientation == 'right' %}right{% endif %}">
+
+  <div class="split_banner_section__banner {% if self.orientation == 'right' %}right{% endif %}">
+    <div class="split_banner_section__text {% if self.orientation == 'right' %}right{% endif %}">
+      {% if self.headline %}
+        <h3 id="{{self.headline|slugify}}" data-magellan-target="{{self|slugify}}">
+          {{self.headline}}
+        </h3>
+      {% endif %}
+
+      {% if self.paragraph %}
+        <div>
+          {{self.paragraph}}
+        </div>
+      {% endif %}
+
+      {% if self.paragraph %}
+        <button class="split_banner_section__button">
+          {{self.CTA.text}}
+        </button>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="split_banner_section__image-container {% if self.orientation == 'right' %}right{% endif %}">
+  {% if self.image_or_video %}
+    {% if self.image_or_video.link != '' %}
+      {% embed self.image_or_video.link %}
+    {% elif self.image_or_video.image != None %}
+      {% image self.image_or_video.image fill-600x350 %}
+    {% else %}
+      <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+    {% endif %}
+  {% else %}
+    <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+  {% endif %}
+
+  </div>
+</div>
+{% endif %}

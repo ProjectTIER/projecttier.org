@@ -1,0 +1,95 @@
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags static %}
+
+<div class="slider slideshow-container {% if self.orientation == 'right' %}right{% endif %}">
+  {% for slide in self.slides %}
+  {% if slide.value.visible %}
+  <div class="split_banner_section mySlides-{{index}} {% if self.orientation == 'right' %}right{% endif %}">
+
+    <div class="split_banner_section__banner {% if self.orientation == 'right' %}right{% endif %}">
+      <div class="split_banner_section__text fade {% if self.orientation == 'right' %}right{% endif %}">
+        {% if slide.value.headline %}
+          <h3 id="{{slide.value.headline|slugify}}" data-magellan-target="{{slide|slugify}}">
+            {{slide.value.headline}}
+          </h3>
+        {% endif %}
+
+        {% if slide.value.paragraph %}
+          <div>
+            {{slide.value.paragraph}}
+          </div>
+        {% endif %}
+
+        {% if slide.value.CTA.link %}
+          <a href="{{slide.value.CTA.link}}">
+            <button class="split_banner_section__button fade">
+              {{slide.value.CTA.text}}
+            </button>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="split_banner_section__image-container slidingImage slide_in {% if self.orientation == 'right' %}right{% endif %}">
+    {% if slide.value.image_or_video %}
+      {% if slide.value.image_or_video.link != '' %}
+        {% embed slide.value.image_or_video.link %}
+      {% elif slide.value.image_or_video.image != None %}
+        {% image slide.value.image_or_video.image fill-600x350 %}
+      {% else %}
+        <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+      {% endif %}
+    {% else %}
+      <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+    {% endif %}
+    </div>
+
+    {% if visible_slides > 1 %}
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1, 'slide_out')">&#10094;</a>
+      <a class="next" onclick="plusSlides(1, 'slide_in')">&#10095;</a>
+    {% endif %}
+
+  </div>
+  {% endif %}
+  {% endfor %}
+
+</div>
+
+{% if visible_slides > 1 %}
+<script type="text/javascript">
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n, slide_direction) {
+    updateSlideAnimation(slide_direction);
+    showSlides(slideIndex += n);
+  }
+
+  function updateSlideAnimation(slide_direction) {
+    var images = document.getElementsByClassName("slidingImage");
+    var slide_direction = slide_direction;
+    for (i = 0; i < images.length; i++) {
+        if (images[i].classList.contains("slide_in")) {
+          images[i].className = images[i].className.replace("slide_in", slide_direction);
+        } else {
+          images[i].className = images[i].className.replace("slide_out", slide_direction);
+        }
+    }
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides-{{index}}");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "flex";
+  }
+</script>
+{% endif %}

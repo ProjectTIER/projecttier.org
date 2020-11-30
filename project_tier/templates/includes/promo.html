@@ -1,7 +1,6 @@
 {% load wagtailcore_tags homepage_tags wagtailimages_tags %}
 
 {% get_site_root as homepage %}
-{% if homepage.specific.promo_headline and homepage.specific.promo_text and homepage.specific.promo_image and homepage.specific.promo_cta_link and homepage.specific.promo_cta_text %}
   <section class="block-section promo">
     <div class="row">
       <div class="large-12 columns">
@@ -11,18 +10,4 @@
       </div>
       <div class="large-1 columns"></div>
     </div>
-
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="small-2 columns graphic float-right">
-          {% image homepage.specific.promo_image width-200 %}
-        </div>
-        <div class="small-12 footer-title"><h2>{{ homepage.specific.promo_headline }}</h2></div>
-        <div class="footer-description"><p>{{ homepage.specific.promo_text|richtext }}</p></div>
-        <a class="button" href="{{ homepage.specific.promo_cta_link }}" target="_blank">{{ homepage.specific.promo_cta_text }}</a>
-      </div>
-      <div class="large-1 columns"></div>
-    </div>
-
   </section>
-{% endif %}

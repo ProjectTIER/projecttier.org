@@ -211,3 +211,5 @@ if 'GA_KEY_CONTENT' in env and 'GA_VIEW_ID' in env:
 # Link checker
 
 DEFAULT_PER_PAGE = 50
+
+WAGTAIL_MODERATION_ENABLED = False

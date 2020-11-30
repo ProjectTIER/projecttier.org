@@ -2,27 +2,17 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block sidebar %}
+  <div class="event-sidebar-metadata">{% include "./event_metadata.html" %}</div>
 {% endblock %}
 
 {% block main_content %}
 <div class="row">
-  <div class="row">
-    <div class="body-content small-12 medium-7 columns">
-      {% if self.description %}
-        {{ self.description|richtext }}
-      {% endif %}
-    </div>
-    <div class="event meta small-12 medium-4 columns">
-      <time class="event-meta-item">
-        <p>{{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}</p>
-        {% if self.time_from %}<p>{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
-      </time>
-      <div class="event-meta-item">
-        {% if self.university %}{{ self.university }}{% endif %}
-        {% if self.university and self.department %}<br>{% endif %}
-        {% if self.department %}{{ self.department }}{% endif %}
-      </div>
-    </div>
+  <div class="body-content small-12 medium-8 columns event-page">
+    <div class="event-main-metadata">{% include "./event_metadata.html" %}</div>
+    {% if self.description %}
+      <h4>Event Description</h4>
+      {{ self.description|richtext }}
+    {% endif %}
+  </div>
 </div>
-
 {% endblock %}
