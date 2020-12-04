@@ -40,7 +40,7 @@
 
       #banner-text {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         justify-content: center;
         padding-right: 20px;
         max-width: 420px;
@@ -55,7 +55,9 @@
           font-weight: 400;
           opacity: .7;
           font-size: 1.6rem;
-          border-bottom: 2px solid #ffffffb4;
+          border-top: 2px solid #ffffffb4;
+          margin-top: 10px;
+          padding-top: 5px;
           line-height: 40px;
           width: 80%;
           padding-left: 10px;
@@ -153,6 +155,7 @@
 
       #banner-text {
         display: flex;
+        flex-direction: column-reverse;
         justify-content: flex-end;
         padding-right: 40px !important;
         max-width: 550px !important;
