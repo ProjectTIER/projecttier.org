@@ -14,7 +14,9 @@
         {% if page.overview %}
         <p class="overview"><strong>{{page.overview|richtext}}</strong></p>
         {% endif %}
-        {{page.body}}
+        {% for block in page.body %}
+          {% include_block block with index=forloop.counter %}
+        {% endfor %}
     </div>
   </div>
 {% endblock %}

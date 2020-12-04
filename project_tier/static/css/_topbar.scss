@@ -117,7 +117,7 @@ body:not(.specs-section) .top-bar {
     @include breakpoint(large){
       font-size: rem-calc(14);
     }
-    @include breakpoint(xlarge){
+    @include breakpoint(xxlarge){
       font-size: rem-calc(15);
     }
     &:hover {

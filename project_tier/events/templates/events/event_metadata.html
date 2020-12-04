@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="event-page-metadata">
+
+  <div class="event-image">
+    {% if self.thumbnail %}
+      {% image self.thumbnail max-1000x800 %}
+    {% else %}
+      <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
+    {% endif %}
+  </div>
+
+  <h4 class="event-meta-label">Date</h4>
+  <time class="event-meta-item">
+    <p>{{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}</p>
+    {% if self.time_from %}<p>{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
+  </time>
+
+  <h4 class="event-meta-label">Details</h4>
+  <div class="event-meta-item">
+    {% if self.university %}{{ self.university }}{% endif %}
+    {% if self.university and self.department %}<br>{% endif %}
+    {% if self.department %}{{ self.department }}{% endif %}
+  </div>
+  <div class="event-meta-item">
+    {{ self.meta_information|richtext }}
+  </div>
+</div>
