@@ -11,14 +11,15 @@
     display: block;
     float: none;
     @include breakpoint(large up) {
-      text-align: right;
-      float: right;
-      margin-top: -120px;
+      // text-align: right;
+      // float: right;
+      // margin-top: -120px;
     }
 
     a {
       vertical-align: middle;
       box-shadow: none;
+      text-decoration: none;
     }
 
     .joining-text {
@@ -62,11 +63,13 @@
     .aps-logo {
       width: rem-calc(200);
       display: inline-block;
-      margin: rem-calc(-10) auto 0;
+      margin-top: -10px;
+      // margin: rem-calc(-10) auto 0;
       @include breakpoint(medium up) {
         width: rem-calc(300);
-        margin: rem-calc(-20) auto 0;
+        // margin: rem-calc(-20) auto 0;
         display: block;
+        margin-top: -30px;
       }
     }
   }
@@ -156,6 +159,7 @@
   min-height: 300px;
   > h2 {
     font-size: 1.3em;
+    display: block;
     > a {
       color: $off-white;
       font-size: 1em;
@@ -184,8 +188,14 @@
       background-color: transparent;
       margin: 20px 155px;
     }
-      }
+  }
+
+  @media(max-width: 600px) {
+    iframe:last-child {
+      margin: 0 auto;
     }
+  }
+}
 
 .block-section.promo {
   margin: 20px 0 40px 0;
