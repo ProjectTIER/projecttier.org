@@ -1,3 +1,5 @@
+{% load static %}
+
 <footer id="main-footer">
   <div class="row">
     <div class="small-12 columns">
@@ -10,7 +12,7 @@
             </div>
           <div class="small-12 large-5 small-center columns mailchimp">
               {% include "includes/promo.html" %}
-
+              <hr>
               <section class="sponsor-info">
                 <p id="sponsor-logo">
                   <a href="/">
@@ -23,6 +25,16 @@
                     <span class="aps-logo" title="Alfred P. Sloan Foundation">{% include "includes/svg_aps_logo.html" %}</span>
                   </a>
                 </p>
+              </section>
+              <hr>
+              <section class="block-section yoda" id="yoda">
+                <div class="row">
+                  <div class="large-12 columns">
+                    <div class="small-12 footer-title"><h2>Meet Yoda, the TIER Terrier:</h2></div>
+                    <img class="yoda" src="{% static "img/yoda.jpg" %}"/>
+                  </div>
+                  <div class="large-1 columns"></div>
+                </div>
               </section>
           </div>
         </div>
