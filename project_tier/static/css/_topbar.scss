@@ -113,12 +113,12 @@ body:not(.specs-section) .top-bar {
     transition:
       background 0.2s,
       color 0.2s;
-    font-size: rem-calc(13);
+    font-size: rem-calc(15);
     @include breakpoint(large){
-      font-size: rem-calc(14);
+      font-size: rem-calc(16);
     }
     @include breakpoint(xxlarge){
-      font-size: rem-calc(15);
+      font-size: rem-calc(17);
     }
     &:hover {
       color: $red;
