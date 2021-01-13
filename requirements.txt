@@ -27,3 +27,4 @@ gunicorn==20.0.4
 # Tests
 django-nose==1.4.6
 factory_boy==2.12.0
+pillow>=8.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
