@@ -179,7 +179,7 @@ class WebcastIndexPage(Page):
         context = super().get_context(request)
 
         # Add extra variables and return the updated context
-        context['events'] = WebcastPage.objects.child_of(self).live()
+        context['events'] = WebcastPage.objects.child_of(self).live().order_by('date')
         return context
 
 
