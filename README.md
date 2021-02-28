@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/ProjectTIER/projecttier.org.svg?branch=master)](https://travis-ci.org/ProjectTIER/projecttier.org)
 [![Coverage Status](https://coveralls.io/repos/github/ProjectTIER/projecttier.org/badge.svg?branch=master)](https://coveralls.io/github/ProjectTIER/projecttier.org?branch=master)
-[![Known Vulnerabilities](https://snyk.io/test/github/projecttier/projecttier.org/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/projecttier/projecttier.org?targetFile=requirements.txt)
 [![Requirements Status](https://requires.io/github/ProjectTIER/projecttier.org/requirements.svg?branch=master)](https://requires.io/github/ProjectTIER/projecttier.org/requirements/?branch=master)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
