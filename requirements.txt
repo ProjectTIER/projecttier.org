@@ -13,6 +13,7 @@ wagtailatomicadmin==0.2.5
 psycopg2==2.8.5
 whitenoise==5.0.1
 wagtail-linkchecker==0.5.1
+Unidecode==1.2.0
 
 # Custom libraries
 -e git://github.com/ProjectTIER/wagalytics.git#egg=wagalytics
