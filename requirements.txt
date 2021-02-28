@@ -1,4 +1,4 @@
-wagtail==2.9
+wagtail==2.12.2
 boto==2.49.0
 celery==4.4.2
 django_compressor==2.4
@@ -13,7 +13,6 @@ wagtailatomicadmin==0.2.5
 psycopg2==2.8.5
 whitenoise==5.0.1
 wagtail-linkchecker==0.5.1
-
 
 # Custom libraries
 -e git://github.com/ProjectTIER/wagalytics.git#egg=wagalytics
