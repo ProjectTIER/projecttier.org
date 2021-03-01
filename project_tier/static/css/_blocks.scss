@@ -448,6 +448,7 @@ ul.accordion {
     p {
       font-size: 24px;
       font-weight: 200;
+      margin-left: 0 !important;
     }
 
     .rich-text {
@@ -576,7 +577,7 @@ ul.accordion {
   .featured-event {
     border: 1px solid lightgray;
     width: 272px;
-    height: 384px;
+    height: 376px;
     margin: 18px 0 18px 36px;
     box-shadow: 1px 1px 3px #00000020;
     overflow: hidden;
@@ -626,15 +627,37 @@ ul.accordion {
       font-weight: 600;
       padding-bottom: 4px;
       border-bottom: 2px solid $red;
+      height: 72px;
+      display: flex;
+      align-items: center;
     }
 
     &__subtitle .rich-text {
+      margin-bottom: 0px !important;
+      margin-left: 0 !important;
+
+      p {
+        color: gray !important;
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 8px;
+        margin-left: 0 !important;
+      }
+    }
+
+
+    &__subtitle {
       margin: 16px 0;
       margin-left: 0 !important;
 
       p {
         color: gray;
-        margin-bottom: 0;
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 8px;
+        margin-left: 0 !important;
       }
     }
   }
