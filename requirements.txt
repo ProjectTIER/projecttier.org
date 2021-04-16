@@ -19,7 +19,7 @@ Unidecode==1.2.0
 -e git://github.com/ProjectTIER/wagalytics.git#egg=wagalytics
 
 # Debug
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 
 # Heroku webserver
 gunicorn==20.0.4
