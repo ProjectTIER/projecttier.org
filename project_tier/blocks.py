@@ -17,6 +17,7 @@ from wagtailfontawesome.blocks import IconBlock
 
 
 class AccordionBlock(StructBlock):
+    compact = BooleanBlock(required=False, help_text='Display a compact accordion for use between paragraphs.')
     panels = ListBlock(StructBlock([
         ('title', TextBlock(help_text='The headline to display when the accordion panel is closed.')),
         ('body', RichTextBlock(help_text='The inner content of this accordion panel. It is initially hidden.'))
