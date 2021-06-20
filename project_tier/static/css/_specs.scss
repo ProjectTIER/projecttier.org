@@ -374,5 +374,36 @@ body.specs-section {
       color: #222222;
       right: -1em;
     }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &--compact {
+    li {
+      border: 0;
+      padding: 10px 0;
+
+      a.accordion-title {
+        font-size: 16px;
+        color: #1585cf;
+
+        &:before {
+          display: none;
+        }
+
+        &::after {
+          content: '🢒';
+          padding-left: 10px;
+          display: inline-block;
+        }
+      }
+
+      &.is-active a.accordion-title::after {
+        content: '🢓';
+        transform: translateY(7px);
+      }
+    }
   }
 }

@@ -17,6 +17,7 @@ from wagtailfontawesome.blocks import IconBlock
 
 
 class AccordionBlock(StructBlock):
+    compact = BooleanBlock(required=False, help_text='Display a compact accordion for use between paragraphs.')
     panels = ListBlock(StructBlock([
         ('title', TextBlock(help_text='The headline to display when the accordion panel is closed.')),
         ('body', RichTextBlock(help_text='The inner content of this accordion panel. It is initially hidden.'))
@@ -172,11 +173,12 @@ class LimitedStreamBlock(StreamBlock):
 
 class ContentStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
-    heading = TextBlock(icon='fa-header', template='blocks/heading.html')
+    bigger_heading = TextBlock(icon='fa-header', template='blocks/h2.html', label='H2')
+    heading = TextBlock(icon='fa-header', template='blocks/h3.html', label='H3')
     smaller_heading = TextBlock(
-        icon='fa-header', template='blocks/smaller_heading.html')
+        icon='fa-header', template='blocks/h4.html', label='H4')
     smallest_heading = TextBlock(
-        icon='fa-header', template='blocks/smallest_heading.html')
+        icon='fa-header', template='blocks/h5.html', label='H5')
     image = CaptionedImageBlock()
     download = DocumentChooserBlock(icon='fa-download', template='blocks/download.html')
     accordion = AccordionBlock()
@@ -188,6 +190,7 @@ class ContentStreamBlock(StreamBlock):
     periodic_boxes = PeriodicBlockList()
     highlight_block = HightlightBlock()
     slider_block = SimpleSliderBlock()
+    hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
 
     class Meta:
         template = 'blocks/streamfield.html'
