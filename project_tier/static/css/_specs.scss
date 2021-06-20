@@ -374,5 +374,9 @@ body.specs-section {
       color: #222222;
       right: -1em;
     }
+
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 }
