@@ -189,6 +189,7 @@ class ContentStreamBlock(StreamBlock):
     periodic_boxes = PeriodicBlockList()
     highlight_block = HightlightBlock()
     slider_block = SimpleSliderBlock()
+    hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
 
     class Meta:
         template = 'blocks/streamfield.html'
