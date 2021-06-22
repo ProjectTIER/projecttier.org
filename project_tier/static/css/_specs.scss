@@ -405,5 +405,9 @@ body.specs-section {
         transform: translateY(7px);
       }
     }
+
+    li + li {
+      padding-top: 20px;
+    }
   }
 }
