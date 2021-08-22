@@ -358,6 +358,17 @@ body.specs-section {
     .accordion-content {
       border-bottom: none;
       padding-bottom: 0;
+
+      a {
+        color: #1d7ac9;
+        text-decoration: underline;
+        transition: color 0.2s, box-shadow 0.2s;
+
+        &:hover,
+        &:active {
+          color: #a32428;
+        }
+      }
     }
 
     a.accordion-title {
