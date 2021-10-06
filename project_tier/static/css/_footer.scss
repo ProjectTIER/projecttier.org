@@ -18,8 +18,8 @@
   }
 
   #sponsor-logo {
-    text-align: center;
-    margin: 20px auto;
+    text-align: left;
+    margin: 20px;
     display: block;
     float: none;
     @include breakpoint(large up) {
@@ -27,9 +27,16 @@
       // float: right;
       // margin-top: -120px;
     }
+    @include breakpoint(small) {
+      max-width: 400px;
+      text-align: center;
+    }
+    @include breakpoint(medium) {
+      max-width: 900px;
+    }
 
     a {
-      vertical-align: middle;
+      vertical-align: left;
       box-shadow: none;
       text-decoration: none;
     }
@@ -41,9 +48,45 @@
       font-size: 15px;
       text-align: left;
       line-height: 1;
+      margin: 10px 0 20px;
+
+      @include breakpoint(small) {
+        margin-top: 0;
+      }
+
+      &__and {
+        display: block;
+        margin-top: 10px;
+        margin-left: calc(100% / 2.5);
+        @include breakpoint(small) {
+          margin-left: calc(100% / 2);
+        }
+        @include breakpoint(medium) {
+          display: none;
+        }
+        @include breakpoint(large up) {
+          display: block;
+        }
+      }
     }
 
-    .tier-logo, .aps-logo {
+    .sponsor-logo-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include breakpoint(medium) {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      @include breakpoint(large up) {
+        display: block;
+      }
+    }
+
+    .tier-logo, .aps-logo, .haverford-logo {
       vertical-align: middle;
       box-shadow: none;
       svg {
@@ -73,16 +116,19 @@
       }
     }
 
-    .aps-logo {
+    .aps-logo, .haverford-logo {
       width: rem-calc(200);
       display: inline-block;
-      margin-top: -10px;
+      // margin-top: 0px;
       // margin: rem-calc(-10) auto 0;
-      @include breakpoint(medium up) {
+      @include breakpoint(medium) {
+        width: rem-calc(300);
+      }
+      @include breakpoint(large up) {
         width: rem-calc(300);
         // margin: rem-calc(-20) auto 0;
         display: block;
-        margin-top: -30px;
+        // margin-top: -30px;
       }
     }
   }
