@@ -14,17 +14,24 @@
               {% include "includes/promo.html" %}
               <hr>
               <section class="sponsor-info">
-                <p id="sponsor-logo">
+                <div id="sponsor-logo">
                   <a href="/">
                     <span class="show-for-sr">Project TIER</span>
                     <span class="tier-logo" title="Project TIER">{% include "includes/svg_logo.html" %}</span>
                   </a>
-                  <span class="joining-text">gratefully acknowledges the support it has received from the</span>
-                  <a href="http://www.sloan.org/" target="_blank">
-                    <span class="show-for-sr">Alfred P. Sloan Foundation</span>
-                    <span class="aps-logo" title="Alfred P. Sloan Foundation">{% include "includes/svg_aps_logo.html" %}</span>
-                  </a>
-                </p>
+                  <span class="joining-text">gratefully acknowledges the support it has received from:</span>
+                  <div class="sponsor-logo-group">
+                    <a href="http://www.sloan.org/" target="_blank">
+                      <span class="show-for-sr">Alfred P. Sloan Foundation</span>
+                      <span class="aps-logo" title="Alfred P. Sloan Foundation">{% include "includes/svg_aps_logo.html" %}</span>
+                    </a>
+                    <span class="joining-text joining-text__and">and</span>
+                    <a href="https://www.haverford.edu/" target="_blank">
+                      <span class="show-for-sr">Haverford College</span>
+                      <span class="haverford-logo" title="Haverford College"><img src="../../static/img/haverford-logo-wide.svg" /></span>
+                    </a>
+                  </div>
+                </div>
               </section>
               <hr>
               <section class="block-section yoda" id="yoda">
