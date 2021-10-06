@@ -22,11 +22,6 @@
     margin: 20px;
     display: block;
     float: none;
-    @include breakpoint(large up) {
-      // text-align: right;
-      // float: right;
-      // margin-top: -120px;
-    }
     @include breakpoint(small) {
       max-width: 400px;
       text-align: center;
@@ -49,7 +44,6 @@
       text-align: left;
       line-height: 1;
       margin: 10px 0 20px;
-
       @include breakpoint(small) {
         margin-top: 0;
       }
@@ -74,13 +68,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-
       @include breakpoint(medium) {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
       }
-
       @include breakpoint(large up) {
         display: block;
       }
@@ -119,16 +111,12 @@
     .aps-logo, .haverford-logo {
       width: rem-calc(200);
       display: inline-block;
-      // margin-top: 0px;
-      // margin: rem-calc(-10) auto 0;
       @include breakpoint(medium) {
         width: rem-calc(300);
       }
       @include breakpoint(large up) {
         width: rem-calc(300);
-        // margin: rem-calc(-20) auto 0;
         display: block;
-        // margin-top: -30px;
       }
     }
   }
