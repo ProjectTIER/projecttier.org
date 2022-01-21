@@ -10,8 +10,10 @@ PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
 
-# Upgrade postgres to 10 to match Heroku and TravisCI
-apt update && apt-get install -y postgresql-client-10
+# Upgrade postgres to 13 to match Heroku
+apt update && apt-get install -y postgresql-13 postgresql-client-13
+cp /etc/postgresql/9.6/main/pg_hba.conf /etc/postgresql/13/main/pg_hba.conf
+pg_dropcluster 9.6 main --stop
 
 
 # Create database
