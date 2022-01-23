@@ -11,9 +11,9 @@ PIP=$VIRTUALENV_DIR/bin/pip
 
 
 # Upgrade postgres to 13 to match Heroku
-apt update && apt-get install -y postgresql-13 postgresql-client-13
-cp /etc/postgresql/9.6/main/pg_hba.conf /etc/postgresql/13/main/pg_hba.conf
 pg_dropcluster 9.6 main --stop
+apt update && apt-get install -y postgresql-13 postgresql-client-13
+sudo -Hu postgres psql -c "CREATE ROLE vagrant WITH LOGIN CREATEDB SUPERUSER"
 
 
 # Create database
@@ -46,7 +46,7 @@ su - vagrant -c "$PYTHON $PROJECT_DIR/manage.py migrate --noinput && \
 
 # Install Heroku toolbelt
 apt-get install -y openssl
-su - vagrant -c  "wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh"
+su - vagrant -c  "curl https://cli-assets.heroku.com/install-ubuntu.sh | sh"
 
 
 # Install s3cmd for copying media files from S3-compatible services
