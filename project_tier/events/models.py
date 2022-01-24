@@ -162,17 +162,18 @@ class EventPage(Page):
 class WebcastIndexPage(Page):
     intro = RichTextField(blank=True, help_text='An introductory paragraph about the webcast series')
     registration_link = models.URLField(blank=True, help_text='the Zoom registration url')
-
+    listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
     subpage_types = ['events.WebcastPage']
 
-
     search_fields = Page.search_fields + [
-        index.SearchField('intro')
+        index.SearchField('intro'),
+        index.SearchField('listing_abstract')
     ]
 
     content_panels = Page.content_panels + [
+        FieldPanel('listing_abstract'),
         FieldPanel('intro'),
-        FieldPanel('registration_link'),
+        FieldPanel('registration_link')
     ]
 
     def get_context(self, request):
