@@ -380,6 +380,38 @@ ul.accordion {
   }
 }
 
+.body-content .slider .simple_slider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  max-width: none;
+  width: 100%;
+
+  .simple_slider__image-container {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  iframe {
+    width: 100%;
+    max-width: 650px;
+    height: 370px;
+    justify-content: center;
+  }
+
+  a.prev, .next {
+    position: relative;
+    margin: 0;
+    top: 30px;
+    left: 0;
+    width: 32px;
+  }
+}
+
 @media(max-width: 600px) {
   .slider .simple_slider {
     iframe {
