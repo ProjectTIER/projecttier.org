@@ -307,3 +307,9 @@ code, %monospace-text {
     }
   }
 }
+
+.body-content > div > iframe {
+  width: 640px;
+  height: 360px;
+  max-width: 100%;
+}
