@@ -29,6 +29,14 @@ class AccordionBlock(StructBlock):
         help_text = 'Accordions are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.'
 
 
+class CardBlock(StructBlock):
+    title = CharBlock()
+    body = RichTextBlock(help_text='The inner content of this card.')
+
+    class Meta:
+        icon = 'fa-square-o'
+        help_text = 'A standalone card element.'
+
 class CallToActionButtonBlock(StructBlock):
     button_target = PageChooserBlock(required=False, help_text='Choose where this button should link to.')
     button_text = CharBlock(required=False, help_text='What should the button say?')
@@ -191,6 +199,7 @@ class ContentStreamBlock(StreamBlock):
     highlight_block = HightlightBlock()
     slider_block = SimpleSliderBlock()
     hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
+    cards = ListBlock(CardBlock(), icon='fa-clone', template='blocks/cards.html')
 
     class Meta:
         template = 'blocks/streamfield.html'
