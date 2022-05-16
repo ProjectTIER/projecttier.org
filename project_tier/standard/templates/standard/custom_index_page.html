@@ -1,0 +1,26 @@
+{% extends "standard_sidebar_layout.html" %}
+{% load navigation_tags %}
+
+{% block page_title %}
+  <h1>{{page.title}}
+    {% if page.title_suffix %}
+        <span class="title_suffix">{{page.title_suffix}}</span>
+    {% endif %}
+  </h1>
+  {% if page.introductory_headline %}
+    <p class="introductory-headline">{{page.introductory_headline}}</p>
+  {% endif %}
+{% endblock %}
+
+{% block main_content %}
+  <div class="row">
+    <div class="body-content">
+        {% if page.overview %}
+        <p class="overview"><strong>{{page.overview|richtext}}</strong></p>
+        {% endif %}
+        {% for block in page.body %}
+          {% include_block block with index=forloop.counter %}
+        {% endfor %}
+    </div>
+  </div>
+{% endblock %}
