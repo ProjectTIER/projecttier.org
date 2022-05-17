@@ -1,6 +1,6 @@
 from django import template
 from project_tier.home.models import Page
-from project_tier.standard.models import StandardIndexPage
+from project_tier.standard.models import StandardIndexPage, CustomIndexPage
 
 register = template.Library()
 
@@ -67,9 +67,10 @@ def top_menu_children(context, parent):
 
 
 @register.inclusion_tag('tags/table_of_contents_menu.html', takes_context=True)
-def table_of_contents_menu(context, streamfield=None):
+def table_of_contents_menu(context, streamfield=None, pagetype=StandardIndexPage):
     page = context['page']
-    section = page.get_ancestors(inclusive=True).type(StandardIndexPage).first()
+    section = page.get_ancestors(inclusive=True).type(pagetype).first()
+    custom_section = page.get_ancestors(inclusive=True).type(CustomIndexPage).first()
     headings = []
     if streamfield:
         for block in streamfield:
@@ -94,7 +95,8 @@ def table_of_contents_menu(context, streamfield=None):
                 except:
                     pass
     return {
-        'section_pages': section.get_children().specific().live(),
+        'section_pages': section.get_children().specific().live() if section else None,
+        'custom_section_pages': custom_section.get_children().specific().live() if custom_section else None,
         'article_headings': headings
     }
 

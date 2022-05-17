@@ -1,0 +1,7 @@
+{% load wagtailimages_tags %}
+
+<figure>
+  {% image self.image width-200 %}
+  <figcaption>{{self.title}}</figcaption>
+  <div>{{self.subtitle}}</div>
+</figure>

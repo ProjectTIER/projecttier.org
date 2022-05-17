@@ -64,7 +64,8 @@ class StandardPage(Page):
         'home.HomePage',
         'standard.StandardPage',
         'standard.StandardIndexPage',
-        'standard.SectionPage'
+        'standard.SectionPage',
+        'standard.CustomIndexPage'
     ]
 
     subpage_types = [
@@ -135,4 +136,5 @@ class CustomIndexPage(Page):
         StreamFieldPanel('body')
     ]
 
-    parent_page_types = ['home.HomePage']
+    class Meta:
+        verbose_name = "Custom Index Page with Streamfield"

@@ -169,6 +169,25 @@ class HightlightBlock(StructBlock):
         help_text = 'A rich text block with a tan background.'
 
 
+class GraphicLinkGridItemBlock(StructBlock):
+    image = ImageChooserBlock()
+    title = TextBlock(required=False)
+    subtitle = TextBlock(required=False)
+    link = URLBlock(required=False)
+
+    class Meta:
+        icon = 'fa-icon-th'
+        template = 'blocks/graphic_link_item.html'
+        help_text = 'Select an image and add a caption (optional).'
+
+
+class GraphicLinkGridBlock(StreamBlock):
+    item = GraphicLinkGridItemBlock()
+
+    class Meta:
+        template = 'blocks/graphic_link_grid.html'
+
+
 class LimitedStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     smaller_heading = TextBlock(
@@ -200,6 +219,7 @@ class ContentStreamBlock(StreamBlock):
     slider_block = SimpleSliderBlock()
     hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
     cards = ListBlock(CardBlock(), icon='fa-clone', template='blocks/cards.html')
+    graphic_link_grid_grid = GraphicLinkGridBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
