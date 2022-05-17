@@ -175,6 +175,22 @@ class GraphicLinkGridItemBlock(StructBlock):
     subtitle = TextBlock(required=False)
     link = URLBlock(required=False)
 
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        def formatted_title():
+            title = value['title']
+            if '& ' in title:
+                split_title = title.rsplit('& ')
+                formatted_title = split_title[0] + '&amp;&nbsp;' + split_title[1]
+            else:
+                formatted_title = None
+
+            return formatted_title
+
+        context['formatted_title'] = formatted_title()
+        return context
+
     class Meta:
         icon = 'fa-icon-th'
         template = 'blocks/graphic_link_item.html'

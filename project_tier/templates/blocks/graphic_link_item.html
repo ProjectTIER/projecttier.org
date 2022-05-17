@@ -1,7 +1,18 @@
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
-<figure>
-  {% image self.image width-200 %}
-  <figcaption>{{self.title}}</figcaption>
-  <div>{{self.subtitle}}</div>
-</figure>
+<div class="graphic-link-item">
+  <div class="graphic-link-item__image">
+    <a href="{{self.link}}">
+      {% image self.image width-140 %}
+    </a>
+  </div>
+  <div class="graphic-link-item__title">
+    {% if formatted_title %}
+      <span>{{formatted_title|safe}}</span>
+    {% else %}
+      <span>{{self.title}}</span>
+    {% endif %}
+  </div>
+  <div class="graphic-link-item__divider"></div>
+  <div class="graphic-link-item__subtitle">{{self.subtitle}}</div>
+</div>
