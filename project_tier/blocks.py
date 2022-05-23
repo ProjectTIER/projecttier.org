@@ -203,6 +203,21 @@ class GraphicLinkGridBlock(StreamBlock):
     class Meta:
         template = 'blocks/graphic_link_grid.html'
 
+class FeaturedContentBlock(StructBlock):
+    headline = TextBlock(help_text='Write a title for this section.', required=False)
+    subtitle = TextBlock(help_text='Write a subtitle for this section.', required=False)
+    image = ImageChooserBlock(help_text='Choose an image', required=False)
+
+    CTA = StructBlock([
+        ('text', CharBlock(help_text='What should the button say?', required=False)),
+        ('link', URLBlock(help_text='Where should the button link to?', required=False)),
+    ], help_text= 'An optional Call to Action button', blank=True)
+
+    class Meta:
+        icon = 'fa-flag'
+        template = 'blocks/featured_content_block.html'
+        help_text = 'Highlight featured content with this split red banner block'
+
 
 class LimitedStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
@@ -236,6 +251,7 @@ class ContentStreamBlock(StreamBlock):
     hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
     cards = ListBlock(CardBlock(), icon='fa-clone', template='blocks/cards.html')
     graphic_link_grid_grid = GraphicLinkGridBlock()
+    featured_image_block = FeaturedContentBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
