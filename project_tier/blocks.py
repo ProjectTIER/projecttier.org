@@ -204,8 +204,8 @@ class GraphicLinkGridBlock(StreamBlock):
         template = 'blocks/graphic_link_grid.html'
 
 class FeaturedContentBlock(StructBlock):
-    headline = TextBlock(help_text='Write a title for this section.', required=False)
-    subtitle = TextBlock(help_text='Write a subtitle for this section.', required=False)
+    headline = TextBlock(help_text='Write a title for this section.', required=False, max_length=60)
+    subtitle = TextBlock(help_text='Write a subtitle for this section.', required=False, max_length=22)
     image = ImageChooserBlock(help_text='Choose an image', required=False)
 
     CTA = StructBlock([
