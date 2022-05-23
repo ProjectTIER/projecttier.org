@@ -134,6 +134,16 @@
       }
     }
 
+    @media(min-width: 1600px){
+      #site-banner {
+        #banner-photo {
+          align-self: center;
+          margin-top: -100px;
+        }
+      }
+    }
+
+
     @media(max-width: 600px){
       #site-banner {
         flex-direction: column;
