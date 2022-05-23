@@ -257,10 +257,12 @@ ul.accordion {
   .next {
     left: 1230px;
     border-radius: 3px 0 0 3px;
+    color: rgba(0,0,0,0.6);
   }
   .prev {
     left: 580px;
     border-radius: 3px 0 0 3px;
+    color: rgba(0,0,0,0.6);
   }
 
   /* On hover, add a black background color with a little bit see-through */
@@ -424,11 +426,25 @@ ul.accordion {
   }
 }
 
+@media(min-width: 1500px) {
+  .slider a.prev {
+    right: 40% !important;
+    left: auto !important;
+  }
+
+  .slider a.next {
+    left: auto !important;
+    right: 3% !important;
+  }
+}
+
 .split_banner_section {
+  position: relative;
   display: flex;
   align-items: center;
   position: relative;
   margin: 20px 0;
+  filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
   overflow: hidden;
 
   &__banner {
@@ -509,7 +525,6 @@ ul.accordion {
     left: 630px;
     height: 350px;
     width: 600px;
-    box-shadow: 2px 2px 5px #00000020;
     overflow: hidden;
 
     iframe {
