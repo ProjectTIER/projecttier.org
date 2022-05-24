@@ -32,9 +32,9 @@
 
   <div class="featured_content_block__image-container">
   {% if self.image %}
-      {% embed self.image %}
-    {% else %}
-      <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+    {% image self.image width-375 %}
+  {% else %}
+    <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
   {% endif %}
   </div>
 </div>
