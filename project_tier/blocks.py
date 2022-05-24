@@ -203,6 +203,7 @@ class GraphicLinkGridBlock(StreamBlock):
     class Meta:
         template = 'blocks/graphic_link_grid.html'
 
+
 class FeaturedContentBlock(StructBlock):
     headline = TextBlock(help_text='Write a title for this section.', required=False, max_length=60)
     subtitle = TextBlock(help_text='Write a subtitle for this section.', required=False, max_length=22)
@@ -251,7 +252,7 @@ class ContentStreamBlock(StreamBlock):
     hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
     cards = ListBlock(CardBlock(), icon='fa-clone', template='blocks/cards.html')
     graphic_link_grid_grid = GraphicLinkGridBlock()
-    featured_image_block = FeaturedContentBlock()
+    featured_content_block = FeaturedContentBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
