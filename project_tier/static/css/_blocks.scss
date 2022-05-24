@@ -927,3 +927,49 @@ ul.accordion {
     overflow: hidden;
   }
 }
+
+@media(max-width: 1000px) {
+  .featured_content_block {
+    width: 90%;
+    margin: 0 auto;
+
+    &__image-container {
+      display: none;
+    }
+
+    &__banner {
+      width: 100%;
+      height: 250px;
+      padding: 0 40px;
+      clip-path: none;
+    }
+
+    &__text {
+      margin-right: auto;
+      margin-left: auto;
+      padding: 40px;
+      border-left: 4px solid #ffffff50;
+    }
+  }
+}
+
+@media(max-width: 550px) {
+  .featured_content_block {
+
+    &__subtitle {
+      font-size: 14px;
+    }
+
+    &__text {
+      padding: 40px 0 40px 40px;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__button {
+      font-size: 16px;
+    }
+  }
+}
