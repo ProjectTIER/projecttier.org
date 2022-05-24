@@ -1,0 +1,40 @@
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags static %}
+
+<div class="featured_content_block">
+
+  <div class="featured_content_block__banner">
+
+      <div class="featured_content_block__text">
+        {% if self.subtitle %}
+          <h4 class="featured_content_block__subtitle">
+            {{self.subtitle}}
+          </h4>
+        {% endif %}
+
+        {% if self.headline %}
+          <h3 class="featured_content_block__title" id="{{self.headline|slugify}}" data-magellan-target="{{self|slugify}}">
+            {{self.headline}}
+          </h3>
+        {% endif %}
+
+        <div class="featured_content_block__container">
+          {% if self.CTA.link %}
+            <a href="{{self.CTA.link}}">
+              <button class="featured_content_block__button">
+                {{self.CTA.text}}
+              </button>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+  <div class="featured_content_block__image-container">
+  {% if self.image %}
+      {% embed self.image %}
+    {% else %}
+      <img class="placeholder" src="{% static "img/split-banner-placeholder.jpg" %}"/>
+  {% endif %}
+  </div>
+</div>

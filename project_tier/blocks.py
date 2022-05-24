@@ -169,6 +169,56 @@ class HightlightBlock(StructBlock):
         help_text = 'A rich text block with a tan background.'
 
 
+class GraphicLinkGridItemBlock(StructBlock):
+    image = ImageChooserBlock()
+    title = TextBlock(required=False)
+    subtitle = TextBlock(required=False)
+    link = URLBlock(required=False)
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        def formatted_title():
+            title = value['title']
+            if '& ' in title:
+                split_title = title.rsplit('& ')
+                formatted_title = split_title[0] + '&amp;&nbsp;' + split_title[1]
+            else:
+                formatted_title = None
+
+            return formatted_title
+
+        context['formatted_title'] = formatted_title()
+        return context
+
+    class Meta:
+        icon = 'fa-icon-th'
+        template = 'blocks/graphic_link_item.html'
+        help_text = 'Select an image and add a caption (optional).'
+
+
+class GraphicLinkGridBlock(StreamBlock):
+    item = GraphicLinkGridItemBlock()
+
+    class Meta:
+        template = 'blocks/graphic_link_grid.html'
+
+class FeaturedContentBlock(StructBlock):
+    headline = TextBlock(help_text='Write a title for this section.', required=False, max_length=60)
+    subtitle = TextBlock(help_text='Write a subtitle for this section.', required=False, max_length=22)
+    image = ImageChooserBlock(help_text='Choose an image', required=False)
+
+    CTA = StructBlock([
+        ('text', CharBlock(help_text='What should the button say?', required=False)),
+        ('link', URLBlock(help_text='Where should the button link to?', required=False)),
+    ], help_text= 'An optional Call to Action button', blank=True)
+
+    class Meta:
+        icon = 'fa-flag'
+        template = 'blocks/featured_content_block.html'
+        help_text = 'Highlight featured content with this split red banner block'
+
+
 class LimitedStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     smaller_heading = TextBlock(
@@ -200,6 +250,8 @@ class ContentStreamBlock(StreamBlock):
     slider_block = SimpleSliderBlock()
     hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
     cards = ListBlock(CardBlock(), icon='fa-clone', template='blocks/cards.html')
+    graphic_link_grid_grid = GraphicLinkGridBlock()
+    featured_image_block = FeaturedContentBlock()
 
     class Meta:
         template = 'blocks/streamfield.html'
