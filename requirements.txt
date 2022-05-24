@@ -16,7 +16,9 @@ wagtail-linkchecker==0.5.1
 Unidecode==1.2.0
 
 # Custom libraries
--e git://github.com/ProjectTIER/wagalytics.git#egg=wagalytics
+# -e git://github.com/ProjectTIER/wagalytics.git#egg=wagalytics
+# -e ./wagalytics-master
+wagalytics==1.3
 
 # Debug
 django-debug-toolbar==2.2.1
