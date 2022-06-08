@@ -782,8 +782,8 @@ ul.accordion {
 
 .graphic-link-grid {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
   margin: 40px 0;
 
   .graphic-link-item__container {
