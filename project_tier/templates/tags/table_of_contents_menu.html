@@ -19,6 +19,11 @@
           <a href="{{section_page.url}}">{{ section_page.title }}</a>
         </li>
       {% endfor %}
+      {% if custom_sidebar_link %}
+        <li class="custom_sidebar_link">
+          <a href="{{custom_sidebar_link.link}}">{{ custom_sidebar_link.title }}</a>
+        </li>
+      {% endif %}
     </ul>
   </nav>
 {% endif %}

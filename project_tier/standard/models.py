@@ -1,10 +1,10 @@
 from django.db import models
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.search.index import SearchField
-
-from project_tier.blocks import BodyBlock, LimitedStreamBlock, ContentStreamBlock
+from wagtail.core.blocks import ListBlock, StructBlock, URLBlock, TextBlock, CharBlock
+from project_tier.blocks import BodyBlock, LimitedStreamBlock, ContentStreamBlock, CustomSidebarLinkBlock
 
 
 class StandardIndexPage(Page):
@@ -120,6 +120,7 @@ class CustomIndexPage(Page):
     listing_abstract = models.TextField(help_text='Give a brief blurb (about 1 sentence) of what this topic is about. It will appear on other pages that refer to this one.', blank=True)
     introductory_headline = models.TextField(help_text='Introduce the topic of this page in 1-3 sentences.', blank=True)
     body = StreamField(ContentStreamBlock(), blank=True)
+    custom_sidebar_link = StreamField(CustomSidebarLinkBlock(), blank=True)
 
     @property
     def children(self):
@@ -133,6 +134,7 @@ class CustomIndexPage(Page):
         FieldPanel('title_suffix'),
         FieldPanel('listing_abstract'),
         FieldPanel('introductory_headline'),
+        StreamFieldPanel('custom_sidebar_link'),
         StreamFieldPanel('body')
     ]
 
