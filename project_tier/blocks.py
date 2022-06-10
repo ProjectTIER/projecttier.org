@@ -377,5 +377,5 @@ class HomeStreamBlock(StreamBlock):
 
 
 class CustomSidebarLinkBlock(StreamBlock):
-    title = CharBlock(max_num=1)
-    link = URLBlock(max_num=1)
+    title = CharBlock(max_num=1, required=False)
+    link = URLBlock(max_num=1, required=False)
