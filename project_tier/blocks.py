@@ -374,3 +374,8 @@ class HomeStreamBlock(StreamBlock):
 
     class Meta:
         template = 'blocks/streamfield.html'
+
+
+class CustomSidebarLinkBlock(StreamBlock):
+    title = CharBlock(max_num=1, required=False)
+    link = URLBlock(max_num=1, required=False)
