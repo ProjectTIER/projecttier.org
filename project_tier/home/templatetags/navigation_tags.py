@@ -94,10 +94,11 @@ def table_of_contents_menu(context, streamfield=None, pagetype=StandardIndexPage
                     headings[-1]['children'].append(block.value)
                 except:
                     pass
+
         custom_sidebar_link = {}
         title = ""
         link = ""
-        if page.custom_sidebar_link:
+        if hasattr(page, 'custom_sidebar_link'):
             for block in page.custom_sidebar_link:
                 if block.block_type == 'title':
                     title = block.value
@@ -107,8 +108,6 @@ def table_of_contents_menu(context, streamfield=None, pagetype=StandardIndexPage
                 'title': title,
                 'link': link,
             }
-    print("custom_sidebar_link before the return:")
-    print(custom_sidebar_link)
     return {
         'section_pages': section.get_children().specific().live() if section else None,
         'custom_sidebar_link': custom_sidebar_link,
