@@ -72,6 +72,7 @@ def table_of_contents_menu(context, streamfield=None, pagetype=StandardIndexPage
     section = page.get_ancestors(inclusive=True).type(pagetype).first()
     custom_section = page.get_ancestors(inclusive=True).type(CustomIndexPage).first()
     headings = []
+    custom_sidebar_link = {}
     if streamfield:
         for block in streamfield:
             if block.block_type == 'section':
@@ -95,7 +96,6 @@ def table_of_contents_menu(context, streamfield=None, pagetype=StandardIndexPage
                 except:
                     pass
 
-        custom_sidebar_link = {}
         title = ""
         link = ""
         if hasattr(page, 'custom_sidebar_link'):
