@@ -11,13 +11,19 @@ This repository is Project TIER's website (https://www.projecttier.org/), which 
 
 ## Local development
 
-1. Install [Vagrant](https://www.vagrantup.com/) and [VirtualBox](https://www.virtualbox.org/), if you haven't already.
+1. Install Docker and docker-compose, if you haven't already.
 2. Clone the project: `git clone https://github.com/ProjectTIER/projecttier.org.git`
 3. Enter the project directory: `cd projecttier.org`
-4. Start the Vagrant VM: `vagrant up`
-5. Shell into the VM: `vagrant ssh`
-6. Run the development server: `djrun`
-7. Visit `0.0.0.0:8000` in your browser.
+4. Start the Docker containers: `docker-compose up`
+5. Visit `localhost:8000` in your browser.
+
+To enter the Docker container:
+
+```sh
+docker-compose run web bash
+```
+
+You can now run migrations with `./manage.py migrate`, or alternatively follow the steps below.
 
 ### Pull production data/media
 
