@@ -1,0 +1,23 @@
+*.pyc
+__pycache__/
+.Python
+.DS_Store
+*.swp
+/venv/
+/static/
+/media/
+/tmp/
+/.vagrant/
+/Vagrantfile.local
+/docs/_build/
+pyvenv.cfg
+pip-selfcheck.json
+*.dump
+*.log
+wagalytics_key.json
+
+.coverage
+.s3cfg
+
+# docker-compose
+/data
