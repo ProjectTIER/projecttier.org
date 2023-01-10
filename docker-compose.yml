@@ -5,8 +5,6 @@ services:
     image: postgres:14
     volumes:
       - ./data/db:/var/lib/postgresql/data
-      # heroku-cli auth
-      - ./data/.netrc:/root/.netrc
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
