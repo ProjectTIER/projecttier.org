@@ -10,9 +10,9 @@ PYTHON=$VIRTUALENV_DIR/bin/python
 PIP=$VIRTUALENV_DIR/bin/pip
 
 
-# Upgrade postgres to 13 to match Heroku
+# Upgrade postgres to 14 to match Heroku
 pg_dropcluster 9.6 main --stop
-apt update && apt-get install -y postgresql-13 postgresql-client-13
+apt update && apt-get install -y postgresql-14 postgresql-client-14
 sudo -Hu postgres psql -c "CREATE ROLE vagrant WITH LOGIN CREATEDB SUPERUSER"
 
 

@@ -1,8 +1,12 @@
-version: '3'
+version: '3.9'
 
 services:
   db:
-    image: postgres:10-alpine
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=tier
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -11,6 +15,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgres://postgres@db:5432/postgres
+      - DATABASE_URL=postgres://postgres:tier@db:5432/postgres
+      - DJANGO_SETTINGS_MODULE=project_tier.settings.dev
+      - SECRET_KEY=1
+      - DEBUG=1
     depends_on:
       - db

@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.9
 LABEL maintainer="info@projecttier.org"
 
 ENV PYTHONUNBUFFERED 1
@@ -14,4 +14,4 @@ WORKDIR /app
 RUN wget -O- https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 EXPOSE 5000
-CMD ["gunicorn", "project_tier.wsgi:application", "-b :5000", "--workers 3"]
+CMD ["gunicorn", "project_tier.wsgi:application", "-b :5000"]
