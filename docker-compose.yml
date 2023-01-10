@@ -3,6 +3,10 @@ version: '3.9'
 services:
   db:
     image: postgres:14
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      # heroku-cli auth
+      - ./data/.netrc:/root/.netrc
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -15,9 +19,13 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgres://postgres:tier@db:5432/postgres
+      - DATABASE_URL=postgres://postgres:tier@db:5432/project_tier
       - DJANGO_SETTINGS_MODULE=project_tier.settings.dev
       - SECRET_KEY=1
       - DEBUG=1
+      # heroku-cli wants these even though they're redundant
+      - PGUSER=postgres
+      - PGPASSWORD=tier
+      - PGHOST=db
     depends_on:
       - db

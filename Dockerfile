@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Install Heroku toolbelt
 RUN wget -O- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+RUN touch /root/.netrc
 
 # Install PostgreSQL 14 client
 RUN apt-get update &&\
@@ -22,4 +23,4 @@ RUN apt-get update &&\
     apt-get clean all
 
 EXPOSE 5000
-CMD ["gunicorn", "project_tier.wsgi:application", "-b :5000"]
+CMD ["gunicorn", "--reload", "project_tier.wsgi:application", "-b :5000"]
