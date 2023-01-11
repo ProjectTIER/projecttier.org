@@ -9,6 +9,8 @@ from project_tier.blocks import ContentStreamBlock
 from wagtail.admin.edit_handlers import (
     FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, PageChooserPanel, StreamFieldPanel
 )
+from taggit.models import Tag, TaggedItemBase
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
 from modelcluster.fields import ParentalKey
@@ -90,6 +92,41 @@ class EventIndexPage(Page):
         return context
 
 
+class PartnerOrganization(models.Model):
+    partner_name = models.CharField(max_length=255)
+    partner_link = models.URLField("External link", blank=True)
+    partner_logo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="Partner logo, ideally square"
+    )
+
+    panels = [
+        FieldPanel('partner_name'),
+        FieldPanel('partner_link'),
+        ImageChooserPanel('partner_logo'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class EventPartnerOrganizations(Orderable, PartnerOrganization):
+    event = ParentalKey('events.EventPage', on_delete=models.CASCADE, related_name='partner_organizations')
+
+
+class EventTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'events.EventPage',
+        # django-modelcluster requires this to be set
+        related_name='event_tags_relationship',
+        on_delete=models.CASCADE
+    )
+
+
 class EventPage(Page):
     date_from = models.DateField("Start date", help_text="Required for us to know if the event is in the future or past")
     date_to = models.DateField(
@@ -129,6 +166,14 @@ class EventPage(Page):
         help_text="For connecting events under a larger event like a Conference or Symposium"
     )
 
+    event_tags = ClusterTaggableManager(
+        through=EventTag,
+        # yes, we are really using a UUID as the related name
+        related_name="+",
+        blank=True,
+        verbose_name="Event tags"
+    )
+
     body = StreamField(ContentStreamBlock(required=False), blank=True)
 
     parent_page_types = ['EventIndexPage']
@@ -154,16 +199,22 @@ class EventPage(Page):
                 FieldPanel('registration_link'),
                 ImageChooserPanel('thumbnail'),
             ],),
+            FieldPanel('description'),
+            FieldPanel('event_tags'),
+        ], heading="Basic Information"),
+
+        StreamFieldPanel('body'),
+
+        MultiFieldPanel([
             FieldRowPanel([
                 FieldPanel('button_link'),
                 FieldPanel('button_text'),
             ],),
-            FieldPanel('description'),
             FieldPanel('description_past'),
             PageChooserPanel('parent_event', 'events.EventPage'),
-        ], heading="Meta Information"),
+        ], heading="Advanced Details"),
 
-        StreamFieldPanel('body'),
+        InlinePanel('partner_organizations', label="Partner Organizations"),
     ]
 
     @property
