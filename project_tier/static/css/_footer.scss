@@ -21,12 +21,12 @@
     margin-top: 40px;
   }
 
-  .sponsor-info.mobile-only {
+  .mobile-only {
     display: none;
   }
 
   @media(max-width: 1100px) {
-    .sponsor-info.mobile-only {
+    .mobile-only {
       display: block;
     }
   }
