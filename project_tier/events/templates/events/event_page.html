@@ -7,12 +7,28 @@
 
 {% block main_content %}
 <div class="row">
-  <div class="body-content small-12 medium-8 columns event-page">
-    <div class="event-main-metadata">{% include "./event_metadata.html" %}</div>
-    {% if self.description %}
-      <h4>Event Description</h4>
-      {{ self.description|richtext }}
+  <div class="body-content small-12 medium-12 columns event-page">
+    <!-- <div class="event-main-metadata">{% include "./event_metadata.html" %}</div>
+      {% if self.description %}
+        <h4>Event Description</h4>
+        {{ self.description|richtext }}
+      {% endif %}
+    </div> -->
+
+    {% for block in page.body %}
+      {% include_block block with index=forloop.counter %}
+    {% endfor %}
+
+    {% if self.partner_organizations %}
+      <div class="event-partner-orgs">
+        {% for org in self.partner_organizations.all %}
+          <div class="partner-org">
+            <!-- TODO FIX -->
+            <img src="{{ org.partner_logo }}"> 
+            <a href="{{ org.partner_link }}">{{ org.partner_name }}</a>
+          </div>
+        {% endfor %}
+      </div>
     {% endif %}
-  </div>
 </div>
 {% endblock %}

@@ -15,13 +15,34 @@
     {% if self.time_from %}<p>{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
   </time>
 
-  <h4 class="event-meta-label">Details</h4>
-  <div class="event-meta-item">
-    {% if self.university %}{{ self.university }}{% endif %}
-    {% if self.university and self.department %}<br>{% endif %}
-    {% if self.department %}{{ self.department }}{% endif %}
-  </div>
-  <div class="event-meta-item">
-    {{ self.meta_information|richtext }}
-  </div>
+  {% if self.location %}
+    <h4 class="event-meta-label">Location</h4>
+    <div class="event-meta-item">
+      {{ self.location }}
+    </div>
+  {% endif %}
+
+  {% if self.button_link %}
+    <div class="event-meta-item">
+      <div class="webcast-intro__register">
+        <a class="button" href="{{ self.button_link }}" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if self.parent_event %}
+    <div class="event-meta-item">
+      Part of the <a href="{{ self.parent_event.url }}">{{ self.parent_event }}</a>
+    </div>
+  {% endif %}
+
+
+  {% if self.registration_link %}
+    <div class="event-meta-item">
+      <div class="webcast-intro__register">
+        <a class="button" href="{{ self.registration_link }}" target="_blank">Register <i class="fa fa-external-link" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  {% endif %}
+
 </div>

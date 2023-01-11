@@ -195,6 +195,7 @@ class EventPage(Page):
                 FieldPanel('time_from'),
                 FieldPanel('time_to'),
             ],),
+            FieldPanel('location'),
             FieldRowPanel([
                 FieldPanel('registration_link'),
                 ImageChooserPanel('thumbnail'),
