@@ -17,6 +17,20 @@
     }
   }
 
+  .sponsor-info {
+    margin-top: 40px;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  @media(max-width: 1100px) {
+    .mobile-only {
+      display: block;
+    }
+  }
+
   #sponsor-logo {
     text-align: left;
     margin: 20px;
@@ -103,8 +117,11 @@
       display: inline-block;
       margin: 0 auto $small-gutter;
       width: rem-calc(70);
-      @include breakpoint(medium up) {
+      @include breakpoint(medium) {
         width: rem-calc(100);
+      }
+      @include breakpoint(large) {
+        width: rem-calc(80);
       }
     }
 
@@ -115,6 +132,10 @@
         width: rem-calc(300);
       }
       @include breakpoint(large up) {
+        width: rem-calc(200);
+        display: block;
+      }
+      @include breakpoint(xlarge) {
         width: rem-calc(300);
         display: block;
       }
@@ -216,8 +237,10 @@
 #twitter-section {
   min-height: 300px;
   > h2 {
+    color: white;
     font-size: 1.3em;
     display: block;
+    padding-left: 152px;
     > a {
       color: $off-white;
       font-size: 1em;
@@ -226,13 +249,14 @@
         color: $white;
         text-decoration: underline;
       }
-      &::before {
-        content: "\f099";
-        font-family: FontAwesome;
-        display: block;
-        float: left;
-        margin-right: 10px;
-        opacity: 0.7;
+    }
+  }
+  .social-links {
+    padding-left: 152px;
+    a {
+      color: white;
+      .fa {
+        padding-right: 5px;
       }
     }
   }
@@ -242,15 +266,42 @@
     display: block;
     clear: both;
     opacity: 0.8;
+    min-width: 400px !important;
     &:last-child {
-      background-color: transparent;
+      // background-color: transparent;
       margin: 20px 155px;
     }
   }
 
-  @media(max-width: 600px) {
+  @media(max-width: 1100px) {
     iframe:last-child {
       margin: 0 auto;
+    }
+    h2 {
+      padding-left: 0;
+    }
+    .social-links {
+      padding-left: 0;
+      padding-bottom: 20px;
+    }
+  }
+
+  @media(max-width: 450px) {
+    iframe:last-child {
+      min-width: 300px !important;
+    }
+  }
+
+  @media(min-width:1100px) and (max-width: 1440px) {
+    iframe:last-child {
+      min-width: 350px !important;
+      margin-left: 80px;
+    }
+    h2 {
+      padding-left: 80px;
+    }
+    .social-links {
+      padding-left: 80px;
     }
   }
 }
@@ -275,7 +326,7 @@
       padding: 5px;
     }
   }
-
+    
   a.button {
     background-color: white;
     color: $red;

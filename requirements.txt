@@ -26,6 +26,9 @@ django-debug-toolbar==2.2.1
 # Heroku webserver
 gunicorn==20.0.4
 
+# Local development
+fabric==1.15.0
+
 # Tests
 django-nose==1.4.6
 factory_boy==2.12.0

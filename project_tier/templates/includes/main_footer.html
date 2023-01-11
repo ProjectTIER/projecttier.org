@@ -1,16 +1,13 @@
 {% load static %}
 
 <footer id="main-footer">
-  <div class="row">
+  <div class="row" style="max-width: 1800px;">
     <div class="small-12 columns">
 
         <div id="twitter-newsletter" class="block-section">
-          <div class="row">
+          <div class="row" style="max-width: 1800px;">
 
-            <div class="small-12 large-6 small-center columns twitter">
-              {% include "includes/twitter_section.html" %}
-            </div>
-          <div class="small-12 large-5 small-center columns mailchimp">
+          <div class="small-12 large-3 small-center columns mailchimp">
               {% include "includes/promo.html" %}
               <hr>
               <section class="sponsor-info">
@@ -32,19 +29,27 @@
                     </a>
                   </div>
                 </div>
-              </section>
-              <hr>
-              <section class="block-section yoda" id="yoda">
-                <div class="row">
-                  <div class="large-12 columns">
-                    <div class="small-12 footer-title"><h2>Meet Yoda, the TIER Terrier:</h2></div>
-                    <img class="yoda" src="{% static "img/yoda.jpg" %}"/>
-                  </div>
-                  <div class="large-1 columns"></div>
-                </div>
+                <hr class="mobile-only">
               </section>
           </div>
-        </div>
+
+          <div class="small-12 medium-12 large-4 small-center columns twitter">
+            {% include "includes/twitter_section.html" %}
+          </div>
+
+          <div class="small-12 large-4 small-center columns twitter">
+            <section class="block-section yoda" id="yoda">
+              <div class="row">
+                <div class="large-12 medium-12 columns">
+                  <div class="small-12 footer-title"><h2>Meet Yoda, the TIER Terrier:</h2></div>
+                  <img class="yoda" src="{% static "img/yoda.jpg" %}"/>
+                </div>
+                <div class="large-1 columns"></div>
+              </div>
+            </section>
+          </div>
+
+          </div>
       </div>
 
       <nav id="footer-nav">
