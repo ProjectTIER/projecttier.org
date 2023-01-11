@@ -4,9 +4,10 @@ from django.db import models
 from django.http import HttpResponse
 from django.utils.timezone import now
 from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
+from project_tier.blocks import ContentStreamBlock
 from wagtail.admin.edit_handlers import (
-    FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel
+    FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, PageChooserPanel, StreamFieldPanel
 )
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -99,18 +100,37 @@ class EventPage(Page):
     )
     time_from = models.TimeField("Start time", null=True, blank=True)
     time_to = models.TimeField("End time", null=True, blank=True)
+    registration_link = models.URLField(null=True, blank=True)
+    location = models.TextField(help_text='Where is this event located?', null=True, blank=True)
 
-    meta_information = RichTextField(blank=True, help_text="Meta information about the event e.g. Haverford College, Department of economics")
+    button_link = models.URLField(null=True, blank=True, help_text='You can put a custom link here if you want the index button to go to a different page. The default is the Registration Link, or the Event details link.')
+    button_text = models.TextField(help_text='Write custom text for the index button. Default is either "Register" or "Learn More".', null=True, blank=True)
+
+    # --- This meta_information is no longer in use!
+    meta_information = RichTextField(blank=True, help_text="Meta information about the event e.g. Haverford College, Department of economics") 
+    # ---
+
     thumbnail = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text="This image will be used on the Featured Event Block. Ideal dimmensions are 270x180."
+        help_text="Ideal dimmensions are 270x180."
     )
-    description = RichTextField(blank=True, help_text="The description written as though in the future")
+    description = RichTextField(blank=True, help_text="The description that will appear on other pages. Keep this short and sweet.")
     description_past = RichTextField(blank=True, help_text="The description written as though in the past")
+    parent_event = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="For connecting events under a larger event like a Conference or Symposium"
+    )
+
+    body = StreamField(ContentStreamBlock(required=False), blank=True)
+
     parent_page_types = ['EventIndexPage']
     subpage_types = []
 
@@ -119,16 +139,31 @@ class EventPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldRowPanel([
-            FieldPanel('date_from'),
-            FieldPanel('date_to'),
-        ],),
-        FieldPanel('meta_information'),
-        ImageChooserPanel('thumbnail'),
+        
+        # FieldPanel('meta_information'),
         MultiFieldPanel([
+            FieldRowPanel([
+                FieldPanel('date_from'),
+                FieldPanel('date_to'),
+            ],),
+            FieldRowPanel([
+                FieldPanel('time_from'),
+                FieldPanel('time_to'),
+            ],),
+            FieldRowPanel([
+                FieldPanel('registration_link'),
+                ImageChooserPanel('thumbnail'),
+            ],),
+            FieldRowPanel([
+                FieldPanel('button_link'),
+                FieldPanel('button_text'),
+            ],),
             FieldPanel('description'),
             FieldPanel('description_past'),
-        ], heading="Description of event"),
+            PageChooserPanel('parent_event', 'events.EventPage'),
+        ], heading="Meta Information"),
+
+        StreamFieldPanel('body'),
     ]
 
     @property
