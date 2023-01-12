@@ -15,6 +15,10 @@ from wagtail.core.blocks import (
 )
 from wagtailfontawesome.blocks import IconBlock
 
+from project_tier.events import models
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import Tag, TaggedItemBase
+
 
 class AccordionBlock(StructBlock):
     compact = BooleanBlock(required=False, help_text='Display a compact accordion for use between paragraphs.')
@@ -230,6 +234,37 @@ class LimitedStreamBlock(StreamBlock):
         template = 'blocks/streamfield.html'
 
 
+class EventStreamBlock(StructBlock):
+    tag = TextBlock(help_text='Pulls in up to three events with the given tag. Leave blank for all events.', required=False, blank=True)
+    include_past = BooleanBlock(required=True, default=True, help_text='Should past events be included?')
+
+    class Meta:
+        icon = 'fa-calendar'
+        template = 'blocks/event_stream.html'
+        help_text = 'Choose a group of events to display by tag'
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
+
+        context['event_tags'] = Tag.objects.filter(
+            course_materials_disciplinetag_items__isnull=False
+        )
+
+        def get_events():
+            
+            event_pages = models.EventPage.objects.all()[:1]
+
+            print(event_pages[0])
+
+            events = models.EventPage.objects.live().public().order_by('-first_published_at').filter(event_tags__name__in=value['tag'])[:3]
+
+            print(events)
+
+            return event_pages
+
+        context['events'] = get_events()
+        return context
+
 class ContentStreamBlock(StreamBlock):
     paragraph = RichTextBlock(icon='fa-paragraph')
     bigger_heading = TextBlock(icon='fa-header', template='blocks/h2.html', label='H2')
@@ -249,6 +284,7 @@ class ContentStreamBlock(StreamBlock):
     periodic_boxes = PeriodicBlockList()
     highlight_block = HightlightBlock()
     slider_block = SimpleSliderBlock()
+    event_stream = EventStreamBlock()
     hr_block = StructBlock(icon='fa-window-minimize', template='blocks/hr.html', label='Divider')
     cards = ListBlock(CardBlock(), icon='fa-clone', template='blocks/cards.html')
     graphic_link_grid_grid = GraphicLinkGridBlock()
