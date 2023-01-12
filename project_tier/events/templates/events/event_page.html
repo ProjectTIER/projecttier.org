@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="row">
+<div class="row event-page">
   <div class="body-content small-12 medium-12 columns event-page">
     <!-- <div class="event-main-metadata">{% include "./event_metadata.html" %}</div>
       {% if self.description %}
@@ -20,15 +20,21 @@
     {% endfor %}
 
     {% if self.partner_organizations %}
-      <div class="event-partner-orgs">
+    <div class="partner-org-container">
+      <h4 class="event-meta-label">Hosted in Partnership With</h4>  
+      <div class="event-partner-orgs"> 
         {% for org in self.partner_organizations.all %}
-          <div class="partner-org">
-            <!-- TODO FIX -->
-            <img src="{{ org.partner_logo }}"> 
-            <a href="{{ org.partner_link }}">{{ org.partner_name }}</a>
-          </div>
+          <div class="partner-org"><a href="{{ org.partner_link }}">
+            {% if org.partner_logo %}
+                {% image org.partner_logo fill-150x150-c100 as logo %}
+                <img src="{{ logo.url }}" width="{{ logo.width }}" height="{{ logo.height }}" alt="{{ logo.alt }}" class="img-thumbnail" />
+            {% else %}
+              <div class="event-partner-name"><h5>{{ org.partner_name }}</h5></div>
+            {% endif %}
+          </a></div>
         {% endfor %}
       </div>
-    {% endif %}
+      {% endif %}
+    </div>
 </div>
 {% endblock %}

@@ -12,13 +12,20 @@
   <h4 class="event-meta-label">Date</h4>
   <time class="event-meta-item">
     <p>{{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}</p>
-    {% if self.time_from %}<p>{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
+    {% if self.time_from %}<p>From {{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}</p>{% endif %}
   </time>
 
   {% if self.location %}
     <h4 class="event-meta-label">Location</h4>
     <div class="event-meta-item">
       {{ self.location }}
+    </div>
+  {% endif %}
+
+  {% if self.parent_event %}
+    <div class="event-meta-item">
+      <h4 class="event-meta-label">Details</h4>
+      Part of the <a href="{{ self.parent_event.url }}">{{ self.parent_event }}</a>
     </div>
   {% endif %}
 
@@ -30,13 +37,6 @@
     </div>
   {% endif %}
 
-  {% if self.parent_event %}
-    <div class="event-meta-item">
-      Part of the <a href="{{ self.parent_event.url }}">{{ self.parent_event }}</a>
-    </div>
-  {% endif %}
-
-
   {% if self.registration_link %}
     <div class="event-meta-item">
       <div class="webcast-intro__register">
@@ -44,5 +44,6 @@
       </div>
     </div>
   {% endif %}
+ 
 
 </div>
