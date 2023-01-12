@@ -236,7 +236,7 @@ class LimitedStreamBlock(StreamBlock):
 
 class EventStreamBlock(StructBlock):
     tag = TextBlock(help_text='Pulls in up to three events with the given tag. Leave blank for all events.', required=False, blank=True)
-    include_past = BooleanBlock(required=True, default=True, help_text='Should past events be included?')
+    include_past = BooleanBlock(required=False, default=True, help_text='Should past events be included?')
 
     class Meta:
         icon = 'fa-calendar'
@@ -251,16 +251,9 @@ class EventStreamBlock(StructBlock):
         )
 
         def get_events():
-            
-            event_pages = models.EventPage.objects.all()[:1]
+            events = models.EventPage.objects.all().live().public().filter(event_tags__name__in=[value['tag']])[:3]
 
-            print(event_pages[0])
-
-            events = models.EventPage.objects.live().public().order_by('-first_published_at').filter(event_tags__name__in=value['tag'])[:3]
-
-            print(events)
-
-            return event_pages
+            return events
 
         context['events'] = get_events()
         return context

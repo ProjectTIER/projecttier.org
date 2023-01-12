@@ -1,34 +1,42 @@
 {% load wagtailcore_tags wagtailimages_tags navigation_tags %}
-<div class="feature-events-list">
+<div class="feature-events-list event-stream">
+
   {% for event in events %}
-  <a href="{{ event.value.url }}">
+
+  {% if self.include_past or event.status == 'upcoming' %}
+
+  <a href="{{ event.url }}">
     <div class="featured-event">
         <div class="featured-event__meta-data">
           <div class="featured-event__overlay"></div>
           <div class="featured-event__image">
-            {% if event.value.thumbnail %}
-              {% image event.value.thumbnail max-270x180 %}
+            {% if event.thumbnail %}
+              {% image event.thumbnail max-270x180 %}
             {% else %}
               <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
             {% endif %}
           </div>
           <div class="featured-event__date">
-            {{ event.value.date_from }}{% if event.value.date_to %} - {{ event.value.date_to }}{% endif %}
+            {{ event.date_from }}{% if event.date_to %} - {{ event.date_to }}{% endif %}
           </div>
         </div>
 
       <div class="featured-event__text">
         <div class="featured-event__title">
-          {{ event.value.title }}
+          {{ event.title }}
         </div>
         <div class="featured-event__subtitle">
-          {{ event.value.meta_information|richtext }}
+            <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
+            <p>{% if event.location %}{{ event.location }}{% endif %}</p>
         </div>
       </div>
     </div>
   </a>
 
+  {% endif %}
+
   {% endfor %}
+
 
   <a href="/fellowships-and-workshops/">
     <div class="featured-event" id="tier-workshops">
@@ -72,13 +80,7 @@
   function showOrHideExtraEvent(width){
     var featuredEvent = document.getElementById("tier-workshops");
     var showExtra;
-    var numberOfCards = {{self|length}};
-    var cardWidth = 314;
-    var cardsPerRow = Math.floor(width / cardWidth);
-    var rows = Math.ceil(numberOfCards / cardsPerRow);
-    var cardsOnLastRow = numberOfCards - (cardsPerRow * (rows - 1));
-
-    cardsOnLastRow < cardsPerRow ? showExtra = true : showExtra = false;
+    showExtra = false;
 
     !showExtra ? featuredEvent.style.display = "none" : featuredEvent.style.display = "block";
   }
