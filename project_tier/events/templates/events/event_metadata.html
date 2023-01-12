@@ -32,7 +32,7 @@
   {% if self.button_link %}
     <div class="event-meta-item">
       <div class="webcast-intro__register">
-        <a class="button" href="{{ self.button_link }}" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        <a class="button" href="{{ self.button_link }}" target="_blank">{% if self.button_text %}{{ self.button_text }} {% else %}Learn More {% endif %}<i class="fa fa-external-link" aria-hidden="true"></i></a>
       </div>
     </div>
   {% endif %}
