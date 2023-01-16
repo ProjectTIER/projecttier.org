@@ -141,8 +141,11 @@
   .event-partner-orgs {
     margin-top: 40px;
     display: flex;
+    flex-wrap: wrap;
     
     .partner-org {
+      width: 150px;
+      height: 150px;
       margin-right: 20px;
       border-radius: 100%;
       overflow: hidden;
@@ -170,3 +173,28 @@
     }
   }
 
+  @media(max-width: 630px) {
+    .event-partner-orgs {
+      margin-top: 20px;
+    }
+    .event-partner-orgs .partner-org {
+      margin-right: 10px;
+      margin-top: 20px;
+    }
+  }
+ 
+  .event-meta-mobile {
+    display: none;
+  }
+
+
+  @media(max-width: 999px) {
+    .event-meta-mobile {
+      display: block;
+      border-bottom: 1px solid $light-grey;
+
+      .event-page-metadata {
+        margin: 30px 10px 30px 0;
+      }
+    }
+  }
