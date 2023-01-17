@@ -6,6 +6,8 @@
 
     <header>
       <h3>{{ event.title }}</h3>
+      {% if event.subtitle %}<h4 class="subtitle">{{ event.subtitle }}</h4>{% endif %}
+
     </header>  
     <div class="meta-container">
       {% if event.thumbnail %}

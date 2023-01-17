@@ -128,6 +128,7 @@ class EventTag(TaggedItemBase):
 
 
 class EventPage(Page):
+    subtitle = models.TextField(help_text='Optional subtitle for the event', null=True, blank=True)
     date_from = models.DateField("Start date", help_text="Required for us to know if the event is in the future or past")
     date_to = models.DateField(
         "End date",
@@ -187,6 +188,7 @@ class EventPage(Page):
         
         # FieldPanel('meta_information'),
         MultiFieldPanel([
+            FieldPanel('subtitle'),
             FieldRowPanel([
                 FieldPanel('date_from'),
                 FieldPanel('date_to'),
