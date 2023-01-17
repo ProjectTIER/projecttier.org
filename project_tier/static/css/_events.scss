@@ -3,12 +3,18 @@
 }
 
 .events-index {
+    .event-image {
+      width: 300px;
+      margin-bottom: 0;
+    }
     p {
         font-size: 100%;
+        margin-bottom: 0;
     }
     h3 {
         font-size: 1.5rem;
         margin-left: 0px;
+        margin-bottom: 20px;
         &::before {
           content: "\f105";
           color: $light-grey;
@@ -17,11 +23,24 @@
           margin: 0 30px 0 -40px;
         }
     }
+    .description header h3 {
+      margin-top: 0;
+    }
     li {
         padding-left: 0;
     }
-    .event-meta {
-        margin-bottom: $medium-gutter;
+    .description .meta {
+        // margin-bottom: $medium-gutter;
+        margin-top: 10px;
+    }
+
+    .event-meta-item .button {
+      margin-top: 10px;
+      opacity: 100%;
+    }
+
+    p.meta.parent-event-info{
+      margin-top: 20px;
     }
 }
 
@@ -30,8 +49,9 @@
     .article-meta {
       margin-left: 40px;
     }
+    .meta p {
+    }
     .meta {
-      opacity: 0.6;
       padding-left: 0;
       @include breakpoint(small) {
         margin-bottom: $small-gutter;
@@ -64,12 +84,22 @@
 
   .event-image {
     margin-bottom: 20px;
+    margin-top: 50px;
   }
 
-  .event-meta-label {
+  h4.event-meta-label {
+    margin-bottom: 0;
   }
+
+  .event-meta-item {
+    margin-bottom: 20px;
+  }
+
+  time.event-meta-item p:first-of-type {
+    margin-bottom: 5px;
+  }
+
 }
-
 .event-main-metadata {
   display: none;
 }
@@ -91,3 +121,80 @@
    }
  }
 }
+
+.event-page 
+  .body-content {
+    h2, h3, h4 {
+      margin: 20px auto 20px 0;
+    }
+
+    .button-container a {
+      margin: 40px auto 20px 0;
+    }
+  }
+  .partner-org-container {
+    margin-top: 80px;
+    border-top: 1px solid #d3d3d3;
+    max-width: 90%;
+  }
+
+  .event-partner-orgs {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    .partner-org {
+      width: 150px;
+      height: 150px;
+      margin-right: 20px;
+      border-radius: 100%;
+      overflow: hidden;
+      box-shadow: 2px 2px 2px #d3d3d3;
+      position: relative;
+
+      .event-partner-name {
+        width: 150px;
+        height: 150px;
+        background-color: #E7DEDE;
+        text-align: center;
+
+        h5 {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media(max-width: 630px) {
+    .event-partner-orgs {
+      margin-top: 20px;
+    }
+    .event-partner-orgs .partner-org {
+      margin-right: 10px;
+      margin-top: 20px;
+    }
+  }
+ 
+  .event-meta-mobile {
+    display: none;
+  }
+
+
+  @media(max-width: 999px) {
+    .event-meta-mobile {
+      display: block;
+      border-bottom: 1px solid $light-grey;
+
+      .event-page-metadata {
+        margin: 30px 10px 30px 0;
+      }
+    }
+  }

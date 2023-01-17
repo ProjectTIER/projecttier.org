@@ -3,21 +3,61 @@
 {# Individual event item in a list - used on event index and home page #}
 <li>
   <article class="list-item event event-index block-link-parent">
+
     <header>
       <h3>{{ event.title }}</h3>
-    </header>
-    
-    <div class="small-12 medium-5 columns meta">
-          {{ event.meta_information|richtext }}
-          {{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}
-    </div>
+    </header>  
+
+    {% if event.thumbnail %}
+      <div class="small-12 medium-5 columns meta">
+        <div class="event-image"><a class="button" href="{{ event.url }}" target="_blank">
+            {% image event.thumbnail max-300x200 %}
+        </a></div>
+      </div>
+    {% endif %} 
+
     <div class="small-12 medium-7 columns end description">
-        {% if event in self.past_events %}
-          {{event.description_past|richtext}}
-          {% else %}
-          {{event.description|richtext}}
+      <div class="meta">
+        <p><strong>Event Details</strong></p>
+        <p>{{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}</p>
+        <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
+        <p>{% if event.location %}{{ event.location }}{% endif %}</p>
+      
+
+        {% if event.button_link %}
+        <div class="event-meta-item">
+          <div class="webcast-intro__register">
+            <a class="button" href="{{ event.button_link }}" target="_blank">{% if event.button_text %}{{ event.button_text }} {% else %}Learn More {% endif %}<i class="fa fa-external-link" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        {% else %}
+          {% if event.registration_link %}
+            <div class="event-meta-item">
+              <div class="webcast-intro__register">
+                <a class="button" href="{{ event.registration_link }}" target="_blank">Register <i class="fa fa-external-link" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            {% else %}
+            <div class="event-meta-item">
+              <div class="webcast-intro__register">
+                <a class="button" href="{{ event.url }}" target="_blank">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          {% endif %}
         {% endif %}
+      </div>
+      
     </div>
+
+    
     <div class="clearfix"></div>
+
+    {% if event in self.past_events %}
+        {{event.description_past|richtext}}
+        {% else %}
+        {{event.description|richtext}}
+      {% endif %}
+
+      <p class="meta parent-event-info"><em>{% if event.parent_event %}Part of the <a href="{{ self.parent_event.url }}">{{ event.parent_event }}</a>{% endif %}</em></p>
   </article>
 </li>

@@ -1,0 +1,88 @@
+{% load wagtailcore_tags wagtailimages_tags navigation_tags %}
+<div class="feature-events-list event-stream">
+
+  {% for event in events %}
+
+  {% if self.include_past or event.status == 'upcoming' %}
+
+  <a href="{{ event.url }}">
+    <div class="featured-event">
+        <div class="featured-event__meta-data">
+          <div class="featured-event__overlay"></div>
+          <div class="featured-event__image">
+            {% if event.thumbnail %}
+              {% image event.thumbnail max-270x180 %}
+            {% else %}
+              <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
+            {% endif %}
+          </div>
+          <div class="featured-event__date">
+            {{ event.date_from }}{% if event.date_to %} - {{ event.date_to }}{% endif %}
+          </div>
+        </div>
+
+      <div class="featured-event__text">
+        <div class="featured-event__title">
+          {{ event.title }}
+        </div>
+        <div class="featured-event__subtitle">
+            <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
+            <p>{% if event.location %}{{ event.location }}{% endif %}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  {% endif %}
+
+  {% endfor %}
+
+
+  <a href="/fellowships-and-workshops/">
+    <div class="featured-event" id="tier-workshops">
+        <div class="featured-event__meta-data">
+          <div class="featured-event__overlay"></div>
+          <div class="featured-event__image">
+              <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
+          </div>
+          <div class="featured-event__date">
+
+          </div>
+        </div>
+
+      <div class="featured-event__text">
+        <div class="featured-event__title">
+          TIER Fellowships, Workshops, and Webcasts
+        </div>
+        <div class="featured-event__subtitle">
+          <div class="rich-text">
+          <p>TIER offers a variety of online programming throughout the year for faculty and graduate students.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script type="text/javascript">
+  var width;
+
+  function getWindowSize(){
+    var width = window.innerWidth || document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
+    return showOrHideExtraEvent(width);
+  }
+
+  window.addEventListener("resize", getWindowSize);
+  getWindowSize();
+
+  function showOrHideExtraEvent(width){
+    var featuredEvent = document.getElementById("tier-workshops");
+    var showExtra;
+    showExtra = false;
+
+    !showExtra ? featuredEvent.style.display = "none" : featuredEvent.style.display = "block";
+  }
+
+</script>

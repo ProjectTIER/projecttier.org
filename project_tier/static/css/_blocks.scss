@@ -780,6 +780,34 @@ ul.accordion {
   }
 }
 
+.feature-events-list.event-stream {
+  width: 150%;
+  margin: 40px 0 40px;
+  .featured-event {
+     margin: 18px 18px 18px 0;
+  }
+  .featured-event__image img {
+    height: 180px;
+    width: fit-content;
+    overflow: hidden;
+  }
+}
+
+@media(max-width: 630px) {
+  .feature-events-list.event-stream {
+    width: 100%;
+    margin: 40px 0 40px;
+    .featured-event {
+       margin: 18px 18px 18px 0;
+    }
+    .featured-event__image img {
+      height: 180px;
+      width: fit-content;
+      overflow: hidden;
+    }
+  }
+}
+
 .graphic-link-grid {
   display: flex;
   justify-content: start;
@@ -973,3 +1001,4 @@ ul.accordion {
     }
   }
 }
+
