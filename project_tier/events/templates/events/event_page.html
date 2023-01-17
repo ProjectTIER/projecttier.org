@@ -20,7 +20,7 @@
       {% include_block block with index=forloop.counter %}
     {% endfor %}
 
-    {% if self.partner_organizations %}
+    {% if self.partner_organizations.all %}
     <div class="partner-org-container">
       <h4 class="event-meta-label">Hosted in Partnership With</h4>  
       <div class="event-partner-orgs"> 
@@ -35,7 +35,8 @@
           </a></div>
         {% endfor %}
       </div>
-      {% endif %}
     </div>
+    {% endif %}
+    
 </div>
 {% endblock %}
