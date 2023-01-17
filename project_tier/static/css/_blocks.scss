@@ -791,20 +791,18 @@ ul.accordion {
     width: fit-content;
     overflow: hidden;
   }
+
+  p.subtitle{
+    font-weight: 800;
+    font-size: 16px;
+    color: #2F3A44;
+  }
 }
 
-@media(max-width: 630px) {
+
+@media(max-width: 1680px) {
   .feature-events-list.event-stream {
     width: 100%;
-    margin: 40px 0 40px;
-    .featured-event {
-       margin: 18px 18px 18px 0;
-    }
-    .featured-event__image img {
-      height: 180px;
-      width: fit-content;
-      overflow: hidden;
-    }
   }
 }
 
