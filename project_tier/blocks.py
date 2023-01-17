@@ -11,7 +11,8 @@ from wagtail.core.blocks import (
     PageChooserBlock,
     CharBlock,
     URLBlock,
-    BooleanBlock
+    BooleanBlock,
+    IntegerBlock
 )
 from wagtailfontawesome.blocks import IconBlock
 
@@ -237,6 +238,7 @@ class LimitedStreamBlock(StreamBlock):
 class EventStreamBlock(StructBlock):
     tag = TextBlock(help_text='Pulls in up to three events with the given tag. Leave blank for all events.', required=False, blank=True)
     include_past = BooleanBlock(required=False, default=True, help_text='Should past events be included?')
+    count = IntegerBlock(required=True, default=3,help_text='What is the maximum number of events we should show? (default: 3)')
 
     class Meta:
         icon = 'fa-calendar'
@@ -251,7 +253,7 @@ class EventStreamBlock(StructBlock):
         )
 
         def get_events():
-            events = models.EventPage.objects.all().live().public().filter(event_tags__name__in=[value['tag']])[:3]
+            events = models.EventPage.objects.all().live().public().filter(event_tags__name__in=[value['tag']])[:value['count']]
 
             return events
 
