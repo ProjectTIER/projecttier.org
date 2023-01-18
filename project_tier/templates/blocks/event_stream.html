@@ -25,12 +25,17 @@
       <div class="featured-event__text">
         <div class="featured-event__title {% if event.title|length > 91 %}xlong{% elif event.title|length > 75 %}long{% endif %}">
           {{ event.title }}  
-          
         </div>
         <div class="featured-event__subtitle">
-            {% if event.subtitle %}<p class="subtitle">{{ event.subtitle }}</p>{% endif %}
+            {% if event.subtitle %}<p class="subtitle">{{ event.subtitle }}</p>
             
-            <p>{% if event.location %}{{ event.location }}{% endif %}</p>
+              {% if event.subtitle|length < 25 %}
+                <p>{% if event.location %}{{ event.location }}{% endif %}</p>
+              {% endif %}
+
+            {% else %}
+             <p>{% if event.location %}{{ event.location }}{% endif %}</p>
+            {% endif %}
             
           </div>
       </div>
