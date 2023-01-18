@@ -29,7 +29,7 @@
         <div class="featured-event__subtitle">
             {% if event.subtitle %}<p class="subtitle">{{ event.subtitle }}</p>
             
-              {% if event.subtitle|length < 25 %}
+              {% if event.subtitle|length < 40 %}
                 <p>{% if event.location %}{{ event.location }}{% endif %}</p>
               {% endif %}
 
