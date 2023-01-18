@@ -4,8 +4,9 @@
 
 .events-index {
     .event-image {
-      width: 300px;
+      width: 250px;
       margin-bottom: 0;
+      margin-right: 20px;
     }
    
     @media(max-width: 1200px) {
@@ -24,9 +25,12 @@
       }
      }
 
+     .meta-container {
+      display: flex;
+    }
+
      @media(max-width: 800px) {
       .meta-container {
-        display: flex;
         flex-direction: column;
       }
      }

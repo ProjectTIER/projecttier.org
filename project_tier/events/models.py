@@ -154,7 +154,7 @@ class EventPage(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text="Ideal dimmensions are 270x180."
+        help_text="Ideal dimmensions are square with min width 200px."
     )
     description = RichTextField(blank=True, help_text="The description that will appear on other pages. Keep this short and sweet.")
     description_past = RichTextField(blank=True, help_text="The description written as though in the past")

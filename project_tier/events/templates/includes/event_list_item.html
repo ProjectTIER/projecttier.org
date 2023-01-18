@@ -7,24 +7,24 @@
     <header>
       <h3>{{ event.title }}</h3>
       {% if event.subtitle %}<h4 class="subtitle">{{ event.subtitle }}</h4>{% endif %}
-
     </header>  
-    <div class="meta-container">
+
+    <div class="meta-container small-12 medium-12">
       {% if event.thumbnail %}
-        <div class="small-12 medium-5 columns meta">
+        <div class="meta">
           <div class="event-image"><a class="button" href="{{ event.url }}" target="_blank">
-              {% image event.thumbnail max-300x200 %}
+              {% image event.thumbnail fill-200x200 %}
           </a></div>
         </div>
       {% endif %} 
 
-      <div class="small-12 medium-7 columns end description">
+      <div class="end description">
         <div class="meta">
           <p><strong>Event Details</strong></p>
           <p>{{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}</p>
           <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
           <p>{% if event.location %}{{ event.location }}{% endif %}</p>
-        
+          <p class="meta parent-event-info"><em>{% if event.parent_event %}Part of the <a href="{{ self.parent_event.url }}">{{ event.parent_event }}</a>{% endif %}</em></p>
 
           {% if event.button_link %}
           <div class="event-meta-item">
@@ -60,7 +60,5 @@
         {% else %}
         {{event.description|richtext}}
       {% endif %}
-
-      <p class="meta parent-event-info"><em>{% if event.parent_event %}Part of the <a href="{{ self.parent_event.url }}">{{ event.parent_event }}</a>{% endif %}</em></p>
   </article>
 </li>
