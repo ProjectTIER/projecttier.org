@@ -781,7 +781,7 @@ ul.accordion {
 }
 
 .feature-events-list.event-stream {
-  width: 150%;
+  width: 900px;
   margin: 40px 0 40px;
 
   .featured-event__meta-data {
@@ -847,7 +847,7 @@ ul.accordion {
 }
 
 
-@media(max-width: 1680px) {
+@media(max-width: 1310px) {
   .feature-events-list.event-stream {
     width: 100%;
   }
