@@ -57,8 +57,8 @@
 
     {% if event in self.past_events %}
         {{event.description_past|richtext}}
-        {% else %}
+      {% else %}
         {{event.description|richtext}}
-      {% endif %}
+    {% endif %}
   </article>
 </li>

@@ -11,13 +11,14 @@
           <div class="featured-event__overlay"></div>
           <div class="featured-event__image">
             {% if event.thumbnail %}
-              {% image event.thumbnail fill-270x180 %}
+              {% image event.thumbnail fill-270x220 %}
             {% else %}
               <img class="logo img-thumbnail" src="/static/img/logo.svg"/>
             {% endif %}
           </div>
           <div class="featured-event__date">
             {{ event.date_from }}{% if event.date_to %} - {{ event.date_to }}{% endif %}
+            <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
           </div>
         </div>
 
@@ -28,7 +29,7 @@
         </div>
         <div class="featured-event__subtitle">
             {% if event.subtitle %}<p class="subtitle">{{ event.subtitle }}</p>{% endif %}
-            <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
+            
             <p>{% if event.location %}{{ event.location }}{% endif %}</p>
             
           </div>
