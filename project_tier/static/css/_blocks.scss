@@ -785,6 +785,14 @@ ul.accordion {
   margin: 40px 0 40px;
   .featured-event {
      margin: 18px 18px 18px 0;
+
+     .featured-event__title.long {
+      font-size: 16px;
+     }
+     .featured-event__title.xlong {
+      font-size: 14px;
+      line-height: 18px;
+     }
   }
   .featured-event__image img {
     height: 180px;

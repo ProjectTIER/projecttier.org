@@ -22,8 +22,9 @@
         </div>
 
       <div class="featured-event__text">
-        <div class="featured-event__title">
-          {{ event.title }}
+        <div class="featured-event__title {% if event.title|length > 91 %}xlong{% elif event.title|length > 78 %}long{% endif %}">
+          {{ event.title }}  
+          
         </div>
         <div class="featured-event__subtitle">
             {% if event.subtitle %}<p class="subtitle">{{ event.subtitle }}</p>{% endif %}
