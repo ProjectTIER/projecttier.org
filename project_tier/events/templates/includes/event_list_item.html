@@ -24,7 +24,7 @@
           <p>{{ event.date_from }}{% if event.date_to %} to {{ event.date_to }}{% endif %}</p>
           <p>{% if event.time_from %}From {{ event.time_from|time }}{% endif %}{% if event.time_to %} to {{ event.time_to|time }}{% endif %}</p>
           <p>{% if event.location %}{{ event.location }}{% endif %}</p>
-          <p class="meta parent-event-info"><em>{% if event.parent_event %}Part of the <a href="{{ self.parent_event.url }}">{{ event.parent_event }}</a>{% endif %}</em></p>
+          <p class="meta parent-event-info"><em>{% if event.parent_event %}Part of the <a href="{{ event.parent_event.url }}">{{ event.parent_event }}</a>{% endif %}</em></p>
 
           {% if event.button_link %}
           <div class="event-meta-item">
