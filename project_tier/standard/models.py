@@ -20,7 +20,7 @@ class StandardIndexPage(Page):
 
     @property
     def children(self):
-        return self.get_children().specific().live()
+        return self.get_children().specific().live().in_menu()
 
     search_fields = Page.search_fields + [
         SearchField('introductory_headline')

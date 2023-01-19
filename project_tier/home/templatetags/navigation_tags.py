@@ -109,9 +109,9 @@ def table_of_contents_menu(context, streamfield=None, pagetype=StandardIndexPage
                 'link': link,
             }
     return {
-        'section_pages': section.get_children().specific().live() if section else None,
+        'section_pages': section.get_children().specific().live().in_menu() if section else None,
         'custom_sidebar_link': custom_sidebar_link,
-        'custom_section_pages': custom_section.get_children().specific().live() if custom_section else None,
+        'custom_section_pages': custom_section.get_children().specific().live().in_menu() if custom_section else None,
         'article_headings': headings
     }
 
@@ -171,7 +171,7 @@ def sidebar_menu(context, calling_page=None):
     ancestor.has_children = has_menu_children(ancestor)
 
     if ancestor.has_children:
-        ancestor.children = ancestor.get_children().live()
+        ancestor.children = ancestor.get_children().live().show_in_menus()
 
         for descendant in ancestor.children:
             descendant.is_active = is_active(descendant, calling_page)
