@@ -1,4 +1,4 @@
-wagtail==2.12.5
+wagtail==2.15.2
 boto==2.49.0
 celery==4.4.2
 django_compressor==2.4
@@ -32,3 +32,5 @@ fabric==1.15.0
 # Tests
 django-nose==1.4.6
 factory_boy==2.12.0
+django>=3.2.13 # not directly required, pinned by Snyk to avoid a vulnerability
+pillow>=9.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
