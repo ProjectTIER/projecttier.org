@@ -1,6 +1,6 @@
 wagtail==2.12.5
 boto==2.49.0
-celery==4.4.2
+celery==5.2.2
 django_compressor==2.4
 django-storages==1.8
 django-libsass==0.8
