@@ -24,7 +24,7 @@ wagalytics==1.3
 django-debug-toolbar==2.2.1
 
 # Heroku webserver
-gunicorn==20.0.4
+gunicorn==22.0.0
 
 # Local development
 fabric==1.15.0
